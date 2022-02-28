@@ -1,0 +1,36 @@
+{
+  "name": "geojson-gmap",
+  "version": "0.2.1",
+  "homepage": "https://github.com/chilijung/geojson-gmap",
+  "authors": [
+    "howardchi <howardchi@fougood.com>"
+  ],
+  "description": "geojson in gmap",
+  "main": "lib/geojson-gmap.js",
+  "keywords": [
+    "geojson",
+    "gmap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "topojson": "~1.4.9"
+  },
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.1",
+    "commit": "a7eaf4bef6ead67d5dbb3ffc7b85d0a711c38e7b"
+  },
+  "_source": "git://github.com/chilijung/geojson-gmap.git",
+  "_target": "~0.2.1",
+  "_originalSource": "geojson-gmap",
+  "_direct": true
+}

@@ -1,0 +1,47 @@
+<h2 class="center">Dettagli utente</h2>
+<div class="row">
+  <div class="col s12 m8">
+    <div class="card-panel white text-grey text-darken-3">
+      <div class="row">
+        <div class="col s12 m4 center">
+          <h4 class="no-margin top">{{ctrl.userInfo.nome}} {{ctrl.userInfo.cognome}}</h4>
+          <div class="hero-image-profile inline-block" style="background-image: url('{{ctrl.userInfo.photoUrl}}')"></div>
+        </div>
+        <div class="col s12 m8">
+          <ul>
+            <li><strong>C.F.:&nbsp;</strong><span>{{ctrl.userInfo.codiceFiscale}}</span>
+            </li>
+            <li><strong>Mail:&nbsp;</strong><span>{{ctrl.userInfo.email}}</span>
+            </li>
+            <li><strong>Telefono:&nbsp;</strong><span>{{ctrl.userInfo.cellulare}}</span>
+            </li>
+          </ul>
+          <div class="actions">
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.user.dashboard({id: ctrl.userInfo.id})">Bacheca</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.user.carnet({id: ctrl.userInfo.id})">Carnet</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.user.history({id: ctrl.userInfo.id})">Storico</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.user.payments({id: ctrl.userInfo.id})">Pagamenti</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.user.billings({id: ctrl.userInfo.id})">Fatture</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="card-panel white text-grey text-darken-3">
+      <div class="row">
+        <div class="col s12 m12">
+          <h4 class="center no-margin top">Residenza</h4>
+          <div class="indirizzo-single" ng-repeat="indirizzo in ctrl.addressesResidence">
+            {{indirizzo.label}}
+          </div>
+          <br>
+          <h4 class="center no-margin top">Fatturazione</h4>
+          <div class="indirizzo-single" ng-repeat="indirizzo in ctrl.addressesBilling">
+            {{indirizzo.label}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

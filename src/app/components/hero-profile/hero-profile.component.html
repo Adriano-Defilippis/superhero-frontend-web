@@ -1,0 +1,92 @@
+<div class="hero-profile">
+
+    <div class="section center">
+        <div row>
+            <div class="right-align center">
+                <div class="hero-image-profile inline-block"
+                    ng-style="{ 'background-image': 'url(\'' + Profile.hero.profilePic + '\')' }"></div>
+            </div>
+            <div class="center left-align">
+                <div class="hero-info-block left-align">
+                    <h3 class="no-margin all">{{ Profile.hero.name }} {{ Profile.hero.lastName }}</h3>
+                    <p class="no-margin all" ng-if="Profile.isSelectable !== true && Profile.disableActions !== true">
+                        <a class="waves-effect waves-light white grey-text text-darken-2 btn btn-flat btn-small btn-xsmall"
+                            ng-click="Profile.onClickStartBooking()">Prenota</a>
+                        <a class="waves-effect waves-light white grey-text text-darken-2 btn btn-flat btn-small btn-xsmall"
+                            ng-click="Profile.onClickBuyCarnet()">Acquista un carnet</a>
+                    </p>
+                    <p class="no-margin all" ng-if="Profile.isSelectable === true && Profile.disableActions !== true">
+                        <a class="waves-effect waves-light main-orange btn btn-small"
+                            ng-click="Profile.onHeroSelection()">Seleziona questo supereroe</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12 m10 offset-m1 left-align">
+        <div class="profile-tabs">
+            <ul class="tabs tab-label" tabs>
+                <li class="tab col s12 m3"><a class="{{ Profile.initTab == 'dati' ? 'active' : '' }}" href="#tabDati"><h5>Dati</h5></a></li>
+                <li class="tab col s12 m3"><a class="{{ Profile.initTab == 'info' ? 'active' : '' }}" href="#tabInfo"><h5>Info</h5></a></li>
+                <li class="tab col s12 m3"><a class="{{ Profile.initTab == 'recensioni' ? 'active' : '' }}" href="#tabRecensioni"><h5>Feedback</h5></a></li>
+            </ul>
+        </div>
+
+        <div class="tab-contents">
+            <div class="panels card-panel hero-tab-wrapper">
+
+                <div id="tabDati">
+                    <ul>
+                        <li ng-repeat="line in ::Profile.hero.lines">
+                            <p class="no-margin all">
+                                <strong class="uppercase">{{ line.title }}:</strong>&nbsp;
+                                <span ng-if="line.content">{{ line.content }}</span>
+                            </p>
+                            <div class="margin-left-small" ng-if="line.sublines.length > 0">
+                                <p class="no-margin all" ng-repeat="subline in ::line.sublines">
+                                    <strong>{{ subline.title }}:&nbsp;</strong>
+                                    <span ng-if="subline.content">{{ subline.content }}</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="tabInfo" class="center">
+                    <p class="hero-self-description left-align"
+                            ng-bind="Profile.hero.description"></p>
+                </div>
+
+                <div id="tabRecensioni">
+                    <div class="feedback-single" ng-repeat="feedback in ::Profile.hero.feedbacks">
+                        <div class="info" row>
+                            <div class="date">
+                                <div class="short center top">
+                                    <p class="no-margin all grey-text text-darken-3"
+                                        ng-bind-html="feedback.date"></p>
+                                </div>
+                            </div>
+                            <div class="content top" style="width:100%">
+                                <p class="no-margin top">
+                                    {{ feedback.content }}
+                                </p>
+                            </div>
+                            <div class="info top">
+                                <div class="stars center top">
+                                    <h4 class="no-margin all voto" ng-bind-html="'<small>voto:</small><br>'+feedback.rating+'/4'"></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="no-margin all right-align"><i>{{ feedback.author }}</i></p>
+                    </div>
+                    <div class="feedback-single" ng-if="Profile.hero.feedbacks.length < 1">
+                        <p class="center italic">Non sono ancora presenti recensioni per questo Supereroe.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

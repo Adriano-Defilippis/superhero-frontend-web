@@ -1,0 +1,79 @@
+<select name="tipoFattura"
+    ng-model="appointment.tipoFattura" material-select>
+  <option value="" disabled selected>Tipo Fattura</option>
+  <option ng-repeat="option in ::options.tipoFattura" ng-value="option.id">{{::option.label}}</option>
+</select>
+<div input-field>
+    <input type="text" name="dataFattura"
+    date-time auto-close="true"
+    ng-model="appointment.dataFattura"
+    format="dd/MM/yyyy" view="year" min-view="date">
+    <label>Data fattura</label>
+</div>
+<div input-field>
+    <input type="text" name="dataOperazione"
+    date-time auto-close="true"
+    ng-model="appointment.dataOperazione"
+    format="dd/MM/yyyy" view="year" min-view="date">
+    <label>Data operazione</label>
+</div>
+<div input-field>
+  <input type="text" name="codicefattura"
+  ng-model="appointment.codiceFattura">
+  <label>Codice Fattura</label>
+</div>
+<div input-field>
+  <input type="text" name="id"
+  ng-model="appointment.id">
+  <label>ID appuntamento</label>
+</div>
+<select name="tipoOperazione"
+    ng-model="appointment.tipologiaOperazione" material-select>
+  <option value="" disabled selected>Tipo Operazione</option>
+  <option ng-repeat="option in ::options.tipoOperazione" ng-value="option.id">{{::option.label}}</option>
+</select>
+<select name="idTipoServizio"
+    ng-model="appointment.idTipoServizio" material-select>
+  <option value="" disabled selected>Servizio erogato</option>
+  <option ng-repeat="option in ::options.idTipoServizio" ng-value="option.id">{{::option.label}}</option>
+</select>
+<div input-field>
+  <input type="number" name="importoVoucher"
+  ng-model="appointment.importoVoucher">
+  <label>Importo voucher</label>
+</div>
+<div class="radio-group">
+  <input type="checkbox" name="convenzione" id="convenzione"
+  ng-model="appointment.convenzione">
+  <label for="convenzione">Convenzione</label>
+</div>
+<h5 class="center">Voce fattura</h5>
+<div input-field>
+    <input type="text" name="dataVocefattura"
+    date-time auto-close="true"
+    ng-model="appointment.vociInFattura[0].data"
+    format="dd/MM/yyyy" view="year" min-view="date">
+    <label>Data</label>
+</div>
+<div input-field>
+  <input type="text" name="descrizioneVocefattura"
+  ng-model="appointment.vociInFattura[0].descrizione">
+  <label>Descrizione</label>
+</div>
+<div input-field>
+  <input type="text" name="codiceVocefattura"
+  ng-model="appointment.vociInFattura[0].idAppuntamento">
+  <label>Codice</label>
+</div>
+<div input-field>
+  <input type="number" name="durataVocefattura"
+  ng-model="appointment.vociInFattura[0].durataMinuti">
+  <label>Durata</label>
+</div>
+<div input-field>
+  <input type="number" name="costoVocefattura"
+  ng-model="appointment.vociInFattura[0].costoFinale">
+  <label>Costo</label>
+</div>
+<a ng-click="setAppointmentExample()" class=" btn-small waves-effect waves-light main-orange btn">ES. App. semplice</a>
+<br>

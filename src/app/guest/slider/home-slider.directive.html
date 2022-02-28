@@ -1,0 +1,68 @@
+<div class="home-slider-wrapper wrapper__handler">
+    <a ng-if="ctrl.isBnb" ui-sref="main.guest.bnbCarnet"  class="carnet-badge-home" ng-mouseover="ctrl.itemsrc=ctrl.altBadgeIcon"
+    ng-mouseleave="ctrl.itemsrc=ctrl.badgeIcon">
+        <img class="md-icon big badge-home" ng-src="{{ctrl.itemsrc}}" ></img>
+    </a>
+    <a ng-if="!ctrl.isBnb" ui-sref="main.guest.carnet"  class="carnet-badge-home" ng-mouseover="ctrl.itemsrc=ctrl.altBadgeIcon"
+    ng-mouseleave="ctrl.itemsrc=ctrl.badgeIcon">
+        <img class="md-icon big badge-home" ng-src="{{ctrl.itemsrc}}" ></img>
+    </a>
+
+
+    <div class="service-select hidden" homze-service-select>
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col s12 m7 l5 offset-l2"><form autocomplete="off"><input autocomplete="off" class="address-home-input controls address-home" type="text" placeholder="{{ctrl.inputPlaceholder}}" ng-focus="ctrl.focusInput(true)" ng-blur="ctrl.focusInput(false)"></form></div> -->
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="home-service-select">
+                        <service-input-autocomplete
+                            class="home"
+                            placeholder="Sto cercando.."
+                            always-open="false"
+                            selected="ctrl.selectedService"
+                            selected-sub-service="ctrl.selectedSubService"
+                            disabled="ctrl.disabledServices"
+                            on-service-selected="ctrl.selectService(serviceId, willProceedSubService)"
+                            on-sub-service-selected="ctrl.selectSubService(parentServiceId, subServiceId)">
+                        </service-input-autocomplete>
+                    </div>
+                </div>
+                <!-- <div class="col s12 m5 l3"><a class="waves-effect waves-light main-orange btn btn-home btn-home-cta" ng-click="ctrl.startBooking($index)" fill>Prenota il tuo servizio</a></div> -->
+            </div>
+        </div>
+    </div>
+
+    <div id="home-slider" class="owl-carousel owl-theme" fill>
+
+        <div class="single-slide" full-width alt="rilassati e trova una colf"
+            ng-repeat="slide in ::ctrl.slides"
+            ng-style="{ backgroundImage: 'url('+ slide.imgUrl +')' }">
+            <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+                <div class="slider-payoff-block">
+                    <h3 class="main-tagline text-center no-margin bottom">{{::slide.title}}</h3>
+                    <p class="secondary-tagline text-center no-margin top {{::slide.tagLineClass}}">{{::slide.tagline}}</p>
+                    <div class="container">
+                        <div class="select-placeholder"></div>
+                        <div class="row">
+                            <br>
+                            <div class="col s12 center">
+                                <a ng-click="ctrl.startNewHeroSelectionOrder()" class="white-text"><strong>SCOPRI I NOSTRI <br>SUPEREROI<br>▼</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div fill>
+                <a ui-sref="main.guest.assurance" class="assurance-label"> 
+                    <img class="md-icon" src="{{::ctrl.assuranceLabel}}" fill style="float:right; width: 100%";>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    
+</div>
+
+<!-- press review banner -->
+<press-review></press-review>

@@ -1,0 +1,31 @@
+<div ng-if="!isApp" class="nav-wrapper container">
+  <a id="logo-container" ng-click="ctrl.goToHomePage()" class="brand-logo"><img ng-src="{{ctrl.logo.mainLogo}}"></a>
+
+  <div class="right hide-on-med-and-down">
+    <menu items="::ctrl.menu" user-menu="ctrl.subMenu"></menu>
+  </div>
+
+  <ul id="nav-mobile" class="side-nav">
+    <li ng-show="!ctrl.subMenu.active"><a ng-click="ctrl.showLoginForm()" ng-hide="ctrl.isSpecial">Login</a></li>
+    <li ng-show="ctrl.subMenu.active" class="user-menu center">
+      <a><div class="profile-pic" style="background-image:url(\{{ ctrl.subMenu.userPic }}\)"></div>{{ ctrl.subMenu.userName }}</a>
+    </li>
+    <li ng-repeat="item in ctrl.subMenu.items"><a ui-sref="{{item.state}}({{item.params}})">{{item.label}}</a></li>
+    <hr>
+    <div ng-if="!ctrl.isHero">
+
+      <li ng-repeat="item in ctrl.menu.items track by item.state" id="menuItem{{this.$index}}">
+        <a ng-click="ctrl.activeItem(this)">{{item.label}}</a>
+      </li>
+      <hr>
+
+      <!--
+      <li ng-if="!ctrl.isSpecial" ng-repeat="item in ctrl.menu.servicesItems"><a ui-sref="{{item.state}}({{item.params}})">{{item.label}}</a></li>
+      -->
+
+      <li ng-if="ctrl.menu.isUser"><a ui-sref="main.user.index">Bacheca</a></li>
+    </div>
+  </ul>
+
+  <a href="#" data-activates="nav-mobile" class="button-collapse" side-nav-button><i class="mdi-navigation-menu"></i></a>
+</div>

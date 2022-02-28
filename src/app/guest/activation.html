@@ -1,0 +1,41 @@
+<div class="box-wrapper-fullscreen grey darken-3">
+  <div class="container">
+    <form name="newPassword" ng-submit="ctrl.submitPassword(newPassword.$valid)">
+      <div class="login-box">
+        <br>
+        <div class="center">
+          <img src="assets/images/supereroe-logo-small.png">
+        </div>
+        <br>
+        <div class="card-panel white">
+          <h3 class="center">Scegli una password per il login</h3>
+          <div input-field>
+            <input name="password" ng-model="ctrl.mv.password" ng-pattern="ctrl.pattern" type="password" required minlength="5">
+            <label>Password</label>
+          </div>
+          <div input-field>
+            <input name="passwordConfirm" ng-model="ctrl.mv.passwordConfirm" type="password" required minlength="5">
+            <label>Conferma Password</label>
+          </div>
+          <div class="error padding-top big center main-orange-text"><small ng-bind="ctrl.output"></small></div>
+          <br>
+          <div class="row">
+            <div class="col s12 m8 offset-m2 center">
+              <button class="btn waves-effect waves-light main-orange" type="submit" name="action">Salva</button>
+            </div>
+          </div>
+          <br>
+          <div class="error padding-top big text-center" ng-show="newPassword.$invalid">
+            <small>La password deve rispettare i seguenti criteri:
+              <ul class="list">
+                <li>almeno una lettera maiuscola, una minuscola ed un numero</li>
+                <li>deve essere compresa tra i 4 e 12 caratteri</li>
+                <li>non può contenere caratteri speciali.</li>
+              </ul></small>
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

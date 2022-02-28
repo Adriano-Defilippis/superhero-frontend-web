@@ -1,0 +1,53 @@
+<h2 class="center">Contatti</h2>
+<div class="row">
+    <div class="col s6">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="cellulare" required  ng-model="ctrl.heroApplication.cellulare">
+            <label>Cellulare</label>
+        </div>
+        <div ng-messages="heroApplicationForm.cellulare.$error" ng-show="heroApplicationForm.cellulare.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="">{{::ctrl.labels.invalid.phone}}</div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="email" name="email" required minlength="3" ng-model="ctrl.heroApplication.email">
+            <label>Email</label>
+        </div>
+        <div ng-messages="heroApplicationForm.email.$error" ng-show="heroApplicationForm.email.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="email">{{::ctrl.labels.invalid.email}}</div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="col s12 m6">
+            <div class="radio-group">
+                <div class="select-inline">
+                    <select name="smartPhoneDettaglio" class="checkbox-select" ng-model="ctrl.heroApplication.smartPhoneDettaglio" material-select ng-disabled="ctrl.formDisabled" >
+                        <option value="" disabled selected>Tipologia Smartphone</option>
+                        <option ng-repeat="option in ::ctrl.options.smartPhone" ng-value="option.value">{{::option.name}}</option>
+                    </select>
+                </div>
+            </div>
+       
+    </div>
+
+    <div class="col s12 m6">
+            <div class="radio-group">
+                <div class="select-inline">
+                    <select name="accessoInternetDettaglio" class="checkbox-select" ng-model="ctrl.heroApplication.accessoInternetDettaglio" material-select ng-disabled="ctrl.formDisabled">
+                        <option value="" disabled selected>Accesso a Internet</option>
+                        <option ng-repeat="option in ::ctrl.options.accessoInternetDettaglio" ng-value="option.value">{{::option.name}}</option>
+                    </select>
+                </div>
+            </div>
+        <div ng-messages="heroApplicationForm.accessoInternetDettaglio.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+
+</div>

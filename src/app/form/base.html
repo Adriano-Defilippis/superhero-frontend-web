@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col s12">
+        <h1 class="center">{{ ctrl.formTitle }}</h1>
+        <h4 ng-if="!ctrl.enabledHero && !ctrl.isNew" class="center no-margin all">(collaboratore disabilitato: <span class="main-orange-text" ng-click="ctrl.reenableHero()">riabilita</span>)</h2>
+        </div>
+    </div>
+    <form id="heroApplicationForm" class="col s12 application-form" name="heroApplicationForm" novalidate ng-submit="ctrl.submitForm(heroApplicationForm.$valid)">
+        <fieldset ng-disabled="::ctrl.formDisabled" class="reset-box">
+            <!-- FIRST ROW: anagrafica/residenza -->
+            <div class="row section">
+                <!-- ANAGRAFICA -->
+                <div class="col m6 s12">
+                    <!-- indirizzo domicilio -->
+                    <div ng-include="'app/form/blocks/anagrafica.html'"></div>
+                </div>
+                <!-- INDIRIZZO RESIDENZA / CONTATTI -->
+                <div class="col m6 s12">
+                    <!-- indirizzo domicilio -->
+                    <div ng-include="'app/form/blocks/indirizzo-domicilio.html'"></div>
+                    <div class="radio-group">
+                        <input type="checkbox" name="indirizzoResidenzaUgualeDomicilio" id="indirizzoResidenzaUgualeDomicilio"
+                        ng-disabled="ctrl.formDisabled"
+                        ng-model="ctrl.heroApplication.indirizzoResidenzaUgualeDomicilio">
+                        <label for="indirizzoResidenzaUgualeDomicilio">L'indirizzo di residenza è uguale a quello di domicilio</label>
+                    </div>
+                    <!-- indirizzo residenza -->
+                    <div ng-if="!ctrl.heroApplication.indirizzoResidenzaUgualeDomicilio" ng-include="'app/form/blocks/indirizzo-residenza.html'"></div>
+                </div>
+            </div>
+        </div>
+        <!-- SECOND ROW -->
+        <div class="row section">
+            <div class="col l6 m12 s12">
+                <!-- formazione -->
+                <div ng-include="'app/form/blocks/formazione.html'"></div>
+            </div>
+            <div class="col l6 m12 s12">
+                <!-- contatti -->
+                <div ng-include="'app/form/blocks/contatti.html'"></div>
+            </div>
+        </div>
+
+        <!-- THIRD ROW -->
+        <div class="row section">
+            <div class="col s12">
+                <div ng-include="'app/form/blocks/disponibilita-lavorativa.html'"></div>
+                <!-- ADDITIONAL VAT INFO -->
+                <div class="additional-vat-info" ng-if="ctrl.heroApplication.partitaIva" ng-include="'app/form/additional-vat-info.html'"></div>
+                <div ng-include="'app/form/blocks/esperienza-new.html'"></div>
+            </div>
+        </div>
+
+        <!-- FOURTH ROW: More info -->
+        <div class="row section">
+            <div class="col s12"  ng-include="ctrl.moreInfo"></div>
+
+            <!-- END FOURTH ROW-->
+        </div>
+
+        <div class="row additional-info">
+          <div class="col s12">
+            <div input-field class="with-errors">
+              <textarea id="descrizione" name="descrizione" class="materialize-textarea" ng-model="ctrl.heroApplication.descrizione" maxlength="200" length="200" required></textarea>
+              <label>Breve descrizione di te stesso</label>
+            </div>
+            <div ng-messages="heroApplicationForm.descrizione.$error" ng-show="ctrl.showRequiredError">
+                <div ng-message="required">{{::ctrl.labels.required}}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIFTH ROW: Dove hai sentito parlare di noi -->
+        <div class="row section">
+            <div class="col s12 m6 offset-m3">
+                <div class="with-errors">
+                    <select name="parlareDiNoi" ng-model="ctrl.heroApplication.parlareDiNoi" material-select ng-disabled="ctrl.formDisabled" required>
+                        <option value="" disabled selected>Dove ha sentito parlare de 'ilmioSupereroe.it'?</option>
+                        <option ng-repeat="option in ::ctrl.options.parlareDiNoi" ng-value="option.value">{{::option.name}}</option>
+                    </select>
+                    <div ng-messages="heroApplicationForm.parlareDiNoi.$error" ng-show="ctrl.showRequiredError">
+                        <div ng-message="required">{{::ctrl.labels.required}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIXTH ROW: Zone disponibilità -->
+        <div class="row section">
+            <div class="col s12" ng-include="ctrl.zonesPanel"> </div>
+        </div>
+
+        <!-- SEVENTH ROW: File Uploader -->
+        <div class="row section">
+            <div class="col s12" ng-include="ctrl.uploaderFileUrl"> </div>
+        </div>
+
+        <!-- EIGHTH ROW: back button-->
+        <div class="row section" ng-show="::ctrl.formDisabled">
+            <div class="col s6 offset-s3">
+                <a  ui-sref="main.recruiter.heroes" class="waves-effect waves-light main-orange btn" full-width>Indietro</a>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

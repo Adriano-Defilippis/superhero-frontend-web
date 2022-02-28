@@ -1,0 +1,338 @@
+.date .short {
+  color: $active;
+  padding: 5px;
+  width: 80px;
+  height: 80px;
+  p {
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 18px;
+    padding-top: 10px;
+    font-weight: 600;
+  }
+
+  span {
+    font-size: 16px;
+    line-height: 28px;
+  }
+}
+
+.detail-box {
+  padding: 15px;
+
+  .date .extended p, .client .info p {
+    padding-left: 15px;
+    font-size: 18px;
+  }
+
+  .client .picture {
+    background-color: $light;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 50%;
+  }
+
+  .client .picture, .service .icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .service {
+    border-top: 1px solid $medium;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+    @media screen and (max-width: $mq-sm){
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .address, .actions {
+    border-top: 1px solid $medium;
+    margin-top: 15px;
+    padding-top: 15px;
+    text-align: center;
+  }
+
+  .service .icon {
+    md-icon {
+      width: 65px;
+      height: 65px;
+      color: $dark;
+    }
+  }
+
+  .service .detail, .service .additional-services {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .service .additional-services {
+    border-left: 1px solid $medium;
+    @media screen and (max-width: $mq-sm){
+      border-left: 0;
+      margin-top: 10px;
+    }
+  }
+
+  .service .service-1 { background: $service1; }
+  .service .service-2 { background: $service2; }
+  .service .service-3 { background: $service3; }
+  .service .service-4 { background: $service4; }
+}
+
+.hero-profile-pic {
+  .profile-pic {
+    position: static;
+    margin-bottom: 0px;
+  }
+}
+
+.appuntamento {
+  border-bottom: 1px solid $medium;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  .stato {
+    width: 30px;
+  }
+
+  .info {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  span.nome {
+    font-weight: 500;
+    text-align: left;
+  }
+}
+
+.user-sidebar {
+  padding: 0px 20px;
+
+  h4 {
+    font-size: 16px;
+    border-bottom: 1px solid #222;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .btn {
+    margin-bottom: 10px;
+  }
+}
+
+.collegamenti-utili a.btn {
+  @media screen and (min-width: $mq-sm) and (max-width: $mq-md){
+    letter-spacing: 0px;
+    height: 2.5rem;
+    padding: 0px 5px;
+    font-size: 0.9rem;
+    line-height: 2.5rem;
+  }
+}
+
+.feedback-single {
+  .info {
+    padding-right: 10px;
+  }
+
+  & + .feedback-single {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid $mediumLight;
+  }
+}
+
+.carnet-single {
+  padding: 6px;
+}
+
+.elenco-appuntamenti {
+
+}
+
+.additional-services {
+  ul { margin: 0; }
+  ul li {
+    float: left; margin-right: 10px;
+    width: 22%;
+    text-align: center;
+    @media screen and (max-width: $mq-sm){
+      width: 100%;
+    }
+    p {
+    @media screen and (max-width: $mq-sm){
+      margin: 8px 0;
+    }
+  }
+  }
+
+  ul li md-icon {
+    width: 40px;
+    height: 45px;
+    color: $dark;
+    @media screen and (max-width: $mq-sm){
+      display: none;
+    }
+  }
+}
+
+.additional-services {
+    ul.no-icon-list li {
+        float: none;
+        margin: 0;
+        text-align: left;
+        width: auto;
+        margin-left: 15px;
+
+        p { margin: 0px; }
+    }
+}
+
+table.costs {
+  width: 52%;
+  display: inline-table;
+
+  td.condizione {
+    text-transform: uppercase;
+    text-align: right;
+    font-size: 13px;
+    padding: 0px;
+  }
+
+  td.prezzo {
+    padding: 0px;
+    padding-left:20px;
+  }
+}
+
+.ngdialog-content .actions {
+  border-top: 1px solid $medium;
+  margin-top: 15px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.ngdialog-content .result-single .actions {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.my-heroes-single {
+  margin-bottom: 20px;
+
+  &.feedback-single {
+      margin-bottom: 0;
+      i.rating-icon { color: $mediumLight; }
+  }
+
+  &.feedback-single:hover {
+      i.rating-icon { color: #FFEB3B; }
+  }
+
+  .hero-name {
+    padding-left:20px;
+    line-height: 17px;
+  }
+}
+
+h4.voto {
+  line-height: 25px;
+}
+
+.today-appointments {
+  ul li {
+    margin-bottom:10px;
+  }
+}
+
+.hero-info-block {
+  padding-left:15px;
+}
+
+
+.heroes-search-results {
+  .result-single {
+    margin-bottom: 20px;
+  }
+
+  .picture {
+    height: 100px;
+  }
+
+  .profile-pic {
+    margin: 0px;
+    position: static;
+
+    i.glyphicon {
+      line-height: 100px;
+      font-size: 3rem;
+      color: $active;
+    }
+  }
+}
+
+.sottocompetenze {
+  background: $light;
+  padding: 20px;
+}
+
+.alert-card {
+  margin-top: 1rem;
+}
+
+.padding-left-small {
+  padding-left: 20px;
+}
+
+.feedback-single:hover i {
+  color: $active;
+}
+
+.table-holder {
+  overflow-y: scroll;
+}
+
+.indirizzo-card {
+  position: relative;
+  padding-right: 45px;
+
+  .selected {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.feedback-modal h5 {
+  height: 48px;
+
+  @media screen and (max-width: $mq-sm){
+    height: auto;
+    margin-top: 30px;
+  }
+}
+
+.user-top-bar {
+  margin: 10px 0px;
+
+  .hero-image-profile {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+  }
+  h4.inline-block {
+    vertical-align: middle;
+    margin: 0px;
+  }
+}

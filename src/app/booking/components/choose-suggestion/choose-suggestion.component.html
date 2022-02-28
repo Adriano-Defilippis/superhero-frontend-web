@@ -1,0 +1,39 @@
+<section>
+    <div class="col s12 center">
+        <div class="card-header">
+            <div class="left" ng-click="ChooseSuggestion.onChangeDate({change: -1, dateId: ChooseSuggestion.date.id})"><i class="glyphicon glyphicon-chevron-left"></i></div>
+            <div class="right" ng-click="ChooseSuggestion.onChangeDate({change: 1, dateId: ChooseSuggestion.date.id})"><i class="glyphicon glyphicon-chevron-right"></i></div>
+            <h3 class="center uppercase main-orange-text no-margin all date">{{ChooseSuggestion.date.labels.start.dayOfWeek + ' ' + ChooseSuggestion.date.labels.start.dayOfMonth}}</h3>
+        </div>
+
+        <section ng-if="ChooseSuggestion.date.loading === true">
+            <div class="section center">
+                <loader></loader>
+            </div>
+        </section>
+
+        <section ng-if="ChooseSuggestion.date.loading === false">
+            <p class="uppercase main-orange-text no-margin all center">
+                <a class="btn btn-flat waves-effect waves-dark white grey-text text-darken-3 margin-small"
+                    ng-repeat="sugg in ChooseSuggestion.suggestions | filter:{id:ChooseSuggestion.date.id} | orderBy: 'distanzaMinuti' | limitTo: ChooseSuggestion.limit track by sugg.suggestionId"
+                    ng-click="ChooseSuggestion.onChooseSuggestion({dateId:ChooseSuggestion.date.id, suggestionId: sugg.suggestionId})">
+                    <b>{{sugg.labels.start.time}} <i class="mdi-navigation-arrow-forward"></i> {{sugg.labels.end.time}}</b> - <i>{{sugg.prezzoEuro}} €</i>
+                </a>
+            </p>
+            <p ng-if="(ChooseSuggestion.suggestions | filter:{id:ChooseSuggestion.date.id}).length > ChooseSuggestion.limit"
+                ng-click="ChooseSuggestion.limit = 99">visualizza tutte le soluzioni</p>
+        </section>
+    </div>
+</section>
+
+<div class="card-action left-align buttons" ng-if="(ChooseSuggestion.suggestions | filter:{id:ChooseSuggestion.date.id}).length < 1">
+    <p class="center no-margin all small">Nessun supereroe risulta disponibile per questa data</p>
+</div>
+<div class="card-action left-align buttons" ng-if="(ChooseSuggestion.suggestions | filter:{id:ChooseSuggestion.date.id}).length > 0">
+    <p class="center no-margin all small">Seleziona una soluzioni qui sopra per confermare la data.</p>
+</div>
+
+<div class="card-action left-align buttons">
+    <a class="waves-effect waves-dark white"
+        ng-click="ChooseSuggestion.onDeleteSuggestion({dateId:ChooseSuggestion.date.id})">Elimina Data</a>
+</div>

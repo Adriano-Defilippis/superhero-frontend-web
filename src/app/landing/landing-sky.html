@@ -1,0 +1,52 @@
+<div class="row no-margin bottom">
+    <div class="header-static-pages-wrapper" relative>
+        <div style="background-image: url('{{ctrl.headerImage}}'); background-position-y: bottom;" title="carnet - ilmiosupereroe" alt="carnet - ilmiosupereroe" class="static-page-header static-page-header-center" fill>
+        </div>
+        <div fill class="header-carnet-wrapper">
+            <h1 class="uppercase center shout-static-pages">Un Supereroe <br />per Sky Italia</h1>
+            <p class="medium-text center white-text no-margin top bottom" ng-bind-html="ctrl.headerSubTitle"></p>
+        </div>
+    </div>
+</div>
+<div autoscroll auto-fill-height class="carnet">
+    <div class="row no-margin bottom">
+        <div class="light-grey">
+                <div class="container carnet-padding-small">
+                    <carnet-choice
+                        show-discount="false"
+                        sky-carnet="true"
+                        disabled="ctrl.disabled"
+                        hide-payment-data="true"
+                        preselect="ctrl.preselectedService">
+                    </carnet-choice>
+                </div>
+
+                <div class='white'>
+                    <div class="container carnet-padding-big padding-vertical-mobile">
+                        <img class="carnet-title-icon" src="{{ctrl.model.carnet_what_is}}" />
+                        <h2 class="faq-title center">Cos'è un carnet</h2>
+                        <div class="center dark-grey-text">
+                            <p>Il Carnet de ilmioSupereroe.it è uno strumento estremamente vantaggioso e flessibile per usufruire dei servizi offerti. Il Carnet ti permette di acquistare un numero di ore minimo (diverso a seconda della tipologia di Carnet) ad una tariffa oraria più bassa e con una maggiore flessibilità gestionale.<p>
+                        </div>
+                    </div>
+                </div>
+                <div class='sh-orange'>
+                    <div class="container carnet-padding-big padding-vertical-mobile">
+                        <img class="carnet-title-icon" src="{{ctrl.model.carnet_how_it_works_icon}}"/>
+                        <h2 class="faq-title center white-text">Come funziona</h2>
+                        <div>
+                             <p class="white-text center-mobile">La stipula del Carnet prevede l'identificazione di uno specifico Supereroe che ti supporterà in modo dedicato e che dovrai selezionare al momento dell'attivazione. Una volta attivato, il tuo Carnet, non solo ti consentirà di spendere meno, ma ti permetterà anche di godere della massima flessibilità e semplicità nella sua gestione ed utilizzo, attraverso funzionalità e regole dedicate:</p>
+                            <ol class="list white-text">
+                                <li>Potrai effettuare la prenotazione dei servizi in pochi istanti, usando le ore che hai già acquistato;</li>
+                                <li>In caso di necessità, potrai cancellare o modificare ad un costo inferiore i tuoi appuntamenti;</li>
+                                <li>Se lo desideri, potrai cambiare in qualunque momento il Supereroe da te prescelto;</li>
+                                <li>Le prenotazioni in fascia oraria notturna o l'assistenza di più di 1 bambino dal servizio Baby Sitter, non avranno alcun sovrapprezzo per te.</li>
+                            </ol>
+                            <p class="white-text">Importante: il periodo di validità dei Carnet viene calcolato a partire dalla prima prenotazione effettuata. Eventuali ore non consumate verranno fatturate alla scadenza.</p>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>

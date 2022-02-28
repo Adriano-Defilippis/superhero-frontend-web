@@ -1,0 +1,88 @@
+@media screen and (max-width: $mq-sm) {
+
+    .gift-card__wrapper {
+        width: 100%;
+        height: 550px;
+        overflow-y: hidden;
+        position:absolute;
+        left:0;
+    }
+
+    .pricing-table__wrapper {
+        height: 520px;
+        left: 0;
+        width: 100%;
+        margin-top: 0px;
+        background-color: #fff;
+
+        tbody td {
+            background-color: #fff;
+        }
+    }
+
+    p.margin-top-table {
+        margin-top: 590px;
+    }
+
+    /*
+    .gift-card__carnet {
+        position: relative;
+        overflow: scroll;
+
+
+
+        .gift-card__left-column {
+            float:left;
+            width: 100px;
+            border: none;
+
+            thead {
+                border: none;
+                height: 128px;
+                display: table;
+            }
+
+            td {
+                width: 100px;
+                height: 130px;
+                text-align: center;
+            }
+        }
+
+        .gift-card__main-table {
+
+            display: block;
+            width: auto;
+            position: relative;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-top: 0px;
+
+
+            thead {
+                height: 128px;
+                display: table;
+
+                td {
+                    width: 128px;
+                    display: inline-block;
+                    padding-top: 40px;
+                }
+            }
+
+            td:first-child {
+                display: none;
+            }
+
+            td {
+                width: 128px;
+                display: inline-block;
+                padding-top: 40px;
+                height: 130px;
+            }
+        }
+
+    }
+    */
+
+}

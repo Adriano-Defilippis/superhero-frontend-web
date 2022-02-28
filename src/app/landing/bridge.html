@@ -1,0 +1,71 @@
+<nav class="transparent main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+
+<div autoscroll auto-fill-height>
+    <div class="row no-margin bottom">
+        <div class="header-static-pages-wrapper" relative>
+            <div style="background-image: url('{{ctrl.bridgeAssets.headerImage}}')" title="come funziona - ilmiosupereroe" alt="come funziona - ilmiosupereroe" class="static-page-header static-page-header-bottom" fill>
+            </div>
+            <div valign-wrapper fill class="static-page-title-wrapper">
+                <h1 class="uppercase center shout-static-pages" valign>Diventa un supereroe</h1>
+            </div>
+            <div class="dark-overlay dark-overlay-static-pages" fill>
+            </div>
+        </div>
+    </div>
+    <div  class="container">
+        <div class="row">
+            <div class="col s12 ">
+                <div class="padding-small">
+                    <div class="section">
+                        <h1 class="center uppercase">diventa un supereroe!</h1>
+                        <p class="subtitle center">Scopri tutti i vantaggi di entrare a far parte del team di professionisti presenti sul sito</p>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <md-icon class="md-icon big main-orange-text" md-svg-src="{{ ctrl.bridgeAssets.timeIcon }}" fill></md-icon>
+                            <h4 class="main-orange-text center">Gestisci la tua libertà</h4>
+                            <p class="center">In base alle disponibilità sarai tu a decidere quando e dove lavorare</p>
+                        </div>
+                        <div class="col s12 m4">
+                            <md-icon class="md-icon big main-orange-text" md-svg-src="{{ ctrl.bridgeAssets.moneyIcon }}" fill></md-icon>
+                            <h4 class="main-orange-text center">Più clienti, più ricavi</h4>
+                            <p class="center">Il guadagno orario è più alto della media di mercato. In più hai l’accesso a una clientela illimitata</p>
+                        </div>
+                        <div class="col s12 m4">
+                            <md-icon class="md-icon big main-orange-text" md-svg-src="{{ ctrl.bridgeAssets.simplicityIcon }}" fill></md-icon>
+                            <h4 class="main-orange-text center">Massima semplicità</h4>
+                            <p class="center">Con un click controlli sempre i pagamenti puntuali e le nuove richieste di lavoro</p>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <h1 class="center uppercase">Identikit del supereroe</h1>
+                    </div>
+
+                    <div class="section">
+                        <section class="boxed-info white">
+                            <ul>
+                                <li><b>Competente:</b> ottima conoscenza del mestiere ed esperienza di 2/3 anni</li>
+                                <li><b>Ottima conoscenza della lingua italiana:</b> è importante poter comunicare con chiarezza con i clienti</li>
+                                <li><b>Referenziato:</b> esperienze dimostrabili e verificabili </li>
+                                <li><b>Trasparente:</b> attestazione dell’assenza di reati o condanne penali</li>
+                            </ul>
+                        </section>
+                    </div>
+
+                    <div class="section">
+                        <p class="subtitle center">
+                            Sei interessato e pensi di avere i requisiti richiesti? <b>Fatti avanti e compila il questionario!</b><br><b>È facile: bastano 5 minuti, il tempo di un caffè!</b><br>
+                        </p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 center">
+                            <a ui-sref="{{ctrl.bridgeAssets.targetSubmit}}" class="waves-effect waves-light main-orange btn">Diventa un Supereroe!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

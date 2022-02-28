@@ -1,0 +1,57 @@
+<div class="confirmed-date__wrapper">
+    <div class="confirmed-date__left">
+        <div class="date-confirmed-check">
+            <i class="mdi-action-done green-text"></i>
+        </div>
+        <div class="center" ng-if="ConfirmedDateCard.showHero === true">
+            <div class="choose-hero-suggestion__single confirmed-hero-suggestion">
+                <div class="hero__info">
+                    <div class="hero__image"
+                        ng-style="{ 'background-image': 'url(\''+ ConfirmedDateCard.date.hero.photoUrl +'\')' }">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="center hero-name-availability">
+            <h5 class="no-margin top">{{ConfirmedDateCard.date.hero.nome}}</h5>
+            <!--<p class="no-margin all small" ng-if="ConfirmedDateCard.date.hero.match === true && ConfirmedDateCard.date.hero.manual === false"><i class="green-text">Disponibilità<br>confermata</i></p>
+            <p class="no-margin all small" ng-if="ConfirmedDateCard.date.hero.match === true && ConfirmedDateCard.date.hero.manual === true"><i class="amber-text">Disponibilità<br>da confermare</i></p>
+            <p class="no-margin all small" ng-if="ConfirmedDateCard.date.hero.match === false"><i class=" light-blue-text text-darken-2">Disponibilità<br>alternativa</i></p>-->
+        </div>
+    </div>
+    <div class="confirmed-date__date-info">
+        <div class="center">
+            <section ng-if="ConfirmedDateCard.date.labels.start.dayOfMonth === ConfirmedDateCard.date.labels.end.dayOfMonth">
+                <div class="card-content row no-margin bottom">
+                    <div class="col s7 center">
+                        <h4 class="uppercase main-orange-text no-margin all date right-align">{{ConfirmedDateCard.date.labels.start.dayOfWeek}} {{ConfirmedDateCard.date.labels.start.dayOfMonth}}</h4>
+                    </div>
+                    <div class="col s5 center" valign-wrapper fill>
+                        <p valign class="center time">{{ConfirmedDateCard.date.labels.start.time}} <i class="mdi-navigation-arrow-forward"></i> {{ConfirmedDateCard.date.labels.end.time}}</p>
+                    </div>
+                </div>
+            </section>
+
+            <section ng-if="ConfirmedDateCard.date.labels.start.dayOfMonth !== ConfirmedDateCard.date.labels.end.dayOfMonth">
+                <div class="card-content  card-double-date row no-margin bottom">
+                    <div class="col s5 center">
+                        <h4 class="center uppercase main-orange-text no-margin all date">{{ConfirmedDateCard.date.labels.start.dayOfMonth}}</h4>
+                        <p class="center time">{{ConfirmedDateCard.date.labels.start.time}}</p>
+                    </div>
+                    <div class="col s2 center" valign-wrapper fill>
+                        <p valign><i class="mdi-navigation-arrow-forward big"></i></p>
+                    </div>
+                    <div class="col s5 center">
+                        <h4 class="center uppercase main-orange-text no-margin all date">{{ConfirmedDateCard.date.labels.end.dayOfMonth}}</h4>
+                        <p class="center time">{{ConfirmedDateCard.date.labels.end.time}}</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div class="card-action left-align buttons">
+    <a class="waves-effect waves-dark white"
+        ng-click="ConfirmedDateCard.onDeleteConfirmedDate({dateId:ConfirmedDateCard.date.id})">Modifica Data</a>
+</div>

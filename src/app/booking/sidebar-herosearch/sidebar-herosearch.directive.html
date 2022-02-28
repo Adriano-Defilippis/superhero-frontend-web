@@ -1,0 +1,37 @@
+<div fixed-sidebar class="search-sidebar">
+    <div class="row">
+        <div class="col s12">
+            <h5 class="uppercase center">La tua ricerca</h5>
+            <section ng-if="(Booking.common.router === 'booking.heroprofile' || Booking.common.router === 'booking.bnbHeroprofile') && Booking.herosearch.performedSearch === false">
+                <p class="center">
+                    <i>Puoi cercare il Supereroe che fa al caso tuo cliccando qui sotto.</i>
+                </p>
+                <p class="center">
+                    <a ng-click="Booking.resetSearch()" class="waves-effect waves-light main-orange btn btn-small">Nuova ricerca</a>
+                </p>
+            </section>
+            <section ng-if="Booking.common.router === 'booking.herosearch' || Booking.common.router === 'booking.bnbHerosearch'">
+                <p class="center" ng-if="Booking.herosearch.performedSearch === false">
+                    <i>Effettua una ricerca per trovare il supereroe che fa al caso tuo.</i>
+                </p>
+            </section>
+
+            <section ng-if="Booking.herosearch.performedSearch === true">
+                <h5 class="title-label">Filtri</h5>
+                <p class="center">
+                    <h4 class="uppercase center no-margin all">{{ HerosearchSidebar.getServiceLabel(Booking.herosearch.filters.service) }}</h4>
+                    <p class="center" ng-repeat="filtro in HerosearchSidebar.getFormattedFilters(Booking.herosearch.filters)">{{filtro}}</p>
+                </p>
+            </section>
+
+            <section ng-if="Booking.herosearch.performedSearch === true">
+                <h5 class="title-label">Azioni</h5>
+                <p class="center">
+                    <a ng-click="Booking.editSearch()" class="waves-effect waves-light main-orange btn btn-small">Modifica</a>&nbsp;
+                    <a ng-click="Booking.resetSearch()" class="waves-effect waves-light main-orange btn btn-small">Nuova ricerca</a>
+                </p>
+            </section>
+
+        </div>
+    </div>
+</div>

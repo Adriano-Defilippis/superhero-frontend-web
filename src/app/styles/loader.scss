@@ -1,0 +1,41 @@
+.loader-dots {
+  width:46.666666666666664px;
+  display: inline-block;
+}
+
+.dot {
+  background-color:#EDB09F;
+  display: inline-block;
+  height:10px;
+  margin-left:5px;
+  width:10px;
+  animation-name:bounce_circleG;
+  animation-duration:0.75s;
+  animation-iteration-count:infinite;
+  animation-direction:normal;
+  border-radius:7px;
+}
+
+.dot-1 {
+  animation-delay:0.45s;
+}
+
+.dot-2{
+  animation-delay:0.35s;
+}
+
+.dot-3{
+  animation-delay:0.15s;
+}
+
+  @keyframes bounce_circleG{
+  0%{
+  }
+
+  50%{
+    background-color:#EE693c}
+
+  100%{
+  }
+
+}

@@ -1,0 +1,184 @@
+<div class="homepage">
+
+    <div ng-if="ctrl.isHome">
+        <home-slider
+          is-bnb="{{::ctrl.isBnb}}"
+          disabled-services="ctrl.disabledServices"
+        ></home-slider>
+        <div>
+            <div class="container with-padding">
+                <h2 class="big no-margin top">Conosci i nostri Supereroi</h2>
+                <p class="center">Di cosa hai bisogno? I nostri Supereroi sono al tuo servizio.<br>Affidati a noi per la scelta o consulta i profili e scegli quello che fa per te.</p>
+                <meet-our-heroes></meet-our-heroes>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-if="!ctrl.isHome">
+        <landing-section service-to-show="{{::ctrl.landingService}}" sub-service-to-show="{{::ctrl.landingSubService}}"></landing-section>
+    </div>
+
+
+    <!-- COME FUNZIONA -->
+    <div class="white">
+        <div class="container with-padding" ng-if="ctrl.isHome">
+            <h2 class="big no-margin top">{{::ctrl.homeContent.serviceBoxTitle}}</h2>
+            <div class="row">
+                <div class="col s12 m4" ng-repeat="singleBox in ctrl.homeContent.serviceBoxList">
+                    <div class="section">
+                        <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleBox.icon }}" fill></md-icon>
+                        <h4 class="main-orange-text center" ng-bind="singleBox.title"></h4>
+                        <p class="center" ng-bind="singleBox.content"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CONOSCI I NOSTRI SUPEREROI
+    <div class="white">
+
+
+        <div class="container with-padding">
+            <div class="row">
+                <h2 class="big no-margin bottom margin-top-small">{{::ctrl.homeContent.ourStoriesTitle}}</h2>
+                <h4 class="no-margin top center main-orange-text"><b ng-bind="::ctrl.homeContent.serviceBoxSubtitle"></b></h4>
+                <div class="col s12 m6 l3" ng-repeat="singleBox in ctrl.homeContent.heroesBoxList" ng-click="ctrl.startNewHeroSelectionOrder(singleBox.competenza)">
+                    <h3 ng-bind="singleBox.title" class="all-caps center"></h3>
+                    <div class="hero-box-wrapper" style="background-image: url('{{::singleBox.image}}')">
+                        <div class="hero-box-overlay">
+                            <div class="service-box-icon" valign-wrapper full-width>
+                                <md-icon valign class="md-icon big main-orange-text center hero-box-icon" md-svg-src="{{ ::singleBox.icon }}" fill></md-icon>
+                            </div>
+                            <div valign-wrapper>
+                                <p valign class="center hero-box-text" ng-bind="singleBox.content"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+
+    <!-- COME FUNZIONA -->
+    <div class="container with-padding" ng-if="!ctrl.isHome">
+        <h2 class="big no-margin top">{{::ctrl.homeContent.serviceBoxTitle}}</h2>
+        <div class="row">
+            <div class="col s12 m4" ng-repeat="singleBox in ctrl.homeContent.serviceBoxList">
+                <div class="section">
+                    <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleBox.icon }}" fill></md-icon>
+                    <h4 class="main-orange-text center" ng-bind="singleBox.title"></h4>
+                    <p class="center" ng-bind="singleBox.content"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!--close the main container in base.html -->
+  <div class="divider-carnet center no-margin top" style="background-image: url('{{ctrl.homeContent.dividerSliderCarnet}}');" title="acquista un carnet" alt="acquista un carnet">
+    <a ng-if="!ctrl.isTecma && !ctrl.isBnb" ui-sref="main.guest.carnet" class="waves-effect waves-light main-orange btn">Acquista un carnet!</a>
+    <a ng-if="!ctrl.isTecma && ctrl.isBnb" ui-sref="main.guest.bnbCarnet" class="waves-effect waves-light main-orange btn">Acquista un carnet!</a>
+  </div>
+
+<div ng-if="ctrl.isTecma" class="row tecma-home-container">
+  <div class="col s12 m4 l4 offset-s1 offset-m1 offset-l1 tecma-home-logo" style="background-image: url('{{ctrl.homeContent.tecmaLogo}}');" title="acquista un carnet" alt="acquista un carnet"></div>
+  <div class="col s12 m7 l7 tecma-home-text">
+    <p class="big"><b>VANTAGGI RISERVATI A CHI HA SCELTO GIOIA181</b></p>
+    <ul class="list">
+      <li><b>Vantaggio economico:</b> 10% di sconto su qualsiasi servizio de ilmioSupereroe.it</li>
+      <li><b>Esclusività:</b> accesso al servizio ‘Commissioni’, da gestire per via telefonica (contattando il numero <a class='black-text' href='tel:+390286882279'>02 86882279</a>)</li>
+    </ul>
+  </div>
+</div>
+
+  <div class="">
+      <div class="container home-container-blocks">
+        <div class="row">
+          <h2 class="big no-margin bottom margin-top-small">{{::ctrl.homeContent.qualityBoxTitle}}</h2>
+          <h4 class="center  no-margin top" ng-bind="ctrl.homeContent.qualityBoxText"></h4>
+          <div class="col s12 m4" ng-repeat="singleQuality in ctrl.homeContent.qualityBoxList">
+            <p></p>
+            <div class="section">
+              <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleQuality.icon }}" fill></md-icon>
+              <h4 class="main-orange-text center" ng-bind="singleQuality.title"></h4>
+              <p class="center" ng-bind="singleQuality.content"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="home-slider-wrapper-two">
+    <div id="home-slider-two" class="owl-carousel owl-theme" fill>
+      <!-- <img src="{{ctrl.homeImg.one}}"> -->
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.homeContent.dividerSliderImg.one}}')" full-width title="supereroi con passione" alt="supereroi con passione">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.homeContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.homeContent.secondaryQuoteOne}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.homeContent.dividerSliderImg.two}}')" full-width title="supereroi con sensibilità" alt="supereroi con sensibilità">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.homeContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.homeContent.secondaryQuoteTwo}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.homeContent.dividerSliderImg.three}}')" full-width title="supereroi con esperienza" alt="supereroi con esperienza">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.homeContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.homeContent.secondaryQuoteThree}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.homeContent.dividerSliderImg.four}}')" full-width title="supereroi con sorriso" alt="supereroi con sorriso">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.homeContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.homeContent.secondaryQuoteFour}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="">
+      <div class="container home-container-blocks white" ng-if="ctrl.isHome">
+        <div class="row">
+          <div class="col offset-m1 m10 s12 center become-hero-section">
+            <h2 class="text-center service-title big no-margin bottom" ng-bind="::ctrl.homeContent.becomeHeroTitle"></h2>
+            <h4 class="text-center no-margin top">Entra a far parte anche tu della nostra squadra</h4>
+            <!--<h5 class="text-center">Diventa un supereroe!</h5>  -->
+            <div class="section">
+              <a class="waves-effect waves-light main-orange btn" ui-sref="landing.bridge">Diventa un supereroe!</a>
+            </div>
+            <ul class="diventa-supereroe left-align">
+              <li><b>Gestisci la tua libertà:</b><span>&nbsp;decidi tu quando e in che zone lavorare</span></li>
+              <li><b>Pagamenti puntuali:</b><span>&nbsp;due volte al mese</span></li>
+              <li><b>Più clienti:</b><span>&nbsp;dovrai solo decidere quanto lavorare. Al resto ci pensiamo noi!</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+</div>
+
+<!--
+<sticky-footer></sticky-footer>
+-->
+
+<!-- <voucher-banner-landing code="{{ctrl.codiceSconto}}"></voucher-banner-landing> -->

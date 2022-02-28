@@ -1,0 +1,859 @@
+$white: #fff;
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.calendars-wrapper {
+  position: relative;
+
+  .icon-button {
+    margin-left: 15px;
+
+    @media screen and (max-width: $mq-sm){
+      margin-left: 5px;
+    }
+
+  }
+}
+
+calendar-loader {
+  position: absolute;
+  top: 92px;
+  bottom: 0;
+  left: 70px;
+  right: 0;
+  z-index: 800;
+  background-color: $white;
+  opacity: 0.6;
+  cursor:progress;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.cal-control {
+  .icon {
+    width: 35px;
+    height: 35px;
+    color: $dark;
+  }
+
+  @media screen and (max-width: $mq-sm){
+    .prev-button { float: left; }
+
+    .icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+#popup {
+  background: $active;
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  z-index: 10;
+  opacity: 0;
+  padding: 2px;
+  border-radius: 3px;
+
+
+  .fc-time-span span {
+    padding: 5px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 600;
+
+    &.glyphicon {
+      font-size: 24px;
+    }
+  }
+}
+
+.fc-helper {
+  background: $active;
+  color: $white !important;
+}
+
+.avail-confirm {
+  color: $white;
+  cursor: pointer;
+  //width: 100%;
+  //height: 100%;
+  //background-color: red;
+}
+
+.fc button .fc-icon {
+  margin-bottom: -20px;
+}
+
+// switch
+.calendar-switch {
+  position: relative;
+  top: 10px;
+  margin-left: -10px;
+  margin-right: -10px;
+
+  .switch {
+    position: relative;
+    z-index: 100;
+  }
+
+  .cal-control {
+    position: relative;
+    z-index: 100;
+  }
+
+  .confirm-week  {
+    position: relative;
+    z-index: 100;
+    span.save-label {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    span.glyphicon { color: $mediumDark; }
+
+    &:hover {
+      span.glyphicon { color: $active; }
+    }
+  }
+
+  md-switch {
+    position: relative;
+    z-index: 100;
+    margin-left: 0px;
+    margin-right: 25px;
+
+    .md-label {
+      text-align: center;
+      padding-left:5px;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 12px;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+.switch.calendar-switch {
+  span.lever {
+    float: left;
+    top: 8px;
+  }
+}
+
+.toggle-label {
+  color: $dark;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 14px;
+  letter-spacing: .5px;
+}
+
+.cal {
+  position: relative;
+  top: -37px;
+  background: $white;
+  z-index:0;
+
+  &.front {
+    z-index: 1;
+  }
+
+  @media screen and (max-width: $mq-sm){
+    top: -14px;
+  }
+}
+
+.fc-toolbar {
+  //text-align: right !important;
+
+  .fc-left, .fc-right {
+    min-width: 150px;
+    min-height: 1px;
+    display: none;
+  }
+
+  @media screen and (max-width: $mq-sm){
+    h2 {
+      font-size: 16px;
+      line-height: 19px;
+    }
+  }
+}
+
+// Calendar AVILABILITY
+.cal-availability {
+
+  .fc-nonbusiness.fc-bgevent {
+    background-color: #eae2d0;
+  }
+
+  p { font-weight: 400; }
+
+  position: absolute;
+  top: -2px;
+
+  @media screen and (max-width: $mq-sm){
+    top: 16px;
+  }
+
+  .fc-helper-skeleton {
+    color: $white;
+  }
+
+  .fc-button {
+    padding: 0px;
+    height: 36px;
+    width: 36px;
+    background: none;
+    border: 0px;
+    box-shadow: none;
+  }
+
+  .fc-time-grid-event .fc-resizer {
+    bottom: 3px;
+    height: 10px;
+    color: $mediumDark;
+    cursor: ns-resize;
+
+    &:after {
+      font-size: 18px;
+
+    }
+
+    &:hover:after {
+      color: $active;
+      font-size: 18px;
+    }
+  }
+
+  .fc-icon-right-arrow, .fc-icon-left-arrow {
+    width: 100%;
+    height: 100%;
+    margin: 0px !important;
+    background-size: cover;
+    background-image: url('../assets/icons/right-arrow.svg');
+  }
+
+  .fc-icon-left-arrow {
+    background-image: url('../assets/icons/left-arrow.svg');
+  }
+
+  .fc-center h2 {
+    margin-top: 0px;
+    text-transform: capitalize;
+  }
+
+  .fc-time-grid-event {
+    margin: 0px -1px 0px 0px;
+    padding: 3px;
+    border-radius: 0;
+  }
+
+  .fc-time-grid-event.fc-short .fc-time:before, .fc-time-grid-event.fc-short .fc-time:after {
+    content: '';
+  }
+
+  .fc-time-span span {
+    padding: 5px;
+    font-size: 13px;
+
+    @media (max-width: $mq-sm) {
+        font-size:10px
+    }
+  }
+
+  .fc-time-span.small-req span {
+    padding: 0px;
+    font-size: 13px;
+  }
+
+  .fc .fc-axis {
+    padding: 2px 10px;
+
+    @media (max-width: $mq-sm) {
+        padding: 2px 2px;
+        font-size:10px
+    }
+
+  }
+
+  .fc-bg {
+    background-color:  $white;
+  }
+
+  .fc-unthemed .fc-today {
+    background-color:  $white;
+  }
+
+  .fc-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fc-time span {
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+  }
+
+  .fc-axis.fc-time span {
+    top: -50%;
+  }
+
+  .delete-availability span {
+    font-size: 22px;
+    transition: color 0.1s ease;
+    color: $mediumDark;
+  }
+
+  /*.delete-availability.is-mobile p {
+      vertical-align: top;
+      text-align: right;
+      padding: 10px;
+  }
+
+  .delete-availability.is-mobile.small-avail p {
+      vertical-align: middle;
+      text-align: right;
+      padding-top: 0px;
+  }*/
+
+  .delete-availability.is-mobile span {
+      font-size: 28px;
+  }
+
+  .delete-availability.is-mobile i {
+      font-size: 30px;
+  }
+
+  .delete-availability.small-avail.is-mobile i {
+      font-size: 15px;
+  }
+
+  .delete-availability.small-avail span {
+    font-size: 12px;
+    padding-right: 10px;
+  }
+
+  .delete-availability.is-desktop:hover span {
+    color: $active;
+  }
+
+  .fc-event {
+
+    border: 0px;
+    background: none;
+
+    .fc-content {
+      color: $mediumDark;
+      background-color: $mediumLight;
+      border: 0px;
+      border-radius: 3px;
+      transition: background-color 0.1s ease;
+    }
+
+    &:hover .fc-content {
+      background-color: $mediumLight;
+    }
+  }
+
+  .fc-event.fc-helper {
+    .fc-content {
+      background: $active;
+      span {
+        color: $white;
+      }
+    }
+  }
+
+  .fc-time {
+    border-color: $white;
+  }
+
+  .fc-unthemed td {
+    border-color: $medium;
+
+    &.fc-widget-header {
+      border-color: $white;
+      border-bottom-color: $medium;
+    }
+
+    &.fc-widget-content {
+      border-color: $white;
+    }
+
+    .fc-time-grid-container td.fc-widget-content {
+      border-color: $medium;
+    }
+
+    &.fc-time {
+      border: 0px;
+      border-color: $white;
+
+      span {
+
+      }
+    }
+  }
+
+  .fc-unthemed th {
+    border-color: $white;
+    padding-bottom: 10px;
+  }
+}
+
+// Calendar RESERVATION
+.cal-reserved, .cal-client {
+
+  .fc-nonbusiness.fc-bgevent {
+    background-color: #eae2d0;
+  }
+
+  p { font-weight: 400; }
+
+  .fc-button {
+    padding: 0px;
+    height: 36px;
+    width: 36px;
+    background: none;
+    border: 0px;
+    box-shadow: none;
+  }
+
+  .fc-time-grid-event .fc-resizer {
+    bottom: 3px;
+    height: 10px;
+    color: $mediumDark;
+    cursor: ns-resize;
+
+    &:after {
+      font-size: 18px;
+
+    }
+
+    &:hover:after {
+      color: $active;
+      font-size: 18px;
+    }
+  }
+
+  .fc-bgevent {
+    opacity: 0.75;
+  }
+
+  .fc-bg {
+    .fc-axis {
+      background: $white;
+    }
+  }
+
+  .reservation, .request {
+    background-color: $white;
+    border-radius: 5px;
+
+    &.small:not(:hover) {
+      .glyphicon:not(.glyphicon-pushpin) { display: none; }
+    }
+
+    &.small:hover {
+      .time-info { display: none; }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:hover .glyphicon {
+      cursor: pointer;
+      color: $active;
+    }
+
+    .glyphicon {
+      font-size: 20px;
+    }
+
+    .time-info {
+      font-size: 12px;
+      padding: 3px;
+
+      @media (max-width: $mq-sm) {
+          font-size: 8px;
+      }
+    }
+
+    h4 {
+      padding: 2px 2px 2px 5px;
+      font-size: 13px;
+      font-family: 'Lato';
+      //letter-spacing: 0.2px;
+      font-weight: 400;
+      text-align: center;
+    }
+  }
+
+  .service-0, .service-1, .service-2, .service-3, .service-4, .service-5, .service-6, .service-7 {
+    border-right: 5px solid #222;
+  }
+
+  .request {
+    border: 0px;
+    border-radius: 0px;
+    &.service-1 {
+      background-color: $service1;
+      color: $dark;
+    }
+    &.service-2 {
+      background-color: $service2;
+      color: $white;
+      &:hover {
+        background-color: $white;
+        color: $service2 !important;
+      }
+    }
+    &.service-3 {
+      background-color: $service3;
+    }
+    &.service-4 {
+      background-color: $service4;
+      p {
+          color: #fff !important;
+      }
+    }
+  }
+
+
+  .service-1 {
+    border-color: $service1;
+  }
+
+  .service-2 {
+    border-color: $service2;
+  }
+
+  .service-3 {
+    border-color: $service3;
+  }
+
+  .service-4 {
+    border-color: $service4;
+  }
+
+  .fc-icon-right-arrow, .fc-icon-left-arrow {
+    width: 100%;
+    height: 100%;
+    margin: 0px !important;
+    background-size: cover;
+    background-image: url('../assets/icons/right-arrow.svg');
+  }
+
+  .fc-icon-left-arrow {
+    background-image: url('../assets/icons/left-arrow.svg');
+  }
+
+  .fc-center h2 {
+    margin-top: 0px;
+    text-transform: capitalize;
+  }
+
+  .fc-time-grid-event {
+    margin: 0px -1px 0px 0px;
+    padding: 3px;
+    border-radius: 0;
+  }
+
+  .fc-time-grid-event.fc-short .fc-time span {
+    display: block;
+  }
+
+  .fc-time-grid-event.fc-short .fc-time:before, .fc-time-grid-event.fc-short .fc-time:after {
+    content: '';
+  }
+
+  .fc-time-grid-event.fc-short .fc-time {
+    display: flex;
+  }
+
+  .fc-time-span span {
+    padding: 5px;
+    font-size: 13px;
+  }
+
+  .fc .fc-axis {
+    padding: 2px 10px;
+
+    @media (max-width: $mq-sm) {
+        padding: 2px 2px;
+        font-size:10px
+    }
+  }
+
+  .fc-bg {
+    background-color: $mediumLight;
+  }
+
+  .fc-unthemed .fc-today {
+    background-color: $mediumLight;
+  }
+
+  .fc-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fc-time span {
+    letter-spacing: 1px;
+    font-weight: 600;
+    position: relative;
+    top: -50%;
+  }
+
+  .fc-event {
+
+    border: 0px;
+    background: none;
+
+    .fc-content {
+      color: $mediumDark;
+      background-color: $mediumLight;
+      border: 0px;
+      border-radius: 3px;
+      transition: background-color 0.1s ease;
+    }
+
+    &:hover .fc-content {
+      background-color: $mediumLight;
+    }
+  }
+
+  .fc-time {
+    border-color: $white;
+  }
+
+  .fc-unthemed td {
+    border-color: $medium;
+
+    &.fc-widget-header {
+      border-color: $white;
+      border-bottom-color: $medium;
+    }
+
+    &.fc-widget-content {
+      border-color: $white;
+    }
+
+    .fc-time-grid-container td.fc-widget-content {
+      border-color: $medium;
+    }
+
+    &.fc-time {
+      border: 0px;
+      border-color: $white;
+
+      span {
+
+      }
+    }
+  }
+
+  .fc-unthemed th {
+    border-color: $white;
+    padding-bottom: 10px;
+  }
+}
+
+.cal-client {
+  padding-top: 20px;
+
+  .fc-bg {
+    background-color: $white;
+  }
+
+  .fc-unthemed td.fc-widget-content {
+    border-color: $medium;
+  }
+
+  .fc-unthemed thead {
+    border-color: $white;
+  }
+
+  .fc-day-number {
+    padding: 3px 6px 0px 0px;
+  }
+
+  .fc-unthemed .fc-today {
+    background-color: $white;
+  }
+
+  .fc-day-number.fc-today {
+    background: $active;
+    color: $white;
+    font-weight: 600;
+  }
+
+  .single-event {
+    border-radius: 10px !important;
+    margin: 1px;
+    border-right: 10px solid !important;
+    box-sizing: border-box;
+
+    &.service-1 {
+      border-color: $service1 !important;
+    }
+    &.service-2 {
+      border-color: $service2 !important;
+    }
+    &.service-3 {
+      border-color: $service3 !important;
+    }
+    &.service-4 {
+      border-color: $service4 !important;
+    }
+
+    &.service-1:hover {
+      background-color: $service1 !important;
+    }
+    &.service-2:hover {
+      background-color: $service2 !important;
+    }
+    &.service-3:hover {
+      background-color: $service3 !important;
+    }
+    &.service-4:hover {
+      background-color: $service4 !important;
+    }
+
+    &.processing {
+      border-color: $medium !important;
+
+      &.service-1:hover {
+        background-color: $service1 !important;
+        border-color: $service1 !important;
+      }
+      &.service-2:hover {
+        background-color: $service2 !important;
+        border-color: $service2 !important;
+      }
+      &.service-3:hover {
+        background-color: $service3 !important;
+        border-color: $service3 !important;
+      }
+      &.service-4:hover {
+        background-color: $service4 !important;
+        border-color: $service4 !important;
+      }
+    }
+
+    &.deleted {
+      background-color: $white !important;
+      border: 2px solid $medium !important;
+
+      &.service-1:hover {
+        background-color: $white !important;
+        border-color: $medium !important;
+      }
+      &.service-2:hover {
+        background-color: $white !important;
+        border-color: $medium !important;
+      }
+      &.service-3:hover {
+        background-color: $white !important;
+        border-color: $medium !important;
+      }
+      &.service-4:hover {
+        background-color: $white !important;
+        border-color: $medium !important;
+      }
+    }
+
+  }
+
+  .fc-toolbar {
+    text-align: center !important;
+  }
+}
+
+.calendar-controls {
+  position:relative;
+  z-index: 5;
+  top: 17px;
+}
+
+.night-period {
+  position: relative;
+  z-index:5;
+  left: 1px;
+  right: 1px;
+  top: -46px;
+  border-right: 2px solid #fff;
+
+  .time {
+    padding: 10px;
+    width: 70px;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  .days table {
+    width: 100%;
+    height: 80px;
+
+    * {
+      height: 100%;
+    }
+
+    td {
+      width: 14.2857%;
+      border: 1px solid $medium;
+    }
+  }
+  &.avail table  {
+    td {
+      border-top: 1px dotted;
+      border-color: $mediumLight;
+    }
+  }
+}
+
+.fc-time-grid-event.fc-short .fc-time span.glyphicon {
+  display: inline-block;
+}
+
+.fc-bgevent {
+  opacity: 1;
+}
+
+.fc-time-grid .fc-slats, .fc-time-grid > hr {
+  position: relative;
+  z-index: 4;
+}
+
+//.fc-bgevent{
+//  z-index: 4;
+//  position: relative;
+//
+//  &:after {
+//    content:' ';
+//    background-color: #fff;
+//    z-index: 3;
+//    display:block;
+//    width:100%;
+//    height: 100%;
+//    position: absolute;
+//  }
+//}

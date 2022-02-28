@@ -1,0 +1,17 @@
+<nav class="grey darken-3 main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<div class="white sub-nav" role="navigation" ng-include="'app/components/navbar/subnav.html'" ng-controller="HeroSubBarCtrl as subNavCtrl"></div>
+<div class="container">
+  <div class="row no-margin bottom">
+    <div class="col l8 m12 s12 white">
+      <div class="padding-small double-bar no-padding-sm-horizontal" ui-view autoscroll auto-fill-height>
+
+      </div>
+    </div>
+    <div class="col l4 m12 s12">
+      <div class="double-bar no-padding-sm" ng-include="'app/hero/sidebar.html'" ng-controller="HeroSidebarCtrl as sideCtrl">
+
+      </div>
+
+    </div>
+  </div>
+</div>

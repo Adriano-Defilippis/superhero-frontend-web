@@ -1,0 +1,36 @@
+{
+  "extends": "eslint:recommended",
+  "plugins": ["angular"],
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jasmine": true
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "globals": {
+    "angular": true,
+    "module": true,
+    "inject": true,
+    "moment": true,
+    "_": true,
+    "$": true,
+    "Modernizr": true,
+    "Immutable": true,
+    "google": true,
+    "Cookies": true,
+    "smartsupp": true
+  },
+  "rules": {
+    "comma-dangle": 0,
+    "angular/log": 0,
+    "no-console": 0,
+    "angular/typecheck-object": 0,
+    "no-mixed-spaces-and-tabs": 0,
+    "no-unused-vars": 0,
+    "angular/angularelement": 0,
+    "angular/json-functions": 0,
+    "angular/controller-name": 0
+  }
+}

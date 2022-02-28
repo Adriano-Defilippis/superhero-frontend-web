@@ -1,0 +1,70 @@
+<div fixed-sidebar class="search-sidebar">
+    <div class="row">
+        <div class="col s12">
+            <h5 class="uppercase center">Il tuo carnet</h5>
+
+            <h4 class="main-orange-text uppercase center no-margin all">{{ CarnetSidebar.getCarnetLabel(Booking.carnet.selectedCarnet) }}</h4>
+            <h4 class="uppercase center no-margin top">{{ Booking.carnet.carnetInfo.hoursLabel }}</h4>
+
+            <h5 class="title-label left-align">Scadenza</h5>
+            <p class="center">{{ CarnetSidebar.getExpiryLabel(Booking.carnet.carnetInfo.expireIn) }}</p>
+
+            <section class="carnet-info" ng-if="Booking.carnet.heroInfo.id">
+                <h5 class="title-label">Il tuo supereroe</h5>
+                <div class="center">
+                    <div class="hero-profile-pic center inline-block" row>
+                        <span class="center">
+                            <div class="profile-pic"
+                                ng-style="{backgroundImage: 'url(\''+Booking.carnet.heroInfo.photoUrl +'\')'}">
+                            </div>
+                        </span>
+                        <span class="center nome left-align">{{ Booking.carnet.heroInfo.name }}</span>
+                    </div>
+                </div>
+            </section>
+
+            <section ng-if="Booking.carnet.router === 'booking.userData' || Booking.carnet.router === 'booking.appUserData'">
+                <br>
+                <privacy-contract
+                    newsletter="Booking.state.general.newsletter"
+                    show-newsletter="true"
+                    privacy-contract="Booking.state.general.privacyContract"
+                    on-toggle-newsletter="Booking.toggleNewsletter()"
+                    on-toggle-privacy-contract="Booking.togglePrivacyContract()">
+                </privacy-contract>
+
+                <section ng-if="Booking.state.general.voucherEnabled === true">
+                    <voucher-input
+                        code="Booking.state.general.voucher"
+                        on-code-change="Booking.userChangedVoucher(code)">
+                    </voucher-input>
+                </section>
+            </section>
+
+            <div class="sidebar__fixed-bottom center">
+                <h5 class="title-label left-align no-margin bottom top">Totale</h5>
+
+                <h4 class="uppercase inline-block {{ CarnetSidebar.mustShowFinalPrice(Booking.carnet.carnetInfo.priceTotal, Booking.state.orderInfo.finalPrice) ? 'hyphened' : null }}">{{ Booking.carnet.carnetInfo.priceTotal }}</h4>
+                <h4 class="uppercase inline-block" ng-if="CarnetSidebar.mustShowFinalPrice(Booking.carnet.carnetInfo.priceTotal, Booking.state.orderInfo.finalPrice)">&nbsp;{{ Booking.state.orderInfo.finalPrice }}</h4>
+
+                <h4 class="uppercase inline-block">€&nbsp;&nbsp;</h4>
+                <i>IVA inclusa</i>
+                <p class="center price-not-included"><small><i>Attenzione: il prezzo non include i costi di eventuali richieste di cancellazione/ modifica degli appuntamenti</i></small></p>
+
+                <section class="proceed-button"
+                    ng-show="Booking.state.router !== 'booking.confirm'">
+                    <a full-width class="btn"
+                        ng-click="Booking.proceedCarnetBooking()"
+                        ng-class="{ disabled: !Booking.canProceedCarnetBooking(), 'waves-effect waves-light main-orange': Booking.canProceedCarnetBooking() }">
+                        {{ Booking.state.isProcessing ? 'Caricamento...' : 'Prosegui'}}
+                    </a>
+                </section>
+
+                <section ng-show="Booking.carnet.error !== null">
+                    <p class="center main-orange-text"><i><b>{{Booking.carnet.error}}</b></i></p>
+                </section>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="row no-margin bottom">
+    <div class="col s10 offset-s2 m8 offset-m4">
+        <div class="radio-group no-margin bottom">
+            <div class='checkbox'>
+                <input type="checkbox" name="twoTuttofare" id="twoTuttofare" ng-model="Tuttofare.twoTuttofare" ng-change="Tuttofare.onTwoTuttofare({isMultipleSuperheroes: Tuttofare.twoTuttofare})">
+                <label for='twoTuttofare'>Ho bisogno di 2 Tuttofare</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+        <div class="col s12">
+            <h2 class="reset-margin-bottom">Servizi di base</h2>
+        </div>
+        <div class="col s12">
+            <h5 class="reset-margin-bottom center">Seleziona almeno un servizio di base</h5>
+        </div>
+    </div>
+
+    <additional-services
+        services="Tuttofare.additionalServices"
+        selected="Tuttofare.selectedAdditionalServices"
+        on-service-click="Tuttofare.onClickAdditionalService({additionalServiceId: additionalServiceId})">
+    </additional-services>
+</div>
+
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Attrezzi aggiuntivi</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <p>Hai bisogno che il tuo Supereroe porti con sé gli attrezzi per svolgere il lavoro? Clicca qui per indicare cosa ti serve</p>
+    </div>
+</div>
+
+<additional-tools
+    tools="Tuttofare.additionalTools"
+    selected="Tuttofare.selectedAdditionalTools"
+    on-tool-click="Tuttofare.onClickAdditionalTool({additionalToolId: additionalToolId})">
+</additional-tools>
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Note aggiuntive</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="Tuttofare.serviceNotes"
+            placeholder="Indicare eventuali ulteriori specifiche relativamente al lavoro da effettuare"
+            on-change="Tuttofare.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

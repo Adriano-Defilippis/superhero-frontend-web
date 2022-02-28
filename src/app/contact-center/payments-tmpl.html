@@ -1,0 +1,44 @@
+<h1 class="title-page center no-margin bottom">Pagamenti ({{ctrl.payments.length}})</h1>
+<div class="center">
+    <table class="mini-table">
+        <tr>
+            <td><strong>Totale</strong></td>
+            <td><strong>{{ctrl.paymentsAmount.total | number:2}}&euro;</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Questo mese</strong></td>
+            <td><strong>{{ctrl.paymentsAmount.thisMonth | number:2}}&euro;</strong></td>
+        </tr>
+    </table>
+</div>
+<div class="table-holder">
+    <table st-table="ctrl.payments" class="table table-recruiter">
+        <tr>
+            <th colspan="10">
+                <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+            </th>
+        </tr>
+        <thead>
+            <tr>
+                <th st-sort="dataCreazione">Data</th>
+                <th st-sort="amount">Importo</th>
+                <th st-sort="shopperEmail">Userid Cliente</th>
+                <th st-sort="sortHelper">Oggetto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in ctrl.payments">
+                <td ng-bind-html="row.dataCreazioneLabel"></td>
+                <td>{{row.amountLabel}}&euro;</td>
+                <td>{{row.shopperEmail}}</td>
+                <td>
+                    <span ng-if="row.isCarnet">Carnet</span>
+                    <a ng-if="!row.isCarnet" class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: row.reference })"><i class="mdi-action-visibility grey-text text-darken-3" title="Visualizza"></i></a>
+                </td>
+                <!-- <td>
+
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

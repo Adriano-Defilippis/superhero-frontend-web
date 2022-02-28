@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="300.411px" height="198.549px" viewBox="0 0 300.411 198.549" enable-background="new 0 0 300.411 198.549"
+	 xml:space="preserve">
+<line fill="none" stroke="#EFEFEF" stroke-width="3" stroke-linejoin="round" stroke-miterlimit="10" x1="83.392" y1="1" x2="83.392" y2="198.549"/>
+<line fill="none" stroke="#EFEFEF" stroke-width="3" stroke-linejoin="round" stroke-miterlimit="10" x1="150.206" y1="85.549" x2="150.206" y2="198.549"/>
+<line fill="none" stroke="#EFEFEF" stroke-width="3" stroke-linejoin="round" stroke-miterlimit="10" x1="217.392" y1="1" x2="217.392" y2="198.549"/>
+<path fill="none" stroke="#FF6B59" stroke-width="8" stroke-linejoin="round" stroke-miterlimit="10" d="M150.206,66.4
+	l59.094-59.094c4.408-4.408,11.554-4.408,15.962,0L284.355,66.4c4.408,4.408,4.408,11.554,0,15.962l-59.094,59.094
+	c-4.408,4.408-11.554,4.408-15.962,0l-59.094-59.094c0,0-59.094,59.094-59.094,59.094c-4.408,4.408-11.554,4.408-15.962,0
+	L16.056,82.362c-4.408-4.408-4.408-11.554,0-15.962L75.15,7.306c4.408-4.408,11.554-4.408,15.962,0
+	C91.112,7.306,150.206,66.4,150.206,66.4z"/>
+<text transform="matrix(1 0 0 1 24.8437 194.5487)" font-family="'BrandonGrotesque-Bold'" font-size="8">1. DISCOVER</text>
+<text transform="matrix(1 0 0 1 98.6471 194.5487)" font-family="'BrandonGrotesque-Bold'" font-size="8">2. DEFINE</text>
+<text transform="matrix(1 0 0 1 161.8046 194.5487)" font-family="'BrandonGrotesque-Bold'" font-size="8">3. DEVELOP</text>
+<text transform="matrix(1 0 0 1 232.2579 194.5487)" font-family="'BrandonGrotesque-Bold'" font-size="8">4. DELIVER</text>
+<circle fill="#FF6B59" cx="12.75" cy="74.381" r="12.75"/>
+<circle fill="#FF6B59" cx="150.206" cy="74.381" r="12.75"/>
+<circle fill="#FF6B59" cx="287.661" cy="74.381" r="12.75"/>
+</svg>

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col m12 center">
+        <h1>Invita un amico</h1>
+        <div class="row no-margin all">
+            <div class="col m8 offset-m2 s12">
+                <p>Invita i tuoi amici: quando prenoteranno, otterrete ciascuno 1 ora gratis*! Seleziona un servizio e inserisci le mail di chi vuoi invitare.</p>
+                <service-input-autocomplete
+                    placeholder="Seleziona un servizio"
+                    always-open="false"
+                    selected="ReferralPage.selectedService"
+                    selected-sub-service="ReferralPage.selectedSubService"
+                    disabled="ReferralPage.disabledServices"
+                    on-service-selected="ReferralPage.selectService(serviceId)"
+                    on-sub-service-selected="ReferralPage.selectSubService(parentServiceId, subServiceId)">
+                </service-input-autocomplete>
+            </div>
+        </div>
+
+        <div class="section">
+            <tags-input ng-model="ReferralPage.invites"
+                placeholder="Inserisci l'indirizzo mail delle persone che vuoi invitare, separato da una virgola"
+                min-length="3"
+                allowed-tags-pattern="^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$">
+            </tags-input>
+        </div>
+
+        <div class="section text-center" ng-if="ReferralPage.invites.length > 0 && !ReferralPage.confirm">
+            <a class="waves-effect waves-light main-orange btn" ng-click="ReferralPage.sendInvites()">Invia {{ ReferralPage.invites.length > 1 ? 'inviti' : 'invito' }}</a>
+        </div>
+        <div class="center">
+            <p class="main-orange-text" ng-if="ReferralPage.confirm"><b>{{ ReferralPage.confirm }}</b></p>
+            <p class="main-orange-text" ng-if="ReferralPage.error"><b>{{ ReferralPage.error }}</b></p>
+        </div>
+        <p><small>(*) offerta valida solo per prenotazioni di almeno 3 ore</small></p>
+    </div>
+</div>

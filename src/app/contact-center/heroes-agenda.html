@@ -1,0 +1,34 @@
+<h1 class="title-page center">Agenda supereroi</h1>
+<table st-table="ctrl.agendas" class="table table-recruiter responsive-table">
+  <tr>
+    <th colspan="10">
+      <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+    </th>
+  </tr>
+  <thead>
+    <tr>
+      <th st-sort="nome">Nome</th>
+      <th st-sort="cognome">Cognome</th>
+      <th st-sort="cellulare">Telefono</th>
+      <th st-sort="email">Email</th>
+      <th st-sort="disp1">Sett. 1</th>
+      <th st-sort="disp2">Sett. 2</th>
+      <th st-sort="disp3">Sett. 3</th>
+      <th st-sort="disp4">Sett. 4</th>
+      <th st-sort="actions">Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in ctrl.agendas">
+      <td>{{row.nome}}</td>
+      <td>{{row.cognome}}</td>
+      <td>{{row.cellulare}}</td>
+      <td>{{row.email}}</td>
+      <td ng-bind-html="ctrl.getAgendaIcon(row, 1)"></td>
+      <td ng-bind-html="ctrl.getAgendaIcon(row, 2)"></td>
+      <td ng-bind-html="ctrl.getAgendaIcon(row, 3)"></td>
+      <td ng-bind-html="ctrl.getAgendaIcon(row, 4)"></td>
+      <td><a class="waves-effect waves-light btn-flat white btn btn-small" ui-sref="main.support.eroe-dettaglio({id: row.id})">Dettagli</a></td>
+    </tr>
+  </tbody>
+</table>

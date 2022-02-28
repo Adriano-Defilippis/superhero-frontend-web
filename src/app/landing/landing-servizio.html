@@ -1,0 +1,130 @@
+<!--  top container -->
+<div valign-wrapper class="fullpage-image service-landing-block" full-width style="background-image: url('{{ctrl.backgroundImage}}')">
+  <div class="dark-overlay" full-width fill>
+  </div>
+  <div valign class="service-landing-text">
+    <h2 class="main-tagline center" ng-bind="ctrl.mainTagline"></h2>
+    <p class="secondary-tagline center" ng-bind="ctrl.secondaryTagline"></p>
+  </div>  
+
+</div>
+<!-- end top container -->
+
+<div class="container white home-container-blocks">
+    <h2 ng-bind="ctrl.landingContent.serviceBoxTitle" class="uppercase big"></h2>
+    <div class="row">
+      <div class="col s12 m4" ng-repeat="singleBox in ctrl.landingContent.serviceBoxList">
+        <div class="section">
+          <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleBox.icon }}" fill></md-icon>
+          <h4 class="main-orange-text center" ng-bind="singleBox.title"></h4>
+          <p class="center" ng-bind="singleBox.content"></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h2 ng-bind="ctrl.landingContent.ourStoriesTitle" class="uppercase big no-margin bottom"></h2>
+      <p class="service-subtitle center main-orange-text" ng-bind="ctrl.landingContent.serviceBoxSubtitle"></p>
+      <div class="col s12 m6 l3" ng-repeat="singleBox in ctrl.landingContent.heroesBoxList" ng-click="ctrl.startNewHeroSelectionOrder(singleBox.competenza)">
+        <h3 ng-bind="singleBox.title" class="uppercase center hero-box-text-title"></h3>
+        <div class="hero-box-wrapper" style="background-image: url('{{singleBox.image}}')">
+          <div class="hero-box-overlay">
+            <div class="service-box-icon" valign-wrapper full-width>
+              <md-icon valign class="md-icon big main-orange-text center hero-box-icon" md-svg-src="{{ singleBox.icon }}" fill></md-icon>
+            </div>
+            <div valign-wrapper>
+              <p valign class="center hero-box-text" ng-bind="singleBox.content"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider-carnet center" title="acquista un carnet" alt="acquista un carnet">
+    <a ui-sref="main.guest.carnet" class="waves-effect waves-light main-orange btn">Acquista un carnet!</a>
+  </div>
+  
+<div class="container white home-container-blocks">
+    <div class="row">
+      <h2 ng-bind="ctrl.landingContent.qualityBoxTitle" class="uppercase big no-margin bottom"></h2>
+      <p class="service-subtitle center" ng-bind="ctrl.landingContent.qualityBoxText"></p>
+      <div class="col s12 m4" ng-repeat="singleQuality in ctrl.landingContent.qualityBoxList">
+        <p></p>
+        <div class="section">
+          <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleQuality.icon }}" fill></md-icon>
+          <h4 class="main-orange-text center" ng-bind="singleQuality.title"></h4>
+          <p class="center" ng-bind="singleQuality.content"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<div class="home-slider-wrapper-two">
+    <div id="home-slider-two" class="owl-carousel" fill>
+      <!-- <img src="{{ctrl.homeImg.one}}"> -->
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.landingContent.dividerSliderImg.one}}')" full-width title="supereroi con passione" alt="supereroi con passione">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.landingContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.landingContent.secondaryQuoteOne}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.landingContent.dividerSliderImg.two}}')" full-width title="supereroi con sensibilità" alt="supereroi con sensibilità">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.landingContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.landingContent.secondaryQuoteTwo}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.landingContent.dividerSliderImg.three}}')" full-width title="supereroi con esperienza" alt="supereroi con esperienza">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.landingContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.landingContent.secondaryQuoteThree}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+      <div class="single-slide-content single-slide-content-background-full" style="background-image: url('{{ctrl.landingContent.dividerSliderImg.four}}')" full-width title="supereroi con sorriso" alt="supereroi con sorriso">
+        <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+          <div class="slider-payoff-block-two">
+            <h3 class="main-tagline main-tagline-secondary-slider text-center no-margin bottom">{{ctrl.landingContent.sliderSectionTagline}}</h3>
+            <p class="secondary-tagline secondary-tagline-slider text-center no-margin top">{{::ctrl.landingContent.secondaryQuoteFour}}</p>
+            <a class="waves-effect waves-light main-orange btn" ng-click="ctrl.startNewHeroSelectionOrder()">Conosci i nostri supereroi</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--   if user is logged -->
+  <div id="vaucher_box">
+    <div class="card">
+<!--       <div class="card-image waves-effect waves-block waves-light">
+        
+      </div> -->
+      <div class="card-content">
+        <span class="card-title activator">1°volta? 1 ora gratis!<br/>
+Scopri il codice sconto</span>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title ">È il tuo primo Supereroe?<br>
+La 1° ora è gratis!<br></span>
+        <p>Usa il codice sconto<br>
+        <h3>PRA1</h3>
+durante la prenotazione</p>
+      <p>La promozione è valida per prenotazioni di almeno 3 ore e fino alle ore 24.00 del 30 Settembre.</p>
+      </div>
+    </div>
+</div>  
+
+<!--  fine if user is logged -->

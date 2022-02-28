@@ -1,0 +1,65 @@
+<h2>Informazioni specifiche</h2>
+<div class="row additional-info">
+  <div class="col s4">
+    <div class="radio-group">
+      <input type="checkbox" name="autoMotoMunito" id="autoMotoMunito" ng-disabled="ctrl.formDisabled"
+      ng-model="ctrl.heroApplication.autoMotoMunito">
+      <label for="autoMotoMunito">Auto/moto munito</label>
+    </div>
+  </div>
+  <div class="col s4">
+    <div class="radio-group">
+      <input type="checkbox" name="amanteAnimali" id="amanteAnimali" ng-disabled="ctrl.formDisabled"
+      ng-model="ctrl.heroApplication.amanteAnimali">
+      <label for="amanteAnimali">Amante animali</label>
+    </div>
+  </div>
+  <div class="col s4">
+    <div class="radio-group">
+      <input type="checkbox" name="contoCorrente" id="contoCorrente" ng-disabled="ctrl.formDisabled"
+      ng-model="ctrl.heroApplication.contoCorrente">
+      <label for="contoCorrente">Possessore conto corrente</label>
+    </div>
+  </div>
+</div>
+<div class="row additional-info">
+  <div class="col s4">
+    <div class="radio-group">
+      <input type="checkbox" name="disponibilitaNotturna" id="disponibilitaNotturna" ng-disabled="ctrl.formDisabled"
+      ng-model="ctrl.heroApplication.disponibilitaNotturna">
+      <label for="disponibilitaNotturna">Disponibile a lavorare di notte</label>
+    </div>
+  </div>
+  <div class="col s4">
+    <div class="radio-group">
+      <input type="checkbox" name="disponibilitaWeekEnd" id="disponibilitaWeekEnd" ng-disabled="ctrl.formDisabled"
+      ng-model="ctrl.heroApplication.disponibilitaWeekEnd">
+      <label for="disponibilitaWeekEnd">Disponibile a lavorare nel week end</label>
+    </div>
+  </div>
+  <div class="col s4">
+    <select name="maxDistanzaPercorribile" class="with-errors" ng-model="ctrl.heroApplication.maxDistanzaPercorribile" material-select ng-disabled="ctrl.formDisabled">
+      <option value="0" disabled selected>Massima distanza percorribile per lavoro</option>
+      <option ng-repeat="option in ::ctrl.options.maxDistanzaPercorribile" ng-value="option.value">{{::option.name}}</option>
+    </select>
+  </div>
+</div>
+<div class="row additional-info">
+  <div class="col s4 offset-s4">
+    <div class="radio-group">
+      <input type="checkbox" name="disponibilitaCarnetXXL" id="disponibilitaCarnetXXL" ng-disabled="ctrl.formDisabled"
+      ng-model="ctrl.heroApplication.disponibilitaCarnetXXL">
+      <label for="disponibilitaCarnetXXL">Disponibilità a utilizzo carnet XXL</label>
+    </div>
+  </div>
+</div>
+
+
+<div class="row note-recruiter">
+  <div class="col s12">
+    <div input-field>
+      <textarea id="noteRecruiter" class="materialize-textarea" ng-model="ctrl.heroApplication.noteRecruiter" maxlength="300" length="300"></textarea>
+      <label>Note del recruiter</label>
+    </div>
+  </div>
+</div>

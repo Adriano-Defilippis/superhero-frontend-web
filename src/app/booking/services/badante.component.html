@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Dettagli</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <p>Inserisci le informazioni della persona della quale il tuo Supereroe dovrà prendersi cura. Questo ci permetterà di scegliere il miglior Supereroe per le tue necessità</p>
+    </div>
+</div>
+
+<assisted-info
+    nome="Badante.assistedInfo.nome"
+    cognome="Badante.assistedInfo.cognome"
+    sesso="Badante.assistedInfo.sesso"
+    eta="Badante.assistedInfo.eta"
+    eta-options="Badante.etaOptions"
+    on-assisted-changed="Badante.onAssistedChanged({info:info})" >
+</assisted-info>
+
+<div class="row">
+    <div class="col s12">
+        <h2 class="reset-margin-bottom">Servizi specifici</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <p>Indicaci i servizi specifici necessari all'assistito, per consentirci di selezionare la persona più qualificata (inclusi nel prezzo del servizio base)</p>
+    </div>
+</div>
+
+<additional-services
+    services="Badante.additionalServices"
+    selected="Badante.selectedAdditionalServices"
+    on-service-click="Badante.onClickAdditionalService({additionalServiceId: additionalServiceId})">
+</additional-services>
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Note aggiuntive</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="Badante.serviceNotes"
+            placeholder="Indicare eventuali ulteriori informazioni necessarie (es. aspetti caratteriali dell’assistito, raccomandazioni specifiche, presenza di animali domestici in casa)"
+            on-change="Badante.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

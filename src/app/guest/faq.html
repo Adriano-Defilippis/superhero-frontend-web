@@ -1,0 +1,56 @@
+<page-image-header image="{{ctrl.model.headerImage}}" title="FAQ"></page-image-header>
+
+<div class="container" autoscroll>
+  <div class="row no-margin bottom">
+    <div class="col s12 white" auto-fill-height>
+      <div class="padding-small">
+        <div class="row">
+          <div class="col m12 s12">
+            <div class="row">
+              <div class="col s12 m6 center">
+                <div class="section">
+                  <a class="waves-effect waves-light btn btn-home {{ctrl.model.faqList == 1 ? 'main-orange' : 'grey lighten-3 grey-text text-darken-3'}}" fill ng-click="ctrl.model.faqList = 1">Voglio prenotare un servizio</a>
+                </div>
+              </div>
+              <div class="col s12 m6 center" ng-click="ctrl.model.faqList = 2">
+                <div class="section">
+                  <a class="waves-effect waves-light btn btn-home {{ctrl.model.faqList == 2 ? 'main-orange' : 'grey lighten-3 grey-text text-darken-3'}}" fill ng-click="ctrl.model.faqList = 2">Voglio diventare un supereroe</a>
+                </div>
+              </div>
+            </div>
+            <!-- <h1 class="uppercase center">Faq</h1> -->
+            <p ng-show="ctrl.model.faqList == 1" class="service-subtitle service-subtitle-single-page" ng-bind="ctrl.model.sectionTaglineClient"></p>
+            <p ng-show="ctrl.model.faqList == 2" class="service-subtitle service-subtitle-single-page" ng-bind="ctrl.model.sectionTaglineHero"></p>
+          </div>
+          <div ng-show="ctrl.model.faqList == 1">
+            <div class="col m12">
+              <v-accordion class="vAccordion--default">
+                <v-pane ng-repeat="pane in ctrl.model.clientPanes">
+                  <v-pane-header>
+                    <h2 class="faq-title left-align">{{ pane.header }}</h2>
+                  </v-pane-header>
+                  <v-pane-content ng-bind-html="pane.content">
+                  </v-pane-content>
+                </v-pane>
+              </v-accordion>
+            </div>
+          </div>
+          <div ng-show="ctrl.model.faqList == 2">
+            <div class="col m12">
+              <v-accordion class="vAccordion--default">
+                <v-pane ng-repeat="pane in ctrl.model.heroPanes">
+                  <v-pane-header>
+                    <h2 class="faq-title left-align">{{ pane.header }}</h2>
+                  </v-pane-header>
+                  <v-pane-content>
+                    {{ pane.content }}
+                  </v-pane-content>
+                </v-pane>
+              </v-accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

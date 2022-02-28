@@ -1,0 +1,94 @@
+<div class="row">
+    <div input-field>
+      <input type="checkbox" name="sameUserInfo" id="sameUserInfo"
+      ng-model="BillingAddress.sameUserInfo"
+      ng-change="BillingAddress.wipeUserBillingInfo()">
+      <label for="sameUserInfo">I dati di fatturazione corrispondono con i miei dati personali</label>
+    </div>
+</div>
+<div class="row" ng-if="BillingAddress.sameUserInfo !== true">
+    <div class="col m4 s12">
+        <div input-field>
+            <input type="text" name="nome" required ng-model="BillingAddress.nome" ng-change="BillingAddress.userBillingInfoChanged()">
+            <label>Nome<span style="color: red;">*</span></label>
+        </div>
+    </div>
+    <div class="col m4 s12">
+        <div input-field>
+            <input type="text" name="cognome" required ng-model="BillingAddress.cognome" ng-change="BillingAddress.userBillingInfoChanged()">
+            <label>Cognome<span style="color: red;">*</span></label>
+        </div>
+    </div>
+    <div class="col m4 s12">
+        <div input-field>
+            <input type="text" name="codiceFiscale" required ng-model="BillingAddress.codiceFiscale" ng-change="BillingAddress.userBillingInfoChanged()">
+            <label>Codice Fiscale<span style="color: red;">*</span></label>
+        </div>
+    </div>
+</div>
+
+<div class="row" ng-show="BillingAddress.hideSameAddressToggle !== true">
+    <div class="col s12">
+        <input type="checkbox" name="fatturazione" id="fatturazione"
+            ng-model="BillingAddress.addressIsSame"
+            ng-change="BillingAddress.onChangeAddressIsSame()">
+        <label for="fatturazione">L'indirizzo di fatturazione corrisponde a quello dell'appuntamento</label>
+    </div>
+</div>
+
+<div class="row" ng-show="BillingAddress.addressIsSame === false">
+    <div class="col s12 m8 offset-m2" ng-show="!BillingAddress.showFullAddress">
+        <input id="autocomplete-address" class="controls" type="text" placeholder="Indirizzo">
+    </div>
+
+    <div class="row no-margin bottom" ng-form ng-show="BillingAddress.showFullAddress" name="BillingAddress.Form">
+        <div class="col s12" ng-if="BillingAddress.addressIsSame === false">
+            <div class="row">
+                <div class="col m6 s8">
+                    <div input-field>
+                        <input type="text" name="via" required
+                            ng-model="BillingAddress.via"
+                            ng-change="BillingAddress.userInputAddressChanged()">
+                        <label>Via<span style="color: red;">*</span></label>
+                    </div>
+                </div>
+                <div class="col m3 s4">
+                    <div input-field>
+                        <input type="text" name="civico" required
+                            ng-model="BillingAddress.numeroCivico"
+                            ng-change="BillingAddress.userInputAddressChanged()">
+                        <label>Numero<span style="color: red;">*</span></label>
+                    </div>
+                </div>
+                <div class="col m3 s12">
+                    <div input-field>
+                        <input type="text" name="cap" required
+                            ng-model="BillingAddress.cap"
+                            ng-change="BillingAddress.userInputAddressChanged()">
+                        <label>CAP<span style="color: red;">*</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col m6 s6">
+                    <div input-field>
+                        <input type="text" name="loc" required
+                            ng-model="BillingAddress.localita"
+                            ng-change="BillingAddress.userInputAddressChanged()">
+                        <label>Città<span style="color: red;">*</span></label>
+                    </div>
+                </div>
+                <div class="col m6 s6">
+                    <div input-field>
+                        <input type="text" name="provincia" required
+                            ng-model="BillingAddress.provincia"
+                            ng-change="BillingAddress.userInputAddressChanged()">
+                        <label>Provincia<span style="color: red;">*</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+.owl-carousel .single-slide {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.owl-theme .owl-controls {
+    position: absolute;
+    bottom: 10px;
+    z-index: 300;
+    width: 100%;
+}
+
+.owl-theme .owl-controls .owl-page {
+
+    span {
+        background: $white;
+    }
+
+    &.active span {
+        opacity: 0.85;
+    }
+
+}
+
+.owl-stage, .owl-stage-outer {
+    height: 100%;
+}
+
+.owl-dots {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+      background: rgba(255,255,255,0.5);
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+    background: $white;
+}
+
+.home-service-select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid white;
+
+    .input-field {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .select-wrapper, .select-wrapper input.select-dropdown {
+        margin: 0px;
+    }
+
+    .select-wrapper input.select-dropdown {
+        border: 0px;
+    }
+
+    .dropdown-content li {
+        line-height: 2.5rem;
+    }
+
+    @media (max-width: $mq-sm) {
+        padding: 5px 0;
+    }
+}
+
+.btn-home-cta {
+    height: 46px;
+    line-height: 46px;
+}
+
+.home-service-select .select-dropdown li {
+    span {
+        font-weight: 600;
+        color: #545454 !important;
+    }
+    md-icon {
+        color: lighten(#545454, 10%);
+        height: 25px !important;
+        width: 25px !important;
+        margin: 15px 15px 5px;
+        float: right;
+    }
+}
+
+.service-select {
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+}
+
+.select-placeholder {
+    height: 50px;
+    width: 100%;
+
+    @media (max-width: $mq-sm) {
+        height: 100px;
+    }
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.home-service-select {
+    service-input-autocomplete .select {
+        border-bottom: 0px;
+        margin: 0;
+        padding-top: 7px;
+
+    }
+}
+
+.assurance-label {
+    position: absolute; 
+    width: 15em; 
+    bottom: 12%; 
+    left: 0; 
+    z-index: 1001;
+
+    @media screen and (max-width: $mq-sm) {
+        width: 15em;
+        bottom: 8%;
+    }
+}

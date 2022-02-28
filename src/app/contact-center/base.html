@@ -1,0 +1,11 @@
+<nav class="grey darken-3 main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<div class="white sub-nav" role="navigation" ng-include="'app/components/navbar/subnav.html'" ng-controller="ContactCenterSubBarCtrl as subNavCtrl"></div>
+<div class="container">
+  <div class="row no-margin bottom">
+    <div class="col l12 m12 s12" ng-class="{ white: ctrl.isBgWhite() }">
+      <div class="padding-small double-bar" ui-view autoscroll auto-fill-height>
+
+      </div>
+    </div>
+  </div>
+</div>

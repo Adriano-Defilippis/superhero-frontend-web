@@ -1,0 +1,65 @@
+<div class="row no-margin bottom">
+    <div class="col s10 offset-s2 m8 offset-m4">
+        <div class="radio-group no-margin bottom">
+            <div class='checkbox'>
+                <input type="checkbox" name="twoTuttofare" id="twoTuttofare" ng-model="Tuttofare.twoTuttofare" ng-change="Idraulico.onTwoTuttofare({isMultipleSuperheroes: Tuttofare.twoTuttofare})">
+                <label for='twoTuttofare'>Ho bisogno di 2 Idraulici</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="row">
+        <div class="col s12">
+            <h2 class="reset-margin-bottom">Servizi specifici</h2>
+        </div>
+        <div class="col s12">
+            <h5 class="reset-margin-bottom center">Seleziona almeno un servizio specifico</h5>
+        </div>
+    </div>
+
+    <additional-services
+        two-columns-layout="true"
+        services="Idraulico.additionalServices"
+        selected="Idraulico.selectedAdditionalServices"
+        on-service-click="Idraulico.onClickAdditionalService({additionalServiceId: additionalServiceId})">
+    </additional-services>
+
+    <div class="col s12 service-disclaimer">
+        <p class="small">Per stimare le ore necessarie alla realizzazione dell'intervento considerare il <b>tempo medio consigliato, riportato nella sidebar</b> (moltiplicandolo per il <b>numero di pezzi da installare/sostituire</b>). Se necessario, considerare anche il tempo aggiuntivo per eventuali ulteriori interventi (es. acquisto materiale). <b>Attenzione:</b> il tempo consigliato rappresenta un valore indicativo medio. Ove dovesse rivelarsi insufficiente, contattare il Servizio Clienti al numero 02-86882279 per integrare la prenotazione inizialmente effettuata.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Attrezzi aggiuntivi</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <p>Hai bisogno che il tuo Supereroe porti con sé gli attrezzi per svolgere il lavoro? Clicca qui per indicare cosa ti serve</p>
+    </div>
+</div>
+
+<additional-tools
+    tools="Idraulico.additionalTools"
+    selected="Idraulico.selectedAdditionalTools"
+    on-tool-click="Idraulico.onClickAdditionalTool({additionalToolId: additionalToolId})">
+</additional-tools>
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Note aggiuntive</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="Idraulico.serviceNotes"
+            placeholder="Indicare eventuali ulteriori specifiche relativamente al lavoro da effettuare"
+            on-change="Idraulico.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="service-input-autocomplete">
+    <div class="select"
+        ng-click="ServiceInputAutocomplete.onClickInput()"
+        ng-class="{ notSelected: ServiceInputAutocomplete.options.notSelected === true }">
+        <span class="caret">▼</span>
+        <span class="selected-service">{{ ServiceInputAutocomplete.selected ? ServiceInputAutocomplete.getServiceLabel() : ServiceInputAutocomplete.placeholder }}</span>
+    </div>
+    <div class="results" ng-show="ServiceInputAutocomplete.options.showResults || (ServiceInputAutocomplete.alwaysOpen !== false && ServiceInputAutocomplete.selected === '')">
+        <ul>
+            <li ng-repeat="item in ServiceInputAutocomplete.getResults()" class="results-item" ng-click="ServiceInputAutocomplete.selectService(item.id)">
+                <md-icon md-svg-src="{{ item.image }}"></md-icon>
+                <span>{{ item.label }}</span>
+            </li>
+        </ul>
+    </div>
+</div>

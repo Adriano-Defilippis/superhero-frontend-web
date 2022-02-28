@@ -1,0 +1,204 @@
+<nav ng-if="!ctrl.isApp" class="grey darken-3 main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<div class="box-wrapper-full-sandbox">
+    <p class="center dont-print"><a class="btn btn-small btn-flat waves-effect waves-light grey-text text-darken-3 btn-xsmall btn-print" ng-click="ctrl.printOrSave()">Salva come PDF o Stampa</a></p>
+    <div class="paperA4 white z-depth-1">
+        
+        <div class="row">
+            <div class="col s12">
+                <p ng-if="!ctrl.isSocieta(ctrl.billingInfo.destinatario) && !ctrl.isImpresaIndividuale(ctrl.billingInfo.destinatario) && !ctrl.isThirdPartyAddress(ctrl.billingInfo.destinatario)">
+                    <b>Informazioni del Cliente:</b><br>
+                    {{ctrl.billingInfo.destinatario.nomeCompleto}}<br>
+                    {{ctrl.billingInfo.destinatario.indirizzo}}<br>
+                    <span ng-if="ctrl.billingInfo.destinatario.partitaIva">Partita IVA: {{ctrl.billingInfo.destinatario.partitaIva}}<br></span>
+                    <span ng-if="ctrl.billingInfo.destinatario.codiceFiscale">Codice fiscale: {{ctrl.billingInfo.destinatario.codiceFiscale}}</span>
+                </p>
+                <p ng-if="ctrl.isImpresaIndividuale(ctrl.billingInfo.destinatario) && !ctrl.isThirdPartyAddress(ctrl.billingInfo.destinatario)">
+                    <b>Informazioni del Cliente:</b><br>
+                    {{ctrl.billingInfo.destinatario.ragioneSociale}}<br>
+                    {{ctrl.billingInfo.destinatario.indirizzoSedeLegale}}<br>
+                    Partita IVA: {{ctrl.billingInfo.destinatario.partitaIva}}
+                </p>
+                <p ng-if="ctrl.isSocieta(ctrl.billingInfo.destinatario) && !ctrl.isThirdPartyAddress(ctrl.billingInfo.destinatario)">
+                    <b>Informazioni del Cliente:</b><br>
+                    {{ctrl.billingInfo.destinatario.ragioneSociale}}<br>
+                    {{ctrl.billingInfo.destinatario.indirizzo}}<br>
+                    Partita IVA: {{ctrl.billingInfo.destinatario.partitaIva}}
+                </p>
+                <p ng-if="ctrl.isThirdPartyAddress(ctrl.billingInfo.destinatario)">
+                    <b>Informazioni del Cliente:</b><br>
+                    <span ng-if="ctrl.billingInfo.destinatario.codiceFiscale">{{ctrl.billingInfo.destinatario.nomeCompleto}}</span>
+                    <span ng-if="!ctrl.billingInfo.destinatario.codiceFiscale">{{ctrl.billingInfo.destinatario.ragioneSociale}}</span><br>
+                    {{ctrl.billingInfo.destinatario.indirizzo}}<br>
+                    <span ng-if="ctrl.billingInfo.destinatario.partitaIva">Partita IVA: {{ctrl.billingInfo.destinatario.partitaIva}}<br></span>
+                    <span ng-if="ctrl.billingInfo.destinatario.codiceFiscale">Codice fiscale: {{ctrl.billingInfo.destinatario.codiceFiscale}}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <p class="right-align letter-head no-margin all">{{letterHead}}, {{ ctrl.billingInfo.dataFattura | date : 'dd/MM/yy' }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p class="no-margin top">{{ctrl.isOccasionalInvoice() ? 'Nota:' : 'Numero fattura:'}} {{ctrl.billingInfo.codiceFatturaCompleto}}<br>
+                Codice Cliente: {{ctrl.billingInfo.destinatario.codiceIdShort}}<br>
+                </p>
+            </div>
+        </div>
+       
+        <p class="no-margin top">&nbsp;&nbsp;Gentile Cliente,<br>
+            &nbsp;&nbsp; inviamo {{ctrl.isOccasionalInvoice() ? 'nota' : 'fattura'}} relativa all'ordine di <em>{{ctrl.getTipoOperazione(ctrl.billingInfo.tipologiaOperazione)}}</em> n. {{ctrl.billingInfo.idOrdineShort}} del giorno {{ctrl.billingInfo.dataOperazione | date : 'dd/MM/yy'}}<br>
+         </p>
+           
+
+        <div class="row">
+            <div class="col s12">
+                <table class="billing-table bordered">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Voce</th>
+                            <th class="center" ng-if="ctrl.isNewTemplate()">Servizio</th>
+                            <th class="center" ng-if="ctrl.showIdCode()">Codice</th>
+                            <th class="center" ng-if="ctrl.showDuration()">Durata (H)</th>
+                            <th class="right-align">Ammontare (EUR)</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!ctrl.showVoucherBlock()">
+                        <tr ng-repeat="single in ctrl.billingInfo.vociInFattura">
+                            <td>{{single.data | date : 'dd/MM/yy'}}</td>
+                            <td>{{single.descrizione}}</td>
+                            <td class="center" ng-if="ctrl.isNewTemplate()">{{ctrl.getServiceName()}}</td>
+                            <td class="center" ng-if="ctrl.showIdCode()">{{single.idAppuntamentoShort}}</td>
+                            <td class="center" ng-if="ctrl.showDuration()">{{single.durataMinuti ? single.durataMinuti/60 : ''}}</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.costoSingolaVoce(single.costoFinale) | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.tableColumns() }}">Imponibile (&euro;)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.imponibile(false) | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showDuty()">
+                            <td colspan="{{ ctrl.tableColumns() }}">Contributo ({{ctrl.billingInfo.intestatario.rivalsa}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.rivalsaApplicata(false) | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showSubtotal()"  class="subtotal">
+                            <td colspan="{{ ctrl.tableColumns() }}"><b>Subtotale</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.subtotalePreIva(false) | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showVat() && !ctrl.showReverseCharge() && !ctrl.showVoucherBlock()">
+                            <td colspan="{{ ctrl.tableColumns() }}">IVA ({{ctrl.billingInfo.intestatario.aliquotaIva}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.ivaApplicata(false) | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal" ng-if="!ctrl.showVoucherBlock()">
+                            <td colspan="{{ ctrl.tableColumns() }}"><b>TOTALE</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.isCarnetInvoice() ? ctrl.imponibile(false) : ctrl.prezzoDaPagare(false) | number:2}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="ctrl.showVoucherBlock()">
+                        <tr ng-repeat="single in ctrl.billingInfo.vociInFattura">
+                            <td>{{single.data | date : 'dd/MM/yy'}}</td>
+                            <td>{{single.descrizione}}</td>
+                            <td class="center" ng-if="ctrl.isNewTemplate()">{{ctrl.getServiceName()}}</td>
+                            <td class="center" ng-if="ctrl.showIdCode()">{{single.idAppuntamentoShort}}</td>
+                            <td class="center" ng-if="ctrl.showDuration()">{{single.durataMinuti ? single.durataMinuti/60 : ''}}</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.costoSingolaVoce(single.costoFinale) | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.tableColumns() }}">Totale corrispettivo (&euro;)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.imponibile(false) | number:2}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="{{ ctrl.tableColumns() }}">Valore del Voucher (&euro;)</td>
+                            <td class="right-align">-&euro;&nbsp;{{ctrl.valoreVoucherSenzaTasse() | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.tableColumns() }}"><b>Imponibile (&euro;)</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.imponibile(true) | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showDuty()">
+                            <td colspan="{{ ctrl.tableColumns() }}">Contributo ({{ctrl.billingInfo.intestatario.rivalsa}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.rivalsaApplicata(true) | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showSubtotal()"  class="subtotal">
+                            <td colspan="{{ ctrl.tableColumns() }}"><b>Subtotale</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.subtotalePreIva(true) | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showVat() && !ctrl.showReverseCharge()">
+                            <td colspan="{{ ctrl.tableColumns() }}">IVA ({{ctrl.billingInfo.intestatario.aliquotaIva}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.ivaApplicata(true) | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.tableColumns() }}"><b>Totale pagato dal cliente (&euro;)</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.isCarnetInvoice() ? ctrl.imponibile(true) : ctrl.prezzoDaPagare(true) | number:2}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p ng-if="ctrl.billingInfo.bollo">
+                    Imposta di bollo assolta elettronicamente.
+                 </p>
+                 <p ng-if="ctrl.billingInfo.indirizzoPrestazione">
+                    Specifiche intervento: {{ctrl.billingInfo.noteCliente}}
+                </p>
+                <p ng-if="ctrl.billingInfo.indirizzoPrestazione">
+                    Indirizzo prestazione: {{ctrl.billingInfo.indirizzoPrestazione}}
+                </p>
+            </div>
+        </div>
+        
+       
+            <p ng-if="ctrl.isCarnetInvoice()"><em ng-bind-html="noVATZone"></em></p>
+            <p ng-if="ctrl.isOccasionalInvoice()"><em ng-bind-html="occasionalInvoice"></em></p>
+            <p ng-if="ctrl.billingInfo.intestatario.regimeForfettario"><em ng-bind-html="regimeForfettario"></em></p>
+            <p ng-if="ctrl.billingInfo.intestatario.regimeDeiMinimi && !ctrl.showReverseCharge()"><em ng-bind-html="regimeMinimi"></em></p>
+            <p ng-if="ctrl.showExcludeVatFisio()"><em ng-bind-html="excludeVatFisio"></em></p>
+            <p ng-if="ctrl.showExcludeVat() && !ctrl.showReverseCharge()"><em ng-bind-html="excludeVat"></em></p>
+            <p ng-if="ctrl.showReverseCharge()"><em ng-bind-html="reverseCharge"></em></p>
+        
+        <div class="row">
+            <div class="col s12">
+                <p class="no-margin bottom">
+                    <span class="underlined">La {{ctrl.isOccasionalInvoice() ? 'nota' : 'fattura'}} è stata emessa in nome e per conto di:</span><br>
+                </p>
+                <p class="no-margin top" ng-if="!ctrl.isSocieta(ctrl.billingInfo.intestatario) && !ctrl.isImpresaIndividuale(ctrl.billingInfo.intestatario)">
+                    {{ctrl.billingInfo.intestatario.nomeCompleto}}<br>
+                    {{ctrl.billingInfo.intestatario.indirizzo}}<br>
+                    <span ng-if="ctrl.billingInfo.intestatario.partitaIva">Partita IVA: {{ctrl.billingInfo.intestatario.partitaIva}}<br></span>
+                    <span ng-if="ctrl.billingInfo.intestatario.codiceFiscale">Codice fiscale: {{ctrl.billingInfo.intestatario.codiceFiscale}}</span>
+                </p>
+                <p class="no-margin top" ng-if="ctrl.isSocieta(ctrl.billingInfo.intestatario) || ctrl.isImpresaIndividuale(ctrl.billingInfo.intestatario)">
+                    {{ctrl.billingInfo.intestatario.ragioneSociale}}<br>
+                    {{ctrl.billingInfo.intestatario.indirizzoSedeLegale}}<br>
+                    Partita IVA: {{ctrl.billingInfo.intestatario.partitaIva}}
+                </p>
+                <br>
+               
+                <p ng-bind-html="paymentNote"></p>
+                <p>Cordiali Saluti,<br>il team de ilmioSupereroe.it</p>
+              
+            </div>
+        </div>
+        <div class="billing-footer">
+            <div class="row">
+                <div class="col s6">
+                    <p>
+                        Digital Heroes srl<br>
+                        Largo Gallarati Scotti 1, 20123, Milano<br>
+                        Telefono: 02/ 86882279
+                    </p>
+                </div>
+                <div class="col s6 right-align">
+                    <p>
+                        Partita IVA: 08830360965<br>
+                        Iscritta alla Camera del Commercio di Milano<br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function getQueryVariable(r){for(var a=window.location.search.substring(1),e=a.split("&"),i=0;i<e.length;i++){var t=e[i].split("=");if(t[0]==r)return t[1]}}var param1var=getQueryVariable("print");"1"==param1var&&self.print();
+</script>

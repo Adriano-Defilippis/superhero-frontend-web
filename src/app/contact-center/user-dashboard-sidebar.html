@@ -1,0 +1,56 @@
+<div class="user-sidebar">
+  <div class="row"  ng-if="ctrl.feedbacksRequests.length > 0">
+    <div class="col s12">
+      <div class="alert-box">
+        <div class="card-panel white alert-card">
+          <h5 class="center uppercase no-margin top main-orange-text">Feedback mancanti degli ultimi 30 giorni</h5>
+          <p ng-repeat="feedback in ctrl.feedbacksRequests" ng-click="ctrl.showFeedbackModal(feedback)" class="center feedback-single" row>
+            <i class="mdi-content-create center"></i><span class="padding-left-small smaller left-align" ng-bind-html="feedback.label"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="today-appointments">
+    <h4>Appuntamenti di oggi</h4>
+    <ul ng-show="ctrl.appointmentsOfTheDay.length > 0">
+      <li ng-repeat="app in ctrl.appointmentsOfTheDay | orderBy:'dataInizio' | limitTo:99 | filter:{isPositive:true}" ng-click="ctrl.showAppointmentInfo(app.id)" class="{{ app.isPast ? 'past' : '' }}">
+        <div row fill>
+          <div class="">
+            <div class="hero-profile-pic center" row>
+              <span class="center"><div class="profile-pic" style="background-image:url('{{app.superHeroPhotoUrl}}')"></div></span>
+              <span class="nome left-align">{{ app.superHeroNomeCompleto }}<br><small>{{app.labels.servizio}}</small></span>
+            </div>
+          </div>
+          <div class="stato center">
+            <span class="right-align">{{ app.labels.oraInizio }} - {{ app.labels.oraFine }}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <p ng-show="ctrl.appointmentsOfTheDay.length < 1" class="center">
+      <i>Nessun appuntamento in calendario per oggi.</i>
+    </p>
+  </div>
+  <div class="carnet" ng-if="ctrl.carnetList.length > 0">
+    <h4>Carnet associati</h4>
+    <div class="row">
+      <div class="col s12 m12 l12" ng-repeat="carnet in ctrl.carnetList">
+        <div class="carnet-single card-panel" row fill>
+          <div class="tipologia center width-100">
+            <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ carnet.carnetIcon }}" fill></md-icon>
+          </div>
+          <div class="info">
+            <div class="ore-residue">
+              <p class="center no-margin bottom">{{carnet.label}} - {{ carnet.oreResidue + '/' + carnet.oreTotali }} {{carnet.isPrestazione ? ' prestazioni' : ' ore'}}</p>
+            </div>
+            <div class="scadenza">
+              <p class="center no-margin top"><small>scad. {{ carnet.scadenza }}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

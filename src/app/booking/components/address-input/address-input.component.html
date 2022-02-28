@@ -1,0 +1,107 @@
+<div class="col s12 m8 offset-m2" ng-show="!AddressInput.showFullAddress">
+    <input id="autocomplete-address" class="controls" type="text" placeholder="Indirizzo">
+</div>
+
+<div class="row no-margin bottom" ng-if="AddressInput.showFullAddress" ng-form name="AddressInput.Form">
+    <div class="row" ng-if="AddressInput.showAddressType === true">
+        <div class="col s12 m8 offset-m2">
+            <div input-field>
+                <select class="select-dropdown-margin-top"
+                    ng-model="AddressInput.addressType"
+                    ng-change="AddressInput.userInputAddressChanged()"
+                    material-select>
+                    <option value="" disabled selected>Tipo indirizzo</option>
+                    <option ng-repeat="type in AddressInput.addressTypes track by type.id" ng-value="type.id">{{type.label}}</option>
+                </select>
+            </div>
+            <p class="line-height-normal"><small><i>È possibile specificare l'indirizzo della propria abitazione o quello di un luogo esterno presso il quale effettuare l'allenamento</i></small></p>
+        </div>
+    </div>
+    <div class="col s12">
+        <div class="row">
+            <div class="col m6 s8">
+                <div input-field>
+                    <input type="text" name="via" required
+                        ng-disabled="AddressInput.disableInput"
+                        ng-model="AddressInput.via"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Via<span style="color: red;">*</span></label>
+                </div>
+            </div>
+            <div class="col m3 s4">
+                <div input-field>
+                    <input type="text" name="civico" required
+                        ng-disabled="AddressInput.disableInput"
+                        ng-model="AddressInput.numeroCivico"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Numero<span style="color: red;">*</span></label>
+                </div>
+            </div>
+            <div class="col m3 s12">
+                <div input-field>
+                    <input type="text" name="cap" required
+                        ng-disabled="AddressInput.disableInput"
+                        ng-model="AddressInput.cap"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>CAP<span style="color: red;">*</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col m6 s6">
+                <div input-field>
+                    <input type="text" name="loc" required
+                        ng-disabled="AddressInput.disableInput"
+                        ng-model="AddressInput.localita"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Località<span style="color: red;">*</span></label>
+                </div>
+            </div>
+            <div class="col m6 s6">
+                <div input-field>
+                    <input type="text" name="provincia" required
+                        ng-disabled="AddressInput.disableInput"
+                        ng-model="AddressInput.provincia"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Provincia<span style="color: red;">*</span></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-margin bottom" ng-if="AddressInput.showAddressDetails === true">
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="text" name="citofono" required
+                        ng-model="AddressInput.citofono"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Nome citofono<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="AddressInput.Form.citofono.$error"
+                    ng-show="AddressInput.Form.citofono.$dirty || AddressInput.showError">
+                    <div ng-message="required">{{ ::AddressInput.errors.form.required }}</div>
+                </div>
+            </div>
+            <div class="col m3 s6">
+                <div input-field class="with-errors">
+                    <input type="text" name="piano" required
+                        ng-model="AddressInput.piano"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Piano<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="AddressInput.Form.piano.$error"
+                    ng-show="AddressInput.Form.piano.$dirty || AddressInput.showError">
+                    <div ng-message="required">{{ ::AddressInput.errors.form.required }}</div>
+                </div>
+            </div>
+            <div class="col m3 s6">
+                <div input-field>
+                    <input type="text" name="scala"
+                        ng-model="AddressInput.scala"
+                        ng-change="AddressInput.userInputAddressChanged()">
+                    <label>Scala</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

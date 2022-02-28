@@ -1,0 +1,39 @@
+<section ng-if="Booking.state.carnet.isCarnetOrder === false && Booking.state.type !== StepConfirm.ORDERS.STANDARD_HERO">
+    <div class="row">
+        <div class="col m12 s12 center">
+            <h2>{{ StepConfirm.CONFIRM.standard[Booking.state.authorisation].title }}</h2>
+            <md-icon class="md-icon big main-orange-text" md-svg-src="{{ StepConfirm.getIconUrl(StepConfirm.CONFIRM.standard[Booking.state.authorisation].icon) }}" fill></md-icon>
+            <p ng-bind-html="StepConfirm.parseStardardOrderString(StepConfirm.CONFIRM.standard[Booking.state.authorisation].content)"></p>
+        </div>
+    </div>
+</section>
+
+<section ng-if="Booking.state.carnet.isCarnetOrder === true && Booking.state.type !== StepConfirm.ORDERS.STANDARD_CARNET">
+    <div class="row">
+        <div class="col m12 s12 center">
+            <h2>{{ StepConfirm.CONFIRM.carnet[Booking.state.authorisation].title }}</h2>
+            <md-icon class="md-icon big main-orange-text" md-svg-src="{{ StepConfirm.getIconUrl(StepConfirm.CONFIRM.carnet[Booking.state.authorisation].icon) }}" fill></md-icon>
+            <p ng-bind-html="StepConfirm.parseCarnetString(StepConfirm.CONFIRM.carnet[Booking.state.authorisation].content, Booking.carnet.carnetInfo)"></p>
+        </div>
+    </div>
+</section>
+
+<section ng-if="Booking.state.type === StepConfirm.ORDERS.STANDARD_HERO || (Booking.state.carnet.isCarnetOrder === true && Booking.state.type === StepConfirm.ORDERS.STANDARD_CARNET)">
+    <div class="row">
+        <div class="col m12 s12 center">
+            <h2>{{ StepConfirm.CONFIRM.standard[Booking.state.authorisation].title }}</h2>
+            <md-icon class="md-icon big main-orange-text" md-svg-src="{{ StepConfirm.getIconUrl(StepConfirm.CONFIRM.standard[Booking.state.authorisation].icon) }}" fill></md-icon>
+            <p ng-bind-html="StepConfirm.parseStardardOrderString(StepConfirm.CONFIRM.heroSelection[Booking.state.authorisation].content)"></p>
+        </div>
+    </div>
+</section>
+
+<p class="center"
+    ng-if="Booking.state.userInfo.isLogged === false"
+    ng-bind-html="StepConfirm.CONFIRM.userNotLogged">
+</p>
+
+<service-tips
+    ng-if="Booking.state.authorisation === 'AUTHORISED' || (Booking.state.paymentMethod === 'bankTransfer_IBAN' && Booking.state.authorisation === 'PENDING')"
+    service-step="Booking.state.steps.service">
+</service-tips>

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col s12 m6">
+        <h3 class="center"
+            ng-bind="cityMapTitle"></h3>
+        <div ng-if="mustShowGmap()">
+            <ui-gmap-google-map fill
+                center='map.center'
+                zoom='map.zoom'
+                options="map.options">
+            </ui-gmap-google-map>
+            <p class="text-center padding-top">Hai selezionato <b>{{ getGmapsSelectedZones() }} {{ getGmapsSelectedZones() == 1 ? 'zona' : 'zone' }}</b> di {{cityName}}</p>
+        </div>
+        <div ng-if="!mustShowGmap()">
+            <img class="city-static-map" ng-src="{{cityMapUrl}}">
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+        <h3 class="center" ng-bind="zonesListTitle"></h3>
+        <div class="aggiungi-zona row">
+            <div class="col s12 m8 offset-m2">
+                <select name="comune" material-select
+                    ng-model="selectedArea"
+                    ng-change="addAdminArea(selectedArea)">
+                    <option value="null" selected>Seleziona un comune</option>
+                    <option ng-repeat="option in ::adminAreaList | filter:not(isGmapZone) | orderBy:'description'"
+                        value="{{option.id}}">{{option.description}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="elenco-zone padding-top big">
+            <ul>
+                <li ng-repeat="area in adminAreaSelected | filter:isCurrentAdministrationArea | filter:not(isGmapZone)" class="center">
+                    {{ getAreaDescription(area) }} <a class="icon-button small" ng-click="removeAdminArea(area)"><span class="glyphicon glyphicon-remove"></span></a>
+                </li>
+            </ul>
+            <p ng-show="(adminAreaSelected | filter:isCurrentAdministrationArea | filter:not(isGmapZone)).length < 1" class="center">Nessuna zona selezionata.</p>
+        </div>
+    </div>
+
+</div>

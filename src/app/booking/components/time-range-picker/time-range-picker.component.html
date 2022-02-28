@@ -1,0 +1,26 @@
+<div class="row no-margin bottom">
+    <div class="col s6">
+        <h4 class="center uppercase">inizio</h4>
+        <uib-timepicker class="timepicker"
+            ng-model="TimeRangePicker.start"
+            ng-change="TimeRangePicker.changedTime(true)"
+            hour-step="1"
+            minute-step="30"
+            show-meridian="false"
+            readonly-input="true"
+            mousewheel="false">
+        </uib-timepicker>
+    </div>
+    <div class="col s6">
+        <h4 class="center uppercase">fine</h4>
+        <uib-timepicker class="timepicker"
+            ng-model="TimeRangePicker.end"
+            ng-change="TimeRangePicker.changedTime(false)"
+            hour-step="1"
+            minute-step="30"
+            show-meridian="false"
+            readonly-input="true"
+            mousewheel="false">
+        </uib-timepicker>
+    </div>
+</div>

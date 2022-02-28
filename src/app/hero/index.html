@@ -1,0 +1,62 @@
+<div class="calendars-wrapper" ng-controller="CalendarAppoinmentsCtrl as ctrlCals" ng-class="ctrl.isLoading ? 'loading' : ''">
+
+    <div class="calendar-switch">
+        <div class="row no-margin all">
+
+            <div class="col s6 m4 switch-toolbar">
+                <div class="switch calendar-switch">
+                    <label>
+                        <input type="checkbox" ng-model="ctrl.showCalAvailability" ng-change="ctrl.changeCal()">
+                        <span class="lever"></span>
+                        <span class="inline-block center toggle-label">Modifica<br>disponibilità</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col s6 offset-s6 m4 switch-toolbar hide-md hide-lg">
+                <!--
+                <div class="switch new-avail right-align">
+                    <availability-input-trigger disabled="!ctrl.showCalAvailability" />
+                </div>
+                -->
+                <div class="avail-hours-blocks">
+                    <div class="avail-block inline-block" ng-click="ctrl.setHoursSpan(2)" ng-class="{ active: ctrl.selectedHoursSpan === 2 }">2h</div>
+                    <div class="avail-block inline-block" ng-click="ctrl.setHoursSpan(4)" ng-class="{ active: ctrl.selectedHoursSpan === 4 }">4h</div>
+                    <div class="avail-block inline-block" ng-click="ctrl.setHoursSpan(10)" ng-class="{ active: ctrl.selectedHoursSpan === 10 }">10h</div>
+                </div>
+            </div>
+
+            <div class="col s12 m4 offset-m4 cal-control right-align">
+                <a class="icon-button prev-button" ng-click="calPrev()">
+                    <md-icon class="icon" md-svg-src="assets/icons/left-arrow.svg" alt="Precedente"></md-icon>
+                </a>
+                <a class="icon-button" ng-click="calNext()">
+                    <md-icon class="icon" md-svg-src="assets/icons/right-arrow.svg" alt="Successivo"></md-icon>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cal-reserved cal" ng-class="!ctrl.showCalAvailability ? 'front' : ''">
+        <div id="calReserved"></div>
+        <!-- <div ng-model="eventSourcesRes"
+        calendar="calReserved"
+        ui-calendar="calendarConfig.calendarRes"></div> -->
+    </div>
+    <div class="cal-availability cal" ng-class="ctrl.showCalAvailability ? 'front' : ''">
+        <div id="calAvailability"></div>
+        <!-- <div ng-model="eventSourcesAvail"
+        calendar="calAvailability"
+        ui-calendar="calendarConfig.calendarAvail"></div> -->
+    </div>
+    <div class="row">
+        <p class="center"><i>Colf: la fascia oraria notturna (21.00 - 07.00) prevede una tariffa per il cliente maggiorata del 20%<br><br>
+            Baby Sitter: la fascia oraria notturna (00.00 - 07.00) prevede una tariffa per il cliente maggiorata del 20%</i></p>
+        </div>
+
+        <calendar-loader ng-class="!ctrl.isLoading ? 'hidden' : ''"  class="padding-top text-center">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </calendar-loader>
+    </div>
+    <div id="popup"></div>

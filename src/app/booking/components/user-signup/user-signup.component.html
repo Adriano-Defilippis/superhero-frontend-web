@@ -1,0 +1,131 @@
+<div class="row" ng-form name="UserSignup.Form">
+    <div class="col s12 m8">
+        <div class="row">
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="text" name="firstName" required minlength="3"
+                        ng-model-options="{ allowInvalid: true }"
+                        ng-change="UserSignup.userChanged()"
+                        ng-model="UserSignup.firstName"
+                        ng-pattern="UserSignup.patterns.firstName">
+                    <label>Nome<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="UserSignup.Form.firstName.$error" ng-show="UserSignup.Form.firstName.$dirty || UserSignup.showError">
+                    <div ng-message="required">{{ ::UserSignup.errors.form.required }}</div>
+                    <div ng-message="minlength">{{ ::UserSignup.errors.form.minlength.firstName }}</div>
+                    <div ng-message="pattern">{{ ::UserSignup.errors.form.patterns.firstName }}</div>
+                </div>
+            </div>
+
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="text" name="lastName" required minlength="3"
+                        ng-model-options="{ allowInvalid: true }"
+                        ng-change="UserSignup.userChanged()"
+                        ng-model="UserSignup.lastName"
+                        ng-pattern="UserSignup.patterns.lastName">
+                    <label>Cognome<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="UserSignup.Form.lastName.$error" ng-show="UserSignup.Form.lastName.$dirty || UserSignup.showError">
+                    <div ng-message="required">{{ ::UserSignup.errors.form.required}}</div>
+                    <div ng-message="minlength">{{ ::UserSignup.errors.form.minlength.lastName}}</div>
+                    <div ng-message="pattern">{{ ::UserSignup.errors.form.patterns.lastName}}</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="text" name="taxCode" class="uppercase" required minlength="16" ng-maxlength="16"
+                        ng-model-options="{ allowInvalid: true }"
+                        ng-change="UserSignup.userChanged()"
+                        ng-model="UserSignup.taxCode"
+                        ng-pattern="UserSignup.patterns.taxCode">
+                    <label>Codice fiscale<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="UserSignup.Form.taxCode.$error" ng-show="UserSignup.Form.taxCode.$dirty || UserSignup.showError">
+                    <div ng-message="required">{{ ::UserSignup.errors.form.required}}</div>
+                    <div ng-message="minlength">{{ ::UserSignup.errors.form.minlength.taxCode}}</div>
+                    <div ng-message="pattern">{{ ::UserSignup.errors.form.patterns.taxCode}}</div>
+                </div>
+            </div>
+
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="text" name="mobileNumber" required minlength="3"
+                        ng-model-options="{ allowInvalid: true }"
+                        ng-change="UserSignup.userChanged()"
+                        ng-model="UserSignup.mobileNumber"
+                        ng-pattern="UserSignup.patterns.mobileNumber">
+                    <label>Cellulare<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="UserSignup.Form.mobileNumber.$error" ng-show="UserSignup.Form.mobileNumber.$dirty || UserSignup.showError">
+                    <div ng-message="required">{{ ::UserSignup.errors.form.required}}</div>
+                    <div ng-message="minlength">{{ ::UserSignup.errors.form.minlength.mobileNumber}}</div>
+                    <div ng-message="pattern">{{ ::UserSignup.errors.form.patterns.mobileNumber}}</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="email" name="email" required minlength="3"
+                        ng-model-options="{ allowInvalid: true }"
+                        ng-change="UserSignup.userChanged()"
+                        ng-model="UserSignup.email"
+                        ng-pattern="UserSignup.patterns.email">
+                    <label>Email<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="UserSignup.Form.email.$error" ng-show="UserSignup.Form.email.$dirty || UserSignup.showError">
+                    <div ng-message="required">{{ ::UserSignup.errors.form.required}}</div>
+                    <div ng-message="minlength">{{ ::UserSignup.errors.form.minlength.email}}</div>
+                    <div ng-message="pattern">{{ ::UserSignup.errors.form.patterns.email}}</div>
+                </div>
+            </div>
+            <div class="col m6 s12">
+                <div input-field class="with-errors">
+                    <input type="email" name="confirmEmail" required minlength="3"
+                        ng-model-options="{ allowInvalid: true }"
+                        ng-change="UserSignup.userChanged()"
+                        ng-model="UserSignup.confirmEmail"
+                        ng-pattern="UserSignup.patterns.email">
+                    <label>Conferma Email<span style="color: red;">*</span></label>
+                </div>
+                <div ng-messages="UserSignup.Form.confirmEmail.$error" ng-show="UserSignup.Form.confirmEmail.$dirty || UserSignup.showError">
+                    <div ng-message="required">{{ ::UserSignup.errors.form.required}}</div>
+                    <div ng-message="minlength">{{ ::UserSignup.errors.form.minlength.email}}</div>
+                    <div ng-message="pattern">{{ ::UserSignup.errors.form.patterns.email}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col m4 s12">
+        <div class="img-uploader center">
+            <label class="big margin-small">Foto</label>
+
+            <div class="cropArea square"
+                ng-show="UserSignup.imgUploaderInstance.queue.length < 1"
+                ng-style="{ 'background-image': 'url(\''+ UserSignup.placeHolder +'\')' }">
+                <input type="file"
+                    nv-file-select
+                    uploader="UserSignup.imgUploaderInstance">
+                </input>
+            </div>
+            <div fill ng-repeat="item in UserSignup.imgUploaderInstance.queue">
+                <div class="cropArea square">
+                    <img-crop image="item.image"
+                        result-image="item.croppedImage">
+                    </img-crop>
+                </div>
+            </div>
+            <p class="center" ng-show="UserSignup.imgUploaderInstance.queue.length < 1">Puoi caricare solo file in formato .jpg, .png e .gif</p>
+            <div class="cropArea change-picture" ng-show="UserSignup.imgUploaderInstance.queue.length > 0">
+                <input type="file" nv-file-select uploader="UserSignup.imgUploaderInstance" />
+            </div>
+        </div>
+    </div>
+</div>

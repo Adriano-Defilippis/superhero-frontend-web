@@ -1,0 +1,16 @@
+<h3 class="center">Cambia prezzo</h3>
+<div class="section center">
+  <p>Inserisci il prezzo di seguito per modificare il costo di questo appuntamento.<br>Prezzo attuale: {{ctrl.originalPrice}}&euro;</p>
+  <br>
+  <div class="row">
+    <div class="col s12 m4 offset-m4">
+      <div input-field class="with-errors change-price">
+        <input type="text" name="price" required ng-model="ctrl.newPrice" price>
+        <label>Prezzo</label>
+      </div>
+    </div>
+  </div>
+  
+  <br>
+  <a type="button" ng-click="ctrl.saveNewPrice()" class="waves-effect waves-light main-orange btn">Imposta nuovo prezzo</a>
+</div>

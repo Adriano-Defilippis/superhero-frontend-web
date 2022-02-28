@@ -1,0 +1,25 @@
+<div class="row no-margin bottom">
+  <div class="col s12 center">
+    <div class="no-padding-sm user-top-bar" ng-include="'app/contact-center/hero-dettaglio-small.html'"></div>
+  </div>
+</div>
+<div class="row no-margin bottom">
+  <div class="col l8 m12 s12 white">
+    <div class="padding-small " ui-view auto-fill-height>
+
+    </div>
+  </div>
+  <div class="col l4 m12 s12">
+    <div class=" no-padding-sm" ng-include="'app/hero/sidebar.html'" ng-controller="HeroSidebarCtrl as sideCtrl"></div>
+    <hero-notes
+        note="{{ctrl.heroInfo.noteContactCenter}}"
+        note-type="noteContactCenter"
+        label="Note Contact Center">
+    </hero-notes>
+    <hero-notes
+        note="{{ctrl.heroInfo.noteRecruiter}}"
+        note-type="noteRecruiter"
+        label="Note Recruiter">
+    </hero-notes>
+  </div>
+</div>

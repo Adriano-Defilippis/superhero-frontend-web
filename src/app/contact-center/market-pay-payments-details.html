@@ -1,0 +1,21 @@
+<h3 class="title-page center no-margin bottom">{{payments && payments.length ? payments[0].shopperEmail : ''}}</h3>
+<table st-table="payments" class="table table-recruiter">
+    <thead>
+        <tr>
+            <th st-sort="dataCreazione">Data</th>
+            <th st-sort="appuntamentoId">ID appuntamento</th>
+            <th st-sort="amount">Importo</th>
+            <th>Dettagli</br>appuntamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="row in payments">
+            <td ng-bind-html="row.dataCreazioneLabel"></td>
+            <td>{{row.appuntamentoId}}</td>
+            <td>{{row.amountLabel}}&euro;</td>
+            <td>
+                <a class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: row.appuntamentoId })"><i class="mdi-action-visibility grey-text text-darken-3" title="Visualizza"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

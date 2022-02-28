@@ -1,0 +1,36 @@
+<div class="row no-margin bottom">
+  <div class="header-static-pages-wrapper" relative>
+    <div style="background-image: url('{{ctrl.headerImage}}')" title="carnet - ilmiosupereroe" alt="carnet - ilmiosupereroe" class="static-page-header static-page-header-top" fill>
+    </div>
+    <div valign-wrapper fill class="static-page-title-wrapper">
+      <h1 class="uppercase center shout-static-pages" valign>Standard di qualità e sicurezza</h1>
+    </div>
+    <div class="dark-overlay dark-overlay-static-pages" fill>
+    </div>
+  </div>
+</div>
+<div class="container" autoscroll>
+  <div class="row no-margin bottom">
+    <div class="col s12 white" auto-fill-height>
+      <div class="padding-small">
+        <div class="row">
+          <p class="service-subtitle center" ng-bind="ctrl.model.qualityBoxText"></p>
+          <div class="col s12 m4" ng-repeat="singleQuality in ctrl.model.qualityBoxList">
+            <div class="section">
+              <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleQuality.icon }}" fill></md-icon>
+              <h4 class="main-orange-text center" ng-bind="singleQuality.title"></h4>
+              <p class="center" ng-bind="singleQuality.description"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m12 center">
+            <div class="section">
+              <a class="waves-effect waves-light main-orange btn" ui-sref="booking.service">Prenota il tuo servizio</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

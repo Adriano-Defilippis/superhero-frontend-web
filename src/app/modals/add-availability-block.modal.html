@@ -1,0 +1,38 @@
+<div id="add-avail-block">
+    <div class="modal-content">
+        <h4 class="no-margin top center">{{ctrl.title}}</h4>
+        <p class="error center" ng-if="ctrl.error">{{ctrl.error}}</p>
+        <div class="row no-margin all">
+            <div class="col s6">
+                <h5 class="uppercase center no-margin all">Inizio</h5>
+                <uib-timepicker class="timepicker timepicker-modal"
+                    ng-model="ctrl.timePickerStart"
+                    ng-change="ctrl.constrainPickers('start')"
+                    hour-step="1"
+                    minute-step="30"
+                    show-meridian="false"
+                    readonly-input="true"
+                    mousewheel="false"></uib-timepicker>
+            </div>
+            <div class="col s6">
+                <h5 class="uppercase center no-margin all">Fine</h5>
+                <uib-timepicker class="timepicker timepicker-modal"
+                    ng-model="ctrl.timePickerEnd"
+                    ng-change="ctrl.constrainPickers('end')"
+                    hour-step="1"
+                    minute-step="30"
+                    show-meridian="false"
+                    readonly-input="true"
+                    mousewheel="false"></uib-timepicker>
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin all">
+        <div class="col s8 offset-s2">
+            <p class="center no-margin bottom">
+                <a type="button" ng-click="ctrl.confirm()" full-width class="margin-bottom-small waves-effect waves-main-orange white btn btn-small btn-flat">{{ctrl.button}}</a>
+            </p>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,22 @@
+<h1 class="center-align">Storico per questo carnet</h1>
+<table st-table="rowCollection" class="table striped bordered table-recruiter responsive-table">
+	<thead>
+    <tr>
+      <th>Data inizio</th>
+			<th>Data Fine</th>
+      <th>Durata ore</th>
+    </tr>
+	</thead>
+	<tbody>
+    <tr ng-repeat="row in prenotazioni | orderBy:'dataInizio':true">
+      <td ng-bind-html="row.dataInizio | date: 'dd/MM/yyyy - HH:mm'"></td>
+      <td ng-bind-html="row.dataFine | date: 'dd/MM/yyyy - HH:mm'"></td>
+			<td ng-bind-html="::row.durataMinuti/60"></td>
+    </tr>
+    <tr ng-if="prenotazioni.length < 1">
+      <td colspan="3">
+        <p class="center"><i>Spiacenti, non hai ancora utilizzato questo carnet</i></p>
+      </td>
+    </tr>
+	</tbody>
+</table>

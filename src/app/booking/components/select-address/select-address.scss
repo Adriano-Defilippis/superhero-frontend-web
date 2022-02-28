@@ -1,0 +1,8 @@
+.address-icon span {
+    font-size: 30px;
+}
+
+.indirizzo-card {
+    > * { vertical-align: middle; }
+    .address-icon { width: 50px }
+}

@@ -1,0 +1,82 @@
+<page-image-header image="{{::ctrl.headerImage}}" title="Regala una gift card"  overlay="false"></page-image-header>
+
+<div class="container with-padding" autoscroll auto-fill-height>
+  <div class="row">
+    <div class="col s12">
+      <div class="padding-small">
+        <div class="row">
+          <div class="col s12 m12">
+            <h1 class="center no-margin bottom">REGALA UN SUPEREROE</h1>
+            <p class="subtitle center">
+            Acquistando le <b>Gift Card de ilmioSupereroe.it</b>, puoi regalare tempo e relax ad amici e parenti, fornendogli un aiuto concreto tutte le volte in cui ne hanno bisogno.</p>
+          </div>
+        </div>
+        <div class="section">
+            <section class="boxed white">
+                <div class="row">
+                    <div class="col s12">
+                        <h1 class="uppercase center">Le nostre Gift Card  {{ctrl.isMobile}}</h1>
+                        <p class="subtitle center">Le <b>Gift Card de ilmioSupereroe.it</b> Ti consentono di regalare a chi vuoi un Voucher di ore prepagate tra i seguenti servizi:</p>
+                        <div class="margin-top">
+                            <div class="row">
+                                <div class="input-field col s12 m4 offset-m4
+                                    no-margin top">
+                                    <service-input-autocomplete
+                                      placeholder="Sto cercando.."
+                                      always-open="false"
+                                      disabled="ctrl.disabledServices"
+                                      selected="ctrl.selectedService"
+                                      selected-sub-service="ctrl.selectedSubService"
+                                      on-service-selected="ctrl.selectService(serviceId)"
+                                      on-sub-service-selected="ctrl.selectSubService(parentServiceId, subServiceId)">
+                                    </service-input-autocomplete>
+                                </div>
+                            </div>
+
+                            <gift-card-prices-service
+                                ng-if="ctrl.info[ctrl.selectedServiceForInfo]"
+                                info="ctrl.info[ctrl.selectedServiceForInfo]">
+                            </gift-card-prices-service>
+                        </div>
+
+                        <p class="subtitle center">Il codice Voucher potrà essere utilizzato <b>entro 1 anno dalla data di acquisto</b>. I servizi de ilmioSupereroe.it sono attivi sulle seguenti piazze: Milano, Torino, Monza/Brianza, Varese e relative province.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="subtitle center main-orange-text">
+                            <b>Vuoi acquistare delle Gift Card o semplicemente saperne di più?<br>
+                            Contattaci allo 02 86882279<br>
+                            dalle 9.00 alle 18.00 dal lunedì al venerdì</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="center">
+                            <a target="_blank" ng-href="{{ctrl.condizioniUtilizzoGiftCard}}">Termini e condizioni di utilizzo Gift Card</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+          <div class="col m12">
+            <v-accordion class="vAccordion--default">
+              <v-pane ng-repeat="pane in ctrl.model.panes">
+                <v-pane-header>
+                  <h2 class="faq-title left-align">{{ pane.header }}</h2>
+                </v-pane-header>
+                <v-pane-content>
+                  <div ng-bind-html="pane.content">
+                  </div>
+                </v-pane-content>
+              </v-pane>
+            </v-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

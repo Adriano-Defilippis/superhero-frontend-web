@@ -1,0 +1,18 @@
+<h3 class="center">Cambia inizio/fino dell'appuntamento</h3>
+<div class="section center">
+  <p>Seleziona un nuovo inizio e fine per l'appuntamento quindi premi il pulsante per salvare le modifiche.</p>
+  <div class="row">
+    <div class="col s12 m4 offset-m1">
+      <div date-picker="ctrl.newStart" auto-close="true" view="minutes" required></div>
+    </div>
+    <div class="col s12 m4 offset-m2">
+      <div date-picker="ctrl.newEnd" auto-close="true" view="minutes" required></div>
+    </div>
+  </div>
+  <h4 class="">Nuovi inizio e fine</h4>
+  <p>
+  {{ ctrl.oldStart | date : 'dd/MM/yy - HH:mm' }}&nbsp;->&nbsp;{{ ctrl.newStart | date : 'dd/MM/yy - HH:mm' }}<br>{{ ctrl.oldEnd | date : 'dd/MM/yy - HH:mm' }}&nbsp;->&nbsp;{{ ctrl.newEnd | date : 'dd/MM/yy - HH:mm' }}
+  <br><br>
+  </p>
+  <a type="button" ng-click="ctrl.hasChanged() ? ctrl.saveNewStartEnd() : null" class="{{ ctrl.hasChanged() ? 'waves-effect waves-light main-orange' : 'disabled' }} btn btn-small">Imposta nuovo inizio/fine</a>
+</div>

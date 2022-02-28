@@ -1,0 +1,237 @@
+<div class="manual" ng-if="ctrl.isManualAppointment()">
+    <div class="warning with-padding-small rounded red lighten-3">
+        <p>Attenzione! L'appuntamento deve essere gestito manualmente poichè non è presente alcun supereroe disponibile per l'orario richiesto originariamente.</p>
+    </div>
+</div>
+<h2 class="center no-margin bottom">Dettagli appuntamento</h2>
+<h5 class="center no-margin top">{{ctrl.appointment.id}}</h5>
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card white lighten-2">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-3">{{ctrl.appointment.labels.servizio}}</span>
+                <p class="with-margin">
+                    <b>Cod. Ordine:</b>&nbsp;<a class="default-text" ui-sref="main.support.edit-order({idOrder: ctrl.appointment.ordine.id})">{{ctrl.appointment.ordine.id}}</a><br>
+                    <b>Tipologia:</b>&nbsp;{{ctrl.appointment.labels.tipologia}}<br>
+                    <span ng-if="ctrl.appointment.labels.carnet"><b>Tipologia Carnet:</b>&nbsp;{{ctrl.appointment.labels.carnet}}<br></span>
+                    <b>Stato:</b>&nbsp;{{ctrl.appointment.labels.stato}}<br>
+                    <b>Ultima modifica:</b>&nbsp;{{ctrl.appointment.dataUltimaModifica | dataOraSecondi}}<br>
+                    <b>Ind. Prestazione:</b>&nbsp;{{ctrl.appointment.labels.indirizzoPrestazione}}
+                </p>
+                <div class="row no-margin bottom">
+                    <div class="col s6">
+                        <p>
+                            <b>Prenotato il:</b>&nbsp;<span ng-bind-html="ctrl.appointment.dataPrenotazione | dataOraSecondi"></span><br>
+                            <b>Durata:</b>&nbsp;{{(ctrl.appointment.dataFine - ctrl.appointment.dataInizio)/1000/60/60}}H
+                        </p>
+                    </div>
+                    <div class="col s6">
+                        <p>
+                            <b>Inizio:</b>&nbsp;<span ng-bind-html="ctrl.appointment.dataInizio | dataOra"></span><br>
+                            <b>Fine:</b>&nbsp;<span ng-bind-html="ctrl.appointment.dataFine | dataOra"></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-action" ng-if="ctrl.appointment.showVoucher">
+                <span class="card-title grey-text text-darken-3">Voucher</span>
+                <p>
+                    <b>Codice utilizzato:</b>&nbsp;{{ctrl.appointment.labels.codiceVoucher}}<br>
+                    <b>Tipo voucher:</b>&nbsp;{{ctrl.appointment.labels.tipoVoucher}}<br>
+                    <b>Canale:</b>&nbsp;{{ctrl.appointment.labels.canaleVoucher}}<br>
+                    <b>Validità:</b>&nbsp;{{ctrl.appointment.labels.validitaVoucher.inizio}} -> {{ctrl.appointment.labels.validitaVoucher.fine}}<br>
+                    <b>Tipo sconto:</b>&nbsp;{{ctrl.appointment.labels.tipoScontoVoucher}} {{ctrl.appointment.labels.tipoScontoVoucherDetail}}<br>
+                </p>
+            </div>
+            <div class="card-action">
+                <span class="card-title grey-text text-darken-3">Importo Fattura:&nbsp;{{ctrl.appointment.labels.importoFattura}}</span>
+                <p>
+                    <b>Prezzo Originale:</b>&nbsp;{{ctrl.appointment.costoPrestazione}}&euro;<br>
+                    <span ng-if="ctrl.appointment.labels.importoSconto > 0"><b>Prezzo scontato:</b>&nbsp;{{ctrl.appointment.costoPrestazioneScontata|number:2}}&euro;<br></span>
+                    <span ng-if="ctrl.appointment.labels.importoSconto > 0"><b>Importo sconto:</b>&nbsp;{{ctrl.appointment.labels.importoSconto|number:2}}&euro;<br></span>
+                    <span ng-if="ctrl.appointment.labels.penaleCanc"><b>Penale cancellazione:</b>&nbsp;{{ctrl.appointment.labels.penaleCanc|number:2}}&euro;<br></span>
+                    <span ng-if="ctrl.appointment.labels.penaleMod"><b>Penale modifica:</b>&nbsp;{{ctrl.appointment.labels.penaleMod|number:2}}&euro;<br></span>
+                </p>
+            </div>
+            <!--
+            <div class="card-action">
+                <a class="btn btn-small waves-effect grey grey-text text-darken-2 lighten-4" ng-click="ctrl.changeStartEnd()">Cambia Inizio/Fine</a>
+                <a class="btn btn-small waves-effect grey grey-text text-darken-2 lighten-4" ng-click="ctrl.changeTimeSlot()">Cambia fascia oraria</a>
+                <a class="btn btn-small waves-effect grey grey-text text-darken-2 lighten-4" ng-click="ctrl.changePrice()">Cambia Prezzo</a>
+            </div>
+            -->
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-3">Dettagli appuntamento</span>
+                <p class="with-margin no-margin bottom">
+                    <b>Tipologia servizio:</b>&nbsp;{{ctrl.appointment.labels.servizio}}<br>
+                    <span ng-if="ctrl.appointment.labels.sottoCompetenze.length > 0"><b>Sotto competenze:</b>
+                        <i ng-repeat="app in ctrl.appointment.labels.sottoCompetenze">{{app}}{{$last ? '' : ', '}}</i>
+                        <br>
+                    </span>
+                    <span class="inline" ng-if="ctrl.appointment.labels.dettaglioServizio" ng-bind-html="ctrl.appointment.labels.dettaglioServizio"></span>
+                </p>
+            </div>
+        </div>
+        <div class="card" ng-if="ctrl.appointment.fatture.length > 0">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-3">Fatture</span>
+                <p class="with-margin no-margin bottom">
+                    <span ng-repeat="fattura in ctrl.appointment.fatture | orderBy:ctrl.orderBilling | orderBy:'codiceFattura'">
+                        <a ui-sref="billing({idFattura:fattura.id})">Fattura {{fattura.tipoFattura}}</a>
+                        <br>
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6">
+        <div class="card-panel">
+            <div class="width-45 center-sm right">
+                <a ui-sref="main.support.clienti-dettaglio({id: ctrl.appointment.cliente.id})">
+                    <div class="profile-pic my-heroes-pic" fill style="background-image:url({{ctrl.appointment.cliente.photoUrl}})"></div>
+                </a>
+            </div>
+            <h5 class="no-margin all center">Cliente<br>{{ctrl.appointment.cliente.id}}</h5>
+            <p>
+                <b>Nome:</b>&nbsp;{{ctrl.appointment.cliente.nomeCompleto}}<br>
+                <b>C. Fiscale:</b>&nbsp;{{ctrl.appointment.cliente.codiceFiscale}}<br>
+                <b>Cellulare:</b>&nbsp;{{ctrl.appointment.cliente.cellulare}}<br>
+                <b>Email:</b>&nbsp;{{ctrl.appointment.cliente.email}}<br>
+                <b>Ind. Fatturazione:</b>&nbsp;{{ctrl.appointment.labels.indirizzoFatturazione}}<br>
+            </p>
+        </div>
+        <div class="card" ng-if="ctrl.appointment.hasHero">
+            <div class="card-content">
+                <div class="width-45 center-sm right">
+                    <a ui-sref="main.support.eroe-dettaglio({id: ctrl.appointment.superHero.id})">
+                        <div class="profile-pic my-heroes-pic" fill style="background-image:url({{ctrl.appointment.superHero.photoUrl}})"></div>
+                    </a>
+                </div>
+                <h5 class="no-margin all center">Supereroe<br>{{ctrl.appointment.superHero.id}}</h5>
+                <p class="with-margin">
+                    <b>Nome:</b>&nbsp;{{ctrl.appointment.superHero.nomeCompleto}}<br>
+                    <b>C. Fiscale:</b>&nbsp;{{ctrl.appointment.superHero.codiceFiscale}}<br>
+                    <b>Email:</b>&nbsp;{{ctrl.appointment.superHero.email}}<br>
+                    <b>Residenza:</b>&nbsp;{{ctrl.appointment.labels.indirizzoSuperHero}}<br>
+                    <b>IBAN:</b>&nbsp;{{ctrl.appointment.superHero.codiceIban}}<br>
+                    <b>P.IVA:</b>&nbsp;{{ctrl.appointment.superHero.partitaIvaNumero}}&nbsp;({{ctrl.appointment.superHero.partitaIvaTipo}})<br>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s12" ng-if="ctrl.appointment.stato == 'Aperto'">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-3">Programmazione Richieste Appuntamento e SMS</span>
+                <hero-sms-plan ng-if="ctrl.smsData.length > 0" sms-data="ctrl.smsData"></hero-sms-plan>
+                <p class="center with-padding-small" ng-if="ctrl.smsData.length < 1"><i>Nessuna richiesta di appuntamento inviata o in programma</i></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <h2 class="center no-margin bottom">Modifica appuntamento</h2>
+        <div class="card white lighten-2">
+            <div class="card-content">
+                <span class="card-title grey-text text-darken-3">Modifica</span>
+            </div>
+            <!-- PRICE -->
+            <div class="card-action">
+                <div class="row">
+                    <div class="col s4">
+                        <p>Inserisci il prezzo di seguito per modificare il costo di questo appuntamento.</p>
+                        <input type="checkbox" name="isEditingPrice" id="isEditingPrice" ng-model="ctrl.isEditingPrice">
+                        <label for="isEditingPrice">Modifica il prezzo</label>
+                        <h4 class="center">Nuovi Prezzo</h4>
+                        <p class="center" ng-if="ctrl.isEditingPrice">
+                            {{ctrl.editPrice.originalPrice}}&euro;&nbsp;<b>-></b>&nbsp;{{ctrl.editPrice.newPrice}}&euro;
+                        </p>
+                        <p ng-if="!ctrl.isEditingPrice" class="center">
+                            <i>Il prezzo è bloccato</i>
+                        </p>
+                    </div>
+                    <div class="col s8">
+                        <div input-field class="change-price">
+                            <input ng-disabled="!ctrl.isEditingPrice" type="text" name="price" required ng-model="ctrl.editPrice.newPrice" price>
+                            <label>Prezzo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- START/END -->
+            <div class="card-action datepicker-contactcenter">
+                <div class="row">
+                    <div class="col s4">
+                        <p>Seleziona un nuovo inizio e fine per l'appuntamento.</p>
+                        <h4 class="center">Nuovi inizio e fine</h4>
+                        <p class="center">
+                            inizio:&nbsp;{{ ctrl.editTime.oldStart | date : 'dd/MM/yy - HH:mm' }}&nbsp;<b>-></b>&nbsp;{{ ctrl.editTime.newStart | date : 'dd/MM/yy - HH:mm' }}<br>fine:&nbsp;{{ ctrl.editTime.oldEnd | date : 'dd/MM/yy - HH:mm' }}&nbsp;<b>-></b>&nbsp;{{ ctrl.editTime.newEnd | date : 'dd/MM/yy - HH:mm' }}
+                        </p>
+                    </div>
+                    <div class="col s8">
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div date-picker="ctrl.editTime.newStart" auto-close="true" view="minutes" required></div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div date-picker="ctrl.editTime.newEnd" auto-close="true" view="minutes" required></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHANGE HERO -->
+            <div class="card-action"  ng-if="!ctrl.disableChangeHero()">
+                <div class="row">
+                    <div class="col s4">
+                        <p>Seleziona un nuovo collaboratore per l'appuntamento.</p>
+                        <h4 class="center">Nuovo eroe</h4>
+                        <p class="center" ng-if="ctrl.newHeroSelected">
+                            <span class="center inline-block" ng-if="ctrl.appointment.hasHero">
+                                <span class="profile-pic my-heroes-pic no-margin all" fill style="background-image:url({{ctrl.appointment.superHeroPhotoUrl}})"></span>
+                                <span class="no-margin all block">{{ctrl.appointment.superHeroNomeCompleto}}</span>
+                            </span>
+                            <span class="center inline-block" ng-if="ctrl.appointment.hasHero">&nbsp;<b>-></b>&nbsp;</span>
+                            <span class="center inline-block">
+                                <span class="profile-pic my-heroes-pic no-margin all" fill style="background-image:url({{ctrl.newHeroSelected.photoUrl}})"></span>
+                                <span class="no-margin all block">{{ctrl.newHeroSelected.nomeCompleto}}</span>
+                            </span><br>
+                            <i ng-click="ctrl.resetHeroSelection()">(annulla selezione)</i>
+                        </p>
+                        <p class="center" ng-if="!ctrl.newHeroSelected">Seleziona un eroe dall'elenco
+                        </p>
+                    </div>
+                    <div class="col s8">
+                        <ul class="change-hero-list">
+                            <li ng-repeat="hero in ctrl.heroesResults" ng-click="ctrl.selectHero(hero)">
+                                <div class="picture center width-60 inline-block">
+                                    <div class="profile-pic" style="background-image: url('{{hero.photoUrl}}')"><i class="glyphicon glyphicon-ok" ng-show="hero.selected"></i></div>
+                                </div>
+                                <p class="inline-block">{{hero.nome + ' ' + hero.cognome}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CHANGE HERO DISABLED -->
+            <div class="card-action" ng-if="ctrl.disableChangeHero()">
+                <p class="no-margin all"><i>Non è possibile modificare l'eroe di un appuntamento già passato o su base Carnet</i></p>
+            </div>
+
+
+            <div class="card-action">
+                <a class="btn btn-small {{ctrl.disableSaveChanges() ? 'disabled grey-text' : 'waves-effect grey grey-text text-darken-2 lighten-4'}}" ng-click="ctrl.disableSaveChanges() ? null : ctrl.saveChanges()">Salva le modifiche</a>
+                <a class="right btn btn-small {{ ctrl.disableDelete() ? 'disabled grey-text' : 'waves-effect red white-text text-darken-2 lighten-1'}}" ng-click="ctrl.disableDelete() ? null : ctrl.deleteAppointment()" tooltip-html="ctrl.disableDelete() ? 'L\'appuntamento è già in stato Cancellato' : ''">Cancella appuntamento</a>
+            </div>
+        </div>
+    </div>
+</div>

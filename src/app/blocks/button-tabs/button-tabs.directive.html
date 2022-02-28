@@ -1,0 +1,8 @@
+<span ng-repeat="button in buttons">
+    <a class="waves-effect waves-light btn-flat btn btn-small"
+        ng-class="{'main-orange white-text' : button.isActive, 'white' : !button.isActive}"
+        ui-sref="{{button.state}}({{button.params}})"
+        ui-sref-opts="{reload: true}">
+        {{button.label}} ({{button.counter}})
+    </a>&nbsp;
+</span>

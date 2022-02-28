@@ -1,0 +1,75 @@
+<div ng-if="!isApp" class="page-footer page-footer-padding grey darken-3 text-white" ng-controller="FooterCtrl as ctrl">
+  <div class="container">
+    <div class="row">
+      <div class="col s6 m3 left-align margin-top-medium">
+        <img class="footer-logo" src="{{ctrl.mv.mainLogo}}" full-width>
+      </div>
+    </div>
+    <div class="row no-margin bottom">
+      <!-- footer content -->
+      <div class="col l3 m3 s12">
+        <h5 class="white-text uppercase">La società</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.about">Chi siamo</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.howItWorks">Come funziona</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.vantaggi">I vantaggi di avere un supereroe</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.standard">Standard di qualità e sicurezza</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.prices">Tariffe</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.assurance">Assicurazione</a></li>
+          <li><b><a class="grey-text text-lighten-3" ui-sref="landing.bridge">Diventa un supereroe</a></b></li>
+        </ul>
+      </div>
+      <div class="col l3 m3 s12">
+        <h5 class="white-text uppercase">Servizi</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'colf'})">Colf</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'badante'})">Badante</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'baby-sitter'})">Baby Sitter</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'personal-trainer'})">Personal Trainer</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'tuttofare'})">Tuttofare</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'fisioterapista'})">Fisioterapista/Osteopata</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.welcomeService({servizio:'stiro'})">Stiratura</a></li>
+          <li ng-if="!ctrl.isBnb"><a class="grey-text text-lighten-3" ng-click="ctrl.goToBNBPage()">Servizi BNB</a></li>
+          <br>
+          <li><a class="grey-text text-lighten-3" ui-sref="booking.herosearch">Conosci i nostri supereroi</a></li>
+          <li><a class="grey-text text-lighten-3" ui-sref="main.guest.carnet">Acquista un carnet</a></li>
+        </ul>
+      </div>
+      <div class="col l3 m3 s12">
+        <h5 class="white-text uppercase">Informazioni</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3 uppercase" ui-sref="main.guest.faq">Faq</a></li>
+          <br>
+          <li><a class="grey-text text-lighten-3" target="_blank" ng-href="{{ctrl.mv.condizioniFornitura}}">Condizioni generali di fornitura</a></li>
+          <li><a class="grey-text text-lighten-3" target="_blank" ng-href="{{ctrl.mv.condizioniUtilizzo}}">Condizioni generali di utilizzo</a></li>
+          <li><a class="grey-text text-lighten-3" target="_blank" ng-href="{{ctrl.mv.informazioniPrivacy}}">Informativa sulla privacy</a></li>
+        </ul>
+      </div>
+      <div class="col l3 m3 s12">
+        <h5 class="white-text uppercase">Contattaci</h5>
+        <ul>
+          <li class="white-text"><i class="fa fa-phone"></i>&nbsp;<a class="white-text" href="tel:+390286882279"><b>02 86882279</b></a>  &nbsp;dalle 9.00 alle 18.00 dal lunedì al venerdì</li>
+          <li class="white-text"><i class="fa fa-envelope"></i>&nbsp;<a class="white-text"href="mailto:info@ilmiosupereroe.it">info@ilmiosupereroe.it</a></li>
+          <br>
+          <li class="white-text">Ti vuoi candidare per diventare Supereroe?<br>
+            Chiamaci a questo numero: 329-5766488 (lun-ven dalle 9.00 alle 18.00)</li>
+          <br>
+          <li class="white-text"><a class="white-text" ui-sref="main.guest.contacts">Tutti i contatti</a></li>
+        </ul>
+      </div>
+      <!-- end footer content -->
+    </div>
+    <div class="row no-margin bottom">
+      <div class="col m12 s12 center">
+        <h4 class="white-text inline-block">Segui i nostri consigli da #Supereroi</h4>
+        <ul class="left-align inline-block social-footer-list">
+          <li class="inline-block white-text margin-left-small"><a href="https://www.facebook.com/ilmiosupereroe?fref=ts" target="_blank"><i class="fa fa-facebook-official fa-icons-contacts"></i></a></li>
+          <li class="inline-block white-text margin-left-small"><a href="https://twitter.com/ilmiosupereroe?lang=it" target="_blank"><i class="fa fa-twitter fa-icons-contacts"></i></a></li>
+          <li class="inline-block white-text margin-left-small"><a href="https://www.linkedin.com/company/9292372" target="_blank"><i class="fa fa-linkedin fa-icons-contacts"></i></a></li>
+          <li class="inline-block white-text margin-left-small"><a href="https://plus.google.com/100471937511631007022" target="_blank"><i class="fa fa-google-plus fa-icons-contacts"></i></a></li>
+        </ul>
+        <p class="no-margin bottom white-text center">© 2021 - Professionista 365 S.r.l |  P.IVA 02094890767 | Sede Legale: Via dell'Artigianato 1/A, 85020 - Rapone (PZ)</p>
+      </div>
+    </div>
+  </div>
+</div>

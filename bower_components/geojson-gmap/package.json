@@ -1,0 +1,26 @@
+{
+  "name": "geojson-gmap",
+  "version": "0.0.0",
+  "description": "goejson to gmap!",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chilijung/geojson-gmap.git"
+  },
+  "keywords": [
+    "geojson",
+    "gmap"
+  ],
+  "author": "chilijung <chilijung@gmail.com> (http://lijung.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chilijung/geojson-gmap/issues"
+  },
+  "homepage": "https://github.com/chilijung/geojson-gmap",
+  "devDependencies": {
+    "connect": "~2.13.0"
+  }
+}

@@ -1,0 +1,311 @@
+<page-image-header image="{{::ctrl.headerImage}}" title="Tariffe"></page-image-header>
+
+<div class="container" autoscroll>
+    <p class="subtitle center">Seleziona un servizio per visualizzare le relative tariffe</p>
+    <div class="margin-top">
+        <div class="row">
+            <div class="input-field col s12 m4 offset-m4
+                no-margin top">
+                <service-input-autocomplete
+                  placeholder="Sto cercando.."
+                  always-open="false"
+                  disabled="ctrl.disabledServices"
+                  selected="ctrl.selectedService"
+                  selected-sub-service="ctrl.selectedSubService"
+                  on-service-selected="ctrl.selectService(serviceId)"
+                  on-sub-service-selected="ctrl.selectSubService(parentServiceId, subServiceId)">
+                </service-input-autocomplete>
+            </div>
+        </div>
+
+        <pricing-service
+            ng-if="ctrl.info[ctrl.selectedServiceForInfo]"
+            info="ctrl.info[ctrl.selectedServiceForInfo]">
+        </pricing-service>
+    </div>
+
+
+
+    <!--
+    <div class="row">
+        <div class="col s12">
+            <table class="pricing-table__wrapper">
+                <thead>
+                    <tr>
+                        <td class="no-border"></td>
+                        <td>
+                            <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ ::ctrl.icons.colf }}" fill></md-icon><br>
+                            <strong class="pricing-table__service-label">Colf</strong>
+                        </td>
+                        <td>
+                            <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ ::ctrl.icons.badante }}" fill></md-icon><br>
+                            <strong class="pricing-table__service-label">Badante</strong>
+                        </td>
+                        <td>
+                            <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ ::ctrl.icons.babySitter }}" fill></md-icon><br>
+                            <strong class="pricing-table__service-label">Baby Sitter</strong>
+                        </td>
+                        <td>
+                            <md-icon class="md-icon small main-orange-text personal-trainer__icon" md-svg-src="{{ ::ctrl.icons.personalTrainer }}" fill></md-icon><br>
+                            <strong class="pricing-table__service-label">Personal Trainer</strong>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pren. Semplice</strong></td>
+                        <td>12,5 &euro;/h</td>
+                        <td>14,5 &euro;/h</td>
+                        <td>14,5 &euro;/h</td>
+                        <td>50 &euro;/h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carnet Small</strong><br><small>(20 ore, validità 2 mesi)</small></td>
+                        <td>230&euro;<br><small>(11,5 &euro;/h)</small></td>
+                        <td>270&euro;<br><small>(13,5 &euro;/h)</small></td>
+                        <td>270&euro;<br><small>(13,5 &euro;/h)</small></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carnet Medium</strong><br><small>(50 ore, validità 4 mesi)</small></td>
+                        <td>575&euro;<br><small>(11,5 &euro;/h)</small></td>
+                        <td>625&euro;<br><small>(12,5 &euro;/h)</small></td>
+                        <td>625&euro;<br><small>(12,5 &euro;/h)</small></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carnet Large</strong><br><small>(150 ore, validità 9 mesi)</small></td>
+                        <td>1575&euro;<br><small>(10,5 &euro;/h)</small></td>
+                        <td>1725&euro;<br><small>(11,5 &euro;/h)</small></td>
+                        <td>1725&euro;<br><small>(11,5 &euro;/h)</small></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Carnet XXL</strong><br><small>(160 ore, validità 3 mesi)</small></td>
+                        <td>-</td>
+                        <td>1360&euro;<br><small>(8,5 &euro;/h)</small></td>
+                        <td>1360&euro;<br><small>(8,5 &euro;/h)</small></td>
+                    </tr>
+                    <tr>
+                        <td>Maggiorazioni<br><small>(solo prenotazione semplice)</small></td>
+                        <td class="standard"><p class="small"><i>Fascia oraria 21.00 – 07.00: + 20% sulla normale tariffa</i></p></td>
+                        <td class="standard">-</td>
+                        <td class="standard">
+                            <p class="small"><i>Fascia oraria 00.00 – 07.00: + 20% sulla normale tariffa.</i></p>
+                            <p class="small"><i>Più di 1 bambino: + 10% sulla normale tariffa per ogni bambino in più</i></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="transparent"></td>
+                        <td colspan="3" class="transparent"><p class="center">Tutti i prezzi si intendono IVA inclusa, ove prevista</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    -->
+
+    <div class="row">
+        <div class="col m12 s12">
+            <v-accordion class="vAccordion--default">
+                <v-pane>
+                    <v-pane-header>
+                        <h2 class="faq-title left-align">Termini di modifica/cancellazione servizio</h2>
+                    </v-pane-header>
+                    <v-pane-content>
+                        <table class="table bordered ">
+                            <thead>
+                                <tr>
+                                    <th>Azione</th>
+                                    <th>Semplice</th>
+                                    <th>Carnet</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="left-align">Modifica a più di 24 ore dalla prenotazione</td>
+                                    <td>€ 2</td>
+                                    <td>€ 1</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-align">Cancellazione a più di 24 ore dalla prenotazione</td>
+                                    <td>€ 4</td>
+                                    <td>€ 3</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-align">Modifica a meno di 24 ore dalla prenotazione</td>
+                                    <td>Non possibile</td>
+                                    <td>Non possibile</td>
+                                </tr>
+                                <tr>
+                                    <td class="left-align">Cancellazione a meno di 24 ore dalla prenotazione</td>
+                                    <td>€ 10</td>
+                                    <td>€ 5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </v-pane-content>
+                </v-pane>
+            </v-accordion>
+        </div>
+    </div>
+</div>
+
+<!--
+<div class="container" autoscroll>
+  <div class="row no-margin bottom">
+    <div class="col s12" auto-fill-height>
+      <div class="padding-small margin-top-small">
+        <div class="row no-margin bottom">
+
+          <div class="col l12 m12 center s12" ng-repeat="priceBlock in ctrl.model.servicesBoxes">
+            <div class="padding margin-small card-panel-priceblock" valign-wrapper >
+                <div class="row">
+                  <div class="col l1 center s12 icon_price">
+                      <div class="row">
+                          <div class="col s12">
+                            <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ priceBlock.icon }}" fill></md-icon>
+                          </div>
+
+                          <div class="col s12">
+                            <h3 ng-bind="priceBlock.name" class="center uppercase"></h3>
+                          </div>
+                      </div>
+
+
+                  </div>
+
+                  <div class="col l9 s12 border-tariffe">
+                    <div class="row no-margin bottom">
+                      <div class="col l8 s12">
+                        <div class="row">
+                            <div class="col s7 m8 right-align ">
+                              <div class="section">
+                                <p class="pricing-label static">Prenotazione semplice</p>
+                              </div>
+                            </div>
+
+                            <div class="col s5 m4 prices-carnet-mob ">
+                              <div class="section">
+                                <p class="price-box-value static"><b>{{priceBlock.prices.simplePrice}} €/h</b></p>
+                              </div>
+                            </div>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col l4  s12 small-acquista">
+                        <div class="row ">
+                          <a class="waves-effect waves-light main-orange btn " ui-sref="main.search.where">Prenota</a>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="row tariffe_carnet no-margin bottom" valign-wrapper>
+                      <div class="col s12 l8 ">
+
+                          <div class="row no-margin bottom">
+
+
+                            <div class="col s12" ng-if="priceBlock.prices.carnetPrice[3]">
+                                <div class="col s7 m8 right-align">
+                                  <div class="section">
+                                    <p class="pricing-label static" tooltip-html="'{{priceBlock.prices.carnetPrice[3].tooltip_txt}}'" ng-bind="priceBlock.prices.carnetPrice[3].title"></p>
+                                  </div>
+                                </div>
+
+                                <div class="col s5 m4 prices-carnet-mob">
+                                  <div class="section">
+                                    <p class="price-box-value static"><b>{{priceBlock.prices.carnetPrice[3].carnetXXLPrice}} €/h</b></p>
+                                  </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col s12">
+                                <div class="col s7 m8 right-align">
+                                  <div class="section">
+                                     <p class="pricing-label static inline-block" tooltip-html="'{{priceBlock.prices.carnetPrice[2].tooltip_txt}}'" ng-bind="priceBlock.prices.carnetPrice[2].title"></p>
+                                  </div>
+                                </div>
+
+                                <div class="col s5 m4 prices-carnet-mob">
+                                  <div class="section">
+                                   <p class="price-box-value static"><b>{{priceBlock.prices.carnetPrice[2].carnetLargePrice}} €/h</b></p>
+                                  </div>
+                              </div>
+
+                             </div>
+
+
+
+                            <div class="col s12">
+
+                                <div class="col s7 m8 right-align">
+                                  <div class="section">
+                                    <p class="pricing-label static inline-block" tooltip-html="'{{priceBlock.prices.carnetPrice[1].tooltip_txt}}'" ng-bind="priceBlock.prices.carnetPrice[1].title"></p>
+                                  </div>
+                                </div>
+
+                                <div class="col s5 m4 prices-carnet-mob">
+                                  <div class="section">
+                                   <p class="price-box-value static"><b>{{priceBlock.prices.carnetPrice[1].carnetMediumPrice}} €/h</b></p>
+                                  </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="col s12">
+                                <div class="col s7 m8 right-align">
+                                  <div class="section">
+                                   <p class="pricing-label static inline-block" tooltip-html="'{{priceBlock.prices.carnetPrice[0].tooltip_txt}}'" ng-bind="priceBlock.prices.carnetPrice[0].title"></p>
+                                  </div>
+                                </div>
+
+                                <div class="col s5 m4 prices-carnet-mob">
+                                  <div class="section">
+                                    <p class="price-box-value static"><b>{{priceBlock.prices.carnetPrice[0].carnetSmallPrice}} €/h</b></p>
+                                  </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                      </div>
+
+
+                      <div class="col s12 l4 small-acquista ">
+                        <div class="row ">
+                          <a class="waves-effect waves-light main-orange btn  " ui-sref="main.guest.carnet({ servizio:priceBlock.prestazione })">Acquista un carnet</a>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+
+                  <div class="col l2 s12 left-align">
+                      <p class="small-text">Tutti i prezzi si intendono IVA inclusa, ove prevista</p>
+                      <p class="small-text" ng-bind-html="priceBlock.overPricingMessage"></p>
+                  </div>
+
+                </div>
+
+            </div>
+          </div>
+        </div>
+
+    -->
+
+
+        <!--
+      </div>
+    </div>
+  </div>
+</div>
+-->

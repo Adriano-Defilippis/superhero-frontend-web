@@ -1,0 +1,72 @@
+<!--
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Servizio specifico</h2>
+    </div>
+</div>
+
+<additional-services
+    services="PersonalTrainer.subServices"
+    selected="PersonalTrainer.subServiceSelected"
+    on-service-click="PersonalTrainer.onClickSubService({subServiceId: additionalServiceId})">
+</additional-services>
+-->
+
+<section ng-show="PersonalTrainer.hideGuestsInfo !== true">
+    <div class="row no-margin bottom">
+        <div class="col s12">
+            <h2 class="no-margin all">Amici</h2>
+        </div>
+    </div>
+
+    <div class="row" relative>
+        <div class="col s12 m9">
+            <p>Puoi specificare da 1 a 4 persone che parteciperanno alla lezione assieme a te per ottenere uno sconto dal 30% al 55%.</p>
+            <p class="no-margin top"><i>Attenzione: il costo della prestazione includerà quello di tutti i partecipanti.</i></p>
+        </div>
+        <div class="col s12 m3 full-height-right">
+            <div class="box-wrapper sconto-box center sqm-box" valign-wrapper fill>
+                <span ng-if="PersonalTrainer.guestsInfo.length < 1"><small>Valore dello sconto</small></span>
+                <span ng-if="PersonalTrainer.guestsInfo.length > 0" class="sqm"><small>Sconto del</small> <b class="discount">{{PersonalTrainer.discounts[PersonalTrainer.guestsInfo.length+1]}}%</b></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-repeat="(key, guest) in PersonalTrainer.guestsInfo track by $index">
+        <div class="col s12">
+            <guest-info
+                index="key"
+                nome="guest.nome"
+                cognome="guest.cognome"
+                eta="guest.eta"
+                age-options="PersonalTrainer.ageOptions"
+                on-guest-remove="PersonalTrainer.onGuestRemoved({index:index})"
+                on-guest-edit="PersonalTrainer.onGuestEdit({index:index,info:info})">
+            </guest-info>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 add-new-child" ng-show="PersonalTrainer.guestsInfo.length < 4">
+            <p class="center no-margin all">
+                <a class="btn btn-small btn-flat waves-effect waves-light white grey-text text-darken-3 btn-xsmall" ng-click="PersonalTrainer.onGuestAdded()">Aggiungi persona</a>
+            </p>
+        </div>
+    </div>
+</section
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Informazioni personali</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="PersonalTrainer.serviceNotes"
+            placeholder="Indicare le seguenti informazioni utili per il Personal Trainer: 1. propri obiettivi/esigenze specifiche; 2. condizioni atletiche (sport praticati, frequenza, ecc.); 3. eventuali attrezzi ginnici disponibili e spazio utilizzabile per l'allenamento (se domestico); 4. presenza di eventuali patologie"
+            on-change="PersonalTrainer.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

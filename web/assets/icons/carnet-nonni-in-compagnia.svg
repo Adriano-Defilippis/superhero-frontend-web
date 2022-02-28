@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="182.93861389160156" height="182.93862915039062" viewBox="136.346 163.855 182.939 182.939" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1.3333330154418945, 0, 0, 1.3333330154418945, 227.14831972122198, 254.65775632858282)" id="g32">
+    <g transform="matrix(1, 0, 0, 1, -185, -182)" id="g22">
+      <path id="path24" style="fill:none;stroke:#d67338;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" d="m 229.6941,138.3059 c 24.4079,24.4077 24.4079,63.9805 0,88.3882 -24.4077,24.4079 -63.9805,24.4079 -88.3882,0 -24.4079,-24.4077 -24.4079,-63.9805 0,-88.3882 24.4077,-24.4079 63.9805,-24.4079 88.3882,0"/>
+    </g>
+    <g transform="matrix(1, 0, 0, 1, 4.658843994140625, 1.3310999870300009)" id="g26">
+      <text id="text30" style="font-variant: normal; font-weight: bold; font-size: 18px; font-family: Helvetica; writing-mode: lr-tb; fill: rgb(214, 116, 56); fill-opacity: 1; fill-rule: nonzero; stroke: none; word-spacing: 0px;" x="-45.503" y="-4">NONNI IN</text>
+    </g>
+    <text id="text36" style="font-variant: normal; font-weight: bold; font-size: 18px; font-family: Helvetica; writing-mode: lr-tb; fill: rgb(214, 116, 56); fill-opacity: 1; fill-rule: nonzero; stroke: none; word-spacing: 0px;" x="-54.799" y="20.331" transform="matrix(1, 0, 0, 1, 2.842170943040401e-14, 0)">COMPAGNIA</text>
+  </g>
+</svg>

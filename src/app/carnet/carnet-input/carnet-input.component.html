@@ -1,0 +1,16 @@
+<div class="carnet-input">
+    <div class="select"
+        ng-click="CarnetInput.onClickInput()"
+        ng-class="{ notSelected: CarnetInput.options.notSelected === true }">
+        <span class="caret">▼</span>
+        <p class="uppercase orange-text bold big" class="selected-service">{{ CarnetInput.selected !== '' ? CarnetInput.getServiceLabel() : CarnetInput.placeholder }}</p>
+    </div>
+    <div class="results" ng-show="CarnetInput.options.showResults || (CarnetInput.alwaysOpen !== false && CarnetInput.selected === '')">
+        <ul>
+            <li ng-repeat="item in CarnetInput.getResults()" class="results-item" ng-click="CarnetInput.selectService(item.id)">
+                <md-icon md-svg-src="{{ item.image }}"></md-icon>
+                <span>{{ item.label }}</span>
+            </li>
+        </ul>
+    </div>
+</div>

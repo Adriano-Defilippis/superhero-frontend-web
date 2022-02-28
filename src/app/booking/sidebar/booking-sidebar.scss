@@ -1,0 +1,18 @@
+booking-sidebar {
+    display: block;
+    width: 100%;
+}
+
+.sidebar__fixed-bottom {
+    padding: 15px;
+
+    p.price-not-included {
+        line-height: 1rem;
+    }
+}
+
+.fixfixed {
+  .sidebar__fixed-bottom {
+    position: static !important;
+  }
+}

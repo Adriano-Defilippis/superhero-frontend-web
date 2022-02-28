@@ -1,0 +1,35 @@
+<h1 class="title-page center">Clienti ({{ctrl.clienti.length}})</h1>
+<div class="table-holder">
+<table st-table="ctrl.clienti" class="table table-recruiter">
+  <tr>
+    <th colspan="10">
+      <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+    </th>
+  </tr>
+  <thead>
+    <tr>
+      <th st-sort="dataRegistrazione">Registrato il</th>
+      <th st-sort="nome">Nome</th>
+      <th st-sort="cognome">Cognome</th>
+      <th st-sort="cellulare">Telefono</th>
+      <th st-sort="email">Email</th>
+      <th st-sort="canale">Canale</th>
+      <th st-sort="device">Loggato con device</th>
+      <th>Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in ctrl.clienti">
+      <td ng-bind-html="row.dataRegistrazioneFormatted"></td>
+      <td>{{row.nome}}</td>
+      <td>{{row.cognome}}</td>
+      <td>{{row.cellulare}}</td>
+      <td>{{row.email}}</td>
+      <td>{{row.canale}}</td>
+      <td ng-bind-html="row.getDeviceStatus()"></td>
+      <td>
+        <a class="waves-effect waves-light btn-flat white btn btn-small" ui-sref="main.support.clienti-dettaglio({id: row.id})">Visualizza</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>

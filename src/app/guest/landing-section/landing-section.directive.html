@@ -1,0 +1,89 @@
+<div class="landing-section wrapper__handler">
+
+    <div class="landing-section__wrapper" fill>
+
+        <div class="landing-section__hero {{::ctrl.service.backgroundClassName}}" full-width alt="rilassati e trova una colf"
+            ng-style="{ backgroundImage: 'url('+ ctrl.service.background +')' }">
+            <div class="dark-overlay overlay-wrapper center" valign-wrapper fill>
+                <div class="slider-payoff-block">
+                    <a ng-if="!ctrl.isTecma && ctrl.serviceToShow !== 'carnet-estivo'" ui-sref="main.guest.carnet" class="carnet-badge-home">
+                        <img class="md-icon big badge-home" src="{{::ctrl.badgeIcon}}"></img>
+                    </a>
+                    <h3 class="main-tagline-thin text-center no-margin bottom" ng-bind-html="::ctrl.service.title"></h3>
+                    <p class="secondary-tagline text-center no-margin bottom" ng-bind-html="::ctrl.service.tagline"></p>
+                    <p class="subtagline text-center" ng-bind-html="::ctrl.service.subtagline"></p>
+                    <div class="container">
+                        <div ng-if="!ctrl.isTecma" class="row row-landing">
+                            <div class="col s12 m6 l5 ">
+                                <div class="home-service-select" style="padding: 0 10px;">
+                                    <service-input-autocomplete
+                                        class="home"
+                                        placeholder="Sto cercando.."
+                                        always-open="false"
+                                        disabled="ctrl.disabled"
+                                        selected="ctrl.selectedService"
+                                        selected-sub-service="ctrl.selectedSubService"
+                                        on-service-selected="ctrl.selectService(serviceId, willProceedSubService)"
+                                        on-sub-service-selected="ctrl.selectSubService(parentServiceId, subServiceId)">
+                                    </service-input-autocomplete>
+                                </div>
+                            </div>
+                            <div class="col s12 m4 l3"><a class="waves-effect waves-light main-orange btn btn-medium" ng-click="ctrl.serviceToShow === 'carnet-estivo' ? ctrl.startBookingCarnet() : ctrl.startBooking()" fill>{{ctrl.serviceToShow === 'carnet-estivo' ? 'Prenota carnet' : 'Prenota il tuo servizio'}}</a></div>
+                        </div>
+                        <div ng-if="ctrl.isTecma" class="row row-landing">
+                            <div class="col s12 m8 l7 ">
+                                <div class="home-service-select">
+                                    <service-input-autocomplete
+                                        class="home"
+                                        placeholder="Sto cercando.."
+                                        always-open="false"
+                                        selected="ctrl.selectedService"
+                                        selected-sub-service="ctrl.selectedSubService"
+                                        on-service-selected="ctrl.selectService(serviceId, willProceedSubService)"
+                                        on-sub-service-selected="ctrl.selectSubService(parentServiceId, subServiceId)">
+                                    </service-input-autocomplete>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 center margin-top-smaller">
+                                <a ng-click="ctrl.startNewHeroSelectionOrder(ctrl.serviceToShow, ctrl.subServiceToShow)" class="white-text flex-inline medium-text"><strong>SCOPRI I NOSTRI <br>SUPEREROI<br>▼</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a ui-sref="main.guest.assurance" class="assurance-label"> 
+                        <img class="md-icon" src="{{::ctrl.assuranceLabel}}" fill>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- press review banner -->
+<press-review></press-review>
+
+
+    <div class="container with-padding">
+        <h2 class="big no-margin top">Conosci i nostri Supereroi</h2>
+        <p class="center" ng-if="service === 'colf'">Affidati a noi per la scelta della tua <b>Colf</b> o consulta i profili e scegli quello che fa per te.</p>
+        <p class="center" ng-if="service === 'badante'">Affidati a noi per la scelta della tua <b>Badante</b> o consulta i profili e scegli quello che fa per te.</p>
+        <p class="center" ng-if="service === 'baby-sitter'">Affidati a noi per la scelta della tua <b>Baby Sitter</b> o consulta i profili e scegli quello che fa per te.</p>
+        <meet-our-heroes service="{{::service}}"></meet-our-heroes>
+    </div>
+
+<div class="white">
+    <div class="container with-padding center">
+        <h2 class="big no-margin top">{{::ctrl.service.services.title}}</h2>
+        <h4 class="center">{{::ctrl.service.services.tagline}}</h4>
+
+        <div class="landing-section__list-wrapper">
+            <div fill class="landing-section__list-item center" ng-repeat="service in ::ctrl.service.services.list">
+                <md-icon ng-click="ctrl.goToServicePage(service)" class="landing-section__list-item-description md-icon list-icons" md-svg-src="{{ service.icon }}"></md-icon>
+                <p class="landing-section__list-item-description">{{ service.description ? service.description : service.title}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

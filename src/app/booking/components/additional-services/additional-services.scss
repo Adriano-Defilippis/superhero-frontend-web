@@ -1,0 +1,54 @@
+//
+//  SERVICE SEARCH
+//
+.additional-service-button {
+  border: 2px solid $mediumLight;
+  min-height: 80px;
+  padding : 13px 13px;
+  @media screen and(max-width: $mq-sm){
+    padding: 10px 10px;
+  }
+
+
+  .additional-time { display: none; min-height: 45px;
+    .icon-active { width: 45px; }
+  }
+
+  md-icon {
+    color: $mediumDark;
+  }
+
+  @media screen and (min-width: $mq-sm+1){
+    &:hover {
+      border-color: $active;
+      color: $active;
+      md-icon { color: $active; }
+      .additional-time { display: inline-table; }
+      .additional-time p, .additional-time span { font-size: 19px; font-weight: 600; }
+      .info { display: none; }
+    }
+  }
+
+  &.disable-toggle:hover {
+      border-color: $mediumLight;
+      color: $mediumDark;
+      md-icon { color: $mediumDark; }
+      .additional-time { display: none; }
+      .info { display: inline-table; }
+  }
+
+  &.active,  &.disable-toggle.active:hover {
+    border-color: $active;
+    background-color: $white;
+    color: $active;
+    md-icon { color: $active; }
+  }
+}
+
+.additional-service-button .info {
+  min-height: 50px;
+  p {
+    line-height: 14px;
+    font-size: small;
+  }
+}

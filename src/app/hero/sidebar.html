@@ -1,0 +1,30 @@
+<div class="hero-sidebar">
+  <div class="reservation-requests">
+    <h4 class="center uppercase">Nuove richieste {{sideCtrl.counters.req > 0 ? '('+sideCtrl.counters.req+')' : ''}}</h4>
+    <ul>
+      <li fill row ng-repeat="request in sideCtrl.requests | orderBy:'dataInizio'| filter:sideCtrl.isRequestInFuture | limitTo:10 " class="service-{{::request.model.service}}">
+        <div class="discrete center width-60" ng-click="sideCtrl.confirmRequest(request.id)"><span class="glyphicon glyphicon-pushpin"></span></div>
+        <div>{{::request.model.day}}<br>{{::request.model.time}}<br>{{::request.model.where}}</div>
+        <div class="type">N</div>
+        <div class="center">{{::request.model.timeRequested}}</div>
+      </li>
+      <p class="center" ng-show="sideCtrl.counters.req < 1">
+        <i>Nessuna nuova richiesta</i>
+      </p>
+    </ul>
+  </div>
+
+  <div class="reservation-confirmed margin-top-small">
+    <h4 class="center uppercase">Prossimi appuntamenti {{sideCtrl.counters.conf > 0 ? '('+sideCtrl.counters.conf+')' : ''}}</h4>
+    <ul>
+      <li fill row ng-repeat="appointment in sideCtrl.confirmed | orderBy:'dataInizio' | filter:sideCtrl.requestFilter | limitTo:10 " class="service-{{::appointment.model.service}}">
+        <div class="discrete center width-60" ng-click="sideCtrl.showInfo(appointment.id)"><span class="glyphicon glyphicon-info-sign"></span></div>
+        <div>{{::appointment.model.day}}<br>{{::appointment.clienteNomeCompleto }}<br>{{::appointment.model.indirizzo}}</div>
+        <div class="center width-100">{{::appointment.model.time}}</div>
+      </li>
+      <p class="center" ng-show="sideCtrl.counters.conf < 1">
+        <i>Nessun appuntamento in programma nei prossimi 30 giorni</i>
+      </p>
+    </ul>
+  </div>
+</div>

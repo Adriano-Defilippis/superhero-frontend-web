@@ -1,0 +1,16 @@
+<div class="row no-margin bottom">
+  <div class="col s12 center">
+    <div class="no-padding-sm user-top-bar" ng-include="'app/contact-center/clienti-dettaglio-small.html'"></div>
+  </div>
+</div>
+<div class="row no-margin bottom">
+  <div class="col {{baseCtrl.fullWidth ? 'l12' : 'l8'}} m12 s12 white">
+    <div class="padding-small" ui-view auto-fill-height>
+
+    </div>
+  </div>
+  <div class="col l4 m12 s12" ng-if="!baseCtrl.fullWidth">
+    <div class="no-padding-sm" ng-include="'app/contact-center/user-dashboard-sidebar.html'" ng-controller="UserSidebarCtrl as ctrl"></div>
+
+  </div>
+</div>

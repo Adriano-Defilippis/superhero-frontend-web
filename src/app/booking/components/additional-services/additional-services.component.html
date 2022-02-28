@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col s6 {{AdditionalServices.twoColumnsLayout ? '' : 'm4'}} horizontal-block"
+        ng-repeat="service in AdditionalServices.services"
+        ng-click="AdditionalServices.onServiceClick({additionalServiceId: service.id})">
+        <div full-width class="additional-service-button"
+            data-position="top" data-delay="50" data-tooltip="{{service.description}}"
+            ng-class="{ active: AdditionalServices.isSelected(service.id), 'disable-toggle': AdditionalServices.disableToggle }">
+            <div class="info" fill valign-wrapper>
+                <md-icon ng-if="service.icon" class="md-icon center service-icons hide-sm" md-svg-src="{{ service.icon }}" valign></md-icon>
+                <p padding-horizontal-small ng-bind="service.label" class="center title-small-active" valign></p>
+            </div>
+            <div class="additional-time" fill valign-wrapper>
+                <span class="glyphicon glyphicon-ok icon-active center" valign></span>
+                <p class="center" ng-if="service.time && service.time < 60" valign>{{ service.time }} min</p>
+                <p class="center" ng-if="service.time && service.time == 60" valign>{{ service.time/60 }} ora</p>
+                <p class="center" ng-if="service.time && service.time > 60" valign>{{ service.time/60 }} ore</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row no-margin bottom">
+  <div class="header-static-pages-wrapper" relative>
+    <div style="background-image: url('{{ctrl.model.headerImage}}')" title="come funziona - ilmiosupereroe" alt="come funziona - ilmiosupereroe" fill class="static-page-header static-page-header-center">
+    </div>
+    <div valign-wrapper fill class="static-page-title-wrapper">
+      <h1 class="uppercase center shout-static-pages" valign>Come funziona</h1>
+    </div>
+    <div class="dark-overlay dark-overlay-static-pages" fill>
+    </div>
+  </div>
+</div>
+<div class="container" autoscroll>
+  <div class="row no-margin bottom">
+    <div class="col s12 white" auto-fill-height>
+      <div class="padding-small">
+        <div class="row">
+          <div class="col m12 s12">
+            <!-- <h1 class="uppercase center">Come funziona</h1> -->
+            <p class="subtitle center" ng-bind="ctrl.model.sectionTagline"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 m4" ng-repeat="singleBox in ctrl.model.singleBoxes">
+            <div class="section">
+              <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleBox.icon }}" fill></md-icon>
+              <h4 class="main-orange-text center" ng-bind="singleBox.title"></h4>
+              <p class="center" ng-bind="singleBox.description"></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m12 center">
+            <div class="section">
+              <a class="waves-effect waves-light main-orange btn" ui-sref="booking.service">Scopri come trovare il supereroe che fa per te!</a>
+            </div>
+          </div>
+        </div>
+        <!-- prodotti utili template begins
+<div class="row">
+<div class="col m8 offset-m2">
+<h2>Prodotti utili</h2>
+<p>Puoi controllare se hai già in casa questi prodotti per la pulizia? Puoi altresì stampare la lista per portarla con te al supermercato.</p>
+<div class="row">
+<div class="col m12">
+</div>
+</div>
+</div>
+</div>
+prodotti utili template ends-->
+      </div>
+    </div>
+  </div>
+</div>

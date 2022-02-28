@@ -1,0 +1,45 @@
+<nav class="grey darken-3 main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<div class="container">
+  <div class="row no-margin bottom">
+    <div class="col l12 m12 s12 white">
+      <div class="padding-small single-bar" ui-view autoscroll auto-fill-height>
+        <div class="row">
+          <div class="col s12 m8 offset-m2">
+            <h2 class="center" ng-if="!ctrl.showOnlyContract">Benvenuti</h2>
+            <h2 class="center" ng-if="ctrl.showOnlyContract">Aggiornamento delle condizione di utilizzo del servizio</h2>
+            <p ng-if="!ctrl.showOnlyContract">Al tuo primo accesso, dopo aver settato la password, devi indicare il codice IBAN del conto sul quale desideri ricevere il tuo compenso e accettare le condizioni di utilizzo del servizio.</p>
+            <p ng-repeat="text in ctrl.updatedAgreementTexts" ng-if="ctrl.showOnlyContract">{{text}}</p>
+            <div class="iban section" ng-if="!ctrl.showOnlyContract">
+              <div class="row">
+                <div class="col s12 m6 offset-m3">
+                  <div input-field>
+                    <input type="text" name="nome" required placeholder="IT 02 L 12345 12345 123456789012" ng-model="ctrl.IBAN" class="iban-input">
+                    <label>Codice IBAN</label>
+                  </div>
+                  <h4>Attenzione: verificare bene l'esatto inserimento del codice IBAN.</h4>
+                </div>
+              </div>
+            </div>
+            <h4 class="center">Assenso alle condizioni di utilizzo del servizio</h4>
+            <div class="agreement section">
+              <div class="radio-group">
+                <input type="checkbox" name="condizioniUtilizzo" id="condizioniUtilizzo" required ng-model="ctrl.condizioniUtilizzo">
+                <label for="condizioniUtilizzo">Accetto le <a href="{{ctrl.contracts.condizioniUtilizzo}}" target="_blank"><i>Condizioni di utilizzo del servizio</i></a>, inclusi gli allegati:<br>
+                    <a class="list-item" ng-repeat="contract in ctrl.contractsPricing" ng-href="{{contract.link}}" target="_blank"><i>{{contract.name}}</i><br></a>
+                    <a class="list-item" href="{{ctrl.contracts.informazioniPrivacy}}" target="_blank"><i>Allegato – Informativa sulla privacy</i></a>
+                </label>
+              </div>
+              <div>
+                <input type="checkbox" name="presaVisione" id="presaVisione" required ng-model="ctrl.presaVisione">
+                <label for="presaVisione">Agli effetti dell’art. 1341 c.c. e ss., dichiaro di aver preso visione di tutti gli articoli del presente contratto, ed in particolare gli articoli 1.6, 1.8, relativi al possesso dei requisiti necessari e alla conoscenza delle condizioni del servizio, 3.5 relative alla gestione dei pagamenti, 6.1, 6.2 relativi alle responsabilità del Fornitore nei confronti di Digital Heroes SrL e degli Utenti, e di aver approvato ed accettato anch’essi specificatamente.</label>
+              </div>
+            </div>
+            <p class="center"><a ng-click="ctrl.next()" class="{{ ctrl.disableButton() ? 'disabled' : 'waves-effect waves-light main-orange'}} btn btn-big">{{ ctrl.isLoading ? 'Caricamento...' : 'Prosegui'}}</a></p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

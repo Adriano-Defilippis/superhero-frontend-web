@@ -1,0 +1,75 @@
+<nav ng-if="Booking.mustShowSteps() && !Booking.isApp" class="grey darken-3 main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<nav ng-if="!Booking.mustShowSteps() && !Booking.isApp" class="main-nav transparent" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<div ng-if="!Booking.mustShowSteps()" class="row no-margin bottom">
+  <div class="header-static-pages-wrapper" relative>
+    <div style="background-image: url('{{Booking.imageHeader}}')" title="cerca un supereroe - ilmiosupereroe" alt="cerca un supereroe - ilmiosupereroe" class="static-page-header static-page-header-center" fill>
+    </div>
+    <div valign-wrapper fill class="static-page-title-wrapper">
+      <h1 class="uppercase center shout-static-pages" valign>Cerca il tuo <b>supereroe</b></h1>
+    </div>
+    <div class="dark-overlay dark-overlay-static-pages" fill>
+    </div>
+  </div>
+</div>
+
+<div class="white sub-nav big" role="navigation" ng-show="Booking.mustShowSteps()">
+    <div class="nav-wrapper container">
+        <booking-steps
+            ng-show="Booking.common.type === Booking.TYPES.SERVICE"
+            steps="Booking.STEPS"
+            completed="Booking.state.completed"
+            current="Booking.common.router"
+            on-change-step="Booking.changeStepFromState(step)">
+        </booking-steps>
+        <booking-steps
+            ng-show="Booking.common.type === Booking.TYPES.CARNET"
+            steps="Booking.CARNET_STEPS"
+            completed="Booking.carnet.completed"
+            current="Booking.common.router"
+            on-change-step="">
+        </booking-steps>
+    </div>
+</div>
+<div class="container">
+    <div class="row no-margin bottom">
+        <div class="col l8 m12 s12 white">
+            <div class="padding-small">
+                <div ng-class="{ 'double-bar big': Booking.mustShowSteps() }"
+                    ui-view auto-fill-height autoscroll></div>
+            </div>
+        </div>
+        <div class="col l4 m12 s12">
+            <div class="no-padding-sm"
+                ng-class="{ 'double-bar big': Booking.mustShowSteps() }">
+                <booking-sidebar ng-show="!Booking.isHeroSearchPage() && Booking.common.type !== 'CARNET'"
+                    selected-service="Booking.state.steps.service.selectedService"
+                    is-processing="Booking.state.isProcessing"
+                    is-hero-selection-order="Booking.state.heroSelection.isHeroSelectionOrder"
+                    is-carnet-order="Booking.state.carnet.isCarnetOrder"
+                    is-editing="Booking.state.edit.isEditing"
+                    show-newsletter-toggle="Booking.state.userInfo.isLogged === false || Booking.state.general.newsletter === false"
+                    current-state="Booking.state.router"
+                    error="Booking.state.error"
+                    privacy-contract="Booking.state.general.privacyContract"
+                    newsletter="Booking.state.general.newsletter"
+                    can-proceed-booking="Booking.canProceedBooking"
+                    selected-hero="Booking.state.steps.heroSearch.selected"
+                    asked-for-dates-suggestion="Booking.state.steps.dates.askedForSuggestions"
+                    voucher="Booking.state.general.voucher"
+                    voucher-enabled="Booking.state.general.voucherEnabled"
+                    on-voucher-change="Booking.userChangedVoucher(voucher)"
+                    on-user-toggle-privacy-contract="Booking.togglePrivacyContract()"
+                    on-user-toggle-newsletter="Booking.toggleNewsletter()"
+                    on-proceed-booking="Booking.proceedBooking()"
+                    on-proceed-booking-with-mode="Booking.proceedBooking({ mode: mode })">
+                </booking-sidebar>
+                <carnet-sidebar
+                    ng-if="Booking.common.type === 'CARNET'">
+                </carnet-sidebar>
+                <herosearch-sidebar
+                    ng-if="Booking.isHeroSearchPage() && Booking.common.type !== 'CARNET'">
+                </herosearch-sidebar>
+            </div>
+        </div>
+    </div>
+</div>

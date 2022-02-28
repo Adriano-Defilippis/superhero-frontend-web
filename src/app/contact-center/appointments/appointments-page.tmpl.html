@@ -1,0 +1,44 @@
+<h1 class="title-page center">Appuntamenti</h1>
+<p class="center">
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.inactiveApps ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.appointments({stato: 'DaConfermare'})">da confermare ({{(ctrl.appointments | filter:ctrl.appToConfirm).length}})</a>&nbsp;
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.activeApps ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.appointments({stato: 'Confermati'})">Confermati ({{(ctrl.appointments | filter:ctrl.appConfirmed).length}})</a>&nbsp;
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.doneApps ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.appointments({stato: 'Effettuati'})">Effettuati ({{(ctrl.appointments | filter:ctrl.appDone).length}})</a>
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.expiredApps ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.appointments({stato: 'Scaduti'})">Scaduti ({{(ctrl.appointments | filter:ctrl.appExpired).length}})</a>
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.cancelledApps ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.appointments({stato: 'Cancellati'})">Cancellati ({{(ctrl.appointments | filter:ctrl.appCancelled).length}})</a>
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.errorApps ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.appointments({stato: 'Errore'})">Errore ({{(ctrl.appointments | filter:ctrl.appError).length}})</a>
+</p>
+<div class="table-holder">
+    <table st-table="ctrl.appointments" class="table table-recruiter">
+        <tr>
+            <th colspan="10">
+                <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+            </th>
+        </tr>
+        <thead>
+            <tr>
+                <th st-sort="dataPrenotazione">Prenotazione</th>
+                <th ng-if="ctrl.inactiveApps" st-sort="scadenza">Scade in</th>
+                <th ng-if="!ctrl.inactiveApps" st-sort="Stato">Stato</th>
+                <th st-sort="clienteNomeCompleto">Cliente</th>
+                <th st-sort="clienteCellulare">Telefono</th>
+                <th st-sort="clienteEmail ">Email</th>
+                <th st-sort="dataInizio">Dettagli</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in ctrl.appointments | filter:ctrl.filterTable" ng-class="{'appointment-single__manual': row.gestioneManuale && row.stato == 'Aperto'}">
+                <td>{{row.dataCreazione}}</td>
+                <td ng-if="ctrl.inactiveApps">{{row.scadenzaLabel || 'Scaduto'}}</td>
+                <td ng-if="!ctrl.inactiveApps">{{row.statoLabel}}</td>
+                <td>{{row.clienteNomeCompleto}}</td>
+                <td>{{row.clienteCellulare}}</td>
+                <td>{{row.clienteEmail }}</td>
+                <td>{{row.dettagli}}</td>
+                <td>
+                    <a class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: row.idAppuntamento })"><i class="mdi-action-visibility grey-text text-darken-3" title="Modifica"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

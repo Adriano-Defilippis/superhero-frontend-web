@@ -1,0 +1,68 @@
+.voucher-banner {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+#vaucher_box{
+  position:fixed;
+  bottom:0px;
+  right: 0px;
+  width:250px;
+  text-align:center;
+  z-index: 9999;
+  font-size: 14px !important;
+  line-height:18px !important;
+
+  .card-content {
+      cursor: pointer;
+  }
+
+}
+
+
+#vaucher_box p {
+  font-size: 12px !important;
+  line-height:18px !important;
+}
+#vaucher_box h3{
+  margin: 0px !important;
+}
+
+#vaucher_box .card{
+  height:250px !important;
+  background: none transparent !important;
+  box-shadow:none !important;
+  margin-bottom: 40px;
+}
+#vaucher_box  .card-content{
+  background: $active;
+  box-shadow: 0 0px 5px 0 rgba(0, 0, 0, 0.16), 0 0px 10px 0 rgba(0, 0, 0, 0.12);
+  margin-top: 200px;
+  padding: 5px 20px !important;
+
+}
+#vaucher_box .card-reveal {
+  overflow-y:hidden !important;
+  border: 2px $active solid;
+}
+#vaucher_box  .card-content .card-title{
+  color: $white;
+}
+#vaucher_box .card-reveal .card-title{
+  color: inherit !important;
+}
+#vaucher_box .card-reveal .card-title:before{
+  content:"x";
+  float:right;
+}
+#vaucher_box .card-title{
+  line-height: inherit !important;
+  font-size: inherit !important;
+}
+
+.voucher_sidebar_box{
+  //border:1px $active solid;
+  margin-bottom:20px;
+  background-color: rgb(229, 229, 229);
+  border-radius: 5px;
+}

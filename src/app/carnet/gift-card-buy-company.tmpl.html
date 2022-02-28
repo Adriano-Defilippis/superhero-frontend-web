@@ -1,0 +1,72 @@
+<page-image-header image="{{::ctrl.headerImage}}" title="Regala una gift card" overlay="false"></page-image-header>
+
+<div class="container with-padding" autoscroll auto-fill-height>
+  <div class="row">
+    <div class="col s12">
+      <div class="padding-small">
+        <div class="row">
+          <div class="col s12 m12">
+            <h1 class="center no-margin bottom">REGALA UN SUPEREROE AI TUOI DIPENDENTI!</h1>
+            <p class="subtitle center">
+            Acquistando le <b>Gift Card de ilmioSupereroe.it</b>, puoi regalare tempo e relax ai tuoi dipendenti, fornendogli un aiuto concreto tutte le volte in cui ne hanno bisogno.<br> Inoltre con i <b>vantaggi fiscali</b>* previsti dal Welfare puoi offrire loro un benefit <b>non soggetto a tassazione</b>, facendo risparmiare anche la Tua Azienda!</p>
+            <p class="subtitle small center italic">(*) l’articolo 51 del Tuir (Testo Unico delle Imposte sul Reddito) prevede che "Non concorre a formare il reddito il valore dei beni ceduti e dei servizi prestati se complessivamente di importo non superiore nel periodo d’imposta a 258,23 euro".</p>
+          </div>
+        </div>
+        <div class="section">
+            <section class="boxed white">
+                <div class="row">
+                    <div class="col s12">
+                        <h1 class="uppercase center">Le nostre Gift Card</h1>
+                        <p class="subtitle center">Le <b>Gift Card de ilmioSupereroe.it</b> Ti consentono di regalare ai Tuoi dipendenti un Voucher per attivare un Carnet di ore prepagate per la prenotazione dei seguenti servizi:</p>
+                        <div class="row no-margin all">
+                            <div class="col s12 m4" ng-repeat="singleBox in ctrl.services">
+                                <div class="section">
+                                    <h3 class="main-orange-text center service-title" ng-bind="singleBox.title"></h3>
+                                    <md-icon class="md-icon big main-orange-text" md-svg-src="{{ singleBox.icon }}" fill></md-icon>
+                                    <h3 class="subtitle uppercase service-title center" ng-bind-html="singleBox.subtitle"></h3>
+                                    <p class="center" ng-bind-html="singleBox.content"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="subtitle center">Il codice Voucher potrà essere utilizzato entro 1 anno dalla data di acquisto. I tuoi Dipendenti potranno <b>scegliere liberamente di quale servizio avvalersi.</b> I servizi de ilmioSupereroe.it sono attivi sulle seguenti piazze: Milano e provincia, Monza/Brianza e provincia, Varese e provincia.<br><br>
+Inoltre acquistando le Gift Card de ilmioSupereroe.it entro Natale, potrai usufruire della <b>tariffa convenzionata di euro 256,5.</b></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="subtitle center main-orange-text">
+                            <b>Vuoi acquistare delle Gift Card o semplicemente saperne di più?<br>
+                            Contattaci allo 02 86882279<br>
+                            dalle 9.00 alle 18.00 dal lunedì al venerdì</b>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="center">
+                            <a target="_blank" ng-href="{{ctrl.condizioniUtilizzoGiftCard}}">Termini e condizioni di utilizzo Gift Card</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="row">
+          <div class="col m12">
+            <v-accordion class="vAccordion--default">
+              <v-pane ng-repeat="pane in ctrl.model.panes">
+                <v-pane-header>
+                  <h2 class="faq-title left-align">{{ pane.header }}</h2>
+                </v-pane-header>
+                <v-pane-content>
+                  <div ng-bind-html="pane.content">
+                  </div>
+                </v-pane-content>
+              </v-pane>
+            </v-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

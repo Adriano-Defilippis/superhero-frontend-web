@@ -1,0 +1,16 @@
+<div ng-form name="NotesForm">
+    <h2 class="center" style="margin-bottom: 0;">{{ ::Notes.title }}</h2>
+    <div input-field class="service-note-input with-errors">
+        <textarea id="textarea" class="materialize-textarea" name="notes" required
+            ng-model="Notes.notes"
+            ng-change="Notes.onNotesChanged({notes:Notes.notes})"
+            placeholder="{{ ::Notes.placeholder }}"
+            length="{{ ::Notes.length }}"
+            maxlength="{{ ::Notes.length }}">
+        </textarea>
+        <label>{{ ::Notes.label }}<span style="color: red;">{{ ::Notes.required ? '*' : '' }}</span></label>
+    </div>
+    <div ng-messages="{ 'required': !Notes.notes }" ng-show="Notes.showError || NotesForm.notes.$dirty">
+        <div ng-message="required">{{ ::Notes.errors.form.required }}</div>
+    </div>
+</div>

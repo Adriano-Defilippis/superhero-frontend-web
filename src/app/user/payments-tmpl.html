@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col m12 center">
+        <h2>Storico dei pagamenti</h2>
+    </div>
+</div>
+
+<div class="table-holder">
+    <table st-table="ctrl.payments" class="table striped bordered table-recruiter">
+        <thead>
+            <tr>
+                <th st-sort="dataCreazione">Data Pagamento</th>
+                <th st-sort="amount">Importo</th>
+                <th>Riferimento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in ctrl.payments">
+                <td ng-bind-html="::row.dataCreazioneFormatted"></td>
+                <td>{{ (row.amount / 100) | number : 2 }}&euro;</td>
+                <td>
+                    {{ row.referenceLabel }}&nbsp;
+                    <a class="icon-button big" ng-if="!row.isCarnet" ng-click="ctrl.showInfo(row.reference)"><span class="glyphicon glyphicon-info-sign grey-text text-darken-3" title="Informazioni appuntamento"></span></a>
+                    <a class="icon-button big" ng-if="row.isCarnet" ng-click="ctrl.gotoCarnetAndHightlight(row.reference)"><span class="glyphicon glyphicon-info-sign grey-text text-darken-3" title="Informazioni carnet"></span></a>
+                </td>
+            </tr>
+            <tr ng-if="ctrl.payments.length < 1">
+                <td colspan="3"><i class="center">In questa pagina troverai tutti i pagamenti effettuati</i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,282 @@
+<div fixed-sidebar class="search-sidebar">
+    <div class="row">
+        <div class="col s12">
+            <section class="carnet-info" ng-if="Booking.state.edit.isEditing === true">
+                <h5 class="uppercase center">Modifica appuntamento</h5>
+                <p class="center">del <b>{{ Booking.state.edit.info.label }}</b></p>
+                <hr>
+            </section>
+            <section class="carnet-info"
+                ng-if="Booking.state.carnet.isCarnetOrder">
+                <h5 class="uppercase center">Il tuo carnet</h5>
+                <div class="carnet-single card-panel" row fill>
+                    <div class="tipologia center width-100">
+                        <md-icon class="md-icon medium main-orange-text"
+                            md-svg-src="{{ Booking.state.carnet.info.icon }}" fill>
+                        </md-icon>
+                    </div>
+                    <div class="info">
+                        <div class="ore-residue">
+                            <p class="center no-margin bottom">{{ Booking.state.carnet.info.label }} - {{ Booking.state.carnet.info.hours.remaining + '/' +  Booking.state.carnet.info.hours.total }} {{Booking.state.carnet.info.isPrestazione ? ' prestazioni' : ' ore'}}</p>
+                        </div>
+                        <div class="scadenza">
+                            <p class="center no-margin top"><small>scad. {{  Booking.state.carnet.info.expireOn }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="your-booking">
+                <h5 class="uppercase center" ng-if="Booking.state.edit.isEditing === false">La tua prenotazione</h5>
+
+                <div class="row no-margin all center"
+                    ng-if="BookingSidebar.getServiceLabel(Booking.state.steps.service.selectedService) !== null">
+                    <h4 class="main-orange-text uppercase center no-margin all">{{ BookingSidebar.getServiceLabel(Booking.state.steps.service.selectedService) }}</h4>
+                    <h4 class="main-orange-text uppercase center no-margin all"
+                        ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.PERSONALTRAINER">
+                        {{ BookingSidebar.getSubServiceLabel(BookingSidebar.SERVICES.PERSONALTRAINER, Booking.state.steps.service.personalTrainer.subService) }}
+                    </h4>
+                    <h4 class="main-orange-text uppercase center no-margin all"
+                        ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.FISIOTERAPISTA">
+                        {{ BookingSidebar.getSubServiceLabel(BookingSidebar.SERVICES.FISIOTERAPISTA, Booking.state.steps.service.fisioterapista.subService) }}
+                    </h4>
+                    <span class="helping-text" ng-click="BookingSidebar.showServiceDescription(Booking.state.steps.service.selectedService)">Cosa è incluso nel servizio?</span>
+                </div>
+            </section>
+
+
+            <section ng-if="Booking.state.router === 'booking.address'">
+                <p class="center"><i>Inserisci un indirizzo per proseguire.</i></p>
+            </section>
+
+            <div ng-show="Booking.state.steps.service.selectedService === '' && (Booking.state.router === 'booking.service' || Booking.state.router === 'booking.bnbService')">
+                <p class="center">
+                    <i>Seleziona un servizio sulla sinistra per iniziare una prenotazione.</i>
+                </p>
+            </div>
+            <div ng-if="Booking.state.steps.service.selectedService !== ''">
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.COLF"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.colf.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.colf">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.COLF_BNB"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.colf.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.colf">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.BADANTE"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.badante.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.badante">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.BABYSITTER"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.babySitter.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.babySitter">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.PERSONALTRAINER && Booking.state.steps.service.personalTrainer.subService !== ''"
+                    service="Booking.state.steps.service.selectedService"
+                    service-info="Booking.state.steps.service.personalTrainer">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.FISIOTERAPISTA && Booking.state.steps.service.fisioterapista.subService !== ''"
+                    service="Booking.state.steps.service.selectedService"
+                    service-info="Booking.state.steps.service.fisioterapista">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.TUTTOFARE"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.tuttofare.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.tuttofare">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_ELETTRICI"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.elettricista.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.elettricista">
+                </service-details>
+                <service-details
+                    ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_IDRAULICI"
+                    service="Booking.state.steps.service.selectedService"
+                    additional-services="Booking.state.steps.service.idraulico.selectedAdditionalServices"
+                    service-info="Booking.state.steps.service.idraulico">
+                </service-details>
+            </div>
+
+            <section class="carnet-info" ng-if="Booking.state.heroSelection.isHeroSelectionOrder === true">
+                <h5 class="title-label">Il tuo supereroe</h5>
+                <div class="center">
+                    <div class="hero-profile-pic center inline-block" row>
+                        <span class="center">
+                            <div class="profile-pic"
+                                ng-style="{backgroundImage: 'url(\''+Booking.state.steps.heroSearch.selected.photoUrl +'\')'}">
+                            </div>
+                        </span>
+                        <span class="center nome left-align">{{ Booking.state.steps.heroSearch.selected.name }}</span>
+                    </div>
+                </div>
+            </section>
+
+            <section ng-if="Booking.state.steps.service.selectedService !== ''">
+                <section ng-if="Booking.state.carnet.isCarnetOrder === false">
+                    <h5 class="title-label">Tariffe</h5>
+                    <p class="center"
+                        ng-if="Booking.state.steps.service.selectedService !== BookingSidebar.SERVICES.PERSONALTRAINER && Booking.state.steps.service.selectedService !== BookingSidebar.SERVICES.FISIOTERAPISTA">
+                        Tariffa oraria:
+                        <span ng-bind-html="BookingSidebar.getServicePrice(Booking.state.steps.service.selectedService, [], Booking.state.steps.carnet)"></span> &euro;
+                    </p>
+                    <p class="center"
+                        ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.FISIOTERAPISTA">
+                        Tariffa:
+                        <span ng-bind-html="BookingSidebar.getFisioterapistaPrice(Booking.state.steps.service.fisioterapista)"></span> &euro;
+                    </p>
+                    <p class="center"
+                        ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.PERSONALTRAINER">
+                        Tariffa oraria a persona:
+                        <span ng-bind-html="BookingSidebar.getPersonalTrainerPrice(Booking.state.steps.service.personalTrainer)"></span> &euro;
+                    </p>
+                    <p class="center"
+                        ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.TUTTOFARE || 
+                        Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_ELETTRICI || 
+                        Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_IDRAULICI">
+                        Costo di uscita:
+                        <span ng-bind-html="BookingSidebar.getFixedPrice(Booking.state.steps.service.selectedService, Booking.state.steps.service.tuttofare.subService)"></span> &euro;
+                    </p>
+                    <p class="center"
+                        ng-if="(Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.TUTTOFARE && Booking.state.steps.service.tuttofare.selectedAdditionalTools.length) || (Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_ELETTRICI && Booking.state.steps.service.elettricista.selectedAdditionalTools.length) || 
+                        (Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_IDRAULICI && Booking.state.steps.service.idraulico.selectedAdditionalTools.length)">
+                        Maggiorazione attrezzi:
+                        <span ng-bind-html="BookingSidebar.getAdditionalToolPrice(Booking.state.steps.service.selectedService, Booking.state.steps.service)"></span> &euro;
+                    </p>
+                    <p class="center" ng-if="Booking.state.edit.isEditing === true">Commissioni modifica: {{ BookingSidebar.PRICING.edit.standard }} &euro;</p>
+                    <p class="center small" ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.COLF || 
+                    Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.COLF_BNB ||
+                    Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.TUTTOFARE || Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_ELETTRICI || Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.SERVIZI_IDRAULICI"><i>Maggiorazione del 20% della normale tariffa durante la fascia oraria notturna (21.00 - 07.00)</i></p>
+                    <p class="center small" ng-if="Booking.state.steps.service.selectedService === BookingSidebar.SERVICES.BABYSITTER"><i>Maggiorazione del 20% della normale tariffa durante la fascia oraria notturna (00.00 - 07.00)<br>Maggiorazione del 10% della normale tariffa per ogni bambino in più</i></p>
+                </section>
+                <section ng-if="Booking.state.carnet.isCarnetOrder === true">
+                    <h5 class="title-label" ng-if="!Booking.state.carnet.info.isPrestazione">Tariffe</h5>
+                    <p class="center" ng-if="!Booking.state.carnet.info.isPrestazione">Tariffa oraria: {{ BookingSidebar.getCarnetServicePrice(Booking.state.carnet.info.tipoServizio) }} &euro;</p>
+                    <p class="center" ng-if="Booking.state.edit.isEditing">Commissioni modifica: {{ BookingSidebar.PRICING.edit.carnet  }} &euro;</p>
+                    <p class="center small" ng-if="Booking.state.edit.isEditing"><i>Attenzione: le commissioni di modifica non sono incluse nel prezzo del carnet e verranno addebitate separatamente sulla tua carta di credito</i></p>
+                </section>
+            </section>
+
+            <section ng-if="BookingSidebar.showAddress(Booking.state.completed.address, Booking.state.steps.address)">
+                <h5 class="title-label">Indirizzo</h5>
+                <p class="center">{{ BookingSidebar.addressLabel(Booking.state.steps.address) }}</p>
+            </section>
+
+            <section ng-if="Booking.state.completed.dates === true">
+                <pricing-overview
+                    confirmed-dates="Booking.state.steps.dates.confirmedDates"
+                    order-info="Booking.state.orderInfo"
+                    carnet-info="Booking.state.carnet.info"
+                    is-carnet="Booking.state.carnet.isCarnetOrder"
+                    is-editing="Booking.state.edit.isEditing"
+                    is-hero-selection="Booking.state.steps.dates.askedForHeroesSuggestions"
+                    is-confirm-page="Booking.state.router === 'booking.confirm'"
+                    on-buy-carnet="Booking.showCarnetOptions()"
+                    show-contextual-carnet="Booking.state.steps.dates.confirmedDates.length === 1"
+                    is-contextual-carnet="Booking.state.steps.carnet.userChooseCarnet"
+                    contextual-carnet="Booking.state.steps.carnet.info">
+                </pricing-overview>
+            </section>
+
+            <section ng-if="Booking.state.router === 'booking.userData'">
+                <br>
+                <privacy-contract
+                    newsletter="Booking.state.general.newsletter"
+                    show-newsletter="true"
+                    privacy-contract="Booking.state.general.privacyContract"
+                    on-toggle-newsletter="Booking.toggleNewsletter()"
+                    on-toggle-privacy-contract="Booking.togglePrivacyContract()">
+                </privacy-contract>
+
+                <section ng-if="Booking.state.general.voucherEnabled === true && Booking.state.carnet.isCarnetOrder === false">
+                    <voucher-input
+                        code="Booking.state.general.voucher"
+                        on-code-change="Booking.userChangedVoucher(code)">
+                    </voucher-input>
+                </section>
+            </section>
+
+            <div class="sidebar__fixed-bottom">
+                <pricing-total
+                    ng-show="Booking.state.router === 'booking.userData'"
+                    confirmed-dates="Booking.state.steps.dates.confirmedDates"
+                    selected-service="Booking.state.steps.service.selectedService"
+                    services-info="Booking.state.steps.service"
+                    order-info="Booking.state.orderInfo"
+                    carnet-info="Booking.state.carnet.info"
+                    is-carnet="Booking.state.carnet.isCarnetOrder"
+                    is-editing="Booking.state.edit.isEditing"
+                    is-hero-selection="Booking.state.steps.dates.askedForHeroesSuggestions"
+                    is-confirm-page="Booking.state.router === 'booking.confirm'"
+                    on-buy-carnet="Booking.showCarnetOptions()"
+                    show-contextual-carnet="Booking.state.steps.dates.confirmedDates.length === 1"
+                    is-contextual-carnet="Booking.state.steps.carnet.userChooseCarnet"
+                    contextual-carnet="Booking.state.steps.carnet.info">
+                </pricing-total>
+
+                <div class="radio-group" ng-if="Booking.state.router === 'booking.dates' && (Booking.state.steps.dates.askedForSuggestions === true || (Booking.state.heroSelection.isHeroSelectionOrder === true && Booking.state.carnet.isCarnetOrder === false))">
+                    <input type="checkbox" name="genericWithPreference" id="genericWithPreference"
+                      ng-model="BookingSidebar.genericWithPreference" ng-change="BookingSidebar.onSelectGenericWithPreference()">
+                    <label for="genericWithPreference">Desidero estendere la ricerca ad altri Supereroi nel caso il Supereroe da me prescelto non confermasse la sua disponibilità.</label>
+                </div>
+
+                <section class="proceed-button"
+                    ng-show="Booking.state.router !== 'booking.confirm'">
+                    <section ng-if="Booking.state.router !== 'booking.dates'">
+                        <a full-width class="btn"
+                            ng-click="Booking.proceedBooking()"
+                            ng-class="{ disabled: !Booking.canProceedBooking(), 'waves-effect waves-light main-orange': Booking.canProceedBooking() }">
+                            {{ Booking.state.isProcessing ? 'Caricamento...' : 'Prosegui'}}
+                        </a>
+                    </section>
+
+                    <section ng-if="Booking.state.router === 'booking.dates' && Booking.state.steps.dates.askedForSuggestions === true">
+                        <a full-width class="btn"
+                            ng-click="Booking.proceedBooking()"
+                            ng-class="{ disabled: !Booking.canProceedBooking(), 'waves-effect waves-light main-orange': Booking.canProceedBooking() }">
+                            {{ Booking.state.isProcessing ? 'Caricamento...' : 'Conferma date'}}
+                        </a>
+                    </section>
+
+                    <section ng-if="Booking.state.router === 'booking.dates' && Booking.state.steps.dates.askedForSuggestions === false">
+                        <section ng-if="Booking.state.heroSelection.isHeroSelectionOrder === true">
+                            <a full-width class="btn"
+                                ng-click="Booking.proceedBooking({mode:'FAST_BOOKING'})"
+                                ng-class="{ disabled: !Booking.canProceedBooking(), 'waves-effect waves-light main-orange': Booking.canProceedBooking() }">
+                                {{ Booking.state.isProcessing ? 'Caricamento...' : 'Prosegui'}}
+                            </a>
+                        </section>
+                        <section ng-if="Booking.state.heroSelection.isHeroSelectionOrder === false">
+                            <a ng-if="!Booking.state.steps.service.isMultipleSuperheroes"
+                                full-width class="btn"
+                                ng-click="Booking.proceedBooking({mode:'FAST_BOOKING'})"
+                                ng-class="{ disabled: !Booking.canProceedBooking(), 'waves-effect waves-light main-orange': Booking.canProceedBooking() }">
+                                {{ Booking.state.isProcessing ? 'Caricamento...' : 'Prenotazione rapida'}}
+                            </a>
+                            <p ng-if="!Booking.state.steps.service.isMultipleSuperheroes" class="center">oppure</p>
+                            <a full-width class="btn"
+                                ng-click="Booking.proceedBooking({mode:'HERO_SELECTION'})"
+                                ng-class="{ disabled: !Booking.canProceedBooking(), 'waves-effect waves-light main-orange': Booking.canProceedBooking() }">
+                                {{ Booking.state.isProcessing ? 'Caricamento...' : 'Scegli il tuo supereroe'}}
+                            </a>
+                        </section>
+                    </section>
+                </section>
+
+                <section ng-show="Booking.state.error !== null">
+                    <p class="center main-orange-text"><i><b>{{Booking.state.error}}</b></i></p>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

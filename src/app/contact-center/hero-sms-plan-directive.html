@@ -1,0 +1,24 @@
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <div class="horizontal-scroller">
+            <div class="sms-plan-wrapper">
+                <div class="single-hero" ng-repeat="single in smsData | orderBy:'orarioRichiesta' " ng-click="showRequestDetail(single)">
+                    <h6 class="center no-margin bottom">{{$index + 1}}</h6>
+                    <h5 class="center no-margin top">{{single.superHero.nome}}</h5>
+                    <div class="time center" ng-bind-html="single.labels.orarioRichiesta"></div>
+                    <div class="sms-status center">
+                        <i ng-if="single.richiestaInviata && !single.richiestaRifiutata" class="glyphicon glyphicon-time green-text text-lighten-1" title="SMS inviato"></i>
+                        <i ng-if="!single.richiestaInviata" class="glyphicon glyphicon-time amber-text text-lighten-1" title="SMS in attesa di invio"></i>
+                        <i ng-if="single.richiestaRifiutata" class="glyphicon glyphicon-remove red-text text-lighten-1" title="Richiesta rifiutata"></i>
+                    </div>
+                    <!--
+                    <div class="sms-response center">
+                        <p ng-repeat="response in single.risposteSuperhero">{{response.timeLabel}}: {{response.body}}</p>
+                        <p ng-if="single.risposteSuperhero.length < 1">Nessuna risposta</p>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

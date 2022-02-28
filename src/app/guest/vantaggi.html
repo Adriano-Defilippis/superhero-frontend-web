@@ -1,0 +1,24 @@
+<div class="row no-margin bottom">
+  <div class="header-static-pages-wrapper" style="height:15em" relative>
+    <div style="background-color: #ACACAD; height:100%;" title="vantaggi - ilmiosupereroe" alt="vantaggi - ilmiosupereroe" fill class="static-page-header static-page-header-center">
+    </div>
+    <div valign-wrapper fill class="static-page-title-wrapper">
+      <h1 class="uppercase center shout-static-pages" valign>I nostri vantaggi</h1>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div ng-repeat="row in ctrl.mv.heroFeatures" class="row no-margin bottom convenience {{row.className}}" full-width fill style="
+background: url('{{row.backgroundImage}}') top center; background-size: cover;">
+    <div ng-repeat="data in row.data" class="col m6 l6 convenience-col {{data.className}}">
+      <div class="col m3 l3">
+      <img class="convenience-number" src="{{data.image}}" />
+      </div>
+      <div class="col m9 l9 convenience-text-wrapper">
+        <p class="uppercase {{data.title.className}}"><b>{{data.title.text}}</b></p>
+        <p class="{{data.description.className}}" ng-bind-html="data.description.text"></p>
+      </div>
+    </div>
+  </div>
+</div>

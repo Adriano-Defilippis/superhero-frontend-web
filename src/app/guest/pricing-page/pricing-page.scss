@@ -1,0 +1,80 @@
+.pricing-table__wrapper {
+}
+
+.pricing-table__wrapper td {
+    line-height: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #565a5c;
+    text-align: center;
+}
+
+.pricing-table__wrapper thead {
+    border-bottom: 0px;
+}
+
+.pricing-table__wrapper thead td {
+    width: 2%;
+    vertical-align: middle;
+    //border-bottom: 1px solid #d0d0d0;
+
+    .personal-trainer__icon {
+        width: 150px;
+        margin: 10px 0px;
+    }
+
+    &.no-border {
+        border-bottom: 0px;
+    }
+}
+
+.pricing-table__wrapper tbody td {
+    background-color: $white;
+    font-size: 1.1em;
+    font-weight: 500;
+    font-family: $title-font;
+    padding: 1em 0em;
+    border: 2px solid #FAFAFA;
+
+    p {
+        margin: 1em;
+    }
+
+    /*
+    &:first-child {
+        background-color: transparent;
+        padding-right:40px;
+        text-align: right;
+        font-weight: 500;
+        font-size: 1rem;
+        font-family: $paragraph-font;
+    }
+    */
+
+    &.transparent, &.standard {
+        font-family: $paragraph-font;
+    }
+}
+
+.pricing-table__service-label {
+    margin-top: 1em;
+    display: block;
+}
+
+.pricing-table__wrapper.pricing-table__carnet tbody td {
+
+    &:first-child {
+        background-color: transparent;
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1rem;
+        font-family: $paragraph-font;
+    }
+}
+
+.pricing-table__notes {
+    padding: 3px;
+}

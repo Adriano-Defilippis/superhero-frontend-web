@@ -1,0 +1,22 @@
+<section ng-if="PricingOverview.isContextualCarnet === false" class="center">
+    <h5 class="title-label left-align">Date</h5>
+    <div class="single-date" ng-repeat="date in PricingOverview.confirmedDates | orderBy:'start' track by date.id" row>
+        <div ng-if="date.hero" class="hero-profile-left"><img ng-src="{{ date.hero.photoUrl }}" class="hero-profile-pic"></div>
+        <span ng-if="date.labels.start.dayOfMonth == date.labels.end.dayOfMonth">{{ date.hero.nome }}<br ng-if="date.hero">{{date.labels.start.dayOfWeek}} {{date.labels.start.dayOfMonth}}<br ng-if="date.hero">{{ !date.hero ? ' | ' : '' }}{{date.labels.start.time}} - {{date.labels.end.time}} | {{date.prezzoEuro}} &euro;</span>
+        <span ng-if="date.labels.start.dayOfMonth != date.labels.end.dayOfMonth">{{ date.hero.nome }}<br ng-if="date.hero">{{date.labels.start.dayOfMonth}} ({{date.labels.start.time}})<br ng-if="date.hero">{{ !date.hero ? ' - ' : '' }}{{date.labels.end.dayOfMonth}} ({{date.labels.end.time}}) | {{date.prezzoEuro}} &euro;</span>
+    </div>
+</section>
+
+
+<section class="center" ng-if="PricingOverview.isContextualCarnet === true">
+    <h5 class="title-label left-align">Date</h5>
+    <div class="single-date" ng-repeat="date in PricingOverview.confirmedDates | orderBy:'start' track by date.id" row>
+        <div ng-if="date.hero" class="hero-profile-left"><img ng-src="{{ date.hero.photoUrl }}" class="hero-profile-pic"></div>
+        <span ng-if="date.labels.start.dayOfMonth == date.labels.end.dayOfMonth">{{ date.hero.nome }}<br ng-if="date.hero">{{date.labels.start.dayOfWeek}} {{date.labels.start.dayOfMonth}}<br ng-if="date.hero">{{ !date.hero ? ' | ' : '' }}{{date.labels.start.time}} - {{date.labels.end.time}}</span>
+        <span ng-if="date.labels.start.dayOfMonth != date.labels.end.dayOfMonth">{{ date.hero.nome }}<br ng-if="date.hero">{{date.labels.start.dayOfMonth}} ({{date.labels.start.time}})<br ng-if="date.hero">{{ !date.hero ? ' - ' : '' }}{{date.labels.end.dayOfMonth}} ({{date.labels.end.time}})</span>
+    </div>
+    <h5 class="title-label left-align">Carnet</h5>
+    <p class="center">
+        {{ PricingOverview.contextualCarnet.title }}<br>
+    </p>
+</section>

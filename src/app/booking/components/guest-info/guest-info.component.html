@@ -1,0 +1,34 @@
+<div class="z-depth-1 padding-small child-single">
+    <div class="row no-margin bottom">
+        <div class="col m4 s6">
+            <div input-field>
+                <input type="text"
+                    ng-model="GuestInfo.nome"
+                    ng-change="GuestInfo.changedGuest()">
+                <label>Nome</label>
+            </div>
+        </div>
+        <div class="col m4 s6">
+            <div input-field>
+                <input type="text"
+                    ng-model="GuestInfo.cognome"
+                    ng-change="GuestInfo.changedGuest()">
+                <label>Cognome</label>
+            </div>
+        </div>
+        <div class="col m3 s6">
+            <select class="select-dropdown-margin-top"
+                ng-model="GuestInfo.eta"
+                ng-change="GuestInfo.changedGuest()"
+                material-select>
+                <option value="" disabled selected>Età</option>
+                <option ng-repeat="age in GuestInfo.ageOptions" ng-value="age.id">{{age.value}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="delete" ng-click="GuestInfo.onGuestRemove({index:GuestInfo.index})">
+        <div valign-wrapper>
+            <a class="btn-floating waves-effect waves-light white "><i class="mdi-content-remove grey-text text-darken-3"></i></a>
+        </div>
+    </div>
+</div>

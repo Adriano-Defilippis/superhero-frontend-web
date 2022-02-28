@@ -1,0 +1,225 @@
+<h2 class="center">Esperienza</h2>
+<div class="row">
+    <div class="col s12 m4 experience-single">
+        <div class="radio-group">
+            <input type="checkbox" name="colf" id="colf"
+            ng-disabled="ctrl.formDisabled"
+            ng-model="ctrl.heroApplication.competenze.colf">
+            <label for="colf">Colf</label>
+        </div>
+        <div collapse="!ctrl.heroApplication.competenze.colf">
+            <div class="with-errors">
+                <select name="anniEsperienzaColf" ng-model="ctrl.heroApplication.anniEsperienzaColf" material-select ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.competenze.colf">
+                    <option value="" disabled selected>Anni di esperienza</option>
+                    <option ng-repeat="option in ::ctrl.options.esperienzaPregressa" ng-value="option.value">{{::option.name}}</option>
+                </select>
+                <div ng-messages="heroApplicationForm.anniEsperienzaColf.$error" ng-show="ctrl.showRequiredError">
+                    <div ng-message="required">{{::ctrl.labels.required}}</div>
+                </div>
+            </div>
+            <!-- <div class="with-errors">
+            <select name="tipoImpiegoColf" ng-model="ctrl.heroApplication.tipoImpiegoColf" material-select ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.competenze.colf">
+            <option value="" disabled selected>Situazione lavorativa</option>
+            <option ng-repeat="option in ::ctrl.options.tipoImpiego" ng-value="option.value">{{::option.name}}</option>
+        </select>
+        <div ng-messages="heroApplicationForm.tipoImpiegoColf.$error" ng-show="ctrl.showRequiredError">
+        <div ng-message="required">{{::ctrl.labels.required}}</div>
+    </div>
+</div> -->
+<div class="sottoCompetenze">
+    <div class="radio-group">
+        <input type="checkbox" name="ColfPuliziaAbitazioniPrivate" id="ColfPuliziaAbitazioniPrivate"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfPuliziaAbitazioniPrivate">
+        <label for="ColfPuliziaAbitazioniPrivate">Pulizia abitazioni private</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="ColfPuliziaCondomini" id="ColfPuliziaCondomini"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfPuliziaCondomini">
+        <label for="ColfPuliziaCondomini">Pulizia condomini</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="ColfPuliziaHotels" id="ColfPuliziaHotels"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfPuliziaHotels">
+        <label for="ColfPuliziaHotels">Pulizia Hotels</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="ColfPuliziaUffici" id="ColfPuliziaUffici"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfPuliziaUffici">
+        <label for="ColfPuliziaUffici">Pulizia uffici</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="ColfPuliziaEdificiIndustriali" id="ColfPuliziaEdificiIndustriali"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfPuliziaEdificiIndustriali">
+        <label for="ColfPuliziaEdificiIndustriali">Pulizia edifici industriali</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="ColfStiro" id="ColfStiro"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfStiro">
+        <label for="ColfStiro">Stirare</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="ColfPuliziaAltro" id="ColfPuliziaAltro"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.ColfPuliziaAltro">
+        <label for="ColfPuliziaAltro">Altro</label>
+    </div>
+</div>
+<div input-field class="referenze-input">
+    <textarea id="referenzeColf" class="materialize-textarea" ng-required="ctrl.heroApplication.competenze.colf" ng-model="ctrl.heroApplication.referenzeColf"></textarea>
+    <label>Descrizione della tua esperienza</label>
+</div>
+</div>
+</div>
+<div class="col s12 m4 experience-single">
+    <div class="radio-group">
+        <input type="checkbox" name="badante" id="badante"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.competenze.badante">
+        <label for="badante">Badante</label>
+    </div>
+    <div collapse="!ctrl.heroApplication.competenze.badante">
+        <div class="with-errors">
+            <select name="anniEsperienzaBadante" ng-model="ctrl.heroApplication.anniEsperienzaBadante" material-select ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.competenze.badante">
+                <option value="" disabled selected>Anni di esperienza</option>
+                <option ng-repeat="option in ::ctrl.options.esperienzaPregressa" ng-value="option.value">{{::option.name}}</option>
+            </select>
+            <div ng-messages="heroApplicationForm.anniEsperienzaBadante.$error" ng-show="ctrl.showRequiredError">
+                <div ng-message="required">{{::ctrl.labels.required}}</div>
+            </div>
+        </div>
+        <!-- <div class="with-errors">
+        <select name="tipoImpiegoBadante" ng-model="ctrl.heroApplication.tipoImpiegoBadante" material-select ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.competenze.badante">
+        <option value="" disabled selected>Situazione lavorativa</option>
+        <option ng-repeat="option in ::ctrl.options.tipoImpiego" ng-value="option.value">{{::option.name}}</option>
+    </select>
+    <div ng-messages="heroApplicationForm.tipoImpiegoBadante.$error" ng-show="ctrl.showRequiredError">
+    <div ng-message="required">{{::ctrl.labels.required}}</div>
+</div>
+</div> -->
+<div class="sottoCompetenze">
+    <div class="radio-group">
+        <input type="checkbox" name="BadanteIgienePersonale" id="BadanteIgienePersonale"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadanteIgienePersonale">
+        <label for="BadanteIgienePersonale">Igiene personale</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadanteMobilizzazioneDomestica" id="BadanteMobilizzazioneDomestica"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadanteMobilizzazioneDomestica">
+        <label for="BadanteMobilizzazioneDomestica">Mobilizzazione domestica</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadantePrestazioniInfermieristicheBase" id="BadantePrestazioniInfermieristicheBase"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadantePrestazioniInfermieristicheBase">
+        <label for="BadantePrestazioniInfermieristicheBase">Prest. infermieristiche di base</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadanteFisioterapia" id="BadanteFisioterapia"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadanteFisioterapia">
+        <label for="BadanteFisioterapia">Supporto attività fisioterapiche</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadanteCucina" id="BadanteCucina"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadanteCucina">
+        <label for="BadanteCucina">Cucina</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadantePulizie" id="BadantePulizie"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadantePulizie">
+        <label for="BadantePulizie">Pulizie</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadanteCommissioni" id="BadanteCommissioni"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadanteCommissioni">
+        <label for="BadanteCommissioni">Commisioni varie</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BadanteAltro" id="BadanteAltro"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BadanteAltro">
+        <label for="BadanteAltro">Altro</label>
+    </div>
+</div>
+<div input-field class="referenze-input">
+    <textarea id="referenzeBadante" class="materialize-textarea" ng-required="ctrl.heroApplication.competenze.badante" ng-model="ctrl.heroApplication.referenzeBadante"></textarea>
+    <label>Descrizione della tua esperienza</label>
+</div>
+</div>
+</div>
+<div class="col s12 m4 experience-single">
+    <div class="radio-group">
+        <input type="checkbox" name="babySitter" id="babySitter"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.competenze.babySitter">
+        <label for="babySitter">Baby Sitter</label>
+    </div>
+    <div collapse="!ctrl.heroApplication.competenze.babySitter">
+        <div class="with-errors">
+            <select name="anniEsperienzaBabySitter" ng-model="ctrl.heroApplication.anniEsperienzaBabySitter" material-select ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.competenze.babySitter">
+                <option value="" disabled selected>Anni di esperienza</option>
+                <option ng-repeat="option in ::ctrl.options.esperienzaPregressa" ng-value="option.value">{{::option.name}}</option>
+            </select>
+            <div ng-messages="heroApplicationForm.anniEsperienzaBabySitter.$error" ng-show="ctrl.showRequiredError">
+                <div ng-message="required">{{::ctrl.labels.required}}</div>
+            </div>
+        </div>
+        <!-- <div class="with-errors">
+        <select name="tipoImpiegoBabySitter" ng-model="ctrl.heroApplication.tipoImpiegoBabySitter" material-select ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.competenze.babySitter">
+        <option value="" disabled selected>Situazione lavorativa</option>
+        <option ng-repeat="option in ::ctrl.options.tipoImpiego" ng-value="option.value">{{::option.name}}</option>
+    </select>
+    <div ng-messages="heroApplicationForm.tipoImpiegoBabySitter.$error" ng-show="ctrl.showRequiredError">
+    <div ng-message="required">{{::ctrl.labels.required}}</div>
+</div>
+</div>  -->
+<div class="sottoCompetenze">
+    <div class="radio-group">
+        <input type="checkbox" name="BabySitterSupportoScolastico" id="BabySitterSupportoScolastico"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BabySitterSupportoScolastico">
+        <label for="BabySitterSupportoScolastico">Supporto scolastico di base</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BabySitterCucina" id="BabySitterCucina"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BabySitterCucina">
+        <label for="BabySitterCucina">Cucina</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BabySitterPulizie" id="BabySitterPulizie"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BabySitterPulizie">
+        <label for="BabySitterPulizie">Pulizie</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BabySitterCommissioni" id="BabySitterCommissioni"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BabySitterCommissioni">
+        <label for="BabySitterCommissioni">Commisioni varie</label>
+    </div>
+    <div class="radio-group">
+        <input type="checkbox" name="BabySitterAltro" id="BabySitterAltro"
+        ng-disabled="ctrl.formDisabled"
+        ng-model="ctrl.heroApplication.sottoCompetenze.BabySitterAltro">
+        <label for="BabySitterAltro">Altro</label>
+    </div>
+</div>
+<div input-field class="referenze-input">
+    <textarea id="referenzeBabySitter" class="materialize-textarea" ng-required="ctrl.heroApplication.competenze.babySitter" ng-model="ctrl.heroApplication.referenzeBabySitter"></textarea>
+    <label>Descrizione della tua esperienza</label>
+</div>
+</div>
+</div>
+</div>

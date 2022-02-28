@@ -1,0 +1,49 @@
+<div class="row no-margin bottom">
+    <div class="col m12 center">
+        <h2>Fatture</h2>
+    </div>
+</div>
+
+<p class="center no-margin top">
+    <button-tabs buttons="HeroBillings.buttonsActive"></button-tabs>
+</p>
+
+<div class="table-holder">
+    <table st-table="HeroBillings.filterBillings()" class="table striped bordered table-recruiter text-small">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Cod. fatt.</th>
+                <th>Cod. app.</th>
+                <th>Tipologia</th>
+                <th>Servizio</th>
+                <th>Data App.</th>
+                <th>Orario App.</th>
+                <th ng-if="HeroBillings.activeState === 'Attive'">Cliente</th>
+                <th>Importo</th>
+                <th>Fattura</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in HeroBillings.filterBillings()">
+                <td>{{ ::row.data }}</td>
+                <td>{{ ::row.codiceFatt }}</td>
+                <td>{{ ::row.codiceApp }}</td>
+                <td>{{ ::row.tipoOperazione }}</td>
+                <td>{{ ::row.servizio }}</td>
+                <td>{{ ::row.dataAppuntamento }}</td>
+                <td>{{ ::row.orario }}</td>
+                <td ng-if="HeroBillings.activeState === 'Attive'">{{ ::row.destinatario }}</td>
+                <td>{{ ::row.importo | number:2 }}&euro;</td>
+                <td>
+                    <a class="waves-effect waves-light btn btn-flat white btn-small btn btn-small"
+                        ui-sref="billing({ idFattura: row.idFattura })"
+                        target="_blank">Fattura</a>
+                </td>
+            </tr>
+            <tr ng-if="HeroBillings.billings.length < 1">
+                <td colspan="7"><i class="center">Spiacenti, non hai effettuato ancora prenotazioni.</i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

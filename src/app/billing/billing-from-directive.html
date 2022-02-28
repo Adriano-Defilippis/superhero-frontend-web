@@ -1,0 +1,65 @@
+<div input-field>
+  <input type="text" name="nomeCompleto"
+  ng-model="from.nomeCompleto">
+  <label>Nome completo / Ragione sociale</label>
+</div>
+<div input-field>
+  <input type="text" name="codiceFiscale"
+  ng-model="from.codiceFiscale">
+  <label>Codice fiscale</label>
+</div>
+<div input-field>
+  <input type="text" name="partitaIva"
+  ng-model="from.partitaIva">
+  <label>Partita IVA</label>
+</div>
+<div input-field>
+  <input type="text" name="indirizzo"
+  ng-model="from.indirizzo">
+  <label>Indirizzo</label>
+</div>
+<div input-field>
+  <input type="text" name="codiceId"
+  ng-model="from.codiceId">
+  <label>Codice identificativo</label>
+</div>
+<select name="modalitaOperativa"
+    ng-model="from.modalitaOperativa" material-select>
+  <option value="" disabled selected>Modalità Operativa</option>
+  <option ng-repeat="option in ::options.modalitaOperativa" ng-value="option.id">{{::option.label}}</option>
+</select>
+<div class="radio-group" ng-if="from.aliquotaIva == 0">
+  <input type="checkbox" name="regimeDeiMinimi" id="regimeDeiMinimi"
+  ng-model="from.regimeDeiMinimi">
+  <label for="regimeDeiMinimi">Regime dei minimi</label>
+</div>
+<div class="radio-group" ng-if="from.aliquotaIva == 0">
+  <input type="checkbox" name="esenteIva" id="esenteIva"
+  ng-model="from.esenteIva">
+  <label for="esenteIva">Esente IVA</label>
+</div>
+<div class="row">
+    <div class="col s4">
+        <div input-field>
+          <input type="number" name="aliquotaIva"
+          ng-model="from.aliquotaIva">
+          <label>Aliquota Iva</label>
+        </div>
+    </div>
+    <div class="col s4">
+        <div input-field>
+          <input type="number" name="rivalsa"
+          ng-model="from.rivalsa">
+          <label>Rivalsa</label>
+        </div>
+    </div>
+    <div class="col s4">
+        <div input-field>
+          <input type="number" name="ritenuta"
+          ng-model="from.ritenuta">
+          <label>Ritenuta</label>
+        </div>
+    </div>
+</div>
+
+<a ng-click="setDigitalHeroes()" class=" btn-small waves-effect waves-light main-orange btn">ES. DigitalHeroes</a>

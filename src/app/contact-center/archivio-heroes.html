@@ -1,0 +1,67 @@
+<div class="row">
+  <h1 class="title-page center">Supereroi ({{ctrl.heroes.length}})</h1>
+  <a
+    class="waves-effect waves-light main-orange btn margin-top-small"
+    style="float: right;"
+    ng-click="ctrl.openMessageModal()"
+  >
+    Invia messaggio
+  </a>
+</div>
+<div class="table-holder">
+  <table st-table="ctrl.heroes" class="table table-recruiter text-small">
+    <tr>
+      <th colspan="6">
+        <input st-search="searchField1" placeholder="Filtra l'elenco per nome, cognome, servizio, telefono o domicilio" class="input-base" type="search"/>
+      </th>
+      <th></th>
+      <th colspan="5">
+        <input st-search="searchField2" placeholder="Filtra l'elenco per nome, cognome, servizio, telefono o domicilio" class="input-base" type="search"/>
+      </th>
+    </tr>
+    <thead>
+      <tr>
+        <th>
+          <div class="radio-group">
+            <input type="checkbox" name="allSHSelected" id="allSHSelected" ng-model="ctrl.allSHSelected" ng-change="ctrl.toggleAllSHSelected()"></input>
+            <label for="allSHSelected"></label>
+          </div>
+        </th>
+        <th st-sort="iscrizione">Iscrizione</th>
+        <th st-sort="nome">Nome</th>
+        <th st-sort="cognome">Cognome</th>
+        <th st-sort="eta">Età</th>
+        <th st-sort="nazionalita">Nazionalità</th>
+        <th st-sort="specializzazione">Spec.</th>
+        <th st-sort="formazione">Formazione</th>
+        <th st-sort="telefono">Telefono</th>
+        <th st-sort="autoMotoMunito">Automunito</th>
+        <th st-sort="indirizzo">Domicilio</th>
+        <th st-sort="actions">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in ctrl.heroes">
+        <td>
+          <div class="radio-group">
+            <input type="checkbox" name="{{row.id}}" id="{{row.id}}" ng-model="row.selected"></input>
+            <label for="{{row.id}}"></label>
+          </div>
+        </td>
+        <td>{{row.dataFormattedRegistrazione}}</td>
+        <td>{{row.nome}}</td>
+        <td>{{row.cognome}}</td>
+        <td>{{row.formattedEta}}</td>
+        <td>{{row.cittadinanza}}</td>
+        <td ng-bind-html="row.competenze"></td>
+        <td>{{row.titoloStudio}}</td>
+        <td>{{row.cellulare}}</td>
+        <td>{{row.autoMotoMunito}}</td>
+        <td>{{row.indirizzo}}</td>
+        <td>
+          <a class="waves-effect waves-light btn-flat white btn btn-small" ui-sref="main.support.eroe-dettaglio({id: row.id})">Dettagli</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

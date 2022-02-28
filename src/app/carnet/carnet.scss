@@ -1,0 +1,19 @@
+.md-icon.medium {
+	@media screen and(max-width: $mq-sm){
+    	height: 75px;
+  	}
+}
+
+.ore-residue h5 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.scadenza h5 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.carnet-list-header .text-row {
+	vertical-align: middle;
+}

@@ -1,0 +1,21 @@
+<div class="row">
+
+    <div class="col s12 m2 center service-choice"
+        ng-repeat="service in ServiceChoice.services"
+        ng-class="{
+            selected: ServiceChoice.selected === service.id,
+            active: ServiceChoice.selected === service.id,
+            disable: ServiceChoice.isDisabled(service.id)
+        }">
+        <a ng-click="ServiceChoice.onServiceClick(service.id)">
+            <div class="box-wrapper" full-width valign-wrapper>
+                <div valign>
+                    <div>
+                        <md-icon class="md-icon medium grey-text darken-1 hide-sm" ng-class="service.iconClass" md-svg-src="{{ service.icon }}" fill></md-icon>
+                        <h4 class="reset-box uppercase" ng-bind="service.label"></h4>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>

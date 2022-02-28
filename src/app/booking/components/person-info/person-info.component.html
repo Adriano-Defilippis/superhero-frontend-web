@@ -1,0 +1,45 @@
+<div class="z-depth-1 padding-small child-single">
+    <div class="row no-margin bottom">
+        <div class="col m3 s6">
+            <div input-field>
+                <input type="text"
+                    ng-model="PersonInfo.nome"
+                    ng-change="PersonInfo.changedPerson()">
+                <label>Nome</label>
+            </div>
+        </div>
+        <div class="col m3 s6">
+            <div input-field>
+                <input type="text"
+                    ng-model="PersonInfo.cognome"
+                    ng-change="PersonInfo.changedPerson()">
+                <label>Cognome</label>
+            </div>
+        </div>
+        <div class="col m3 s6">
+            <select class="select-dropdown-margin-top"
+                ng-model="PersonInfo.eta"
+                ng-change="PersonInfo.changedPerson()"
+                material-select>
+                <option value="" disabled selected>Età</option>
+                <option ng-repeat="age in PersonInfo.ageOptions" ng-value="age.id">{{age.value}}</option>
+            </select>
+        </div>
+        <div class="col m3 s6">
+            <div class="radio-group">
+                <label>Sesso</label>
+                <input class="with-gap" name="sesso-{{PersonInfo.index}}" type="radio" id="sessoM-{{PersonInfo.index}}" value="M"
+                    ng-model="PersonInfo.sesso"
+                    ng-change="PersonInfo.changedPerson()"><label for="sessoM-{{PersonInfo.index}}">M</label>
+                <input class="with-gap" name="sesso-{{PersonInfo.index}}" type="radio" id="sessoF-{{PersonInfo.index}}" value="F"
+                    ng-model="PersonInfo.sesso"
+                    ng-change="PersonInfo.changedPerson()"><label for="sessoF-{{PersonInfo.index}}">F</label>
+            </div>
+        </div>
+    </div>
+    <div class="delete" ng-show="PersonInfo.index > 0" ng-click="PersonInfo.onPersonRemove({index:PersonInfo.index})">
+        <div valign-wrapper>
+            <a class="btn-floating waves-effect waves-light white "><i class="mdi-content-remove grey-text text-darken-3"></i></a>
+        </div>
+    </div>
+</div>

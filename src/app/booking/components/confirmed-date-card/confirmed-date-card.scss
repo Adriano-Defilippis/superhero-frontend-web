@@ -1,0 +1,58 @@
+.date-confirmed-check {
+    width: 50px;
+    text-align: right;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.confirmed-hero-suggestion {
+    width: 80px;
+
+    .hero__image {
+        width: 70px !important;
+        height: 70px !important;
+    }
+}
+
+.hero-name-availability {
+    text-align: left;
+    padding-right: 10px;
+
+    p {
+        line-height: 17px;
+    }
+}
+
+.hero__info-left {
+    width: 240px;
+}
+
+.confirmed-date__wrapper {
+    display: inline-table;
+
+    @media screen and (max-width: $mq-sm) {
+        display: block;
+    }
+}
+
+.confirmed-date__left, .confirmed-date__date-info {
+    display: table-cell;
+    vertical-align: middle;
+
+    @media screen and (max-width: $mq-sm) {
+        display: block;
+    }
+}
+
+.confirmed-date__left {
+    width: 250px;
+    & > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    @media screen and (max-width: $mq-sm) {
+        width: 100%;
+        display: inline-table;
+    }
+}

@@ -1,0 +1,11 @@
+<div class="icon center width-100">
+    <md-icon md-svg-src="{{iconPath}}" alt="{{serviceLabel}}"></md-icon>
+</div>
+<div class="detail center left-align">
+    <p class="no-margin all left-align">
+        <b ng-bind="::serviceLabel"></b><br><b ng-bind-html="::costDetail">costDetail</b>
+    </p>
+    <p class="no-margin all left-align small" ng-if="discountLabel != undefined">
+        ({{::discountLabel}})
+    </p>
+</div>

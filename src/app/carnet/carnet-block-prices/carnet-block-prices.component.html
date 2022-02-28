@@ -1,0 +1,17 @@
+<div id="{{ CarnetBlockPrices.carnet.type }}" ng-class="CarnetBlockPrices.columns == 3 ? 'm4' : 'l3 m6'" class="col s12">
+    <div class="card-panel-flat center price-block-container">
+        <md-icon class="md-icon big main-orange-text" md-svg-src="{{ CarnetBlockPrices.carnet.icon }}" fill></md-icon>
+        <h5 class="uppercase" ng-if="CarnetBlockPrices.isGiftCard">{{ CarnetBlockPrices.carnet.prestazioneLabel }}</h5>
+        <p class="uppercase" ng-if="!CarnetBlockPrices.isGiftCard && !CarnetBlockPrices.isPrestazione && !CarnetBlockPrices.hidePaymentData">
+            Tariffa oraria<strong>&nbsp;
+            {{ CarnetBlockPrices.carnet.priceHour }}&nbsp;
+            {{ CarnetBlockPrices.carnet.priceHourAndHalf ? '€/1h30m' : '€/h' }}</strong></p>
+        <p class="uppercase">{{!CarnetBlockPrices.isPrestazione ? 'Monte ore' : 'Numero prestazioni'}}<strong>&nbsp;{{ CarnetBlockPrices.carnet.hoursLabel }}</strong></p>
+        <p class="uppercase">Validità<strong>&nbsp;{{ CarnetBlockPrices.carnet.validity }}</strong></p>
+
+        <p class="uppercase" ng-if="!CarnetBlockPrices.isGiftCard && (!CarnetBlockPrices.showDiscount || !CarnetBlockPrices.carnet.priceDiscount)">Costo<strong>&nbsp;{{CarnetBlockPrices.carnet.priceTotal}} €</strong></p>
+        <p class="uppercase" ng-if="!CarnetBlockPrices.isGiftCard && (CarnetBlockPrices.showDiscount && CarnetBlockPrices.carnet.priceDiscount)">Costo<span class="hyphened">&nbsp;{{CarnetBlockPrices.carnet.priceTotal}}</span><strong>&nbsp;{{CarnetBlockPrices.carnet.priceDiscount}} €</strong></p>
+        <p class="uppercase" class="main-orange-text" ng-bind-html="CarnetBlockPrices.showDiscount && CarnetBlockPrices.carnet.priceDiscount ? CarnetBlockPrices.carnet.discountLabel : '<br>'"></p>
+        <a class="waves-effect waves-light btn btn-flat-white" ng-click="CarnetBlockPrices.buyCarnet()">{{ CarnetBlockPrices.isGiftCard ? 'Attiva' : 'Acquista'}}</a>
+    </div>
+</div>

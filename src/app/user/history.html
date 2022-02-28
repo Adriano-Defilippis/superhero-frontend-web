@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col m12 center">
+    <h2>Storico degli appuntamenti</h2>
+  </div>
+</div>
+
+<div class="table-holder">
+  <table st-table="ctrl.appuntamenti" class="table striped bordered table-recruiter">
+  	<thead>
+      <tr>
+        <th st-sort="dataInizio">Data</th>
+        <th st-sort="dataInizio">Orario</th>
+        <th st-sort="tipo">Prestazione</th>
+        <th st-sort="stato">Supereroe</th>
+        <th>Stato</th>
+        <th st-sort="importo">Importo</th>
+        <th>Info</th>
+      </tr>
+  	</thead>
+  	<tbody>
+      <tr ng-repeat="row in ctrl.appuntamenti">
+        <td ng-bind-html="::row.dataFormatted"></td>
+        <td>{{row.dataInizioFormatted }} - {{ row.dataFineFormatted}}</td>
+  			<td ng-bind-html="::row.servizioLabel"></td>
+        <td ng-bind-html="::row.superHeroNomeCompleto"></td>
+        <td title="{{row.statoLabel}}"><i class="{{row.statoIcon}} icon-center"></i></td>
+        <td>{{row.spesaFinale | number : 2}}&nbsp;&euro;</td>
+        <td><a class="icon-button big" ng-if="row.hasInfo" ng-click="ctrl.showInfo(row.id)"><span class="glyphicon glyphicon-info-sign grey-text text-darken-3" title="Informazioni"></span></a></td>
+      </tr>
+      <tr ng-if="ctrl.appuntamenti.length < 1">
+        <td colspan="6"><i class="center">Spiacenti, nessun Supereroe ha ancora effettuato prestazioni per te.</i></td>
+      </tr>
+  	</tbody>
+  </table>
+</div>

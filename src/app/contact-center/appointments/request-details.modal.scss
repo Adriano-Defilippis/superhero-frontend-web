@@ -1,0 +1,62 @@
+.rounded {
+    border-radius: 0.25rem;
+}
+
+.request-details__hero-info {
+    display: inline-block;
+
+    .info {
+        display: inline-block;
+    }
+
+    .info h4 {
+        margin: 0px;
+        margin-left: 1rem;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+}
+
+.request-details__sms {
+    margin-top: 1.4rem;
+    padding-top: 0.7rem;
+    border-top: 1px solid $medium;
+}
+
+.request-details__sms-single {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+
+    &.in {
+        text-align: right;
+    }
+
+    &.out {
+        text-align: left;
+    }
+
+    &.out .request-details__sms-single-bubble {
+        background-color: rgba(192, 228, 192, 1);
+    }
+
+    .request-details__sms-single-bubble {
+        background: $white;
+        display: inline-block;
+        position: relative;
+        width: 70%;
+    }
+
+    .request-details__sms-single-date {
+        font-size: 0.7rem;
+        position: absolute;
+        top: 0.5rem;
+        right:1.2rem;
+        font-style: italic;
+    }
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+    }
+}

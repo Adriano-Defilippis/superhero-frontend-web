@@ -1,0 +1,13 @@
+<div class="nomargin" ng-show="PrivacyContract.showNewsletter === true">
+    <input type="checkbox" name="newsLetter" id="newsLetter"
+        ng-model="PrivacyContract.newsletter"
+        ng-checked="true"
+        ng-change="PrivacyContract.onToggleNewsletter()">
+    <label for="newsLetter">Desidero iscrivermi alla Newsletter di ilmioSupereroe.it</label>
+</div>
+<div class="radio-group ">
+    <input type="checkbox" name="privacy" id="privacy"
+        ng-model="PrivacyContract.privacyContract"
+        ng-change="PrivacyContract.onTogglePrivacyContract()">
+    <label for="privacy" class="auto-height privacy-contract">Accetto l'<a href="{{PrivacyContract.contracts.privacy}}" target="_blank">informativa sulla privacy</a>, le <a href="{{PrivacyContract.contracts.fornitura}}" target="_blank">condizioni di fornitura</a> e le <a href="{{PrivacyContract.contracts.utilizzo}}" target="_blank">condizioni di utilizzo della piattaforma</a>.</label>
+</div>

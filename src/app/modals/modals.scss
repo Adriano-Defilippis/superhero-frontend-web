@@ -1,0 +1,117 @@
+#lean-overlay {
+    z-index: 2000;
+}
+
+.ngdialog .timepicker .btn {
+    background: $white;
+    padding: 5px 0px;
+}
+
+.ngdialog .modal-content {
+    padding: 0px;
+}
+
+.ngdialog .timepicker {
+
+    margin: 0 auto;
+
+    input {
+        margin: 0px;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+}
+
+.ngdialog .error {
+    line-height: 18px;
+    color: $active;
+    font-weight: 500;
+}
+
+.timepicker-modal {
+    background-color: $white;
+    border-radius: 5px;
+
+    input {
+        border-bottom: 0px !important;
+    }
+}
+
+.timepicker .btn {
+    @media screen and (max-width: $mq-sm) {
+        line-height: 10px;
+        height: 20px;
+    }
+}
+
+@-webkit-keyframes ngdialog-bottomsheetin {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes ngdialog-bottomsheetin {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes ngdialog-bottomsheetout {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+@keyframes ngdialog-bottomsheetout {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+}
+
+
+
+.ngdialog-theme-default.ngdialog-bottom-sheet .ngdialog-content {
+    //-webkit-animation: ngdialog-bottomsheetin .5s !important;
+    animation: ngdialog-bottomsheetin .5s !important;
+}
+
+.ngdialog-theme-default.ngdialog-bottom-sheet.ngdialog-closing .ngdialog-content {
+    //-webkit-animation: ngdialog-bottomsheetout .5s !important;
+    animation: ngdialog-bottomsheetout .5s !important;
+}

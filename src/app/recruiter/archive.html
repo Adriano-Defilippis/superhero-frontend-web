@@ -1,0 +1,35 @@
+<h1 class="title-page center">Candidature archiviate</h1>
+<table st-table="ctrl.applications" class="table table-recruiter">
+
+  <thead>
+    <tr>
+      <th st-sort="oraArrivo">Ora arrivo</th>
+      <th st-sort="nome">Nome</th>
+      <th st-sort="cognome">Cognome</th>
+      <th st-sort="eta">Età</th>
+      <th st-sort="cittadinanza">Cittadinanza</th>
+      <th st-sort="competenze">Specializzazione</th>
+      <th st-sort="formazione">Formazione</th>
+      <th st-sort="referenze">Referenze</th>
+      <th st-sort="partitaIva">Partita Iva</th>
+    </tr>
+    <tr>
+      <th colspan="9">
+        <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in ctrl.applications">
+      <td ng-bind-html="row.dataRegistrazione | registrationDate"></td>
+      <td>{{row.nome}}</td>
+      <td>{{row.cognome}}</td>
+      <td>{{row.dataNascita | ageFilter}}</td>
+      <td>{{row.cittadinanza}}</td>
+      <td>{{row.competenze}}</td>
+      <td>{{row.titoloStudio}}</td>
+      <td>{{(row.referenzeBabySitter != null || row.referenzeBadante != null || row.referenzeColf != null) ? 'Si' : 'No' }}</td>
+      <td>{{row.partitaIva ? row.modalitaOperativaLabel : 'No'}}</td>
+    </tr>
+  </tbody>
+</table>

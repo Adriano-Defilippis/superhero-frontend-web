@@ -1,0 +1,138 @@
+<div class="hero-profile">
+  <div class="section center">
+    <div row>
+      <div class="s5 right-align center">
+        <div class="hero-image-profile inline-block" style="background-image: url('{{ctrl.hero.mv.heroImage}}')"></div>
+      </div>
+      <div class="s7 center left-align">
+        <div class="section">
+          <div class="hero-info-block left-align">
+            <h3 class="no-margin all">{{ctrl.hero.info.nome}} {{ctrl.hero.info.cognome}}</h3>
+            <p class="no-margin all" ng-if="!disableActions">
+              <a class="waves-effect waves-light white grey-text text-darken-2 btn btn-flat btn-small btn-xsmall" ng-click="ctrl.hero.startNewBooking(ctrl.hero.info)">{{ctrl.hero.info.isRecall ? 'Richiama' : 'Prenota'}}</a>
+              <a class="waves-effect waves-light white grey-text text-darken-2 btn btn-flat btn-small btn-xsmall" ng-click="ctrl.hero.startCarnetBooking(ctrl.hero.info)">Acquista un carnet</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-if="ctrl.hero.mv.showTabs">
+    <div class="col s12 m10 offset-m1 left-align">
+        <ul class="tabs tab-label" tabs>
+          <li class="tab col s12 m3"><a class="{{ctrl.hero.preselected == 'dati' ? 'active' : ''}}" href="#tabDati"><h5>Dati</h5></a></li>
+          <li class="tab col s12 m3"><a class="{{ctrl.hero.preselected == 'info' ? 'active' : ''}}" href="#tabInfo"><h5>Info</h5></a></li>
+          <li class="tab col s12 m3"><a class="{{ctrl.hero.preselected == 'recensioni' ? 'active' : ''}}" href="#tabRecensioni"><h5>Feedback</h5></a></li>
+        </ul>
+    </div>
+    <div class="tab-contents">
+      <div class="panels">
+        <div id="tabDati" class="col s12 hero-tab-wrapper">
+          <div class="row">
+            <div class="col s12 m10 offset-m1">
+              <div class="card-panel">
+                <ul class="">
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.nazionalita.title}}:</strong>&nbsp;{{ctrl.hero.dati.nazionalita.content}}</p></li>
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.eta.title}}:</strong>&nbsp;{{ctrl.hero.dati.eta.content}}</p></li>
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.formazione.title}}:</strong>&nbsp;{{ctrl.hero.dati.formazione.content}}</p></li>
+                  <!--<li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.esperienza.title}}:</strong></p>
+
+                    <div class="margin-left-small">
+                      <div ng-if="ctrl.hero.dati.esperienza.colf">
+                        <p class="no-margin top"><strong>Colf:</strong>{{ctrl.hero.dati.esperienza.colf}}</p>
+                        <ul>
+                          <li ng-repeat="competenza in ctrl.hero.dati.esperienza.colfCompetenze">
+                            {{competenza}}
+                          </li>
+                        </ul>
+                      </div>
+                      <div ng-if="ctrl.hero.dati.esperienza.badante">
+                        <p class="no-margin top"><strong>Badante:</strong>{{ctrl.hero.dati.esperienza.badante}}</p>
+                        <ul>
+                          <li ng-repeat="competenza in ctrl.hero.dati.esperienza.badanteCompetenze">
+                            {{competenza.descrizione}}
+                          </li>
+                        </ul>
+                      </div>
+                      <div ng-if="ctrl.hero.dati.esperienza.babySitter">
+                        <p class="no-margin top"><strong>BabySitter:</strong>{{ctrl.hero.dati.esperienza.babySitter}}</p>
+                        <ul>
+                          <li ng-repeat="competenza in ctrl.hero.dati.esperienza.babySitterCompetenze">
+                            {{competenza.descrizione}}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>-->
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.referenze.title}}:</strong>&nbsp;</p><div class="margin-left-small" ng-bind-html="ctrl.hero.dati.referenze.content"></div></li>
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.conoscenzaItaliano.title}}:</strong>&nbsp;{{ctrl.hero.dati.conoscenzaItaliano.content}}</p></li>
+                  <li ng-if="ctrl.hero.dati.conoscenzaAltreLingue.content.length > 0"><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.conoscenzaAltreLingue.title}}:</strong></p>
+                    <div class="margin-left-small">
+                      <div>
+                        <ul>
+                          <li ng-repeat="lingua in ctrl.hero.dati.conoscenzaAltreLingue.content">
+                            <p class="no-margin all">{{lingua.descrizione}}</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.disponibilitaNotturna.title}}:</strong>&nbsp;{{ctrl.hero.dati.disponibilitaNotturna.content}}</p></li>
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.disponibilitaWeekEnd.title}}:</strong>&nbsp;{{ctrl.hero.dati.disponibilitaWeekEnd.content}}</p></li>
+                  <li><p class="no-margin all"><strong class="uppercase">{{ctrl.hero.dati.amanteAnimali.title}}:</strong>&nbsp;{{ctrl.hero.dati.amanteAnimali.content}}</p></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- INFO SU DI ME -->
+        <div id="tabInfo" class="col s12 center hero-tab-wrapper">
+          <div class="row">
+            <div class="col s12 m10 offset-m1">
+              <div class="card-panel">
+                <p class="hero-self-description left-align" ng-bind="ctrl.hero.info.descrizione"></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FEEDBACKS -->
+        <div id="tabRecensioni" class="col s12 hero-tab-wrapper">
+          <div class="row">
+            <div class="col s12 m10 offset-m1">
+              <div class="card-panel section">
+
+                <div class="feedback-single" ng-repeat="feedback in ctrl.hero.feedbacks">
+                  <div class="info" row>
+                    <div class="date">
+                      <div class="short center top"><p class="no-margin all grey-text text-darken-3" ng-bind-html="feedback.date"></p></div>
+                      <div class="stars center top"><h4 class="no-margin all voto" ng-bind-html="'<small>voto:</small><br>'+feedback.rating+'/4'"></h4></div>
+                    </div>
+                    <div class="content top">
+                      <p class="no-margin top">{{feedback.content}}</p>
+                    </div>
+                  </div>
+                  <div class="author-name">
+                    <p class="right-align no-margin all"><i>{{feedback.author}}</i></p>
+                  </div>
+                </div>
+
+                <div class="feedback-single" ng-if="ctrl.hero.feedbacks.length < 1">
+                  <p class="center italic">Non sono ancora presenti recensioni per questo Supereroe.</p>
+                </div>
+
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

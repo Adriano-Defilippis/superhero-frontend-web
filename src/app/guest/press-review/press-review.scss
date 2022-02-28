@@ -1,0 +1,97 @@
+.press-review-banner {
+    height: 80px;
+    width: 100%;
+    padding: 0 5%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    //background: $mediumLight;
+    background: rgba(255,255,255,1);
+
+    > div {
+        flex: 1 0 20%;
+    }
+
+    @media screen and (max-width: $mq-sm) {
+        height: 100px;
+        > div
+        {
+            flex: 1 0 33%;
+        }
+
+        > div:first-child
+        {
+           flex: 0 1 50%;
+        }
+    }
+
+    .press-review-logo {
+        width: 85px;
+        height: auto;
+        margin: auto;
+        display:block;
+        opacity: 0.35;
+        transition: opacity 0.3s ease;
+        margin-top: 5px;
+        image-rendering: -moz-crisp-edges;         /* Firefox */
+        image-rendering:   -o-crisp-edges;         /* Opera */
+        image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+        image-rendering: crisp-edges;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 50px;
+        }
+    }
+
+    .press-review-logo:hover {
+        opacity: 0.65;
+    }
+
+    .yahoo {
+        width: 130px;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 80px;
+        }
+    }
+
+    .adn {
+        width: 220px;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 100px;
+        }
+    }
+
+    .tgcom {
+        width: 130px;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 80%;
+        }
+    }
+
+    .oggi {
+        width: 130px;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 80%;
+        }
+    }
+
+    .vanity {
+        width: 140px;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 50%;
+        }
+    }
+
+    .corriereInnovazione {
+        width: 230px;
+
+        @media screen and (max-width: $mq-sm) {
+            width: 80%;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<div class="request-details">
+    <h3 class="center">Richiesta appuntamento</h3>
+    <div class="row no-margin bottom center">
+        <div class="request-details__hero-info">
+            <div class="info">
+                <h4>{{ctrl.details.superHero.nomeCompleto}}</h4>
+                <h4>{{ctrl.details.superHero.cellulare}}</h4>
+            </div>
+            <div class="width-45 center-sm left">
+                <div class="profile-pic my-heroes-pic no-margin all" fill style="background-image:url({{ctrl.details.superHero.photoUrl}})"></div>
+            </div>
+        </div>
+        <br>
+        <div class="request-details__sms">
+            <div class="request-details__sms-single" ng-repeat="sms in ctrl.sms | orderBy:'data'" ng-class="{in: sms.tipo == 'IN', out: sms.tipo == 'OUT'}">
+                <div class="request-details__sms-single-bubble rounded with-padding-small">
+                    <span class="request-details__sms-single-date">{{sms.labels.date}}</span>
+                    <p>{{sms.messaggio}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

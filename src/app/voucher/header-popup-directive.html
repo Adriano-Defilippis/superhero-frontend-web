@@ -1,0 +1,20 @@
+
+<div class="card center close" id="header-popup" ng-if="!userIsLogged && !disableBanner">
+
+    <div class="popup-content">
+        <p class="small"><b>È il tuo primo Supereroe?<br>La 1° ora è gratis!</b></p>
+        <p class="small no-margin bottom"><b>Usa il codice sconto</b></p>
+        <h3 class="main-orange-text no-margin all">{{codiceSconto}}</h3>
+        <p class="small no-margin top"><b>durante la prenotazione.</b><br><br>
+        <i class="tiny">La promozione è valida per prenotazioni di almeno 3 ore e fino alle ore 24.00 del {{expireDate}}.</i></p>
+        <hr class="active">
+        <p class="small"><b>E se prenoti un Carnet hai fino a 5 ore in omaggio!</b> <b ng-click="openCarnet()">Clicca qui!</b></p>
+
+        <strong ng-click="close()" class="small">CHIUDI</strong>
+    </div>
+
+    <div class="popup-footer white-text" ng-click="open()">
+        <p class="small no-margin all"><b>1°volta? Fino a 5 ore gratis!<br>Scopri il codice sconto</b></p>
+    </div>
+
+</div>

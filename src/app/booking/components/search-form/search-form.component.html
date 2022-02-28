@@ -1,0 +1,102 @@
+<h4 class="center uppercase"><small>Filtri di ricerca</small></h4>
+<div class="row no-margin bottom">
+    <div class="col s12 m4 offset-m2">
+        <div input-field>
+            <input type="text" name="cap" minlength="5"
+                ng-model="SearchForm._filters.postalCode"
+                ng-model-options="{ allowInvalid: true }"
+                ng-change="SearchForm.filtersChanged()">
+            <label>Il tuo Cap</label>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <service-input-autocomplete
+            placeholder="Servizio"
+            always-open="false"
+            disabled="SearchForm.disabledServices"
+            selected="SearchForm.selectedService"
+            selected-sub-service="SearchForm.selectedSubService"
+            on-service-selected="SearchForm.selectService(serviceId)"
+            on-sub-service-selected="SearchForm.selectSubService(parentServiceId, subServiceId)">
+        </service-input-autocomplete>
+    </div>
+</div>
+
+<div uib-collapse="!SearchForm.showAdvanced">
+
+    <div class="sottocompetenze" ng-show="SearchForm._filters.service !== ''">
+        <h5 class="center no-margin top">Seleziona i servizi specifici di cui hai bisogno</h5>
+        <div class="row no-margin bottom">
+            <div class="col s12 m4" ng-repeat="sotto in SearchForm.servicesSpecificOptions[SearchForm._filters.service]">
+                <div class="radio-group-">
+                    <input type="checkbox" name="{{sotto.id}}" id="{{sotto.id}}"
+                        ng-model="sotto.selected"
+                        ng-change="SearchForm.sottoCompetenzaChanged(sotto.id, sotto.selected)">
+                    <label for="{{sotto.id}}">{{sotto.label}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row no-margin bottom">
+        <div class="col s12 m4">
+            <select class="select-dropdown-margin-top"  material-select
+                ng-model="SearchForm._filters.languages.italian"
+                ng-change="SearchForm.filtersChanged()">
+                <option value="" selected>Conoscenza Italiano</option>
+                <option ng-repeat="option in SearchForm.languageOptions.italian" ng-value="option.id">{{option.label}}</option>
+            </select>
+        </div>
+        <div class="col s12 m4">
+            <select class="select-dropdown-margin-top" ng-model="SearchForm._filters.languages.english" material-select
+                ng-change="SearchForm.filtersChanged()">
+                <option value="" selected>Conoscenza Inglese</option>
+                <option ng-repeat="option in SearchForm.languageOptions.english" ng-value="option.id">{{option.label}}</option>
+            </select>
+        </div>
+        <div class="col s12 m4">
+            <select class="select-dropdown-margin-top" ng-model="SearchForm._filters.languages.french" material-select
+                ng-change="SearchForm.filtersChanged()">
+                <option value="" selected>Conoscenza Francese</option>
+                <option ng-repeat="option in SearchForm.languageOptions.french" ng-value="option.id">{{option.label}}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s6 m4">
+            <div class="radio-group">
+                <input type="checkbox" name="amanteAnimale" id="amanteAnimale"
+                    ng-model="SearchForm._filters.misc.amanteAnimali"
+                    ng-change="SearchForm.filtersChanged()">
+                <label for="amanteAnimale">Amante degli animali</label>
+            </div>
+        </div>
+        <div class="col s6 m4">
+            <div class="radio-group">
+                <input type="checkbox" name="disponibilitaWeekEnd" id="disponibilitaWeekEnd"
+                    ng-model="SearchForm._filters.misc.disponibilitaWeekend"
+                    ng-change="SearchForm.filtersChanged()">
+                <label for="disponibilitaWeekEnd">Disponibilità weekend</label>
+            </div>
+        </div>
+        <div class="col s6 m4">
+            <div class="radio-group">
+                <input type="checkbox" name="disponibilitaNotturna" id="disponibilitaNotturna"
+                    ng-model="SearchForm._filters.misc.disponibilitaNotturna"
+                    ng-change="SearchForm.filtersChanged()">
+                <label for="disponibilitaNotturna">Disponibilità notturna</label>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p class="center no-margin all padding-top-small hero-search__show-more-filters"><a ng-click="SearchForm.onToggleShowAdvanced()">{{SearchForm.showAdvanced ? '&#x25B2;&nbsp;Rimuovi' : '&#x25BC;&nbsp;Aggiungi'}} ulteriori specifiche</a></p>
+
+<div class="section">
+    <p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="SearchForm.onUpdateSearch()">Aggiorna ricerca</a></p>
+</div>
+
+<div class="section" ng-if="SearchForm.error !== ''">
+    <p class="center main-orange-text"><i>{{SearchForm.error}}</i></p>
+</div>

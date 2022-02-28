@@ -1,0 +1,68 @@
+<h2 class="center" style="margin-bottom: 5px;">Nuovo indirizzo di fatturazione</h2>
+<form class="billing-address" name="billingAddressForm" novalidate class="form-dati" ng-submit="saveAddress(billingAddressForm.$valid)">
+    <div class="row" style="margin-bottom: 20px;">
+        <div input-field>
+          <input type="checkbox" name="sameUserInfo" id="sameUserInfo"
+          ng-model="mv.addressBillingInfo.sameUserInfo">
+          <label for="sameUserInfo">I dati della fattura sono diversi dai tuoi?</label>
+        </div>
+    </div>
+    <div class="row" ng-if="mv.addressBillingInfo.sameUserInfo !== true">
+        <div class="col m4 s12">
+            <div input-field>
+                <input type="text" name="nome" required ng-model="mv.addressBillingInfo.nome">
+                <label>Nome</label>
+            </div>
+        </div>
+        <div class="col m4 s12">
+            <div input-field>
+                <input type="text" name="cognome" required ng-model="mv.addressBillingInfo.cognome">
+                <label>Cognome</label>
+            </div>
+        </div>
+        <div class="col m4 s12">
+            <div input-field>
+                <input type="text" name="codiceFiscale" required ng-model="mv.addressBillingInfo.codiceFiscale">
+                <label>Codice Fiscale</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m6 s12">
+            <div input-field>
+                <input type="text" name="via" required ng-model="mv.addressBillingInfo.via">
+                <label>Via</label>
+            </div>
+        </div>
+        <div class="col m3 s12">
+            <div input-field>
+                <input type="text" name="civico" required ng-model="mv.addressBillingInfo.numeroCivico">
+                <label>Numero</label>
+            </div>
+        </div>
+        <div class="col m3 s12">
+            <div input-field>
+                <input type="text" name="cap" required ng-model="mv.addressBillingInfo.cap">
+                <label>CAP</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col m8 s12">
+            <div input-field>
+                <input type="text" name="civico" required ng-model="mv.addressBillingInfo.citta">
+                <label>Città</label>
+            </div>
+        </div>
+        <div class="col m4 s12">
+            <div input-field>
+                <input type="text" name="cap" required ng-model="mv.addressBillingInfo.provincia">
+                <label>Provincia</label>
+            </div>
+        </div>
+    </div>
+    <p class="center"><button class="btn waves-effect waves-light main-orange" type="submit" name="action">Salva</button></p>
+</form>
+<div class="section">
+    <p class="center" ng-show="error.message"><i>{{error.message}}</i></p>
+</div>

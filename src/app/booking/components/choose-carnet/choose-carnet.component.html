@@ -1,0 +1,21 @@
+<div class="carnet-boxes row">
+    <carnet-block
+        class="col"
+        ng-class="{
+            'm4': ChooseCarnet.carnet[ChooseCarnet.serviceId].length === 3,
+            'l3 m6': ChooseCarnet.carnet[ChooseCarnet.serviceId].length === 4,
+        }"
+        ng-repeat="carnet in ChooseCarnet.carnet[ChooseCarnet.serviceId]"
+        carnet="carnet"
+        on-choose-carnet="ChooseCarnet.onChooseCarnet({ carnet: carnet })">
+    </carnet-block>
+</div>
+<div class="row">
+    <div class="col s12">
+        <p><em>Attenzione:</em></p>
+        <ul class="list">
+            <li><em>il pagamento dei Carnet al momento è possibile solo con carta di credito. Se preferisci acquistare il tuo Carnet attraverso bonifico bancario contatta il nostro Servizio Clienti allo 02-86882279 dal lunedì al venerdì dalle 8.00 alle 18.00.</em></li>
+            <li><em>l’addebito del Carnet sarà contestuale all’acquisto, mentre la fatturazione avverrà periodicamente in corrispondenza alla fruizione delle prestazioni o alla scadenza del medesimo.</em></li>
+        </ul>
+    </div>
+</div>

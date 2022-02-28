@@ -1,0 +1,125 @@
+// Hero sidebar
+.hero-sidebar {
+  padding: 0px 20px;
+
+  h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  //.service-1, .service-2, .service-3 {
+  //  border-left: 10px solid #222;
+  //}
+
+  .service-1 .md-button.discrete {
+    color: $service1;
+  }
+
+  .service-2 .md-button.discrete {
+    color: $service2;
+  }
+
+  .service-3 .md-button.discrete {
+    color: $service3;
+  }
+
+  .service-4 .md-button.discrete {
+    color: $service4;
+  }
+
+  .md-button.discrete:hover {
+    color: $white;
+  }
+}
+
+.reservation-requests, .reservation-confirmed {
+  h4 {
+      font-size: 16px;
+      border-bottom: 1px solid #222;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+      text-transform: uppercase;
+      text-align: center;
+  }
+
+  ul li > * {
+    height: 59px;
+    vertical-align: middle;
+    display: table-cell;
+    &.type {
+      width: 20px;
+    }
+  }
+
+  li {
+    display: inline-table;
+    height: 59px;
+    font-size: 14px;
+    background: $white;
+    margin-bottom: 10px;
+
+    span {
+      padding: 8px;
+    }
+
+    span.glyphicon {
+      font-size: 20px;
+    }
+  }
+}
+
+ul.hero-anagrafica li {
+  font-family: $font-active;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 17px;
+  margin-bottom: 15px;
+  color: $dark;
+
+  span {
+  text-transform: none;
+  font-weight: 500;
+  color: $mediumDark;
+  }
+}
+
+.hero-self-description {
+  font-size: 17px;
+  font-weight: 600;
+  font-family: $font-active;
+  line-height: normal;
+  color: $mediumDark;
+  margin-top: 25px;
+}
+
+.hero-tab-wrapper {
+  margin-top: 25px;
+}
+
+.hero-rating {
+  font-size: 17px;
+  font-weight: 400;
+  font-family: $font-active;
+  line-height: normal;
+  color: $mediumDark;
+}
+
+.tab-label {
+  text-transform: uppercase;
+  font-family: $font-active;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.hero-info-block a.btn {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.agreement label  {
+  height: auto !important;
+}

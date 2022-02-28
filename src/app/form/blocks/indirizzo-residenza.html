@@ -1,0 +1,50 @@
+<h2 class="center no-margin top">Indirizzo residenza</h2>
+<div class="row">
+    <div class="col s8">
+        <div input-field class="with-errors">
+            <input type="text" name="via" required ng-model="ctrl.heroApplication.indirizzoResidenza.via">
+            <label>Via / Viale / Corso / Piazza</label>
+        </div>
+        <div ng-messages="heroApplicationForm.via.$error" ng-show="heroApplicationForm.via.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s4">
+        <div input-field class="with-errors">
+            <input type="text" name="numeroCivico" required ng-model="ctrl.heroApplication.indirizzoResidenza.numeroCivico">
+            <label>Numero</label>
+        </div>
+        <div ng-messages="heroApplicationForm.numeroCivico.$error" ng-show="heroApplicationForm.numeroCivico.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m4">
+        <div input-field class="with-errors">
+            <input type="text" name="citta" required ng-model="ctrl.heroApplication.indirizzoResidenza.citta">
+            <label>Località</label>
+        </div>
+        <div ng-messages="heroApplicationForm.citta.$error" ng-show="heroApplicationForm.citta.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6 m4">
+        <div input-field class="with-errors">
+            <input type="text" name="citta" required ng-model="ctrl.heroApplication.indirizzoResidenza.cap">
+            <label>Cap</label>
+        </div>
+        <div ng-messages="heroApplicationForm.cap.$error" ng-show="heroApplicationForm.cap.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6 m4">
+        <select name="provincia" class="with-errors" ng-model="ctrl.heroApplication.indirizzoResidenza.provincia" material-select ng-disabled="ctrl.formDisabled" required>
+            <option value="" disabled selected>Provincia</option>
+            <option ng-repeat="option in ::ctrl.options.provincie | orderBy:'nome'" ng-value="option.sigla">{{::option.nome}}</option>
+        </select>
+        <div ng-messages="heroApplicationForm.provincia.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>

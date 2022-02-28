@@ -1,0 +1,28 @@
+<!--<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Servizio specifico</h2>
+    </div>
+</div>
+
+<additional-services
+    services="Fisioterapista.additionalServices"
+    selected="Fisioterapista.selectedAdditionalServices"
+    on-service-click="Fisioterapista.onClickAdditionalService({additionalServiceId: additionalServiceId})">
+</additional-services>-->
+
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Note aggiuntive</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="Fisioterapista.serviceNotes"
+            placeholder="Inserire indicazioni dettagliate sulle patologie da trattare, inclusa la zona affetta, da quanto tempo sono insorte ed eventuali interventi curativi già effettuati in precedenza"
+            on-change="Fisioterapista.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

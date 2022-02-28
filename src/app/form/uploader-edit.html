@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col {{ctrl.formDisabled? 's12 m6' : 's12 m4'}}">
+    <div ng-click="ctrl.formDisabled || ctrl.uploadPhoto()" type="button" class="upload-img center">
+      <div class="hero-image-profile inline-block" ng-style="{ 'background-image': 'url(\''+(ctrl.heroApplication.photoUrl == null ? '' : ctrl.heroApplication.photoUrl)+'\')' }"></div>
+      <div ng-show="!ctrl.formDisabled">
+        <p class="center" ng-show="ctrl.heroApplication.photoUrl === '' || ctrl.heroApplication.photoUrl === null"><b>Carica foto</b></p>
+        <p class="center" ng-show="ctrl.heroApplication.photoUrl !== '' && ctrl.heroApplication.photoUrl !== null"><b>Cambia foto</b></p>
+      </div>
+    </div>
+  </div>
+  <div class="col {{ctrl.formDisabled? 's12 m6' : 's12 m4'}}">
+    <div ng-click="ctrl.formDisabled || ctrl.uploadCv()" class="center" type="button">
+      <md-icon class="icon cv-icon" md-svg-src="/assets/icons/cv.svg" alt="CV" ng-show="ctrl.heroApplication.cvUrl !== '' && ctrl.heroApplication.cvUrl !== null"></md-icon>
+      <md-icon class="icon cv-icon empty" md-svg-src="/assets/icons/cv-empty.svg" alt="CV" ng-show="ctrl.heroApplication.cvUrl === '' || ctrl.heroApplication.cvUrl === null"></md-icon>
+      <div ng-show="!ctrl.formDisabled">
+        <p class="center" ng-show="ctrl.heroApplication.cvUrl !== '' && ctrl.heroApplication.cvUrl !== null"><b>Carica nuovo CV</b></p>
+        <p class="center" ng-show="ctrl.heroApplication.cvUrl === '' || ctrl.heroApplication.cvUrl === null"><b>Carica CV</b></p>
+      </div>
+    </div>
+    <p class="center"><a ng-href="{{ctrl.heroApplication.cvUrl}}" ng-show="ctrl.heroApplication.cvUrl !== '' && ctrl.heroApplication.cvUrl !== null"><b>(Scarica il CV)</b></a></p>
+  </div>
+  <div class="col s12 m4 center" ng-show="!ctrl.formDisabled">
+    <a ng-click="ctrl.prendiInCarico()" class="waves-effect waves-light main-orange btn" full-width ng-if="!ctrl.alreadyHero && ctrl.isNew">Prendi in carico</a>
+    <a ng-click="ctrl.submitForm(heroApplicationForm.$valid)" class="waves-effect waves-light main-orange btn margin-top-small" full-width ng-if="!ctrl.isNew">Salva le modifiche</a>
+    <a ng-click="ctrl.approveHero()" class="waves-effect waves-light main-orange btn margin-top-small" full-width ng-if="!ctrl.alreadyHero">Registra Collaboratore</a>
+    <a ng-click="ctrl.disableHero()" class="waves-effect waves-light main-orange btn margin-top-small" full-width ng-if="ctrl.alreadyHero && ctrl.enabledHero">Disabilita Collaboratore</a>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col m12 s12 center">
+        <h2>{{ ctrl.model.title }}</h2>
+        <md-icon class="md-icon big main-orange-text" md-svg-src="{{ ctrl.model.confirmIcon }}" fill></md-icon>
+        <p ng-bind-html="ctrl.model.content"></p>
+    </div>
+</div>
+<!-- end confirm block -->
+<!-- <div ng-include="ctrl.model.infoutili"></div> -->
+<div ng-include="ctrl.model.specs"></div>

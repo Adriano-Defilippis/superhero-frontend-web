@@ -1,0 +1,87 @@
+<h2 class="center no-margin bottom">Dettagli ordine</h2>
+<h5 class="center no-margin top">{{ctrl.order.id}}</h5>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="card white lighten-2">
+      <div class="card-content">
+        <span class="card-title grey-text text-darken-3">{{ctrl.order.labels.servizio}}</span>
+        <p class="with-margin">
+          <b>Tipologia:</b>&nbsp;{{ctrl.order.labels.tipologia}}<br>
+          <b>Stato:</b>&nbsp;{{ctrl.order.labels.stato}}<br>
+          <span ng-if="ctrl.order.labels.indirizzoPrestazione"><b>Ind. Prestazione:</b>&nbsp;{{ctrl.order.labels.indirizzoPrestazione}}<br></span>
+          <b>Effettuato il:</b>&nbsp;<span ng-bind-html="ctrl.order.dataCreazione | dataOra"></span><br>
+        </p>
+      </div>
+      <div class="card-action">
+        <span class="card-title grey-text text-darken-3">Totale ordine:&nbsp;{{ctrl.order.labels.importoOrdine}}&euro;</span>
+      </div>
+    </div>
+    <div class="card" ng-if="ctrl.order.appuntamenti.length > 0">
+      <div class="card-content">
+        <span class="card-title grey-text text-darken-3">Elenco appuntamenti ({{ctrl.order.appuntamenti.length}})</span>
+        <table>
+          <tr>
+            <th>Data</th>
+            <th>Durata</th>
+            <th>Costo</th>
+            <th>Info</th>
+          </tr>
+          <tr ng-repeat="app in ctrl.order.appuntamenti">
+            <td>{{app.dataInizio | dataOra}}</td>
+            <td>{{(app.dataFine - app.dataInizio)/1000/60/60}}H</td>
+            <td>{{app.costo}}</td>
+            <td><a class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: app.id })"><i class="mdi-action-visibility grey-text text-darken-3" title="Modifica"></i></a></td>
+          </tr>
+        </table>
+      </div>
+      <!-- <div class="card-action">
+        <a class="btn btn-small waves-effect grey grey-text text-darken-2 lighten-4" ng-click="ctrl.saveNewNotes()">Salva modifiche</a>
+      </div>  -->
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div class="card-panel">
+      <div class="width-45 center-sm right">
+        <a ui-sref="main.support.clienti-dettaglio({id: ctrl.order.cliente.id})">
+        <div class="profile-pic my-heroes-pic" fill style="background-image:url({{ctrl.order.cliente.photoUrl}})"></div>
+        </a>
+      </div>
+      <h5 class="no-margin all center">Cliente<br>{{ctrl.order.cliente.id}}</h5>
+      <p>
+        <b>Nome:</b>&nbsp;{{ctrl.order.cliente.nomeCompleto}}<br>
+        <b>C. Fiscale:</b>&nbsp;{{ctrl.order.cliente.codiceFiscale}}<br>
+        <b>Cellulare:</b>&nbsp;{{ctrl.order.cliente.cellulare}}<br>
+        <b>Email:</b>&nbsp;{{ctrl.order.cliente.email}}<br>
+      </p>
+    </div>
+    <div class="card" ng-if="ctrl.order.superHero">
+      <div class="card-content">
+        <div class="width-45 center-sm right">
+          <a ui-sref="main.support.eroe-dettaglio({id: ctrl.order.superHero.id})">
+          <div class="profile-pic my-heroes-pic" fill style="background-image:url({{ctrl.order.superHero.photoUrl}})"></div>
+          </a>
+        </div>
+        <h5 class="no-margin all center">Supereroe<br>{{ctrl.order.superHero.id}}</h5>
+        <p class="with-margin">
+          <b>Nome:</b>&nbsp;{{ctrl.order.superHero.nomeCompleto}}<br>
+          <b>C. Fiscale:</b>&nbsp;{{ctrl.order.superHero.codiceFiscale}}<br>
+          <b>Email:</b>&nbsp;{{ctrl.order.superHero.email}}<br>
+          <b>IBAN:</b>&nbsp;{{ctrl.order.superHero.codiceIban}}<br>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="card col s12 m6" ng-if="ctrl.order.fatture && ctrl.order.fatture.length > 0">
+    <div class="card-content">
+        <span class="card-title grey-text text-darken-3">Fatture</span>
+        <p class="with-margin no-margin bottom">
+            <span ng-repeat="fattura in ctrl.order.fatture">
+              <a ui-sref="billing({idFattura:fattura.id})">Fattura {{fattura.tipoFattura}}</a>
+              <br>
+            </span>
+        </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<section>
+    <div class="col s12 center">
+        <div class="card-header">
+            <div class="left" ng-click="ChooseHeroSuggestion.onChangeDate({change: -1, dateId: ChooseHeroSuggestion.date.id})"><i class="glyphicon glyphicon-chevron-left"></i></div>
+            <div class="right" ng-click="ChooseHeroSuggestion.onChangeDate({change: 1, dateId: ChooseHeroSuggestion.date.id})"><i class="glyphicon glyphicon-chevron-right"></i></div>
+            <h3 class="center uppercase main-orange-text no-margin all date">{{ChooseHeroSuggestion.date.labels.start.dayOfWeek + ' ' + ChooseHeroSuggestion.date.labels.start.dayOfMonth}}</h3>
+        </div>
+
+        <section ng-if="ChooseHeroSuggestion.date.loading === true">
+            <div class="section center">
+                <loader></loader>
+            </div>
+        </section>
+
+        <section ng-if="ChooseHeroSuggestion.date.loading === false">
+            <div class="hero-scroll-wrapper">
+                <div class="hero-scroll-horizontal">
+                    <div class="choose-hero-suggestion__single"
+                        ng-repeat="hero in ChooseHeroSuggestion.heroesSuggested | filter:{ appointment: ChooseHeroSuggestion.date.id } track by hero.id">
+                        <div class="hero__info"
+                            ng-click="ChooseHeroSuggestion.onClickHero(hero.id)">
+                            <div class="hero-image-container">
+                                <div class="hero__image"
+                                    ng-style="{ 'background-image': 'url(\''+ hero.photoUrl +'\')' }">
+                                </div>
+                                <div ng-if="hero.hasVat" class="invoice-icon-container">
+                                    <md-icon style="height: 15px; width: 15px;" md-svg-src="{{ ChooseHeroSuggestion.iconVat }}"></md-icon>
+                                </div>
+                            </div>
+                            <h5 class="no-margin top">{{hero.nome}}</h5>
+                            <!--<p class="no-margin all" ng-if="hero.match === true && hero.manual === false"><i class="green-text">Disponibilità confermata</i></p>
+                            <p class="no-margin all" ng-if="hero.match === true && hero.manual === true"><i class="amber-text">Disponibilità da confermare</i></p>
+                            <p class="no-margin all" ng-if="hero.match === false"><i class=" light-blue-text text-darken-2">Disponibilità alternativa</i></p>-->
+                        </div>
+                        <ul class="hero__suggestions" ng-if="hero.match === true">
+                            <li ng-repeat="sugg in hero.suggestions | filter:{ matchEsatto:true } | limitTo: ChooseHeroSuggestion.limit track by sugg.suggestionId"
+                                ng-click="ChooseHeroSuggestion.onChooseSuggestion({ dateId: ChooseHeroSuggestion.date.id, heroId: hero.id, suggestionId: sugg.suggestionId })">
+                                <b>{{sugg.labels.start.time}} <i class="mdi-navigation-arrow-forward"></i> {{sugg.labels.end.time}}</b> (<i>{{sugg.prezzoEuro}} €</i>)
+                            </li>
+                        </ul>
+                        <ul class="hero__suggestions" ng-if="hero.match === false">
+                            <li ng-repeat="sugg in hero.suggestions | orderBy: 'distanzaMinuti' | limitTo: ChooseHeroSuggestion.limit track by sugg.suggestionId"
+                                ng-click="ChooseHeroSuggestion.onChooseSuggestion({ dateId: ChooseHeroSuggestion.date.id, heroId: hero.id, suggestionId: sugg.suggestionId })">
+                                <b>{{sugg.labels.start.time}} <i class="mdi-navigation-arrow-forward"></i> {{sugg.labels.end.time}}</b> (<i>{{sugg.prezzoEuro}} €</i>)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <p ng-if="ChooseHeroSuggestion.suggestionsMoreThanLimit()"
+                ng-click="ChooseHeroSuggestion.limit = 99">visualizza tutte le soluzioni</p>
+        </section>
+    </div>
+</section>
+
+<div class="card-action left-align buttons" ng-if="(ChooseHeroSuggestion.heroesSuggested | filter:{ appointment: ChooseHeroSuggestion.date.id }).length < 1">
+    <p class="center no-margin all small">Spiacente, non abbiamo trovato alcun supereroe disponibile per questa data</p>
+</div>
+<div class="card-action left-align buttons" ng-if="(ChooseHeroSuggestion.heroesSuggested | filter:{ appointment: ChooseHeroSuggestion.date.id }).length > 0">
+    <p class="center no-margin all small">Seleziona uno dei Supereroi cliccando sulla fascia oraria che preferisci oppure clicca sulla foto per vedere la loro scheda personale</p>
+    <div class="superhero-novat-disclaimer">
+    <div class="invoice-icon-container center">
+        <md-icon style="height: 15px; width: 15px;" md-svg-src="{{ ChooseHeroSuggestion.iconVat }}"></md-icon>
+    </div><p class="center no-margin all xsmall italic">Scegliendo questo professionista riceverai la fattura del servizio direttamente sulla tua pagina personale</p>
+    </div>
+</div>
+
+<div class="card-action left-align buttons">
+    <a class="waves-effect waves-dark white"
+        ng-click="ChooseHeroSuggestion.onDeleteSuggestion({dateId:ChooseHeroSuggestion.date.id})">Elimina Data</a>
+</div>

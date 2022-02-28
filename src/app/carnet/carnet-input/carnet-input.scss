@@ -1,0 +1,87 @@
+carnet-input {
+    .carnet-input { 
+        position: relative;
+        display: flex;
+    }
+    
+    .select {
+        height: 3rem;
+        border-bottom: 1px solid #9e9e9e;
+        position: relative;
+        width: 100%;
+        font-size: 1rem;
+        margin: 0 0 15px;
+        transition: all .3s;
+
+        &.notSelected {
+            color: #C7C7CD;
+        }
+    }
+
+    .caret {
+        color: initial;
+        position: absolute;
+        right: 0;
+        top: 11px;
+        font-size: 10px;
+    }
+
+    .selected-service {
+        position: relative;
+        top: 5px;
+    }
+
+    &.home {
+        .caret {
+            top: 13px;
+        }
+
+        .selected-service {
+            position: relative;
+            top: 0px;
+        }
+    }
+
+    .results {
+        z-index: 20;
+        top: 100%;
+        left: 0;
+        position: absolute;
+        right: 0;
+        background: #fff;
+        padding: 18px 20px 0;
+        border-top: 1px solid #f5f4f4;
+        border-radius: 0 0 3px 3px;
+        box-shadow: 0 2px 2px rgba(0,0,0,.15);
+
+        ul { margin: 0; text-align: center; }
+    }
+
+    .results-item {
+        margin: 0 20px 15px;
+        display: inline-block;
+
+        span {
+            font-family: "museo_sans500", sans-serif;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: $mediumDark;
+        }
+
+        md-icon {
+            color: $mediumDark;
+            font-size: 12px;
+            height: 22px;
+            width: 24px;
+            margin-right: 2px;
+        }
+
+        &:hover {
+            span, md-icon {
+                color: $dark;
+            }
+        }
+    }
+}

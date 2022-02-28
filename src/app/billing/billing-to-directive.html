@@ -1,0 +1,54 @@
+<div class="radio-group">
+  <input type="checkbox" name="privato" id="privato"
+  ng-model="to.privato">
+  <label for="privato">Soggetto privato</label>
+</div>
+<div input-field>
+  <input type="text" name="nomeCompleto"
+  ng-model="to.nomeCompleto">
+  <label>Nome completo / Ragione sociale</label>
+</div>
+<div input-field>
+  <input type="text" name="codiceFiscale"
+  ng-model="to.codiceFiscale">
+  <label>Codice fiscale</label>
+</div>
+<div input-field>
+  <input type="text" name="partitaIva"
+  ng-model="to.partitaIva">
+  <label>Partita Iva</label>
+</div>
+<div input-field>
+  <input type="text" name="indirizzo"
+  ng-model="to.indirizzo">
+  <label>Indirizzo</label>
+</div>
+<div input-field>
+  <input type="text" name="codiceId"
+  ng-model="to.codiceId">
+  <label>Codice identificativo</label>
+</div>
+<div class="row">
+    <div class="col s4">
+        <div input-field>
+          <input type="number" name="aliquotaIva"
+          ng-model="to.aliquotaIva">
+          <label>Aliquota Iva</label>
+        </div>
+    </div>
+    <div class="col s4">
+        <div input-field>
+          <input type="number" name="rivalsa"
+          ng-model="to.rivalsa">
+          <label>Rivalsa</label>
+        </div>
+    </div>
+    <div class="col s4">
+        <div input-field>
+          <input type="number" name="ritenuta"
+          ng-model="to.ritenuta">
+          <label>Ritenuta</label>
+        </div>
+    </div>
+</div>
+ <a ng-click="setPrivateExample()" class="waves-effect waves-light main-orange btn btn-small">Es. privato</a>

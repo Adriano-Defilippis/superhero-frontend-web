@@ -1,0 +1,46 @@
+<h1 class="title-page center no-margin bottom">Pagamenti ({{ctrl.appointments.length}})</h1>
+<div class="center">
+    <table class="mini-table">
+        <tr>
+            <td><strong>Totale</strong></td>
+            <td><strong>{{ctrl.paymentsAmount.total | number:2}}&euro;</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Questo mese</strong></td>
+            <td><strong>{{ctrl.paymentsAmount.thisMonth | number:2}}&euro;</strong></td>
+        </tr>
+    </table>
+</div>
+<div class="table-holder">
+    <table st-table="ctrl.appointments" class="table table-recruiter">
+        <tr>
+            <th colspan="10">
+                <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+            </th>
+        </tr>
+        <thead>
+            <tr>
+                <th st-sort="dataPrenotazione" st-sort-default="reverse">Data</th>
+                <th st-sort="cliente">Cliente</th>
+                <th st-sort="amount">Importo</th>
+                <th st-sort="type">Tipo</th>
+                <th st-sort="sortHelper">Oggetto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in ctrl.appointments">
+                <td ng-bind-html="row.dataCreazioneLabel"></td>
+                <td>{{row.cliente}}</td>
+                <td>{{row.amountLabel}}</td>
+                <td>{{row.typeLabel}}</td>
+                <td>
+                    <a ng-if="!row.isCarnet" class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: row.idAppuntamento })"><i class="mdi-action-visibility grey-text text-darken-3" title="Visualizza"></i></a>
+                    <a ng-if="row.isCarnet" class="icon-button big" ui-sref="main.support.edit-order({ idOrder:  row.id })"><i class="mdi-action-visibility grey-text text-darken-3" title="Visualizza"></i></a>
+                </td>
+                <!-- <td>
+
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,92 @@
+.switch-toolbar {
+    @media screen and (max-width: $mq-sm) {
+        position: absolute;
+        top: 30px;
+    }
+}
+
+.fc-toolbar {
+    @media screen and (max-width: $mq-sm) {
+        margin-bottom: 3em !important;
+    }
+}
+
+.new-avail {
+    position: relative;
+    top: 10px;
+    z-index: 100;
+}
+
+.toggle-label {
+    @media screen and (max-width: $mq-sm) {
+        font-size: 8px;
+        line-height: 12px;
+    }
+}
+
+.fix-icon {
+    top: -6px;
+    margin-left: 10px;
+}
+
+.add-new-avail {
+    * {
+        transition: all 0.3s ease;
+    }
+
+    &.disabled * {
+        color: $medium;
+    }
+}
+
+// fullCalendar
+.time-slot-mobile {
+    background: #e8e8e8;
+}
+
+.time-slot-container-mobile {
+    padding: 0 !important;
+}
+
+.fc-ltr .fc-time-grid .fc-event-container {
+    margin: 0 !important;
+}
+
+// fastclick fix
+label > * {
+    @media screen and (max-width: $mq-sm) {
+        display: block;
+        pointer-events: none;
+    }
+}
+
+label {
+    @media screen and (max-width: $mq-sm) {
+        display: block;
+    }
+}
+
+.avail-hours-blocks {
+    position: relative;
+    z-index: 2;
+    top: 10px;
+    display: inline-table;
+    width: 100%;
+
+    .avail-block {
+        display: table-cell;
+        width: 33%;
+        text-align: center;
+        color: #393939;
+        text-transform: uppercase;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: 1px;
+        padding: 5px;
+        border: 2px solid #fff;
+
+        &.active {
+            border-color: $active;
+        }
+    }
+}

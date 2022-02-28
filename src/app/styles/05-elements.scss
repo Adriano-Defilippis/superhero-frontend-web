@@ -1,0 +1,687 @@
+hr {
+  height: 1px;
+  border: 0px;
+  margin: 0px;
+  background: $mediumDark;
+}
+
+hr {
+  height: 1px;
+  border: 0px;
+  margin: 0px;
+  background: $mediumDark;
+}
+
+.side-nav hr {
+  background: $medium;
+}
+
+.side-nav {
+  background: $light;
+}
+
+.with-padding, .container.with-padding {
+    padding: 2em 3em;
+
+    @media screen and (max-width: $mq-sm) {
+        padding: 2em 1.5em;
+    }
+}
+
+.with-padding-large, .container.with-padding-large {
+    padding: 3em 6em;
+
+    @media screen and (max-width: $mq-sm) {
+        padding: 2em 1.5em;
+    }
+}
+
+.with-padding-small {
+    padding: 1em;
+}
+
+.with-padding-vertical {
+    padding: 35px 0px;
+}
+
+.mini-table {
+    width: auto !important;
+    display: inline-table;
+    margin-bottom: 10px;
+
+    tr td {
+        padding: 5px 15px;
+        text-align: right;
+        letter-spacing: 1px;
+    }
+}
+
+.with-margin {
+  margin: 2em;
+}
+
+.with-margin-side {
+  margin: 0 2em;
+}
+
+.warning {
+    margin-top: 1em;
+}
+
+.warning p {
+    margin: 0px;
+    color: #343434;
+}
+
+.with-border {
+  border-right: 1px solid rgb(221, 221, 221);
+}
+
+.with-border-right {
+  border-right: 1px solid grey;
+}
+
+h5.title-label {
+  border-bottom: 1px solid $medium;
+  color: $medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Lato';
+  font-size: 13px;
+  line-height: 18px;
+  margin-top: 20px;
+  padding-left: 5px;
+}
+
+.padding {
+    padding:20px;
+
+    @media screen and (max-width: $mq-sm) {
+        padding: 0px;
+    }
+}
+
+p.static {
+    font-size: 18px;
+    line-height: 29px;
+    font-family: $font-active;
+    font-weight: 400;
+    margin: 0;
+
+    @media screen and (max-width: $mq-sm) {
+        font-size: 16px;
+        line-height: 16px;
+        letter-spacing: 0px;
+    }
+}
+
+.reset-box {
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: initial;
+}
+
+.center-sm {
+  @media screen and (max-width: $mq-sm){
+    text-align: center !important;
+    vertical-align: middle;
+  }
+}
+
+.reset-margin-bottom {
+  margin-bottom: 0px;
+}
+
+.border-active {
+  border: solid 1px $active;
+}
+
+[ng-click] {
+  cursor: pointer;
+}
+
+.boxed {
+    padding: 2rem;
+}
+
+.bigger {
+    font-size: 100%;
+}
+
+//
+// LIST
+//
+ul.list li {
+  list-style: initial;
+  margin-left: 20px;
+}
+
+ul.list-small li {
+  font-size: 1rem;
+  line-height: 1.4rem;
+}
+
+//
+//  ICONS
+//
+
+md-icon {
+  margin: auto;
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentcolor;
+  height: 30px;
+  width: 30px;
+
+  svg {
+    pointer-events: none;
+  }
+
+  &.big {
+    height: 120px;
+  }
+
+  &.medium {
+    height: 75px;
+  }
+
+  &.small {
+    height: 40px;
+  }
+
+  @media screen and (max-width: $mq-sm){
+    &.big {
+      height: 90px;
+    }
+
+    &.medium {
+      height: 60px;
+    }
+
+    &.small {
+      height: 25px;
+    }
+  }
+
+}
+
+.block {
+  display: block;
+}
+
+.big > i {
+  font-size: 30px;
+}
+
+.icon-center {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 31px;
+  top: -2px;
+  position: relative;
+}
+
+.service-icons {
+  width: 40px;
+  height: 40px;
+}
+
+.list-icons {
+  width: 75px;
+  height: 75px;
+  color: $active;
+}
+
+.hero-image-profile {
+  background-color: #FAFAFA;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+ul.change-hero-list li {
+  float: left;
+  width: 33%
+}
+
+ul.change-hero-list:after {
+  content: ' ';
+  display: block;
+  width:1px;
+  height:1px;
+  clear: both;
+}
+
+.icon-button.big {
+  font-size: 21px;
+}
+
+.glyphicon.big {
+  font-size: 30px;
+}
+
+//
+//  NG-MESSAGES
+//
+.with-errors {
+  padding-bottom: 20px;
+}
+
+[ng-messages] {
+  position:relative;
+  top: -30px;
+}
+
+[ng-message] {
+  transition: 0.3s ease-out all;
+  color: $active;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 12px;
+}
+
+[ng-message].ng-enter { opacity: 0; transform: translate3d(0,-20%,0); }
+[ng-message].ng-enter.ng-enter-active { opacity: 1; transform: translate3d(0,0,0); }
+
+[ng-message].ng-leave { opacity: 1; transform: translate3d(0,0,0); }
+[ng-message].ng-leave.ng-leave-active { opacity: 0; transform: translate3d(0,-20%,0); }
+
+//
+//  UI ELEMENTS
+//
+
+.btn-flat-white {
+  background-color: white;
+  box-shadow: 0 0 0 0;
+  border: 2px solid #EA4E1B;
+  color: #EA4E1B;
+  &:hover {
+    background-color: white;
+  }
+}
+
+.btn-flat-small {
+  font-size: 18px;
+  padding: 5px 5px 15px;
+  height: auto;
+  font-family: $font-active;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.btn-home {
+  letter-spacing: 0px;
+  height: 2.5rem;
+  padding: 0px 14px;
+  font-size: 1rem;
+  line-height: 2.5rem;
+}
+
+.btn-small {
+  font-size: 12px;
+  padding: 0px 5px;
+  @media screen and (max-width: $mq-sm){
+    padding: 0px 5px;
+  }
+}
+
+.btn-medium {
+  font-size: 14px;
+  padding: 0px 5px;
+  @media screen and (max-width: $mq-sm){
+    padding: 0px 5px;
+  }
+}
+
+.boxed-info {
+  border: 2px solid #FAFAFA;
+  font-family: $font-active;
+  padding: 15px 20px;
+  ul {
+    margin: 20px;
+    @media screen and(max-width: $mq-sm){
+      margin: 0px;
+    }
+  }
+
+  ul li {
+    color: #393939;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 7px 10px;
+
+    @media screen and(max-width: $mq-sm){
+      font-size: 15px;
+      line-height: 17px;
+    }
+  }
+  @media screen and (max-width: $mq-md) {
+    margin-bottom: 30px;
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+// profile picture
+.profile-pic {
+  background-color: #fff;
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: inline-block;
+  position: relative;
+  bottom: 5px;
+  margin-right: 10px;
+  margin-bottom: -23px;
+  background-size: cover;
+  background-position: center center;
+
+  &.width-100 {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.my-heroes-pic {
+  margin-bottom: 0px;
+  position: static;
+}
+
+.assigned-hero-box {
+  margin-bottom: 25px;
+}
+
+
+//BOX MQ2
+.sqm {
+  font-size: 30px;
+  font-family: $font-active;
+  font-weight: 600;
+}
+
+.sqm-two {
+  position: relative;
+  top: -8px;
+  font-size: 25px;
+}
+
+.sqm-box {
+  color: $mediumDark;
+  border-color: $mediumLight;
+}
+
+.sconto-box {
+    line-height: 17px;
+    padding: 3px;
+
+    span {
+        small {
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .discount {
+        color: $active;
+    }
+}
+
+//
+//  LOADING BAR
+//
+//
+//  Loading bar
+//
+#loading-bar .bar {
+  background: $active;
+}
+
+#loading-bar .peg {
+  box-shadow: $active 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  $active;
+  border-left-color: $active;
+}
+
+
+//
+//     INPUT
+//
+.input-wrapper {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: black;
+  padding: 10px;
+
+  input {
+    bottom: 0;
+    cursor: inherit;
+    font-size: 1000px !important;
+    height: 300px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+.cropArea input {
+  bottom: 0;
+  cursor: inherit;
+  font-size: 1000px !important;
+  height: 300px;
+  margin: 0;
+  opacity: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+}
+
+// STATIC PAGES HEADER
+
+.static-pages-header {
+  height: 200px;
+  background-size: cover;
+  background-position : top center;
+}
+
+// SERVICES
+
+.service-choice.disable > a {
+  opacity: 0.3;
+  cursor: initial;
+}
+
+.service-info {
+  font-size: 0.9rem;
+}
+
+.search-sidebar hr {
+  margin: 30px 0px;
+}
+
+
+// ADDRESS HOME+
+input[type=text].address-home {
+  background-color: #fff;
+  padding-left: 20px;
+  margin-bottom: 0px;
+  height: 2.5rem;
+  color: #222;
+  border-bottom: none !important;
+  box-shadow: none !important;
+
+  @media screen and (max-width: $mq-sm){
+    box-sizing: border-box;
+  }
+}
+
+
+// HEROES SEARCH
+.heroes-search-results .result-single {
+  .description {
+    padding-right: 15px;
+    padding-left: 15px;
+    p {line-height: 1.3rem; }
+  }
+}
+
+.collapsible-body-wrapper {
+  padding-top: 20px;
+}
+
+div.stars {
+  span:focus {
+    outline: 0;
+  }
+
+  i.glyphicon {
+    font-size: 25px;
+  }
+}
+
+.ngdialog-content textarea.materialize-textarea {
+  padding: 0.6rem 0;
+}
+
+.card-panel-priceblock {
+  /*min-height: 513px;*/
+
+  @media screen and (max-width: $mq-md){
+    width: 100%;
+  }
+}
+
+.price-block-text-wrapper {
+  min-height: 108px;
+}
+
+.prices-carnet-mob {
+  @media screen and (max-width: $mq-md){
+    text-align: left;
+  }
+}
+
+.width-25 {
+  max-width: 25px;
+}
+
+.service-landing-text {
+  padding-top: 75px;
+}
+
+@media screen and (max-width: $mq-sm){
+  .no-padding-sm { padding: 0px !important; }
+  .no-padding-sm-horizontal { padding-left: 0px !important; padding-right: 0px !important }
+}
+
+// custom css
+#XXL .card-panel{
+  /*background:$active !important;*/
+}
+#XXL .card-panel .main-orange-text, #XXL .card-panel p{
+  /*color:$white !important;*/
+}
+#XXL .main-orange{
+  /*background-color:$white !important;
+  color:$active !important;*/
+}
+.border-top{
+  border-top: 2px solid $active;
+}
+
+.small-acquista {
+  vertical-align: middle;
+  text-align: left !important;
+  margin-top: 10px !important;
+
+  @media screen and (max-width: $mq-md){
+    text-align: center !important;
+  }
+}
+.small-acquista .row{
+  text-align:center;
+}
+.small-acquista .btn{
+  font-size:13.5px;
+  vertical-align: middle;
+  width:100%;
+  display:inline-block;
+}
+.border-tariffe{
+  text-align:left;
+  border-right: 2px solid $active;
+  padding-right:30px !important;
+
+  @media screen and (max-width: $mq-md){
+    border-right: none !important;
+    border-bottom: 2px solid $active;
+    border-top: 2px solid $active;
+  }
+}
+.tariffe_carnet {
+
+}
+.tariffe_carnet .btn {
+  margin-top:30px !important;
+}
+.tariffe_carnet .section{
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+}
+.icon_price {
+  margin-top:40px !important;
+}
+.card-panel{
+  @media screen and (max-width: $mq-sm){
+    font-size:.9em !important;
+  }
+}
+
+.card-panel-flat{
+  box-shadow: 0 0 0 0;
+  background-color: white;
+  @media screen and (max-width: $mq-sm){
+    font-size:.9em !important;
+  }
+}
+
+.price-box-value{
+  @media screen and (max-width: $mq-sm){
+    font-size:20px !important;
+  }
+}
+.tariffe_carnet .pricing-label{
+  text-decoration: underline;
+}
+
+.secondary-tagline{
+  //margin: 0px;
+}
+
+.underlineText {
+  text-decoration: underline !important;
+}
+.crosslineText {
+  text-decoration:line-through !important;
+}
+.nomargin{
+  margin: 0px !important;
+}
+
+.overline {
+  text-decoration:line-through;
+}

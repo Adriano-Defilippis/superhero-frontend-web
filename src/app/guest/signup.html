@@ -1,0 +1,169 @@
+<div class="row">
+  <div class="col s12">
+    <h1 class="center">Registrati</h1>
+  </div>
+</div>
+<form name="signupForm" novalidate ng-submit="ctrl.submitForm(signupForm.$valid)">
+  <div class="row">
+    <div class="col s12 m8">
+      <div class="row">
+        <div class="col m6 s12">
+          <div input-field class="with-errors">
+            <input type="text" name="nome" required ng-model="ctrl.mv.userInfo.nome">
+            <label>Nome</label>
+          </div>
+          <div ng-messages="signupForm.nome.$error" ng-show="signupForm.nome.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.nome}}</div>
+          </div>
+        </div>
+
+        <div class="col m6 s12">
+          <div input-field class="with-errors">
+            <input type="text" name="cognome" required ng-model="ctrl.mv.userInfo.cognome">
+            <label>Cognome</label>
+          </div>
+          <div ng-messages="signupForm.nome.$error" ng-show="signupForm.cognome.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.nome}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+
+        <div class="col m6 s12">
+          <div input-field class="with-errors">
+            <input type="text" name="codiceFiscale" required ng-model="ctrl.mv.userInfo.codiceFiscale" minlength="16" ng-maxlength="16" class="uppercase">
+            <label>Codice fiscale</label>
+          </div>
+          <div ng-messages="signupForm.codiceFiscale.$error" ng-show="signupForm.codiceFiscale.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlength.codiceFiscale}}</div>
+          </div>
+        </div>
+
+        <div class="col m6 s12">
+          <div input-field class="with-errors">
+            <input type="text" name="cellulare" required minlength="3" ng-model="ctrl.mv.userInfo.cellulare">
+            <label>Cellulare</label>
+          </div>
+          <div ng-messages="signupForm.cellulare.$error" ng-show="signupForm.cellulare.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.nome}}</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col m6 s12">
+          <div input-field class="with-errors">
+            <input type="email" name="email" required minlength="3" ng-model="ctrl.mv.userInfo.email">
+            <label>Email</label>
+          </div>
+          <div ng-messages="signupForm.email.$error" ng-show="signupForm.email.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.nome}}</div>
+          </div>
+        </div>
+        <div class="col m6 s12">
+          <div input-field class="with-errors">
+            <input type="email" name="confermaEmail" required minlength="3" ng-model="ctrl.mv.userInfo.confermaEmail">
+            <label>Conferma Email</label>
+          </div>
+          <div ng-messages="signupForm.confermaEmail.$error" ng-show="signupForm.confermaEmail.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.nome}}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col m4 s12">
+      <div class="img-uploader center">
+        <h2 class="reset-box">Foto</h2>
+        <p class="center">Inserisci preferibilmente una tua foto sorridente e su sfondo bianco.<br>Puoi caricare solo file in formato .jpg, .png e .gif</p>
+        <input type="file" nv-file-select uploader="ctrl.imgUploader" />
+        <div fill ng-repeat="item in ctrl.imgUploader.queue">
+          <div class="cropArea"><img-crop image="item.image" result-image="item.croppedImage"></img-crop></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-show="ctrl.mv.selectedAddress === null">
+    <div class="col s12">
+      <input id="address" class="controls" type="text" placeholder="Indirizzo" ng-model="ctrl.mv.address" ng-change="ctrl.addressChanged()">
+      <div class="results" ng-show="ctrl.mv.googleResults.length > 0">
+        <h3>Indirizzi trovati:</h3>
+        <ul>
+          <li ng-repeat="result in ctrl.mv.googleResults" ng-click="ctrl.selectAddress(result)">{{result.formatted_address}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row" ng-show="ctrl.mv.selectedAddress !== null">
+    <div class="col s12">
+      <div class="row">
+        <div class="col m6 s12">
+          <div input-field>
+            <input type="text" name="via" required ng-model="ctrl.mv.addressInfo.route">
+            <label>Via</label>
+          </div>
+        </div>
+        <div class="col m3 s12">
+          <div input-field>
+            <input type="text" name="civico" required ng-model="ctrl.mv.addressInfo.street_number">
+            <label>Numero</label>
+          </div>
+        </div>
+        <div class="col m3 s12">
+          <div input-field>
+            <input type="text" name="cap" required ng-model="ctrl.mv.addressInfo.postal_code">
+            <label>CAP</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m6 s12">
+          <div input-field>
+            <input type="text" name="loc" required ng-model="ctrl.mv.addressInfo.locality">
+            <label>Località</label>
+          </div>
+        </div>
+        <div class="col m6 s12">
+          <div input-field>
+            <input type="text" name="provincia" required ng-model="ctrl.mv.addressInfo.administrative_area_level_2">
+            <label>Provincia</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col m6 s12">
+          <div input-field>
+            <input type="text" name="citofono" required ng-model="ctrl.mv.addressInfo.citofono">
+            <label>Nome citofono</label>
+          </div>
+        </div>
+        <div class="col m3 s12">
+          <div input-field>
+            <input type="text" name="piano" required ng-model="ctrl.mv.addressInfo.piano">
+            <label>Piano</label>
+          </div>
+        </div>
+        <div class="col m3 s12">
+          <div input-field>
+            <input type="text" name="scala" required ng-model="ctrl.mv.addressInfo.scala">
+            <label>Scala</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <a ng-click="ctrl.submitForm(signupForm.$valid)" class="waves-effect waves-light main-orange btn">Registrati</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

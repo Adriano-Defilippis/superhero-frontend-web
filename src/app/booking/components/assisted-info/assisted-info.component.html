@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="input-field col s6 m3">
+        <div input-field>
+            <input type="text"
+                ng-model="AssistedInfo.nome"
+                ng-change="AssistedInfo.assistedChanged()">
+            <label>Nome</label>
+        </div>
+    </div>
+    <div class="input-field col s6 m4">
+        <div input-field>
+            <input type="text"
+                ng-model="AssistedInfo.cognome"
+                ng-change="AssistedInfo.assistedChanged()">
+            <label>Cognome</label>
+        </div>
+    </div>
+    <div class="input-field col s6 m2">
+        <select class="select-dropdown-margin-top"
+            ng-model="AssistedInfo.eta"
+            ng-change="AssistedInfo.assistedChanged()"
+            material-select>
+            <option value="" disabled selected>Età</option>
+            <option ng-repeat="age in AssistedInfo.ageOptions" ng-value="age.id">{{age.value}}</option>
+        </select>
+    </div>
+    <div class="input-field col s6 m3">
+        <div class="radio-group">
+            <label>Sesso</label>
+            <input class="with-gap" name="sesso" type="radio" id="sessoM" value="M"
+                ng-model="AssistedInfo.sesso"
+                ng-change="AssistedInfo.assistedChanged()"><label for="sessoM">M</label>
+            <input class="with-gap" name="sesso" type="radio" id="sessoF" value="F"
+                ng-model="AssistedInfo.sesso"
+                ng-change="AssistedInfo.assistedChanged()"><label for="sessoF">F</label>
+        </div>
+    </div>
+</div>

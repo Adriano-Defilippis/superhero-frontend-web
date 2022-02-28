@@ -1,0 +1,67 @@
+<h2 class="center">Disponibilità lavorativa</h2>
+<div class="row">
+    <div class="col s12 m4">
+        <select name="oreSettimanaliDisponibili" class="with-errors" ng-model="ctrl.heroApplication.oreSettimanaliDisponibili" material-select ng-disabled="ctrl.formDisabled" required>
+            <option value="0" disabled selected>Ore settimanali disponibili</option>
+            <option ng-repeat="option in ::ctrl.options.oreSettimanaliDisponibili" ng-value="option.value">{{::option.name}}</option>
+        </select>
+        <div ng-messages="heroApplicationForm.oreSettimanaliDisponibili.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+        <select class="with-errors" name="tipoImpiego" ng-model="ctrl.heroApplication.tipoImpiego" material-select ng-disabled="ctrl.formDisabled" required>
+            <option value="" disabled selected>Situazione lavorativa</option>
+            <option ng-repeat="option in ::ctrl.options.tipoImpiego" ng-value="option.value">{{::option.name}}</option>
+        </select>
+        <div ng-messages="heroApplicationForm.tipoImpiego.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="with-errors">
+            <div class="radio-group checkbox-inline">
+                <div class="checkbox">
+                    <input type="checkbox" name="partitaIva" id="partitaIva"
+                    ng-disabled="ctrl.formDisabled"
+                    ng-model="ctrl.heroApplication.partitaIva">
+                    <label for="partitaIva">Possessore partita IVA</label>
+                </div>
+                <!-- <div class="select-inline">
+                    <select name="partitaIvaTipo" class="checkbox-select" ng-model="ctrl.heroApplication.partitaIvaTipo" material-select ng-disabled="ctrl.formDisabled || !ctrl.heroApplication.partitaIva" ng-required="ctrl.heroApplication.partitaIva">
+                        <option value="" disabled selected>Possessore partita IVA</option>
+                        <option ng-repeat="option in ::ctrl.options.partitaIvaTipo" ng-value="option.value">{{::option.name}}</option>
+                    </select>
+                </div> -->
+            </div>
+        </div>
+        <div ng-messages="heroApplicationForm.partitaIva.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+        <!-- <div ng-messages="heroApplicationForm.partitaIvaTipo.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">Seleziona una tipologia di p.IVA</div>
+        </div>
+        <div input-field class="with-errors" ng-show="ctrl.heroApplication.partitaIvaTipo == 'NormaleImprese'">
+            <input type="text" name="ragioneSociale" ng-required="ctrl.heroApplication.partitaIvaTipo == 'NormaleImprese'" minlength="3" ng-model="ctrl.heroApplication.ragioneSociale">
+            <label>Ragione sociale</label>
+        </div>
+        <div ng-messages="heroApplicationForm.ragioneSociale.$error" ng-show="heroApplicationForm.ragioneSociale.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div> -->
+    </div>
+    <div class="col s12 m4">
+        <div class="with-errors">
+            <div class="radio-group" ng-show="!ctrl.heroApplication.partitaIva">
+                <input type="checkbox" name="disponibilitaAprirePartitaIva" id="disponibilitaAprirePartitaIva"
+                ng-disabled="ctrl.formDisabled"
+                ng-model="ctrl.heroApplication.disponibilitaAprirePartitaIva">
+                <label for="disponibilitaAprirePartitaIva">Disposto ad aprire una partita IVA</label>
+            </div>
+            <div input-field ng-show="ctrl.heroApplication.partitaIva">
+                <input type="text" name="partitaIvaNumero" ng-required="ctrl.heroApplication.partitaIva" ng-model="ctrl.heroApplication.partitaIvaNumero">
+                <label>Numero p. IVA</label>
+            </div>
+        </div>
+        <div ng-messages="heroApplicationForm.partitaIvaNumero.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>

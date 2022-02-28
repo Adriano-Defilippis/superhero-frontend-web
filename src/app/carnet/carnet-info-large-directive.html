@@ -1,0 +1,46 @@
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li ng-repeat="singleCarnet in carnetList" data-id-ref="{{singleCarnet.id}}">
+        <div class="collapsible-header carnet-list-header" row fill>
+            <div class="tipologia center width-100">
+                <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ singleCarnet.carnetIcon }}" fill></md-icon>
+            </div>
+            <div class="row text-row">
+                <div class="col m6 s12 info center no-padding-mobile">
+                    <div class="ore-residue">
+                        <h5 class="small-title uppercase no-margin-mobile">{{singleCarnet.label}} - {{ singleCarnet.oreResidue + '/' + singleCarnet.oreTotali }} {{singleCarnet.isPrestazione ? ' prestazioni' : ' ore'}} residue</h5>
+                    </div>
+                </div>
+                <div class="col m6 s12 scadenza center no-padding-mobile">
+                    <h5 class="small-title uppercase no-margin-mobile">scade: {{ singleCarnet.scadenza }}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="collapsible-body collapsible-body-wrapper carnet-list-body">
+            <div class="row">
+                <div class="col m4 s12">
+                    <div row>
+                        <div class="profile-pic center" style="background-image:url('{{singleCarnet.superHeroPhotoUrl}}')"></div>
+                        <div class="center">
+                            <h5 class="no-margin all" ng-bind="singleCarnet.nomeSuperHero"></h5>
+                            <h5 class="no-margin top" ng-bind="singleCarnet.cognomeSuperHero"></h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col m4 s12">
+                    <strong>{{singleCarnet.oreResidue}} {{singleCarnet.isPrestazione ? ' prestazioni ' : ' ore '}} rimanenti</strong>
+                </div>
+                <div class="col m4 s12">
+                    <strong>acquistato il {{singleCarnet.dataAcquisto}}</strong>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col m12 s12 center">
+                    <a class="waves-effect waves-light main-orange btn btn-small" ng-click="openHistoryDialog(singleCarnet)">Storico prenotazioni</a>
+                    <a class="waves-effect waves-light main-orange btn btn-small" ng-click="newCarnetOrder(singleCarnet)">Usa carnet</a>
+                    <a class="waves-effect waves-light main-orange btn btn-small" ng-click="changeHero(singleCarnet)">Cambia supereroe</a>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,68 @@
+<h3 class="center no-margin all ng-binding">Lasciaci il tuo feedback</h3>
+<p class="center-mobile">Al fine di garantirti una qualità del servizio sempre maggiore, desidereremmo chiedere il
+    <b>Tuo feedback sul lavoro svolto da {{FeedbackModal.heroName}}</b>. Grazie per il Tuo aiuto
+</p>
+<p class="center">
+    <a class="waves-effect waves-light white grey-text text-darken-3 btn-flat btn btn-small margin-bottom-small-mobile"
+        ng-click="FeedbackModal.showAppointmentInfo()">Scheda Appuntamento</a>&nbsp;
+    <a class="waves-effect waves-light white grey-text text-darken-3 btn-flat btn btn-small"
+        ng-click="FeedbackModal.showHeroProfile()">Scheda Supereroe</a>
+</p>
+
+<div class="center">
+    <div class="row no-margin all">
+        <div class="col s6 m3">
+            <h5 class="center">Professionalità</h5>
+            <div class="stars">
+                <rating
+                    ng-model="FeedbackModal.attributes.professionalita"
+                    max="FeedbackModal.options.maxValue"
+                    state-on="FeedbackModal.options.states.on"
+                    state-off="FeedbackModal.options.states.off">
+                </rating>
+            </div>
+        </div>
+        <div class="col s6 m3">
+            <h5 class="center">Puntualità</h5>
+            <div class="stars">
+                <rating ng-model="FeedbackModal.attributes.puntualita"
+                    max="FeedbackModal.options.maxValue"
+                    state-on="FeedbackModal.options.states.on"
+                    state-off="FeedbackModal.options.states.off">
+                </rating>
+            </div>
+        </div>
+        <div class="col s6 m3">
+            <h5 class="center">Gentilezza</h5>
+            <div class="stars">
+                <rating ng-model="FeedbackModal.attributes.gentilezza"
+                    max="FeedbackModal.options.maxValue"
+                    state-on="FeedbackModal.options.states.on"
+                    state-off="FeedbackModal.options.states.off">
+                </rating>
+            </div>
+        </div>
+        <div class="col s6 m3">
+            <h5 class="center">Accuratezza</h5>
+            <div class="stars">
+                <rating ng-model="FeedbackModal.attributes.accuratezza"
+                    max="FeedbackModal.options.maxValue"
+                    state-on="FeedbackModal.options.states.on"
+                    state-off="FeedbackModal.options.states.off">
+                </rating>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-top-small">
+        <div class="col s12">
+            <div input-field>
+                <textarea class="materialize-textarea"
+                    ng-model="FeedbackModal.attributes.descrizione"></textarea>
+                <label>Descrizione</label>
+            </div>
+        </div>
+    </div>
+    <p><b>Nota</b>: il Supereroe potrà scegliere se pubblicare la Tua referenza (che apparirà in forma anonima) nel suo profilo personale, se lo desidera</p>
+</div>
+<p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="FeedbackModal.sendFeedback()">Invia</a></p>
+<p class="center main-orange-text" ng-if="error"><i>{{ FeedbackModal.error }}</i></p>

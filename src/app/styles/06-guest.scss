@@ -1,0 +1,141 @@
+// ABOUT PAGE
+
+// FAQ PAGE
+.faq-title {
+  font-size: 20px;
+  color: $active;
+  text-transform: uppercase;
+  margin: 0 0 15px;
+  @media screen and(max-width: $mq-md){
+    font-size: 15px;
+    line-height: 20px;
+    margin-top: 20px;
+    }
+}
+
+// TARIFFE PAGE
+
+.price-block-container {
+  padding: 35px 5px;
+  margin-top: 20px;
+}
+
+.price-box-value {
+  display: inline;
+  font-size: 25px;
+  letter-spacing: 0;
+  font-weight: 600;
+  font-family: $font-active;
+  color: #909090
+}
+
+.pricing-label {
+  color: $mediumDark;
+}
+
+.price-box-value-carnet {
+  display: block;
+}
+
+.price-button{
+  border-bottom: solid 2px transparent;
+}
+
+.selected-pricing {
+  border-bottom: solid 2px $active;
+}
+
+// CARNET PAGE
+
+.carnet-box-wrapper {
+  margin: 15px 0 30px;
+}
+
+.single-service-list-home span {
+  width: 100%;
+}
+
+.single-service-list-home strong {
+  text-align: left;
+}
+
+.badge-home-specific-service {
+  top: 15px;
+}
+
+.static-page-header-center {
+  background-position: center center;
+}
+
+.static-page-header-bottom {
+  background-position: bottom center;
+}
+
+.static-page-header-top {
+  background-position: top center;
+}
+
+h2.main-tagline.main-tagline-secondary-slider ,h3.main-tagline.main-tagline-secondary-slider {
+  @media screen and(max-width: $mq-sm){
+    font-size: 22px;
+    margin-top: 30px;
+  }
+}
+
+p.secondary-tagline.secondary-tagline-slider {
+  @media screen and(max-width: $mq-sm){
+    font-size: 16px;
+  }
+}
+
+.header-carnet-wrapper {
+  position: absolute;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carnet-padding-small {
+  padding: 2rem 3rem;
+}
+
+.carnet-padding-big {
+  padding: 2rem 7rem;
+}
+
+.carnet-title-icon {
+    margin: auto;
+    display: block;
+    height: 30px;
+}
+
+
+.carnet-info-left {
+    padding-left: 50px !important;
+    @media screen and (max-width: $mq-sm){
+      padding-left: 0 !important;
+    }
+}
+
+.carnet-info-right {
+    padding-right: 50px !important;
+    border-right: 2px solid #C2C2C2;
+    @media screen and (max-width: $mq-sm){
+      padding-right: 0 !important;
+      border-right: none;
+    }
+}
+
+.padding-vertical-mobile {
+  @media screen and (max-width: $mq-sm){
+      padding-top: 10px !important;
+      padding-bottom: 10px !important;
+    }
+}
+
+.carnet .home-service-select {
+  border: none;
+}

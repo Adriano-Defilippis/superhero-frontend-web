@@ -1,0 +1,11 @@
+<div class="nav-wrapper container">
+  <ul>
+    <a ui-sref="{{item.target}}({{item.params}})" ng-repeat="item in subNavCtrl.items" ui-sref-active="active">
+      <li>
+        <md-icon class="icon" md-svg-src="{{item.icon}}" ng-if="item.icon" alt="{{item.label}}"></md-icon>
+        <i class="{{item.iconClass}}" ng-if="item.iconClass"></i>
+        <h4 inline>{{item.label}}</h4>
+      </li>
+    </a>
+  </ul>
+</div>

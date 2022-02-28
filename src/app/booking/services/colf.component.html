@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Dettagli</h2>
+    </div>
+</div>
+
+<div class="row" relative>
+    <div class="col s12 m8">
+        <p>Seleziona la metratura della casa per stimare il tempo necessario al tuo Supereroe per portare a termine la pulizia.</p>
+        <div class="section-sm">
+            <input type="range" min="15" max="240" step="5"
+                ng-model="Colf.squareMeters"
+                ng-change="Colf.onChangeSquareMeters({meters: Colf.squareMeters})" range-slider />
+        </div>
+    </div>
+    <div class="col s12 m4 full-height-right">
+        <div class="box-wrapper center sqm-box" valign-wrapper fill>
+            <span class="center shout" ng-bind="Colf.squareMeters"></span> <span class="sqm">m<span class="sqm-two">2</span></span>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <h2 class="reset-margin-bottom">Servizi specifici</h2>
+    </div>
+</div>
+
+<additional-services
+    services="Colf.additionalServices"
+    selected="Colf.selectedAdditionalServices"
+    on-service-click="Colf.onClickAdditionalService({additionalServiceId: additionalServiceId})">
+</additional-services>
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Note aggiuntive</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="Colf.serviceNotes"
+            placeholder="Indicare eventuali ulteriori informazioni necessarie (es. dove si trova il locale rifiuti, raccomandazioni particolari per la pulizia dei mobili, presenza di animali domestici in casa)"
+            on-change="Colf.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

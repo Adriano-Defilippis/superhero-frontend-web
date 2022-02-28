@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col m12 center">
+    <h1>Carnet associati a me</h1>
+  </div>
+</div>
+<div class="row">
+  <div ng-if="ctrl.carnetList.length < 1" class="col s12 m12">
+    <p class="center"><i>Spiacenti, non sono presenti ancora carnet associati a te</i></p>
+  </div>
+  <div class="col s12 m12 l12" ng-repeat="singleCarnet in ctrl.carnetList">
+    <div class="carnet-single card-panel" row fill>
+      <div class="tipologia width-100" center>
+        <md-icon class="md-icon medium main-orange-text" md-svg-src="{{ singleCarnet.carnetIcon }}" fill></md-icon>
+      </div>
+      <div class="profile-pic profile-pic-carnet-hero center" style="background-image:url('{{singleCarnet.clientePhotoUrl}}')">
+      </div>
+      <div class="center">
+        <h5 class="no-margin all" ng-bind="singleCarnet.nomeCliente"></h5>
+        <h5 class="no-margin top" ng-bind="singleCarnet.cognomeCliente"></h5>
+      </div>
+      <div class="info center">
+        <div class="ore-residue">
+          <h5 class="small-title uppercase">{{singleCarnet.label}} - {{ singleCarnet.oreResidue + '/' + singleCarnet.oreTotali }} ore</h5>
+        </div>
+      </div>
+      <div class="scadenza center">
+        <h5 class="small-title uppercase">scade il: {{ singleCarnet.scadenza }}</h5>
+      </div>
+    </div>
+  </div>
+</div>

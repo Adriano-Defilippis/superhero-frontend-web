@@ -1,0 +1,51 @@
+<h2 class="center no-margin top">Indirizzo domicilio</h2>
+<div class="row">
+    <div class="col s8">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="indirizzoDomicilioVia" required ng-model="ctrl.heroApplication.indirizzoDomicilio.via">
+            <label>Via / Viale / Corso / Piazza</label>
+        </div>
+        <div ng-messages="heroApplicationForm.indirizzoDomicilioVia.$error" ng-show="heroApplicationForm.indirizzoDomicilioVia.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s4">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="indirizzoDomicilioNumeroCivico" required ng-model="ctrl.heroApplication.indirizzoDomicilio.numeroCivico">
+            <label>Numero</label>
+        </div>
+        <div ng-messages="heroApplicationForm.indirizzoDomicilioNumeroCivico.$error" ng-show="heroApplicationForm.indirizzoDomicilioNumeroCivico.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m4">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="indirizzoDomicilioCitta" required ng-model="ctrl.heroApplication.indirizzoDomicilio.citta">
+            <label>Località</label>
+        </div>
+        <div ng-messages="heroApplicationForm.indirizzoDomicilioCitta.$error" ng-show="heroApplicationForm.indirizzoDomicilioCitta.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6 m4">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="indirizzoDomicilioCap" required ng-model="ctrl.heroApplication.indirizzoDomicilio.cap">
+            <label>Cap</label>
+        </div>
+        <div ng-messages="heroApplicationForm.indirizzoDomicilioCap.$error" ng-show="heroApplicationForm.indirizzoDomicilioCap.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6 m4">
+        <select name="indirizzoDomicilioProvincia" class="with-errors" ng-model="ctrl.heroApplication.indirizzoDomicilio.provincia" material-select ng-disabled="ctrl.formDisabled" required>
+            <option value="" disabled selected>Provincia</option>
+            <option ng-repeat="option in ::ctrl.options.provincie | orderBy:'nome'" ng-value="option.sigla">{{::option.nome}}</option>
+        </select>
+        <div ng-messages="heroApplicationForm.indirizzoDomicilioProvincia.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    
+</div>

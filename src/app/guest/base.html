@@ -1,0 +1,12 @@
+<nav ng-if="!ctrl.isApp" class="header-fixed main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl" ng-class="navbarDynamicStyle"></nav>
+<div class="container">
+    <!--
+    <header-popup code="{{ctrl.codiceSconto}}"></header-popup>
+    -->
+</div>
+
+<div ui-view autoscroll>
+
+</div>
+
+<footer class="footer" layout="row" ng-include="'app/components/footer/footer.html'"></footer>

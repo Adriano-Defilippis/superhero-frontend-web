@@ -1,0 +1,43 @@
+<div class="fullpage-image service-landing-block static-page-header-top" full-width style="background-image: url('{{ctrl.SpecificServiceContent.one.backgroundImage}}')" title="Trova una Baby Sitter per i tuoi bimbi su ilmioSupereroe" alt="Trova una Baby Sitter per i tuoi bimbi su ilmioSupereroe">
+  <a ui-sref="main.guest.carnet" class="carnet-badge-home">
+    <md-icon class="md-icon big badge-home badge-home-specific-service" md-svg-src="{{ ctrl.homeContent.carnetBadge }}" fill></md-icon>
+  </a>
+  <div class="dark-overlay" full-width fill>
+  </div>
+  <div valign-wrapper class="service-landing-text-layer" fill full-width>
+    <div valign class="service-landing-text">
+      <h2 class="main-tagline center main-tagline-secondary-slider" ng-bind="ctrl.SpecificServiceContent.one.mainTagline"></h2>
+      <p class="secondary-tagline secondary-tagline-service secondary-tagline-slider center" ng-bind-html="ctrl.SpecificServiceContent.one.secondaryTagline"></p>
+      <div class="container">
+        <div class="row">
+          <div class="col s12 m7 l6 offset-l1"><input autocomplete="off" id="address-home-0" class="controls address-home" type="text" placeholder="{{ctrl.inputPlaceholder}}" ng-model="ctrl.mv.address">
+          </div>
+          <div class="col s12 m5 l4"><a class="waves-effect waves-light main-orange btn btn-home" fill>Prenota il tuo servizio</a>
+          </div>
+        </div>
+        <div class="row">
+          <br>
+          <div class="col s12 center">
+            <a ng-click="ctrl.startNewHeroSelectionOrder()" class="white-text"><strong>Vuoi conoscere i nostri Supereroi? Clicca qui</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<press-review></press-review>
+
+<div class="container home-container-blocks center">
+  <h2 class=" big">{{::ctrl.SpecificServiceContent.sectionTitle}}</h2>
+  <p class="service-subtitle center" ng-bind="ctrl.SpecificServiceContent.one.sectionSubtitle"></p>
+  <div  class="inline-block left-align">
+    <div row fill class="section block single-service-list-home" ng-repeat="singleService in ctrl.SpecificServiceContent.one.specificServices">
+      <span style="width: 100px;">
+        <md-icon class="md-icon list-icons" md-svg-src="{{ singleService.icon }}"></md-icon>
+      </span>
+      <strong class="center padding-left-small left-align" ng-bind="singleService.description"></strong>
+    </div>
+  </div>
+
+  <!-- <voucher-banner-landing code="{{ctrl.codiceSconto}}"></voucher-banner-landing> -->

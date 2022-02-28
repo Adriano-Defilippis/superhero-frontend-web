@@ -1,0 +1,29 @@
+.result-single {
+    > .selected {
+        color: $active;
+        width: 50px;
+        font-size: 25px;
+    }
+}
+
+.heroes-search-results {
+	.icon-container {
+		width: 100%;
+	    display: flex;
+	    justify-content: flex-end;
+	}
+
+	.name-container {
+		width: 100%;
+	}
+
+	.hero-image-container {
+		position: relative;
+	}
+
+	.invoice-icon-container {
+		position: absolute;
+	    right: 0;
+	    bottom: 0;
+	}
+}

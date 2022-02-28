@@ -1,0 +1,102 @@
+<h1 class="title-page center">Genera Voucher</h1>
+<form class="col s12 application-form" name="voucherForm" novalidate ng-submit="ctrl.createVouchers(voucherForm.$valid)">
+	<fieldset class="reset-box">
+		<div class="row">
+		    <div class="col l6 m6 s12">
+		        <div input-field>
+		        	<select name="voucherType" required ng-model="ctrl.voucherData.voucherType" material-select ng-options="option.id as option.name for option in ctrl.tipiVoucher">
+		        		<option value="" ng-selected='true'>Tipo Voucher</option>
+					</select>
+		        </div>
+		    </div>
+		    <div class="col l6 m6 s12">
+		        <div input-field>
+		            <select name="service" required ng-model="ctrl.voucherData.service" material-select 
+		            ng-change="ctrl.serviceSelected()" ng-options="option.id as option.name for option in ctrl.tipiServizio">
+		            	<option value="" ng-selected='true'>Tipo Servizio</option>
+					</select>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+		    <div class="col s6 l6">
+		        <div class="radio-group">
+		        	<div class='checkbox'>
+		            	<input type="checkbox" name="carnetOnly" id="carnetOnly" ng-model="ctrl.voucherData.carnetOnly">
+		            	<label for='carnetOnly'>Applicabile solo a carnet</label>
+		            </div>
+		        </div>
+	        </div>
+	        <div class="col s6 l6">
+		        <div class="radio-group">
+		        	<div ng-repeat="carnet in ctrl.carnetTypes">
+		            	<input type="checkbox" name="{{carnet.service}}" id="{{carnet.service}}" ng-model="ctrl.voucherData[carnet.service]">
+		            	<label for='{{carnet.service}}'>{{carnet.type}}</label>
+	            	</div>
+		        </div>
+	        </div>
+	    </div>
+		<div class="row">
+		    <div class="col s6 l6">
+		        <div input-field>
+		            <input type="number" name="quantity" required ng-model="ctrl.voucherData.quantity">
+		            <label>Quantità</label>
+		        </div>
+		    </div>
+		    <div class="col s6 l6">
+		        <div input-field>
+		            <input type="text" name="channel" required ng-model="ctrl.voucherData.channel">
+		            <label>Canale</label>
+		        </div>
+		    </div>
+
+		</div>
+		<div class="row">
+		    <div class="col s12 l6">
+		        <div input-field>
+		        	<input type="text" name="fromDate" date-time='true' auto-close="true" ng-model="ctrl.voucherData.fromDate" format="dd/MM/yyyy HH:mm" view="year" min-view="hours" required="" class="ng-pristine ng-invalid ng-invalid-required ng-touched">
+		            <label>Data inizio</label>
+		        </div>
+		    </div>
+		    <div class="col s12 l6">
+		        <div input-field>
+		            <input type="text" name="toDate" date-time='true' auto-close="true" ng-model="ctrl.voucherData.toDate" format="dd/MM/yyyy HH:mm" view="year" min-view="hours" required="" class="ng-pristine ng-invalid ng-invalid-required ng-touched">
+		            <label>Data fine</label>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div ng-if="ctrl.voucherData.voucherType !== 'exactMatch'" class="col s12 l6">
+		        <div input-field>
+		            <input type="number" name="appointmentMinimumDuration" required ng-model="ctrl.voucherData.appointmentMinimumDuration">
+		            <label>Ore minime appuntamento</label>
+		        </div>
+		    </div>
+		    <div ng-if="ctrl.voucherData.voucherType === 'promozione' || ctrl.voucherData.voucherType === 'unaTantum' || ctrl.voucherData.voucherType === 'exactMatch'" class="col s12 l6">
+		        <div input-field>
+		            <input type="number" name="discountHours" required ng-model="ctrl.voucherData.discountHours">
+		            <label>Ore sconto</label>
+		        </div>
+		    </div>
+		    <div ng-if="ctrl.voucherData.voucherType === 'convenzione'" class="col s12 l6">
+		        <div input-field>
+		            <input type="number" name="discountPercentage" required ng-model="ctrl.voucherData.discountPercentage">
+		            <label>Sconto percentuale</label>
+		        </div>
+		    </div>
+		</div>
+		    <div class="col s12 l6">
+		        <div class="radio-group">
+		        	<div class='checkbox'>
+		            	<input type="checkbox" name="singleUse" id="singleUse" ng-model="ctrl.voucherData.singleUse">
+		            	<label for='singleUse'>Usa e getta</label>
+		            </div>
+		        </div>
+		    </div>
+		    <div class='row'>
+				<a ng-click="ctrl.createVouchers(voucherForm.$valid)" class="waves-effect waves-light main-orange btn margin-top-small ng-click-active" full-width="">Crea Vouchers</a>
+				<a ng-click="ctrl.reset()" class="waves-effect waves-light main-orange btn margin-top-small ng-click-active" full-width="">Reset</a>
+			</div>
+		</div>
+	</fieldset>
+</form>

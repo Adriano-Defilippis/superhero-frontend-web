@@ -1,0 +1,49 @@
+<div class="date-item"
+    ng-class="{ 'secondary-date-selected': PickedDates.requestedSuggestions === true }"
+    ng-repeat="date in PickedDates.dates | orderBy:'start' track by date.id">
+    <div class="card main-date-selected">
+        <section ng-if="PickedDates.requestedSuggestions === false">
+            <picked-date-card
+                date="date"
+                on-create-recurrance="PickedDates.onCreateRecurrance({ dateId: dateId, recurrenceInfo: recurrenceInfo })"
+                on-delete-picked-date="PickedDates.onDeletePickedDate({ dateId: dateId })">
+            </picked-date-card>
+        </section>
+
+        <section ng-if="PickedDates.requestedSuggestions === true">
+            <section ng-if="(PickedDates.confirmed | filter:{id:date.id}).length === 0">
+                <choose-suggestion
+                    ng-if="PickedDates.requestedHeroesSuggestions === false"
+                    date="date"
+                    suggestions="PickedDates.suggestions"
+                    on-change-date="PickedDates.onChangeDate({change:change,dateId:dateId})"
+                    on-choose-suggestion="PickedDates.onChooseSuggestion({dateId: date.id, suggestionId:suggestionId})"
+                    on-delete-suggestion="PickedDates.onDeletePickedDate({ dateId: dateId })">
+                >
+                </choose-suggestion>
+                <choose-hero-suggestion
+                    ng-if="PickedDates.requestedHeroesSuggestions === true"
+                    date="date"
+                    heroes-suggested="PickedDates.heroesSuggestions"
+                    suggestions="PickedDates.suggestions"
+                    on-change-date="PickedDates.onChangeDate({change:change,dateId:dateId})"
+                    on-choose-suggestion="PickedDates.onChooseSuggestion({dateId: date.id, heroId: heroId, suggestionId:suggestionId})"
+                    on-delete-suggestion="PickedDates.onDeletePickedDate({ dateId: dateId })">
+                </choose-hero-suggestion>
+            </section>
+            <section ng-if="(PickedDates.confirmed | filter:{id:date.id}).length > 0">
+                <confirmed-date-card
+                    date="(PickedDates.confirmed | filter:{id:date.id})[0]"
+                    show-hero="PickedDates.requestedHeroesSuggestions"
+                    on-delete-confirmed-date="PickedDates.onDeleteConfirmedDate({ dateId: dateId })">
+                </confirmed-date-card>
+            </section>
+        </section>
+    </div>
+</div>
+
+<p class="center" ng-if="PickedDates.pickingMode === 0">
+    <br>
+    <a class="btn btn-small btn-flat waves-effect waves-light white grey-text text-darken-3 btn-xsmall"
+        ng-click="PickedDates.onAddNewDate({})">Aggiungi nuova data</a>
+</p>

@@ -1,0 +1,59 @@
+<div ng-if="!ctrl.isApp" class="row">
+  <div class="col s12 m8" ng-controller="UserCalendarCtrl as ctrl">
+    <div class="calendar-controls">
+      <md-icon class="left icon ng-isolate-scope" md-svg-src="assets/icons/left-arrow.svg" alt="Precedente" ng-click="calPrev()"></md-icon>
+      <md-icon class="right icon ng-isolate-scope" md-svg-src="assets/icons/right-arrow.svg" alt="Successivo" ng-click="calNext()"></md-icon>
+    </div>
+    <div class="calendars-wrapper">
+      <div class="cal-client">
+        <div id='calClient'></div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <h5 class="uppercase center">Prossimi appuntamenti{{ctrl.nextAppointments.length > 0 ? ' ('+ ctrl.nextAppointments.length +')' : ''}}</h5>
+    <div class="elenco-appuntamenti">
+
+
+      <div class="appuntamento" ng-repeat="single in ctrl.nextAppointments | filter:{isPast:false,isPositive:true} | orderBy:'dataInizio' | limitTo:5" ng-click="ctrl.showAppointmentInfo(single.id)">
+        <div row fill>
+          <div class="">
+            <div class="info center">
+              <small>{{ single.labels.inizio }}</small>
+            </div>
+            <div class="hero-profile-pic center" row>
+              <span class="center"><div class="profile-pic" style="background-image:url('{{single.superHeroPhotoUrl }}')"></div></span>
+              <span class="center nome">{{ single.superHeroNomeCompleto }}<br><small>{{single.labels.servizio}}</small></span>
+            </div>
+          </div>
+          <div class="stato center">
+            <i class="{{ single.labels.statoIcon }}" title="{{ single.labels.stato }}"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="appuntamento" ng-repeat="single in ctrl.nextAppointments | filter:{isPast:false,isPositive:true} | orderBy:'dataInizio' | limitToNew:99:5" ng-click="ctrl.showAppointmentInfo(single.id)" ng-if="ctrl.showAllAppointments">
+        <div row fill>
+          <div class="">
+            <div class="info center">
+              <small>{{ single.labels.inizio }}</small>
+            </div>
+            <div class="hero-profile-pic center" row>
+              <span class="center"><div class="profile-pic" style="background-image:url('{{single.superHeroPhotoUrl }}')"></div></span>
+              <span class="center nome">{{ single.superHeroNomeCompleto }}<br><small>{{single.labels.servizio}}</small></span>
+            </div>
+          </div>
+          <div class="stato center">
+            <i class="{{ single.labels.statoIcon }}" title="{{ single.labels.stato }}"></i>
+          </div>
+        </div>
+      </div>
+
+      <p class="center" ng-if="ctrl.nextAppointments.length > 5 && !ctrl.showAllAppointments" ng-click="ctrl.showAllAppointments = !ctrl.showAllAppointments"><small>&#x25BC; Mostra tutti gli appuntamenti</small></p>
+      <p class="center" ng-if="ctrl.nextAppointments.length > 5 && ctrl.showAllAppointments" ng-click="ctrl.showAllAppointments = !ctrl.showAllAppointments"><small>&#x25B2; Mostra i primi 5 appuntamenti</small></p>
+      <p class="center" ng-show="ctrl.nextAppointments.length == 0"><i>Nessun appuntamento in programma</i></p>
+
+
+    </div>
+  </div>
+</div>

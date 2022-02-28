@@ -1,0 +1,56 @@
+.table-recensioni {
+  thead tr th:nth-child(1) { width: 15%; }
+  thead tr th:nth-child(4) { width: 8%; }
+  thead tr th:nth-child(6) { width: 20%; }
+
+  @media screen and (max-width: $mq-md){
+    [st-search] {
+      box-sizing: border-box;
+    }
+
+    thead{ max-width: 45%; }
+
+    thead tr th {
+      width: 100% !important;
+      text-align: left !important;
+      line-height: 25.5px;
+    }
+  }
+}
+
+.text-small {
+  font-size: small;
+}
+
+.switch-recruiter {
+  height:50px; 
+}
+
+.change-price input {
+  font-size: 1.4rem;
+}
+
+p.with-margin {
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+}
+
+.ngdialog-contct-center {
+  .profile-pic {
+    position: relative;
+  }
+  
+  .profile-pic i.glyphicon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.datepicker-contactcenter {
+  [date-picker] [ng-switch-when="year"] span, [date-picker] [ng-switch-when="month"] span, [date-picker] [ng-switch-when="minutes"] span {
+    height: 40px;
+    line-height: 40px;
+  }
+}

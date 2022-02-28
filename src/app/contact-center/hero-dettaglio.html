@@ -1,0 +1,49 @@
+<h2 class="center">Dettagli collaboratore</h2>
+<div class="row">
+  <div class="col s12 m8">
+    <div class="card-panel white text-grey text-darken-3">
+      <div class="row">
+        <div class="col s12 m4 center">
+          <h4 class="no-margin top">{{ctrl.heroInfo.nome}} {{ctrl.heroInfo.cognome}}</h4>
+          <div class="hero-image-profile inline-block" style="background-image: url('{{ctrl.heroInfo.photoUrl}}')"></div>
+        </div>
+        <div class="col s12 m8">
+          <ul>
+            <li><strong>C.F.:&nbsp;</strong><span>{{ctrl.heroInfo.codiceFiscale}}</span>
+            </li>
+            <li><strong>Mail:&nbsp;</strong><span>{{ctrl.heroInfo.email}}</span>
+            </li>
+            <li><strong>Telefono:&nbsp;</strong><span>{{ctrl.heroInfo.cellulare}}</span>
+            </li>
+          </ul>
+          <div class="actions">
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.index({id: ctrl.heroInfo.id})">Bacheca</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.profile({id: ctrl.heroInfo.id})">Profilo</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.zones({id: ctrl.heroInfo.id})">Zone Disponibilità</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.history({id: ctrl.heroInfo.id})">Storico</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.carnet({id: ctrl.heroInfo.id})">Carnet</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.overview({id: ctrl.heroInfo.id})">Riepilogo</a>
+            <a class="waves-effect waves-light btn-flat grey lighten-3 btn btn-small" ui-sref="main.support.hero.billings({id: ctrl.heroInfo.id})">Fatture</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="card-panel white text-grey text-darken-3">
+      <div class="row">
+        <div class="col s12 m12">
+          <h4 class="center no-margin top">Residenza</h4>
+          <div class="indirizzo-single" ng-repeat="indirizzo in ctrl.addressesResidence">
+            {{indirizzo.label}}
+          </div>
+          <br>
+          <h4 class="center no-margin top">Fatturazione</h4>
+          <div class="indirizzo-single" ng-repeat="indirizzo in ctrl.addressesBilling">
+            {{indirizzo.label}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

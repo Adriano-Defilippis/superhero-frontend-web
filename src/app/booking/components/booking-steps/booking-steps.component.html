@@ -1,0 +1,10 @@
+<div id="steps">
+	<div class="step"
+        ng-repeat="step in BookingSteps.steps track by step.state"
+        ng-class="{ active: BookingSteps.isActive(step.state), done: BookingSteps.isDone(step.name), disabled: BookingSteps.isDisabled(step), expected: BookingSteps.isExpected(step.order) }"
+        data-desc="{{step.label}}"
+        ng-click="BookingSteps.onClickStep(step)">
+		<i class="icon-ok" ng-show="BookingSteps.isDone(step.name)"></i>
+		<span ng-class="{'glyphicon glyphicon-ok': BookingSteps.isDone(step.name)}">{{ !BookingSteps.isDone(step.name) ? step.order : ''}}</span>
+	</div>
+</div>

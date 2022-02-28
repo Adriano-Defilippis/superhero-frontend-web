@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div class="img-uploader center section" full-width>
+  		<h2 class="no-margin top">Foto</h2>
+  		<p class="center">Inserisci preferibilmente una tua foto sorridente e su sfondo bianco.<br>Puoi caricare solo file in formato .jpg, .png e .gif</p>
+  		<input type="file" nv-file-select uploader="ctrl.imgUploader" class="" />
+  		<div fill ng-repeat="item in ctrl.imgUploader.queue">
+  			<div class="cropArea">
+  				<img-crop image="item.image" result-image="item.croppedImage"></img-crop>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="col s12 m6">
+    <div class="img-uploader cv-uploader section center" full-width>
+  		<h2 class="no-margin top">Curriculum Vitae</h2>
+  		<p class="center">Carica il tuo curriculum aggiornato. Puoi caricare solo file in formato .doc, .docx, .odt, .pdf e .txt</p>
+  		<input type="file" nv-file-select uploader="ctrl.cvUploader" class="big" placeholder="Seleziona un file" capture="camera" />
+  		<div layout-fill ng-repeat="item in ctrl.cvUploader.queue">
+  			<md-icon class="icon cv-icon big" md-svg-src="/assets/icons/cv.svg" alt="CV"></md-icon>
+  		</div>
+  	</div>
+  </div>
+</div>
+
+<div class="row section">
+  <div class="col s12 m4 offset-m4 termini-utilizzo center">
+    <div class="with-errors">
+      <div class="radio-group">
+        <input type="checkbox" name="condizioniPrivacy" id="condizioniPrivacy" ng-model="ctrl.condizioniPrivacy" required>
+        <label class="left-align" for="condizioniPrivacy">Ho letto e accetto le <a href="assets/pdf/collaboratore/informativa-privacy-collaboratore.pdf" target="_blank">condizioni sulla privacy.</a></label>
+      </div>
+    </div>
+    <div ng-messages="heroApplicationForm.condizioniPrivacy.$error" ng-show="ctrl.showRequiredError">
+      <div ng-message="required">{{::ctrl.labels.required}}</div>
+    </div>
+  </div>
+</div>
+
+<div class="row section">
+  <div class="col s12 m6 offset-m3">
+    <a ng-click="ctrl.submitForm(heroApplicationForm.$valid)" class="{{ ctrl.isLoading ? 'disabled' : 'waves-effect waves-light main-orange'}} btn" full-width>{{ ctrl.isLoading ? 'Caricamento..' : ctrl.submitButton}}</a>
+  </div>
+</div>

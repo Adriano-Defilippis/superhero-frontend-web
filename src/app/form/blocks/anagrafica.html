@@ -1,0 +1,131 @@
+<h2 class="center no-margin top">Anagrafica</h2>
+<div class="row">
+    <div class="col s6">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="nome" required minlength="2" ng-model="ctrl.heroApplication.nome">
+            <label>Nome</label>
+        </div>
+        <div ng-messages="heroApplicationForm.nome.$error" ng-show="heroApplicationForm.nome.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.nome}}</div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div input-field class="with-errors">
+            <input autocomplete="new-password" type="text" name="cognome" required minlength="2" ng-model="ctrl.heroApplication.cognome">
+            <label>Cognome</label>
+        </div>
+        <div ng-messages="heroApplicationForm.cognome.$error" ng-show="heroApplicationForm.cognome.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlengh.cognome}}</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s6">
+        <div input-field class="with-errors">
+            <input  type="text" name="luogoNascita" required ng-model="ctrl.heroApplication.luogoNascita">
+            <label>Luogo di nascita</label>
+        </div>
+        <div ng-messages="heroApplicationForm.luogoNascita.$error" ng-show="heroApplicationForm.luogoNascita.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div input-field class="with-errors">
+            <input ng-if="!ctrl.isMobile" type="text" name="dataNascita" date-time auto-close="true" ng-model="ctrl.heroApplication.dataNascita" format="dd/MM/yyyy" view="year" min-view="date" required>
+            <input ng-if="ctrl.isMobile" type="date" name="dataNascita" ng-model="ctrl.heroApplication.dataNascita" format="dd/MM/yyyy" view="year" min-view="date" required>
+            <label ng-if="!ctrl.isMobile || (ctrl.isMobile && !ctrl.heroApplication.dataNascita)">Data di nascita</label>
+        </div>
+        <div ng-messages="heroApplicationForm.dataNascita.$error" ng-show="heroApplicationForm.dataNascita.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s5 m4">
+        <div class="with-errors">
+            <div class="radio-group">
+                <label>Sesso</label>
+                <input class="with-gap" name="sesso" type="radio" id="sessoM" value="M" ng-disabled="::ctrl.formDisabled" ng-model="ctrl.heroApplication.sesso"><label for="sessoM">M</label>
+                <input class="with-gap" name="sesso" type="radio" id="sessoF" value="F" ng-disabled="::ctrl.formDisabled" ng-model="ctrl.heroApplication.sesso"><label for="sessoF">F</label>
+            </div>
+        </div>
+        <div ng-messages="heroApplicationForm.sesso.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s7 m8">
+        <div input-field class="with-errors">
+            <input type="text" name="codiceFiscale" required ng-model="ctrl.heroApplication.codiceFiscale" class="uppercase">
+            <label>Codice fiscale</label>
+        </div>
+        <div ng-messages="heroApplicationForm.codiceFiscale.$error" ng-show="heroApplicationForm.codiceFiscale.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlength.codiceFiscale}}</div>
+        </div>
+        
+        <div input-field class="with-errors">
+            <input ng-paste="ctrl.copyPasteError($event)" type="text" name="confermaCodiceFiscale" required ng-model="ctrl.heroApplication.confermaCodiceFiscale" class="uppercase">
+            <label>Conferma codice fiscale</label>
+        </div>
+        <div ng-messages="heroApplicationForm.confermaCodiceFiscale.$error" ng-show="heroApplicationForm.confermaCodiceFiscale.$dirty || ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+            <div ng-message="minlength">{{::ctrl.labels.minlength.confermaCodiceFiscale}}</div>
+            <div ng-message="noCopyPaste">{{::ctrl.labels.noCopyPaste.confermaCodiceFiscale}}</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s6">
+        <select name="cittadinanza" class="with-errors" ng-model="ctrl.heroApplication.cittadinanza" material-select ng-disabled="ctrl.formDisabled" required>
+            <option value="" disabled selected>Cittadinanza</option>
+            <option ng-repeat="option in ::ctrl.options.stati | orderBy:'nome'" ng-value="option.sigla">{{::option.nome}}</option>
+        </select>
+        <div ng-messages="heroApplicationForm.cittadinanza.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="with-errors">
+            <div class="radio-group">
+                <label>Hai precedenti penali:</label>
+                <input class="with-gap" name="problemiGiustizia" type="radio" id="problSi" ng-value="true" ng-disabled="::ctrl.formDisabled" ng-model="ctrl.heroApplication.problemiGiustizia"><label for="problSi">Si</label>
+                <input class="with-gap" name="problemiGiustizia" type="radio" id="problNo" ng-value="false" ng-disabled="::ctrl.formDisabled" ng-model="ctrl.heroApplication.problemiGiustizia"><label for="problNo">No</label>
+            </div>
+        </div>
+        <div ng-messages="heroApplicationForm.problemiGiustizia.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s6">
+        <div class="with-errors">
+            <div class="radio-group" ng-show="ctrl.heroApplication.cittadinanza != 'IT' && ctrl.heroApplication.cittadinanza != ''">
+                <input type="checkbox" name="permessoSoggiorno" id="permessoSoggiorno"
+                ng-disabled="ctrl.formDisabled"
+                ng-required="ctrl.heroApplication.cittadinanza != 'IT' && ctrl.heroApplication.cittadinanza != ''"
+                ng-model="ctrl.heroApplication.permessoSoggiorno">
+                <label for="permessoSoggiorno">Permesso di soggiorno</label>
+            </div>
+        </div>
+        <div ng-messages="heroApplicationForm.permessoSoggiorno.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+    <div class="col s6">
+        <div class="with-errors">
+            <div class="radio-group" ng-show="ctrl.heroApplication.problemiGiustizia == false">
+                <input type="checkbox" name="autorizzazioneControlloFedina" id="autorizzazioneControlloFedina"
+                ng-disabled="ctrl.formDisabled"
+                ng-required="ctrl.heroApplication.problemiGiustizia == false"
+                ng-model="ctrl.heroApplication.autorizzazioneControlloFedina">
+                <label for="autorizzazioneControlloFedina">Autorizza un controllo sulla mia fedina penale</label>
+            </div>
+        </div>
+        <div ng-messages="heroApplicationForm.autorizzazioneControlloFedina.$error" ng-show="ctrl.showRequiredError">
+            <div ng-message="required">{{::ctrl.labels.required}}</div>
+        </div>
+    </div>
+</div>

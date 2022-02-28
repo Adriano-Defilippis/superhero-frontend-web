@@ -1,0 +1,39 @@
+<h1 class="title-page center">Ordini ({{ctrl.orders.length}})</h1>
+<p class="center">
+    <button-tabs buttons="ctrl.buttonsActive"></button-tabs>&nbsp;|&nbsp;<button-tabs buttons="ctrl.buttonsInactive"></button-tabs>
+</p>
+
+<div class="table-holder">
+    <table st-table="ctrl.orders" class="table table-recruiter">
+        <tr>
+            <th colspan="10">
+                <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+            </th>
+        </tr>
+        <thead>
+            <tr>
+                <th st-sort="dataCreazione">Data</th>
+                <th st-sort="costoPrestazioni">Importo autorizz.</th>
+                <th st-sort="cliente">Cliente</th>
+                <th st-sort="superHero">Supereroe</th>
+                <th st-sort="tipo">Tipo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in ctrl.orders | filter:ctrl.filterTable ">
+                <td ng-bind-html="row.dataCreazioneFormatted"></td>
+                <td>{{(row.tipo === 'ModificaAppuntamento' || row.tipo === 'ModificaAppuntamentoCarnet' || row.tipo === 'ModificaAppuntamentoNominale' || row.tipo === 'ModificaAmministrativaAppuntamento' || row.tipo === 'ModificaAmministrativaAppuntamentoNominale' || row.tipo === 'ModificaAmministrativaAppuntamentoCarnet') ? (row.costoPrestazioni + row.costoPenali) + "€ (compresi " + row.costoPenali + " € di penale)" : row.costoPrestazioni + " €"}}</td>
+                <td>{{row.cliente}}</td>
+                <td>{{row.superHero}}</td>
+                <td>{{ctrl.getOrderType(row)}}</td>
+                <td>
+                    <a class="icon-button big" ui-sref="main.support.edit-order({ idOrder: row.id })"><i class="mdi-action-visibility grey-text text-darken-3" title="Modifica"></i></a>
+                </td>
+                <!-- <td>
+                    <a class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: row.id, idCustomer: row.idCliente })"><i class="mdi-action-visibility grey-text text-darken-3" title="Modifica"></i></a>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

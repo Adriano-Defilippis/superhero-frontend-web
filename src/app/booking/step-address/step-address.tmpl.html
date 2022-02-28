@@ -1,0 +1,55 @@
+<section ng-if="Booking.state.userInfo.isLogged === true">
+    <div class="row">
+        <div class="col s12">
+            <h2 class="center">Seleziona l'indirizzo oppure aggiungine uno nuovo</h2>
+        </div>
+    </div>
+    <select-address
+        addresses="Booking.state.steps.address.userAddresses"
+        selected="Booking.state.steps.address.selectedUserAddress"
+        hide-button="Booking.state.steps.address.showFullAddressInput"
+        on-select-address="Booking.userSelectedAddress(addressId)"
+        only-internal="Booking.state.steps.service.selectedService !== StepAddress.SERVICES.PERSONALTRAINER"
+        on-add-new-address="Booking.addNewAddress()">
+    </select-address>
+</section>
+
+<section ng-if="Booking.state.userInfo.isLogged === false || Booking.state.steps.address.showAddressInput === true">
+    <div class="row">
+        <div class="col s12 m12 center">
+            <h2 ng-if="Booking.state.userInfo.isLogged === false">Inserisci il tuo indirizzo completo</h2>
+            <h2 ng-if="Booking.state.userInfo.isLogged === true" class="no-margin top">Nuovo indirizzo</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <address-input
+                via="Booking.state.steps.address.input.info.route"
+                numero-civico="Booking.state.steps.address.input.info.street_number"
+                cap="Booking.state.steps.address.input.info.postal_code"
+                localita="Booking.state.steps.address.input.info.locality"
+                provincia="Booking.state.steps.address.input.info.administrative_area_level_2"
+                citofono="Booking.state.steps.address.input.info.citofono"
+                scala="Booking.state.steps.address.input.info.scala"
+                piano="Booking.state.steps.address.input.info.piano"
+                show-full-address="Booking.state.steps.address.showFullAddressInput"
+                show-address-type="Booking.state.steps.service.selectedService === StepAddress.SERVICES.PERSONALTRAINER"
+                address-type="Booking.state.steps.address.input.info.type"
+                on-change-user-input="Booking.setUserInputAddress(addressInfo)"
+                on-change-autocomplete-address="Booking.setBookingAddress(addressInfo, type)">
+            </address-input>
+        </div>
+    </div>
+</section>
+
+<notes
+    ng-if="StepAddress.mustShowNotes(Booking.state)"
+    notes="Booking.state.steps.userData.additionalNotes"
+    placeholder="es. sarò davanti al bar 'xy', indossando una maglietta rossa"
+    title=""
+    label="Inserire indicazioni precise sul luogo di ritrovo con il Personal Trainer"
+    length="400"
+    show-error="Booking.state.showInputError"
+    errors="StepAddress.ERRORS"
+    on-notes-changed="Booking.setBookingNotes(notes)">
+</notes>

@@ -1,0 +1,27 @@
+<section ng-if="PricingTotal.isContextualCarnet === false" class="center">
+    <section class="center" ng-if="PricingTotal.isCarnet === false">
+        <h5 class="title-label left-align no-margin top">Totale ({{ PricingTotal.getSumTime(PricingTotal.confirmedDates) }} ore)</h5>
+        <h4 class="uppercase inline-block {{ PricingTotal.mustShowFinalPrice() ? 'hyphened' : null }}">{{ PricingTotal.getSumCost() }}</h4>
+        <h4 class="uppercase inline-block" ng-if="PricingTotal.mustShowFinalPrice()">&nbsp;{{ PricingTotal.finalPrice() }}</h4>
+        <h4 class="uppercase inline-block">&euro;&nbsp;&nbsp;</h4><i>IVA inclusa</i>
+        <div class="carnet-promo-suggestion pricing-total"
+            ng-if="PricingTotal.showCarnetDiscount()">
+            <a ng-click="PricingTotal.onBuyCarnet()">Risparmia fino a {{ PricingTotal.getHighestDiscount() }} &euro; su questo<br>e sui prossimi appuntamenti <br>con il carnet</a>
+        </div>
+    </section>
+
+    <section class="center" ng-if="PricingTotal.isCarnet === true">
+        <h5 class="title-label left-align no-margin top">Totale</h5>
+        <h4 class="uppercase inline-block">{{ PricingTotal.getSumTime(PricingTotal.confirmedDates) }} {{PricingTotal.carnetInfo.isPrestazione ? ' prestazioni' : ' ore'}}</h4>&nbsp;&nbsp;
+        <i>({{ PricingTotal.carnetInfo.hours.remaining - PricingTotal.getSumTime(PricingTotal.confirmedDates) }} residue)</i>
+    </section>
+</section>
+
+
+<section class="center" ng-if="PricingTotal.isContextualCarnet === true">
+    <h5 class="title-label left-align no-margin top">Totale ({{ PricingTotal.getSumTime(PricingTotal.confirmedDates) }}/{{ PricingTotal.contextualCarnet.hours }} {{PricingTotal.carnetInfo.isPrestazione ? ' prestazioni' : ' ore'}})</h5>
+    <p class="center">
+        <h4 class="uppercase inline-block">{{ PricingTotal.contextualCarnet.price }}</h4>
+        <h4 class="uppercase inline-block">&euro;&nbsp;&nbsp;</h4><i>IVA inclusa</i>
+    </p>
+</section>

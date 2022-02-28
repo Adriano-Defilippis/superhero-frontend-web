@@ -1,0 +1,21 @@
+{
+  "name": "angular-materialize",
+  "main": "src/angular-materialize.js",
+  "ignore": [
+    "**/.*",
+    "index.html",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "homepage": "https://github.com/krescruz/angular-materialize",
+  "_release": "f2a1304470",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f2a13044709ec811d08a10c43e937606e36822d2"
+  },
+  "_source": "git://github.com/krescruz/angular-materialize.git",
+  "_target": "*",
+  "_originalSource": "angular-materialize",
+  "_direct": true
+}

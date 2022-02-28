@@ -1,0 +1,19 @@
+<h3 class="center">Trova un supereroe</h3>
+<div class="section center">
+  <div ng-if="ctrl.heroesResults.length < 1">
+    <p>Spiacente, non è stato possibile trovare alcun supereroe poichè non soddisfa i requisiti dell'appuntamento.</p>
+  </div>
+  <div ng-if="ctrl.heroesResults.length > 0">
+    <p>Seleziona uno dei supereroe sottostanti quindi per il pulsante per salvare le modifiche.</p>
+    <ul>
+      <li ng-repeat="hero in ctrl.heroesResults" ng-click="ctrl.selectHero(hero)">
+        <div class="picture center width-60 inline-block">
+          <div class="profile-pic" style="background-image: url('{{hero.photoUrl}}')"><i class="glyphicon glyphicon-ok" ng-show="hero.selected"></i></div>
+        </div>
+        <p class="inline-block">{{hero.nome + ' ' + hero.cognome}}</p>
+      </li>
+    </ul>
+    <br>
+    <a type="button" ng-click="ctrl.saveNewHero()" class="waves-effect waves-light main-orange btn btn-small">Imposta nuovo eroe</a>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="row no-margin bottom">
+  <div class="col s12">
+    <h2 class="center no-margin bottom">{{ ctrl.isCarnetEditHero ? 'Seleziona il nuovo eroe' : 'Cerca il supereroe'}}</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col s12 m12" ng-hide="ctrl.search.showResults">
+    <h4 class="center uppercase"><small>Filtri di ricerca</small></h4>
+    <div class="row no-margin bottom">
+      <div class="col s6 m4 offset-m2">
+        <div input-field>
+          <input type="text" name="cap" minlength="5" ng-model="ctrl.search.filtri.cap">
+          <label>Il tuo Cap</label>
+        </div>
+      </div>
+      <div class="col s6 m4">
+        <select class="select-dropdown-margin-top" ng-model="ctrl.search.filtri.idCompetenza" ng-disabled="ctrl.search.preSelection.competenzaDisabled" material-select>
+          <option disabled selected value="">Servizio</option>
+          <option ng-repeat="option in ctrl.search.opzioni.servizi" ng-disabled="option.id == ''" ng-selected="option.id == ''" ng-value="option.id">{{option.label}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div collapse="!ctrl.advancedSearch">
+
+        <div class="sottocompetenze" ng-show="ctrl.search.filtri.idCompetenza">
+          <h5 class="center no-margin top">Seleziona i servizi specifici di cui hai bisogno</h5>
+          <div class="row no-margin bottom">
+            <div class="col s12 m4" ng-repeat="sotto in ctrl.search.sottocompetenze[ctrl.search.filtri.idCompetenza]">
+              <div class="radio-group-">
+                <input type="checkbox" name="{{sotto.id}}" id="{{sotto.id}}" ng-model="ctrl.search.filtri.sottocompetenze[sotto.parent][sotto.id]">
+                <label for="{{sotto.id}}">{{sotto.label}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row no-margin bottom">
+          <div class="col s12 m4">
+            <select class="select-dropdown-margin-top" ng-model="ctrl.search.filtri.conoscenzaItaliano" material-select>
+              <option value="" selected>Conoscenza Italiano</option>
+              <option ng-repeat="option in ctrl.search.opzioni.conoscenzaItaliano" ng-value="option.id">{{option.label}}</option>
+            </select>
+          </div>
+          <div class="col s12 m4">
+            <select class="select-dropdown-margin-top" ng-model="ctrl.search.filtri.conoscenzaInglese" material-select>
+              <option value="" selected>Conoscenza Inglese</option>
+              <option ng-repeat="option in ctrl.search.opzioni.conoscenzaInglese" ng-value="option.id">{{option.label}}</option>
+            </select>
+          </div>
+          <div class="col s12 m4">
+            <select class="select-dropdown-margin-top" ng-model="ctrl.search.filtri.conoscenzaFrancese" material-select>
+              <option value="" selected>Conoscenza Francese</option>
+              <option ng-repeat="option in ctrl.search.opzioni.conoscenzaFrancese" ng-value="option.id">{{option.label}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s6 m4">
+            <div class="radio-group">
+              <input type="checkbox" name="amanteAnimale" id="amanteAnimale" ng-model="ctrl.search.filtri.amanteAnimali">
+              <label for="amanteAnimale">Amante degli animali</label>
+            </div>
+          </div>
+          <div class="col s6 m4">
+            <div class="radio-group">
+              <input type="checkbox" name="disponibilitaWeekEnd" id="disponibilitaWeekEnd" ng-model="ctrl.search.filtri.disponibilitaWeekEnd">
+              <label for="disponibilitaWeekEnd">Disponibilità weekend</label>
+            </div>
+          </div>
+          <div class="col s6 m4">
+            <div class="radio-group">
+              <input type="checkbox" name="disponibilitaNotturna" id="disponibilitaNotturna" ng-model="ctrl.search.filtri.disponibilitaNotturna">
+              <label for="disponibilitaNotturna">Disponibilità notturna</label>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <p class="center no-margin all padding-top-small hero-search__show-more-filters"><a ng-click="ctrl.advancedSearch = !ctrl.advancedSearch">{{ctrl.advancedSearch ? '&#x25B2;&nbsp;Rimuovi' : '&#x25BC;&nbsp;Aggiungi'}} ulteriori specifiche</a></p>
+
+
+    <div class="section">
+      <p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="ctrl.search.updateFilters()">Aggiorna ricerca</a></p>
+    </div>
+  </div>
+
+  <div class="col s12 center" ng-if="ctrl.search.showResults">
+    <a class="waves-effect waves-light main-orange white-text btn btn-flat btn-small" ng-click="ctrl.search.newSearch()">Nuova ricerca</a>&nbsp;
+    <a class="waves-effect waves-light main-orange white-text btn btn-flat btn-small" ng-show="ctrl.search.resultSelected" ng-click="ctrl.search.saveChanges()">Salva modifiche</a>
+  </div>
+
+  <div class="col s12 m12" ng-if="ctrl.search.error.shown">
+    <p class="center main-orange-text"><i>{{ctrl.search.error.message}}</i></p>
+  </div>
+  <div class="col s12 m12" ng-if="ctrl.search.showResults">
+    <h4 class="center uppercase"><small>Risultati ricerca</small></h4>
+    <p ng-if="ctrl.search.results.length < 1" class="center"><i>La ricerca non ha portato ad alcun risultato. Prova a cambiare i filtri ed effettuare una nuova ricerca.</i></p>
+
+    <div class="heroes-search-results" ng-if="!ctrl.search.disableHeroProfile">
+      <div class="result-single" row ng-repeat="hero in ctrl.search.results" fill ng-click="ctrl.search.showHeroProfile(hero)">
+        <div class="picture center width-100">
+          <div class="width-100 profile-pic" style="background-image:url('{{hero.photoUrl}}')"><i class="glyphicon glyphicon-ok" ng-show="hero.selected"></i></div>
+        </div>
+        <div class="description center">
+          <h4 class="name left-align no-margin bottom">{{hero.nome}} - {{ctrl.search.activeSearch}}</h4>
+          <p class="left-align no-margin top">Su di me: {{hero.descrizione}}</p>
+        </div>
+        <div class="actions center">
+          <a class="waves-effect waves-light grey lighten-3 grey-text text-darken-2 btn btn-flat btn-small" ng-click="ctrl.search.showHeroReferences(hero, $event)" ng-if="hero.numeroRecensioni > 0">({{hero.numeroRecensioni}}) Referenze</a>
+          <a class="waves-effect waves-light main-orange white-text btn btn-flat btn-small" ng-click="ctrl.search.selectHero(hero, $event)">Seleziona</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="heroes-search-results" ng-if="ctrl.search.disableHeroProfile">
+      <div class="result-single" row ng-repeat="hero in ctrl.search.results" fill>
+        <div class="picture center width-100">
+          <div class="width-100 profile-pic" style="background-image:url('{{hero.photoUrl}}')"><i class="glyphicon glyphicon-ok" ng-show="hero.selected"></i></div>
+        </div>
+        <div class="description center">
+          <h4 class="name left-align no-margin bottom">{{hero.nome}} - {{ctrl.search.activeSearch}}</h4>
+          <p class="left-align no-margin top">Su di me: {{hero.descrizione}}</p>
+        </div>
+        <div class="actions center">
+          <a class="waves-effect waves-light main-orange white-text btn btn-flat btn-small" ng-click="ctrl.search.selectHero(hero, $event)">Seleziona</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

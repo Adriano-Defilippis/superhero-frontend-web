@@ -1,0 +1,172 @@
+<!-- title -->
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="center">Seleziona un servizio</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m8 offset-m2">
+        <service-input-autocomplete
+            selected="Booking.state.steps.service.selectedService"
+            selected-sub-service="StepService.getSelectedSubservice(Booking.state.steps.service, Booking.state.steps.service.selectedService);"
+            disabled="Booking.state.steps.service.disabledServices"
+            on-service-selected="Booking.selectService(serviceId)"
+            on-sub-service-selected="Booking.selectSubService(parentServiceId, subServiceId)">
+        </service-input-autocomplete>
+    </div>
+</div>
+
+<!--
+<service-choice
+    services="StepService.services"
+    selected="Booking.state.steps.service.selectedService"
+    disabled="Booking.state.steps.service.disabledServices"
+    on-service-click="Booking.selectService">
+</service-choice>
+-->
+
+<div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.COLF">
+        <booking-service-colf
+            service-id="StepService.SERVICES.COLF"
+            square-meters="Booking.state.steps.service.colf.squareMeters"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.COLF, Booking.state.steps.service.disabledAdditionalServices)"
+            selected-additional-services="Booking.state.steps.service.colf.selectedAdditionalServices"
+            service-notes="Booking.state.steps.service.colf.notes"
+            on-change-square-meters="Booking.colfSetSquareMeters(meters)"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.COLF, additionalServiceId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.COLF, notes)">
+        </booking-service-colf>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.COLF_BNB">
+        <booking-service-colf
+            service-id="StepService.SERVICES.COLF_BNB"
+            square-meters="Booking.state.steps.service.colf.squareMeters"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.COLF_BNB, Booking.state.steps.service.disabledAdditionalServices)"
+            selected-additional-services="Booking.state.steps.service.colf.selectedAdditionalServices"
+            service-notes="Booking.state.steps.service.colf.notes"
+            on-change-square-meters="Booking.colfSetSquareMeters(meters)"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.COLF_BNB, additionalServiceId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.COLF_BNB, notes)">
+        </booking-service-colf>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.BADANTE">
+        <booking-service-badante
+            service-id="StepService.SERVICES.BADANTE"
+            assisted-info="Booking.state.steps.service.badante.assistedInfo"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.BADANTE, Booking.state.steps.service.disabledAdditionalServices)"
+            selected-additional-services="Booking.state.steps.service.badante.selectedAdditionalServices"
+            service-notes="Booking.state.steps.service.badante.notes"
+            on-assisted-changed="Booking.badanteSetAssistedInfo(info)"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.BADANTE, additionalServiceId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.BADANTE, notes)">
+        </booking-service-badante>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.BABYSITTER">
+        <booking-service-babysitter
+            service-id="StepService.SERVICES.BABYSITTER"
+            children-info="Booking.state.steps.service.babySitter.childrenInfo"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.BABYSITTER, Booking.state.steps.service.disabledAdditionalServices)"
+            selected-additional-services="Booking.state.steps.service.babySitter.selectedAdditionalServices"
+            service-notes="Booking.state.steps.service.babySitter.notes"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.BABYSITTER, additionalServiceId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.BABYSITTER, notes)"
+            on-child-edit="Booking.babySitterEditChild(index, info)"
+            on-child-removed="Booking.babySitterRemoveChild(index)"
+            on-child-added="Booking.babySitterAddNewChild()">
+        </booking-service-babysitter>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.PERSONALTRAINER">
+        <booking-service-personal-trainer
+            service-id="StepService.SERVICES.PERSONALTRAINER"
+            sub-service-selected="Booking.state.steps.service.personalTrainer.subService"
+            sub-services="StepService.filterSubServices(StepService.SERVICES.PERSONALTRAINER, Booking.state.steps.service.disabledServices)"
+            guests-info="Booking.state.steps.service.personalTrainer.guestsInfo"
+            hide-guests-info="Booking.state.carnet.isCarnetOrder === true"
+            service-notes="Booking.state.steps.service.personalTrainer.notes"
+            on-guest-edit="Booking.personalTrainerEditGuest(index, info)"
+            on-guest-removed="Booking.personalTrainerRemoveGuest(index)"
+            on-guest-added="Booking.personalTrainerAddNewGuest()"
+            on-click-sub-service="Booking.selectSubService(StepService.SERVICES.PERSONALTRAINER, subServiceId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.PERSONALTRAINER, notes)">
+        </booking-service-personal-trainer>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.FISIOTERAPISTA">
+        <booking-service-fisioterapista
+            service-id="StepService.SERVICES.FISIOTERAPISTA"
+            sub-service-selected="Booking.state.steps.service.fisioterapista.subService"
+            sub-services="StepService.filterSubServices(StepService.SERVICES.FISIOTERAPISTA, Booking.state.steps.service.disabledServices)"
+            service-notes="Booking.state.steps.service.fisioterapista.notes"
+            on-click-sub-service="Booking.selectSubService(StepService.SERVICES.FISIOTERAPISTA, subServiceId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.FISIOTERAPISTA, notes)">
+        </booking-service-fisioterapista>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.TUTTOFARE">
+        <booking-service-tuttofare
+            service-id="StepService.SERVICES.TUTTOFARE"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.TUTTOFARE, Booking.state.steps.service.disabledAdditionalServices)"
+            additional-tools="StepService.filterAdditionalTools(StepService.SERVICES.TUTTOFARE)"
+            service-notes="Booking.state.steps.service.tuttofare.notes"
+            selected-additional-services="Booking.state.steps.service.tuttofare.selectedAdditionalServices"
+            selected-additional-tools="Booking.state.steps.service.tuttofare.selectedAdditionalTools"
+            service-notes="Booking.state.steps.service.tuttofare.notes"
+            on-additional-tool-removed="Booking.tuttofareRemoveTool(index)"
+            on-additional-tool-added="Booking.tuttofareAddTool()"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.TUTTOFARE, additionalServiceId)"
+            on-click-specific-service="StepService.onClickSpecificService(StepService.SERVICES.TUTTOFARE, specificServiceId)"
+            on-two-tuttofare="Booking.setMultipleSuperheroes(isMultipleSuperheroes)"
+            on-click-additional-tool="Booking.selectAdditionalTool(StepService.SERVICES.TUTTOFARE, additionalToolId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.TUTTOFARE, notes)">
+        </booking-service-tuttofare>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.SERVIZI_ELETTRICI">
+        <booking-service-elettricista
+            service-id="StepService.SERVICES.SERVIZI_ELETTRICI"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.SERVIZI_ELETTRICI, Booking.state.steps.service.disabledAdditionalServices)"
+            additional-tools="StepService.filterAdditionalTools(StepService.SERVICES.SERVIZI_ELETTRICI)"
+            service-notes="Booking.state.steps.service.elettricista.notes"
+            selected-additional-services="Booking.state.steps.service.elettricista.selectedAdditionalServices"
+            selected-additional-tools="Booking.state.steps.service.elettricista.selectedAdditionalTools"
+            service-notes="Booking.state.steps.service.elettricista.notes"
+            on-additional-tool-removed="Booking.tuttofareRemoveTool(index)"
+            on-additional-tool-added="Booking.tuttofareAddTool()"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.SERVIZI_ELETTRICI, additionalServiceId)"
+            on-click-specific-service="StepService.onClickSpecificService(StepService.SERVICES.SERVIZI_ELETTRICI, specificServiceId)"
+            on-two-tuttofare="Booking.setMultipleSuperheroes(isMultipleSuperheroes)"
+            on-click-additional-tool="Booking.selectAdditionalTool(StepService.SERVICES.SERVIZI_ELETTRICI, additionalToolId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.SERVIZI_ELETTRICI, notes)">
+        </booking-service-tuttofare>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.SERVIZI_IDRAULICI">
+        <booking-service-idraulico
+            service-id="StepService.SERVICES.SERVIZI_IDRAULICI"
+            additional-services="StepService.filterAdditionalServices(StepService.SERVICES.SERVIZI_IDRAULICI, Booking.state.steps.service.disabledAdditionalServices)"
+            additional-tools="StepService.filterAdditionalTools(StepService.SERVICES.SERVIZI_IDRAULICI)"
+            service-notes="Booking.state.steps.service.idraulico.notes"
+            selected-additional-services="Booking.state.steps.service.idraulico.selectedAdditionalServices"
+            selected-additional-tools="Booking.state.steps.service.idraulico.selectedAdditionalTools"
+            service-notes="Booking.state.steps.service.idraulico.notes"
+            on-additional-tool-removed="Booking.tuttofareRemoveTool(index)"
+            on-additional-tool-added="Booking.tuttofareAddTool()"
+            on-click-additional-service="Booking.selectAdditionalService(StepService.SERVICES.SERVIZI_IDRAULICI, additionalServiceId)"
+            on-click-specific-service="StepService.onClickSpecificService(StepService.SERVICES.SERVIZI_IDRAULICI, specificServiceId)"
+            on-two-tuttofare="Booking.setMultipleSuperheroes(isMultipleSuperheroes)"
+            on-click-additional-tool="Booking.selectAdditionalTool(StepService.SERVICES.SERVIZI_IDRAULICI, additionalToolId)"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.SERVIZI_IDRAULICI, notes)">
+        </booking-service-tuttofare>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.STIRATURA">
+        <booking-service-stiratura
+            service-id="StepService.SERVICES.STIRATURA"
+            service-notes="Booking.state.steps.service.stiratura.notes"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.STIRATURA, notes)">
+        </booking-service-stiratura>
+    </div>
+    <div class="animate-switch" ng-if="Booking.state.steps.service.selectedService === StepService.SERVICES.CHECKIN_CHECKOUT">
+        <booking-service-checkin-checkout
+            service-id="StepService.SERVICES.CHECKIN_CHECKOUT"
+            service-notes="Booking.state.steps.service.checkincheckout.notes"
+            on-notes-changed="Booking.setServiceNote(StepService.SERVICES.CHECKIN_CHECKOUT, notes)">
+        </booking-service-checkin-checkout>
+    </div>
+</div>

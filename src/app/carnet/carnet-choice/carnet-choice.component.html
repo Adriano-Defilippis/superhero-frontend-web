@@ -1,0 +1,64 @@
+<div class="row carnet-select-container">
+    <div class="col m6 s12 carnet-text-container">
+        <p class="uppercase medium center-mobile">Seleziona qui il servizio per il quale ti interessa acquistare il carnet</p>
+    </div>
+    <div class="col m6 s12">
+        <div class="home-service-select">
+            <carnet-input
+                class="home"
+                placeholder="Seleziona un servizio"
+                always-open="true"
+                disabled="CarnetChoice.disabled"
+                selected="CarnetChoice.selectedService"
+                selected-sub-service="CarnetChoice.selectedSubService"
+                on-service-selected="CarnetChoice.selectService(serviceId, willProceedSubService)"
+                on-sub-service-selected="CarnetChoice.selectSubService(parentServiceId, subServiceId)"
+                >
+            </carnet-input>     
+        </div>
+    </div>
+
+</div>
+
+<div class="row" id="boxInfoCarnet" ng-show="CarnetChoice.showDiscountTips()">
+    <div class="col s12 l6">
+        <blockquote>
+            <h4 class="no-margin top bottom">Hai bisogno di aiuto per poche ore alla settimana?</h4>
+            <h6>I Carnet Small, Medium e Large fanno per te: li potrai usare quando ti è più comodo, senza vincoli</h6>
+        </blockquote>
+    </div>
+    <div class="col s16 l6">
+        <blockquote>
+            <h4 class="no-margin bottom">Hai bisogno di supporto per più ore al giorno?</h4>
+            <h6>Prova il Carnet XXL ad un prezzo vantaggioso!</h6>
+        </blockquote>
+    </div>
+</div>
+
+<div class="carnet-boxes row">
+    <carnet-block-prices
+        on-buy-carnet="CarnetChoice.buyCarnet(carnet)"
+        ng-repeat="single in CarnetChoice.selectedCarnet"
+        hide-payment-data="CarnetChoice.hidePaymentData",
+        carnet="single"
+        columns="CarnetChoice.selectedCarnet.length"
+        show-discount="CarnetChoice.showDiscount()">
+    </carnet-box-prices>
+</div>
+
+<div class="row" ng-if="CarnetChoice.selectedCarnet.length > 0">
+    <div class="row">
+        <img class="carnet-title-icon" src="{{CarnetChoice.model.info}}"/>
+    </div>
+    <div ng-if="!CarnetChoice.hidePaymentData">
+        <div class="col s12 m6 carnet-info-right center-mobile">
+            <p>Il pagamento dei Carnet al momento è possibile solo con carta di credito. Se preferisci acquistare il tuo Carnet attraverso bonifico bancario contatta il nostro Servizio Clienti allo 02-86882279 dal lunedì al venerdì dalle 9.00 alle 18.00.  </p>
+        </div>
+        <div class="col s12 m6 carnet-info-left center-mobile">
+            <p>L’addebito del Carnet è immediato, mentre la fatturazione delle prestazioni, ove prevista, avverrà progressivamente, contestualmente all'effettivo utilizzo del Carnet (o alla scadenza, in caso di ore residue).</p>
+        </div>
+    </div>
+    <div class="col s12 center" ng-if="CarnetChoice.hidePaymentData">
+        <p>Scegli la taglia di Carnet che ritieni più appropriata per le tue esigenze, scegli il Supereroe che fa per te ed inserisci il codice Voucher che ti è stato inviato per finalizzare l’ordine.</p>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<h2>Riepilogo</h2>
+<div class="row">
+  <div class="col s12 m4">
+    <div class="boxed-info padding-small" valign-wrapper>
+      <div class="center" valign>
+        <md-icon class="overview-box-icon medium padding-small" md-svg-src="{{ ctrl.assets.customers }}" fill></md-icon>
+        <h5 class="small-title uppercase">clienti serviti</h5>
+        <h2 flex class="overview-box-value big no-margin all" ng-bind="::ctrl.mv.stats.clientiServitiTotale"></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="boxed-info padding-small" valign-wrapper>
+      <div class="center" valign>
+        <md-icon class="overview-box-icon medium padding-small" md-svg-src="{{ ctrl.assets.money }}" fill></md-icon>
+        <h5 class="small-title uppercase">guadagno totale</h5>
+        <h2 flex class="overview-box-value big no-margin all"> {{(ctrl.mv.stats.guadagnoTotale | number:2) + "€"}} </h2>
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m4">
+    <div class="boxed-info padding-small" valign-wrapper>
+      <div class="center" valign>
+        <md-icon class="overview-box-icon medium padding-small" md-svg-src="{{ ctrl.assets.time }}" fill></md-icon>
+        <h5 class="small-title uppercase">numero ore lavorate</h5>
+        <h2 flex class="overview-box-value big no-margin all" ng-bind="::ctrl.mv.stats.oreLavorateTotale"></h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Resoconto mensile</h2>
+<div class="table-holder">
+<table st-table="ctrl.mv.reservations" class="table striped bordered table-recruiter">
+	<thead>
+	<tr>
+    <th st-sort="dataInizio">Data</th>
+		<th st-sort="dataInizio">Inizio</th>
+		<th st-sort="dataFine">Fine</th>
+    <th st-sort="idCliente">Cliente</th>
+    <th>Stato</th>
+    <th st-sort="ricavoNetto">Ricavo</th>
+    <th st-sort="ricavoNetto">Fatture</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="row in ctrl.mv.reservations | filter:ctrl.isInPast">
+		<td>{{row.dataInizio | date: 'dd/MM/yy'}}</td>
+		<td>{{row.dataInizio | date: 'HH:mm'}}</td>
+    <td>{{row.dataFine | date: 'HH:mm'}}</td>
+    <td>{{row.clienteNomeCompleto}}</td>
+    <td title="{{row.statoLabel}}"><i class="{{row.statoIcon}} icon-center"></i></td>
+    <td>{{row.ricavoNetto | number : 2}} &euro;</td>
+    <td> <a class="{{ !row.urlFatturaPiattaforma ? 'disabled' : 'waves-effect waves-light btn btn-flat white btn-small'}} btn btn-small" ng-href="{{row.urlFatturaPiattaforma}}" target="_blank">Piattaforma</a> <a class="{{ !ctrl.disableButton() ? 'disabled' : 'waves-effect waves-light btn btn-flat white btn-small'}} btn btn-small" ng-href="{{row.urlFatturaCliente}}" target="_blank">Prestazione</a></td>
+	</tr>
+  <tr ng-if="ctrl.mv.prenotazioniCounter < 1">
+    <td colspan="6"><p class="center"><i>Spiacenti, non sono ancora presenti prenotazioni.</i></p></td>
+  </tr>
+	</tbody>
+</table>
+</div>

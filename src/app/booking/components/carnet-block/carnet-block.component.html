@@ -1,0 +1,9 @@
+<div class="card-panel center price-block-container">
+    <md-icon class="md-icon big main-orange-text" md-svg-src="{{ CarnetBlock.carnet.icon }}" fill></md-icon>
+    <p>Tariffa oraria<strong>&nbsp;{{ CarnetBlock.carnet.priceHour }} €/h</strong></p>
+    <p>Monte ore<strong>&nbsp;{{ CarnetBlock.carnet.hoursLabel }}</strong></p>
+    <p>Validità<strong>&nbsp;{{ CarnetBlock.carnet.validity }}</strong></p>
+
+    <p>Costo<strong>&nbsp;{{ CarnetBlock.carnet.priceTotal }} €</strong></p>
+    <a class="waves-effect waves-light main-orange btn" ng-click="CarnetBlock.onChooseCarnet({ carnet: CarnetBlock.carnet })">Acquista</a>
+</div>

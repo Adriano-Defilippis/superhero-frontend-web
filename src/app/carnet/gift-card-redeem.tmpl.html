@@ -1,0 +1,69 @@
+<page-image-header image="{{::ctrl.headerImage}}" title="Usa la tua Gift card"></page-image-header>
+<div class="container" autoscroll auto-fill-height>
+  <div class="row">
+    <div class="col s12 white">
+      <div class="padding-small">
+        <div class="row">
+          <div class="col s12 m12">
+            <p ng-bind="ctrl.subTitle" class="subtitle center"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12 center">
+            <strong>Seleziona il carnet:</strong>
+          </div>
+        </div>
+        <div class="row" id="boxInfoCarnet">
+          <div class="col s12"  ng-class="(ctrl.selectedService == 1) ? 'hide' : 'l6' ">
+              <blockquote>
+              <h4 class="no-margin bottom">Hai bisogno di aiuto per poche ore alla settimana?</h4>
+              <h6>I Carnet Small, Medium e Large fanno per te: li potrai usare quando ti è più comodo, senza vincoli</h6>
+             </blockquote>
+          </div>
+          <div class="col s12" ng-class="(ctrl.selectedService == 1) ? 'hide' : 'l6' ">
+             <blockquote>
+              <h4 class="no-margin bottom">Hai bisogno di supporto per più ore al giorno?</h4>
+              <h6>Prova il Carnet XXL ad un prezzo vantaggioso!</h6>
+             </blockquote>
+          </div>
+        </div>
+
+        <div class="carnet-boxes row">
+            <carnet-block-prices
+                on-buy-carnet="ctrl.buyCarnet(carnet)"
+                ng-repeat="single in ctrl.model.carnetList"
+                carnet="single"
+                columns="(ctrl.selectedService == 1) ? 3 : 4"
+                show-discount="false"
+                is-gift-card="true">
+            </carnet-box-prices>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <p><em>Attenzione:</em></p>
+                <ul class="list">
+                    <li><em>l’addebito del Carnet sarà contestuale all’acquisto, mentre la fatturazione avverrà periodicamente in corrispondenza alla fruizione delle prestazioni o alla scadenza del medesimo.</em></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col m12">
+            <v-accordion class="vAccordion--default">
+              <v-pane ng-repeat="pane in ctrl.model.panes">
+                <v-pane-header>
+                  <h2 class="faq-title left-align">{{ pane.header }}</h2>
+                </v-pane-header>
+                <v-pane-content>
+                  <div ng-bind-html="pane.content">
+                  </div>
+                </v-pane-content>
+              </v-pane>
+            </v-accordion>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

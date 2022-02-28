@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="reset-margin-bottom">Dettagli</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <p>Specifica le informazioni sui bambini per trovare il supereroe più adatto a questo compito! Puoi aggiungere fino a 3 bambini in più</p>
+    </div>
+</div>
+<div class="row" ng-repeat="(key, child) in BabySitter.childrenInfo track by $index">
+    <div class="col s12">
+        <person-info
+            index="key"
+            nome="child.nome"
+            cognome="child.cognome"
+            eta="child.eta"
+            sesso="child.sesso"
+            age-options="BabySitter.ageOptions"
+            on-person-remove="BabySitter.onChildRemoved({index:index})"
+            on-person-edit="BabySitter.onChildEdit({index:index,info:info})">
+        </person-info>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 add-new-child" ng-show="BabySitter.childrenInfo.length < 4">
+        <p class="center">
+            <a class="btn-floating btn-large waves-effect waves-light main-orange" ng-click="BabySitter.onChildAdded()"><i class="mdi-content-add"></i></a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <h2 class="reset-margin-bottom">Servizi specifici</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12">
+        <p>Indicaci i servizi specifici necessari al bambino, per consentirci di selezionare la persona più qualificata (inclusi nel prezzo del servizio base)</p>
+    </div>
+</div>
+<additional-services
+    services="BabySitter.additionalServices"
+    selected="BabySitter.selectedAdditionalServices"
+    on-service-click="BabySitter.onClickAdditionalService({additionalServiceId: additionalServiceId})">
+</additional-services>
+
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="no-margin all">Note aggiuntive</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <service-notes
+            notes="BabySitter.serviceNotes"
+            placeholder="Indicareee eventuali ulteriori informazioni necessarie (es. particolari esigenze del bambino, raccomandazioni specifiche, presenza di animali domestici in casa)"
+            on-change="BabySitter.onNotesChanged({notes: notes})">
+        </service-notes>
+    </div>
+</div>

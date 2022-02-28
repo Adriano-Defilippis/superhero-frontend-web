@@ -1,0 +1,55 @@
+<h5 class="title-label">Dettaglio</h5>
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.COLF">
+    <p class="center"><b>Pulizia abitazione di circa {{ ServiceDetails.serviceInfo.squareMeters }} mq.</b></p>
+    <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0">(+ {{ServiceDetails.getAdditionalServices()}})</p>
+    <p class="center"><i>impegno orario consigliato: {{ ServiceDetails.serviceInfo.estimatedTime/60 }} ore</i></p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.COLF_BNB">
+    <p class="center"><b>Pulizia abitazione di circa {{ ServiceDetails.serviceInfo.squareMeters }} mq.</b></p>
+    <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0">(+ {{ServiceDetails.getAdditionalServices()}})</p>
+    <p class="center"><i>impegno orario consigliato: {{ ServiceDetails.serviceInfo.estimatedTime/60 }} ore</i></p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.BADANTE">
+    <p class="center"><b>Assistenza base</b></p>
+    <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0">(+ {{ServiceDetails.getAdditionalServices()}})</p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.BABYSITTER">
+    <p class="center"><b>Assistenza base</b></p>
+    <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0">(+ {{ServiceDetails.getAdditionalServices()}})</p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.PERSONALTRAINER">
+    <p class="center"><b>{{ ServiceDetails.getSubService() }}</b></p>
+    <p class="center"><i>impegno orario consigliato: {{ ServiceDetails.getSubServiceSuggestedTime()/60 }} ore</i></p>
+    <p class="center" ng-show="ServiceDetails.serviceInfo.guestsInfo.length > 0">
+        Informazioni Amici:<br>
+        <span ng-repeat="guest in ServiceDetails.serviceInfo.guestsInfo track by $index" ng-bind-html="ServiceDetails.getGuestLabel(guest)"></span>
+    </p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.FISIOTERAPISTA">
+    <p class="center"><b>{{ ServiceDetails.getSubService() }}</b></p>
+    <p class="center"><i>impegno orario consigliato: {{ ServiceDetails.getSubServiceSuggestedTime() }} minuti</i></p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.TUTTOFARE">
+    <p class="center"><b>{{ ServiceDetails.getService()}}</b></p>
+    <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0">(+ {{ServiceDetails.getAdditionalServices()}})</p>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.SERVIZI_ELETTRICI">
+    <p class="center"><b>{{ ServiceDetails.getService() }}</b></p>
+    <div ng-repeat="additionalService in ServiceDetails.additionalServices">
+        <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0"><b>{{ServiceDetails.getAdditionalService(additionalService).label}}</b><br/>({{ServiceDetails.getAdditionalService(additionalService).timeLabel}})</p>
+    </div>
+</section>
+
+<section ng-if="ServiceDetails.service === ServiceDetails.SERVICES.SERVIZI_IDRAULICI">
+    <p class="center"><b>{{ ServiceDetails.getService() }}</b></p>
+    <div ng-repeat="additionalService in ServiceDetails.additionalServices">
+        <p class="center no-margin top" ng-show="ServiceDetails.additionalServices.length > 0"><b>{{ServiceDetails.getAdditionalService(additionalService).label}}</b><br/>({{ServiceDetails.getAdditionalService(additionalService).timeLabel}})</p>
+    </div>
+</section>

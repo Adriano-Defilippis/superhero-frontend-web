@@ -1,0 +1,53 @@
+.cookie-banner {
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background:  $dark;
+  color: $white;
+
+  p {
+    font-size: 14px !important;
+    color: $light;
+
+    @media screen and (max-width: $mq-sm){
+      font-size: 10px !important;
+    }
+  }
+
+  h3 {
+    color: $light;
+    margin: 50px 10px 10px 10px;
+    @media screen and (max-width: $mq-sm){
+      font-size: 18px !important;
+      line-height:18px;
+    }
+  }
+}
+
+.storage-banner {
+  position: fixed;
+  z-index: 99999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background:  $dark;
+  color: $white;
+
+  p {
+    font-size: 14px !important;
+
+    @media screen and (max-width: $mq-sm){
+      font-size: 10px !important;
+    }
+  }
+
+  h3 {
+    @media screen and (max-width: $mq-sm){
+      font-size: 18px !important;
+      line-height:18px;
+      margin: 10px;
+    }
+  }
+}

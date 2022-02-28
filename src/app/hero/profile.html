@@ -1,0 +1,382 @@
+<!-- Main column begins-->
+<div class="hero-profile">
+  <br>
+  <div class="row">
+    <div class="col s5 right-align">
+      <div class="hero-image-profile inline-block" style="background-image: url('{{ctrl.heroInfo.photoUrl}}') ">
+      </div>
+    </div>
+    <div class="col s7">
+      <div class="hero-info-block">
+        <h3 class="no-margin bottom">{{ctrl.heroInfo.nome}} {{ctrl.heroInfo.cognome}}</h3>
+        <p class="no-margin top"> {{ctrl.heroInfo.dataNascita | ageFilter}} anni</p>
+      </div>
+
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Cittadinanza:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.cittadinanza"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Indirizzo:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-bind="ctrl.heroInfo.indirizzoCompleto"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Competenze:</h6>
+    </div>
+    <div class="col s7">
+      <p ng-repeat="competenza in ctrl.heroInfo.competenzeData track by competenza.label" class="no-margin all">{{ competenza.label }} ({{competenza.years}} anni)</p>
+    </div>
+  </div>
+    <!--
+  <div class="row" ng-if="ctrl.heroInfo.attualmenteImpiegatoColf">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Attualmente impiegato come Colf:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all">{{ctrl.getBoolLabel(ctrl.heroInfo.attualmenteImpiegatoColf)}}, {{ctrl.heroInfo.tipoImpiegoColf}}</p>
+    </div>
+  </div>
+
+  <div class="row" ng-if="ctrl.heroInfo.attualmenteImpiegatoBadante">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Attualmente impiegato come Badante:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all">{{ctrl.getBoolLabel(ctrl.heroInfo.attualmenteImpiegatoBadante)}}, {{ctrl.heroInfo.tipoImpiegoBadante}}</p>
+    </div>
+  </div>
+
+  <div class="row" ng-if="ctrl.heroInfo.attualmenteImpiegatoBabySitter">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Attualmente impiegato come Baby Sitter:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all">{{ctrl.getBoolLabel(ctrl.heroInfo.attualmenteImpiegatoBabySitter)}}, {{ctrl.heroInfo.tipoImpiegoBabySitter}}</p>
+    </div>
+  </div>
+    -->
+
+    <div class="row" ng-repeat="competenza in ctrl.heroInfo.competenzeData track by competenza.label">
+      <div class="col s5">
+        <h6 class="uppercase right-align no-margin all">Referenze passate {{competenza.label}}:</h6>
+      </div>
+      <div class="col s7">
+        <p class="hero-profile-value no-margin all" ng-bind="competenza.references"></p>
+      </div>
+    </div>
+    <!--
+  <div class="row" ng-show="ctrl.heroInfo.competenzeShow.Colf && ctrl.heroInfo.referenzeColf !== ''">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Referenze passate colf:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-bind="ctrl.heroInfo.referenzeColf"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.competenzeShow.Badante && ctrl.heroInfo.referenzeBadante !== ''">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Referenze passate badante:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-bind="ctrl.heroInfo.referenzeBadante"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.competenzeShow.BabySitter && ctrl.heroInfo.referenzeBabySitter !== ''">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Referenze passate baby sitter:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-bind="ctrl.heroInfo.referenzeBabySitter"></p>
+    </div>
+  </div>
+    -->
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Sottocompetenze:</h6>
+    </div>
+    <div class="col s7">
+      <p ng-repeat="sottoCompetenza in ctrl.heroInfo.sottoCompetenze" class="no-margin all">{{sottoCompetenza.descrizione}}</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Titolo di studio:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-bind="ctrl.heroInfo.titoloStudio"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Conoscenza Italiano:</h6>
+    </div>
+    <div class="col s7">
+      <p ng-bind="ctrl.heroInfo.conoscenzaItaliano" class="no-margin all"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.lingue.length > 0">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Altre lingue conosciute:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-repeat="lingua in ctrl.heroInfo.lingue" ng-bind="lingua"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Automunito:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.autoMotoMunito)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Codice Fiscale:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.codiceFiscale"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.codiceIban">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Codice IBAN:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.codiceIban"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Possiedo un conto corrente:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.contoCorrente)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Eroe dal:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all">{{ctrl.heroInfo.dataApprovazione | ageFilter}} Anni</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Disponibilità aprire partita iva:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.disponibilitaAprirePartitaIva)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Disponibilità a lavorare di notte:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.disponibilitaNotturna)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Disponibilità a lavorare nel week-end:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.disponibilitaWeekEnd)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Ho accesso a internet:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.accessoInternet)"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.accessoInternet">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Modalità accesso a internet:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.accessoInternetDettaglio"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Cellulare:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.cellulare"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Possiedo uno smartphone:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.smartPhone)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Tipologia del mio smartphone:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.smartPhoneDettaglio"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">E-mail:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.email"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Ore settimanali disponibili:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.oreSettimanaliDisponibili"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Luogo di nascita:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.luogoNascita"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Partita iva:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.partitaIva)"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.partitaIva">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Numero partita iva:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.partitaIvaNumero"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.partitaIva">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Tipologia partita iva:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.partitaIvaTipo"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Massima distanza percorribile:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all">{{ctrl.heroInfo.maxDistanzaPercorribile}} Km</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Possiedo permesso di soggiorno:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.permessoSoggiorno)"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Ho precedenti penali:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.problemiGiustizia)"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.lingue.sottoCompetenze > 0">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Sottocompetenze:</h6>
+    </div>
+    <div class="col s7">
+      <p class="hero-profile-value no-margin all" ng-repeat="sottoCompetenza in ctrl.heroInfo.sottoCompetenze" ng-bind="sottoCompetenza.nome"></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Amante degli animali:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.getBoolLabel(ctrl.heroInfo.amanteAnimali)"></p>
+    </div>
+  </div>
+
+  <div class="row" ng-show="ctrl.heroInfo.descrizione !== null && ctrl.heroInfo.descrizione !== '' ">
+    <div class="col s5">
+      <h6 class="uppercase right-align no-margin all">Info su di me:</h6>
+    </div>
+    <div class="col s7">
+      <p class="no-margin all" ng-bind="ctrl.heroInfo.descrizione"></p>
+    </div>
+  </div>
+
+
+
+  <!--<div layout="column" class="padding-top big">
+<h2 class="text-center">Le Mie Referenze:</h2>
+</div>-->
+
+  <!-- <div class="row">
+    <div class="col s12 m6 offset-m3">
+      <a ng-click="ctrl.editProfile()" class="waves-effect waves-light main-orange btn" full-width>Modifica Informazioni</a>
+    </div> -->
+  </div>
+</div>
+<!-- Main column begins-->

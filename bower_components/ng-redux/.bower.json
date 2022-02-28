@@ -1,0 +1,32 @@
+{
+  "name": "ng-redux",
+  "version": "3.1.0",
+  "homepage": "http://github.com/wbuchwalter/ng-redux",
+  "authors": [
+    "William Buchwalter <wbuchwalter@gmail.com> (http://github.com/wbuchwalter)"
+  ],
+  "description": "Redux bindings for Angular.js",
+  "main": "./dist/ng-redux.js",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "redux"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "3.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.1.0",
+    "commit": "a940896c91e82ee40c4ca98f575ff479a63f7386"
+  },
+  "_source": "git://github.com/wbuchwalter/ng-redux.git",
+  "_target": "~3.1.0",
+  "_originalSource": "ng-redux"
+}

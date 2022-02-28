@@ -1,0 +1,31 @@
+<div class="table-holder">
+
+	<table st-table="rowCollection" class="table striped bordered table-recruiter">
+		<thead>
+	    <tr>
+	      <th>Data</th>
+				<th>Ore</th>
+	      <th>Tipologia</th>
+	      <th>Modalità</th>
+	      <th>Cliente</th>
+        <th>Stato</th>
+	      <th>Info</th>
+	    </tr>
+		</thead>
+		<tbody>
+	    <tr ng-repeat="row in ctrl.prenotazioni | orderBy:'dataInizio':true | filter:ctrl.isInPast">
+	      <td ng-bind-html="row.model.orarioLabel"></td>
+				<td ng-bind-html="::row.durataMinuti/60"></td>
+	      <td>{{row.model.servizio}}</td>
+	      <td>{{row.modalita}}</td>
+	      <td>{{row.clienteNomeCompleto}}</td>
+        <td title="{{row.statoLabel}}"><i class="{{row.statoIcon}} icon-center"></i></td>
+	      <td><a class="icon-button big" ng-click="ctrl.showInfo(row.id)"><span class="glyphicon glyphicon-info-sign grey-text text-darken-3" title="Informazioni"></span></a></td>
+	    </tr>
+			<tr ng-if="ctrl.prenotazioniCounter < 1">
+	      <td colspan="6"><p class="center"><i>Spiacenti, non sono ancora presenti prenotazioni.</i></p></td>
+	    </tr>
+		</tbody>
+	</table>
+
+</div>

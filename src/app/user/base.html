@@ -1,0 +1,14 @@
+<nav ng-if="!ctrl.isApp" class="grey darken-3 main-nav" role="navigation" ng-include="'app/components/navbar/navbar.html'" ng-controller="NavbarCtrl as ctrl"></nav>
+<div class="container">
+  <div class="row no-margin bottom">
+    <div class="col l8 m12 s12 white">
+      <div class="padding-small single-bar no-padding-mobile" ui-view auto-fill-height autoscroll>
+
+      </div>
+    </div>
+    <div class="col l4 m12 s12">
+      <div class="single-bar no-padding-sm" ng-include="'app/user/sidebar.html'" ng-controller="UserSidebarCtrl as ctrl"></div>
+
+    </div>
+  </div>
+</div>

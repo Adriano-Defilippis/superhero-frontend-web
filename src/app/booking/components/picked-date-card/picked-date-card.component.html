@@ -1,0 +1,55 @@
+<section ng-if="PickedDateCard.date.labels.start.dayOfMonth === PickedDateCard.date.labels.end.dayOfMonth">
+    <div class="card-content row no-margin bottom">
+        <div class="col s6 center">
+            <h4 class="uppercase main-orange-text no-margin all date">{{PickedDateCard.date.labels.start.dayOfWeek}} {{PickedDateCard.date.labels.start.dayOfMonth}}</h4>
+        </div>
+        <div class="col s6 center" valign-wrapper fill>
+            <p valign class="center time">{{PickedDateCard.date.labels.start.time}} <i class="mdi-navigation-arrow-forward"></i> {{PickedDateCard.date.labels.end.time}}</p>
+        </div>
+    </div>
+</section>
+
+<section ng-if="PickedDateCard.date.labels.start.dayOfMonth !== PickedDateCard.date.labels.end.dayOfMonth">
+    <div class="card-content  card-double-date row no-margin bottom">
+        <div class="col s5 center">
+            <h4 class="center uppercase main-orange-text no-margin all date">{{PickedDateCard.date.labels.start.dayOfMonth}}</h4>
+            <p class="center time">{{PickedDateCard.date.labels.start.time}}</p>
+        </div>
+        <div class="col s2 center" valign-wrapper fill>
+            <p valign><i class="mdi-navigation-arrow-forward big"></i></p>
+        </div>
+        <div class="col s5 center">
+            <h4 class="center uppercase main-orange-text no-margin all date">{{PickedDateCard.date.labels.end.dayOfMonth}}</h4>
+            <p class="center time">{{PickedDateCard.date.labels.end.time}}</p>
+        </div>
+    </div>
+</section>
+
+<div class="card-action left-align recurrence-menu ng-hide" ng-show="PickedDateCard.isShowingRecurrence === true">
+    <div class="padding-small">
+        <div class="row">
+            <div class="col m4 s12">
+                <select class="" ng-model="PickedDateCard.recurrenceOptions.frequency" material-select>
+                    <option value="" disabled selected>Frequenza</option>
+                    <option ng-repeat="value in PickedDateCard.recurrency.frequency" ng-value="value.id">{{value.value}}</option>
+                </select>
+            </div>
+            <div class="col m4 s12">
+                <select class="" ng-model="PickedDateCard.recurrenceOptions.times" material-select>
+                    <option value="" disabled selected>Numero ricorrenze</option>
+                    <option ng-repeat="value in PickedDateCard.recurrency.times" ng-value="value.id">{{value.value}}</option>
+                </select>
+            </div>
+            <div class="col m4 s12 center">
+                <a class="btn btn-flat waves-effect waves-main-orange add-recurrence white grey-text text-darken-3" ng-click="PickedDateCard.onCreateRecurrance({ dateId: PickedDateCard.date.id, recurrenceInfo: PickedDateCard.recurrenceOptions })">Crea ricorrenza</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-action left-align buttons">
+    <a class="waves-effect waves-dark white" ng-click="PickedDateCard.isShowingRecurrence = !PickedDateCard.isShowingRecurrence" ng-hide="date.idRecurrence">Ricorrenza</a>
+    <a class="waves-effect waves-dark white"
+        ng-click="PickedDateCard.onDeletePickedDate({dateId:PickedDateCard.date.id})">Elimina Data</a>
+    <p class="right no-margin all small" ng-if="PickedDateCard.date.recurrenceId">(Ricorrenza)</p>
+</div>

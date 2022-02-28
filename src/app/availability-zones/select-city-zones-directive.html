@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col s6 offset-s3">
+        <select name="provincia" material-select
+            ng-model="selectedMacroArea"
+            ng-change="updateMap(selectedMacroArea)">
+            <option value="null" selected>Seleziona una provincia</option>
+            <option ng-repeat="option in macroAreaList"
+                value="{{option.id}}">{{option.description}} ({{countZoneForAdminArea(option.id)}} selezionate)</option>
+        </select>
+    </div>
+</div>
+
+<city-admin-zones ng-if="zoneSelectionActive" data="zoneSelectionActiveData" selected-zones="selectedZones"></city-admin-zones>

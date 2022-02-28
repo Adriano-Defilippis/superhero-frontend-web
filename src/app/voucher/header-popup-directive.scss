@@ -1,0 +1,58 @@
+#header-popup {
+    position: fixed;
+    top: 50px;
+    left: 15px;
+    border-radius: 5px;
+    z-index: 1000;
+    margin-top: 0px;
+    padding: 5px;
+    width: 250px;
+
+    @media screen and (max-width: $mq-sm) {
+        left: 50%;
+        margin-left: -125px;
+        top: 40px;
+    }
+
+    p { line-height: 17px; }
+    .popup-footer p { font-weight: 400; }
+
+    &.close {
+        background: $active;
+    }
+
+    &.open {
+        background: $white;
+        top: 60px;
+    }
+
+    &.close .popup-content {
+        height: 0px;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    &.open .popup-footer {
+        height: 0px;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    .popup-footer, .popup-content {
+        position: relative;
+        z-index: 0;
+    }
+
+    .popup-footer, .popup-content {
+        transition: all 0.3s ease;
+    }
+
+    i.tiny {
+        font-size: 0.75rem;
+        line-height: 0.75rem;
+    }
+
+    hr.active {
+        background: $active;
+    }
+}

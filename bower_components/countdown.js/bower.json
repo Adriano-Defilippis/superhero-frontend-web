@@ -1,0 +1,23 @@
+{
+  "name": "countdown.js",
+  "version": "1.1.0",
+  "main": "lib/countdown.js",
+  "ignore": [
+    "**/.*",
+    "benchmarks",
+    "bower_components",
+    "meteor",
+    "node_modules",
+    "scripts",
+    "tasks",
+    "test",
+    "component.json",
+    "composer.json",
+    "CONTRIBUTING.md",
+    "ender.js",
+    "Gruntfile.js",
+    "Moment.js.nuspec",
+    "package.js",
+    "package.json"
+  ]
+}

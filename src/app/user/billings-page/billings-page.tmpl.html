@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col m12 center">
+        <h2>Fatture</h2>
+    </div>
+</div>
+
+<div class="table-holder">
+    <table st-table="UserBillings.billings" class="table striped bordered table-recruiter text-small">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Codice</th>
+                <th>Tipologia</th>
+                <th>Servizio</th>
+                <th>Data App.</th>
+                <th>Orario App.</th>
+                <th>Supereroe</th>
+                <th>Importo</th>
+                <th>Fattura</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in UserBillings.billings">
+                <td>{{ ::row.data }}</td>
+                <td>{{ ::row.codice }}</td>
+                <td>{{ ::row.tipoOperazione }}</td>
+                <td>{{ ::row.servizio }}</td>
+                <td>{{ ::row.dataAppuntamento }}</td>
+                <td>{{ ::row.orario }}</td>
+                <td>{{ ::row.intestatario }}</td>
+                <td>{{ ::row.importo | number:2 }}&euro;</td>
+                <td>
+                    <a class="waves-effect waves-light btn btn-flat white btn-small btn btn-small"
+                        ui-sref="billing({ idFattura: row.idFattura })"
+                        target="_blank">Fattura</a>
+                </td>
+            </tr>
+            <tr ng-if="UserBillings.billings.length < 1">
+                <td colspan="7"><i class="center">Spiacenti, non hai effettuato ancora prenotazioni.</i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

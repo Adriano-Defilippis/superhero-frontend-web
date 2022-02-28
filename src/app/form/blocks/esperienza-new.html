@@ -1,0 +1,76 @@
+<h2 class="center">Esperienza</h2>
+<div class="row">
+    <div class="col s12 m4">
+        <div ng-repeat="category in ctrl.heroApplication._attributesCategories track by category.id">
+            <h5 class="no-margin bottom"><i>{{category.label}}</i></h5>
+            <div ng-repeat="competenza in ctrl.heroApplication._attributes | filter:{ category: category.id } track by competenza.id">
+                <div class="checkbox checkbox-competenza">
+                    <input type="checkbox" name="{{competenza.id}}" id="{{competenza.id}}"
+                        ng-model="competenza.selected">
+                    <label for="{{competenza.id}}" class="form-competenza">{{competenza.descrizione}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m8">
+        <div ng-if="(ctrl.heroApplication._attributes | filter:{ selected: true }).length < 1">
+            <p><i>Seleziona almeno uno dei servizi per i quali hai esperienza e vorresti lavorare</i></p>
+        </div>
+        <div ng-repeat="competenza in ctrl.heroApplication._attributes | filter:{ selected: true } track by competenza.id">
+            <div class="card-panel">
+                <div class="row no-margin all">
+                    <div class="col s12 m6">
+
+                        <h5 class="no-margin top">{{competenza.descrizione}}</h5>
+
+                        <div class="with-errors">
+                            <select name="anniEsperienza{{competenza.nome}}"
+                                ng-model="competenza.anniEsperienza" material-select
+                                ng-disabled="ctrl.formDisabled"
+                                ng-required="competenza.selected"
+                                ng-class="{ 'center-vertical': competenza.sottoCompetenze.length < 1 }">
+                                <option value="" disabled selected>Anni di esperienza</option>
+                                <option ng-repeat="option in ::ctrl.options.esperienzaPregressa" ng-value="option.value">{{::option.name}}</option>
+                            </select>
+                        </div>
+                        <div ng-messages="heroApplicationForm['anniEsperienza'+competenza.nome].$error" ng-show="ctrl.showRequiredError">
+                            <div ng-message="required">{{::ctrl.labels.required}}</div>
+                        </div>
+
+                        <div ng-if="competenza.sottoCompetenze.length > 0">
+                            <div input-field class="referenze-input with-errors">
+                                <textarea id="referenze{{competenza.nome}}" name="referenze{{competenza.nome}}" class="materialize-textarea" ng-required="competenza.selected" ng-model="competenza.referenze"></textarea>
+                                <label>Descrizione della tua esperienza</label>
+                            </div>
+                            <div ng-messages="heroApplicationForm['referenze'+competenza.nome].$error" ng-show="ctrl.showRequiredError">
+                                <div ng-message="required">{{::ctrl.labels.required}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col s12 m6 sottoCompetenze">
+                        <div ng-if="competenza.sottoCompetenze.length < 1">
+                            <div input-field class="referenze-input with-errors">
+                                <textarea id="referenze{{competenza.nome}}" name="referenze{{competenza.nome}}" class="materialize-textarea" ng-required="competenza.selected" ng-model="competenza.referenze"></textarea>
+                                <label>Descrizione della tua esperienza</label>
+                            </div>
+                            <div ng-messages="heroApplicationForm['referenze'+competenza.nome].$error" ng-show="ctrl.showRequiredError">
+                                <div ng-message="required">{{::ctrl.labels.required}}</div>
+                            </div>
+                        </div>
+
+                        <h5 class="no-margin top" ng-if="competenza.sottoCompetenze.length > 0">Competenze</h5>
+                        <div class="radio-group" ng-repeat="sottocompetenza in competenza.sottoCompetenze track by sottocompetenza.id">
+                            <input type="checkbox" name="{{sottocompetenza.id}}" id="{{sottocompetenza.id}}"
+                            ng-disabled="ctrl.formDisabled"
+                            ng-change="ctrl.checkIfStiro(this)"
+                            ng-model="sottocompetenza.selected">
+                            <label for="{{sottocompetenza.id}}">{{sottocompetenza.descrizione}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>

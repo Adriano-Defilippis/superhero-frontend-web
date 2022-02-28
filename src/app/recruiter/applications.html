@@ -1,0 +1,45 @@
+<h1 class="title-page center">Tutte le candidature</h1>
+<p class="center">
+	<button-tabs buttons="ctrl.filterButtons"></button-tabs>
+</p>
+<table st-table="ctrl.applications" class="table table-recruiter">
+	<thead>
+		<tr>
+			<th st-sort="dataRegistrazione">Data Registrazione</th>
+			<th st-sort="nome">Nome</th>
+			<th st-sort="cognome">Cognome</th>
+			<th st-sort="dataNascita">Età</th>
+			<th st-sort="cittadinanza">Cittadinanza </th>
+			<th st-sort="competenze">Specializzazione</th>
+			<th st-sort="competenze">Zona</th>
+			<th st-sort="titoloStudio">Formazione</th>
+			<th st-sort="referenze">Referenze</th>
+			<th st-sort="partitaIva">Partita Iva</th>
+			<th class="actions">Azioni</th>
+		</tr>
+		<tr>
+			<th colspan="10">
+				<input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="row in ctrl.applications | filter:ctrl.filterTable">
+			<td>{{row.dataRegistrazione | date:'dd/MM/yyyy HH:mm'}}</td>
+			<td>{{row.nome}}</td>
+			<td>{{row.cognome}}</td>
+			<td>{{ row.dataNascita | ageFilter }}</td>
+			<td title="{{row.cittadinanzaLabel}}">{{row.cittadinanza}}</td>
+			<td>{{row.competenze}}</td>
+			<td>{{row.zona.codice}}</td>
+			<td>{{row.titoloStudio}}</td>
+			<td>{{ (row.referenzeBabySitter != null || row.referenzeBadante != null || row.referenzeColf != null) ? 'Si' : 'No' }}</td>
+			<td>{{ row.modalitaOperativaLabel }}</td>
+
+			<td><div row>
+				<a class="icon-button big" ui-sref="main.recruiter.edit({ id: row.id })"><i class="mdi-action-visibility grey-text text-darken-3" title="Modifica"></i></a>&nbsp;
+				<a class="icon-button big" ng-click="ctrl.archiveApplication(row.id)"><i class="mdi-file-folder-shared grey-text text-darken-3" title="Archivia"></i></a>
+			</div></td>
+		</tr>
+	</tbody>
+</table>

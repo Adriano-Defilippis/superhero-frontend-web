@@ -1,0 +1,54 @@
+<div class="row no-margin bottom">
+    <div class="col s12">
+        <h2 class="center no-margin bottom">Cerca il supereroe</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 m12" ng-show="Booking.herosearch.results.length < 1">
+        <search-form
+            class="search-hero"
+            filters="Booking.herosearch.filters"
+            disabled-service-selection="Booking.herosearch.disabledServiceSelection"
+            disabled-services="StepHeroSearch.disabledServices"
+            show-advanced="Booking.herosearch.showAdvanced"
+            error="''"
+            on-toggle-show-advanced="Booking.toggleAdvanced()"
+            on-update-search="Booking.performSearch()"
+            on-changed-filters="Booking.setNewFilters(newFilters)">
+        </search-form>
+    </div>
+
+    <div class="col s12 m12" ng-if="Booking.herosearch.performedSearch === true && Booking.herosearch.results.length > 0">
+        <h4 class="center uppercase"><small>Risultati ricerca</small></h4>
+        <p ng-if="Booking.herosearch.results.length < 1" class="center"><i>La ricerca non ha portato ad alcun risultato. Prova a cambiare i filtri ed effettuare una nuova ricerca.</i></p>
+
+        <div class="heroes-search-results">
+            <div ng-if="!Booking.carnet.selectedCarnet || Booking.carnet.selectedCarnet && 
+                                ( Booking.carnet.carnetInfo.type === 'Small' || Booking.carnet.carnetInfo.type === 'Medium' || Booking.carnet.carnetInfo.type === 'Large' || Booking.carnet.carnetInfo.type === 'XXL')" 
+                class="result-single"
+                row ng-repeat="hero in Booking.herosearch.results track by hero.id" fill
+                ng-click="Booking.showHeroProfile(hero.id, StepHeroSearch.isBnb)">
+                <div class="hero-image-container picture center width-100">
+                    <div class="width-100 profile-pic" style="background-image:url('{{hero.photoUrl}}')"></div>
+                    <div ng-if="hero.partitaIva" class="invoice-icon-container center"
+                        tooltip-html="'Scegliendo questo professionista riceverai la fattura del servizio direttamente sulla tua pagina personale'">
+                        <md-icon style="height: 15px; width: 15px;" md-svg-src="{{ StepHeroSearch.iconVat }}" fill></md-icon>
+                    </div>
+                </div>
+                <div class="description center">
+                    <div class="left-align">
+                        <h4 class="name left-align no-margin bottom">{{hero.nome}} - {{StepHeroSearch.getActiveSearch(Booking.herosearch.filters.service)}}</h4>
+                    </div>
+                    <p class="left-align no-margin top">Su di me: {{hero.descrizione}}</p>
+                </div>
+
+                <div class="actions center">
+                    <a class="waves-effect waves-light grey lighten-3 grey-text text-darken-2 btn btn-flat btn-small" ng-click="StepHeroSearch.showHeroReferences(hero, $event)" ng-if="hero.numeroRecensioni > 0">({{hero.numeroRecensioni}}) Referenze</a>
+                </div>
+                <div class="selected center" ng-show="Booking.carnet.heroInfo.id === hero.id">
+                    <i class="glyphicon glyphicon-ok"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

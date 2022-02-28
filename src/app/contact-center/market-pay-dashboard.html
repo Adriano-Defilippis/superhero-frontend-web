@@ -1,0 +1,47 @@
+<h1 class="title-page center no-margin bottom">Market Pay</h1>
+<p class="center">
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.toBeBilled ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.market-pay({stato: 'DaPagare'})">Da effettuare ({{ctrl.paymentsRecordsSize}})</a>&nbsp;
+    <a class="waves-effect waves-light btn-flat btn btn-small {{ ctrl.billed ? ctrl.activeButton : ctrl.inactiveButton }}" ui-sref="main.support.market-pay({stato: 'Pagati'})">Effettuati ({{ctrl.paymentsSize}})</a>
+</p>
+<div class="table-holder">
+    <table st-table="ctrl.payments" class="table table-recruiter">
+        <tr>
+            <th colspan="10">
+                <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+            </th>
+        </tr>
+        <thead>
+            <tr>
+                <th st-sort="dataCreazioneLabel">Data</th>
+                <th ng-if="ctrl.toBeBilled" st-sort="appuntamentoId">ID appuntamento</th>
+                <th st-sort="amount">Importo</th>
+                <th st-sort="shopperEmail">Userid destinatario</th>
+                <th ng-if="ctrl.billed" st-sort="ownerName">Nome destinatario</th>
+                <th ng-if="ctrl.billed">Adyen Reference</th>
+                <th ng-if="ctrl.billed">IBAN</th>
+                <th>Stato</th>
+                <th ng-if="ctrl.toBeBilled">Dettagli</br>Appuntamento</th>
+                <th ng-if="ctrl.billed">Dettagli</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="row in ctrl.payments">
+                <td ng-bind-html="row.dataCreazioneLabel"></td>
+                <td ng-if="ctrl.toBeBilled">{{row.appuntamentoId}}</td>
+                <td>{{row.amountLabel}}&euro;</td>
+                <td>{{row.shopperLabel}}</td>
+                <td ng-if="ctrl.billed">{{row.ownerName}}</td>
+                <td ng-if="ctrl.billed">{{row.formattedReference}}</td>
+                <td ng-if="ctrl.billed">{{row.iban}}</td>
+                <td>{{row.stateLabel}}</td>
+                <td>
+                    <a ng-if="ctrl.toBeBilled" class="icon-button big" ui-sref="main.support.edit-appointment({ idAppoint: row.appuntamentoId })"><i class="mdi-action-visibility grey-text text-darken-3" title="Visualizza"></i></a>
+                    <a ng-if="ctrl.billed" class="icon-button big" ng-click="ctrl.showMarketPayPaymentModal(row.id)"><i class="mdi-action-visibility grey-text text-darken-3" title="Visualizza"></i></a>
+                </td>
+                <!-- <td>
+
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+</div>

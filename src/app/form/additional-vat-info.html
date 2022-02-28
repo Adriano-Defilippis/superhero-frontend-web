@@ -1,0 +1,78 @@
+<h2 class="center">Gestione Fatturazione</h2>
+<div class="row">
+    <div class="col s12 m6">
+        <div class="row no-margin all">
+            <div class="col s12 m6">
+                <select name="modalitaOperativa" class="with-errors" ng-model="ctrl.heroApplication.modalitaOperativa" material-select ng-disabled="ctrl.formDisabled">
+                    <option value="" disabled selected>Modalita Operativa</option>
+                    <option ng-repeat="option in ::ctrl.options.modalitaOperativa" ng-value="option.value">{{::option.name}}</option>
+                </select>
+                <div ng-messages="heroApplicationForm.modalitaOperativa.$error" ng-show="ctrl.showRequiredError">
+                    <div ng-message="required">{{::ctrl.labels.required}}</div>
+                </div>
+                <div input-field class="with-errors" ng-show="ctrl.heroApplication.modalitaOperativa && ctrl.heroApplication.modalitaOperativa != 'ProfessionistaConCassa' && ctrl.heroApplication.modalitaOperativa != 'ProfessionistaSenzaCassa'">
+                    <input type="text" name="ragioneSociale" ng-model="ctrl.heroApplication.ragioneSociale" ng-required="ctrl.heroApplication.modalitaOperativa != 'ProfessionistaConCassa' && ctrl.heroApplication.modalitaOperativa != 'ProfessionistaSenzaCassa'">
+                    <label>Ragione Sociale</label>
+                </div>
+                <div ng-messages="heroApplicationForm.ragioneSociale.$error" ng-show="ctrl.showRequiredError">
+                    <div ng-message="required">{{::ctrl.labels.required}}</div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+                <select name="opzioniAliquota" class="with-errors"
+                    material-select
+                    ng-model="ctrl.heroApplication.opzioniAliquota"
+                    ng-disabled="ctrl.formDisabled" ng-required="ctrl.heroApplication.modalitaOperativa && ctrl.heroApplication.modalitaOperativa != null"
+                    ng-change="ctrl.aliquotaChanged(ctrl.heroApplication.opzioniAliquota)">
+                    <option value="" disabled selected>Aliquota IVA applicata</option>
+                    <option ng-repeat="option in ::ctrl.options.opzioniAliquota" ng-value="option.value">{{::option.name}}</option>
+                </select>
+                <div ng-messages="heroApplicationForm.opzioniAliquota.$error" ng-show="ctrl.showRequiredError">
+                    <div ng-message="required">{{::ctrl.labels.required}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row no-margin all">
+            <div class="col s12 m6">
+                <div class="radio-group">
+                  <input type="checkbox" name="applicareRivalsa" id="applicareRivalsa"
+                      ng-disabled="ctrl.formDisabled"
+                      ng-model="ctrl.heroApplication.applicareRivalsa">
+                  <label for="applicareRivalsa">Applicare rivalsa al 4%</label>
+                </div>
+            </div>
+
+            <div class="col s12 m6">
+                <!--
+                <select name="opzioniRitenuta" class="with-errors" ng-model="ctrl.heroApplication.opzioniRitenuta" material-select ng-disabled="ctrl.formDisabled || ctrl.heroApplication.opzioniAliquota == 'RegimeMinimi'" ng-required="ctrl.heroApplication.modalitaOperativa && ctrl.heroApplication.modalitaOperativa != null">
+                    <option value="" disabled selected>Ritenuta acconto applicata</option>
+                    <option ng-repeat="option in ::ctrl.options.opzioniRitenuta" ng-value="option.value">{{::option.name}}</option>
+                </select>
+                <div ng-messages="heroApplicationForm.opzioniRitenuta.$error" ng-show="ctrl.showRequiredError">
+                    <div ng-message="required">{{::ctrl.labels.required}}</div>
+                </div>
+                -->
+                <div input-field class="with-errors" ng-show="ctrl.heroApplication.opzioniRitenuta && ctrl.heroApplication.opzioniRitenuta == 'SiLibero'">
+                    <input type="number" name="ritenutaAcconto" min="0" max="100" ng-model="ctrl.heroApplication.ritenutaAcconto" ng-required="ctrl.heroApplication.opzioniRitenuta && ctrl.heroApplication.opzioniRitenuta == 'SiLibero'">
+                    <label>Aliquota ritenuta acconto</label>
+                </div>
+                <div ng-messages="heroApplicationForm.ritenutaAcconto.$error" ng-show="ctrl.showRequiredError || !heroApplicationForm.ritenutaAcconto.$valid">
+                    <div ng-message="required">{{::ctrl.labels.required}}</div>
+                    <div ng-message="min">{{::ctrl.labels.taxMin}}</div>
+                    <div ng-message="max">{{::ctrl.labels.taxMin}}</div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col s12 m6">
+        <div class="radio-group">
+            <input type="checkbox" name="indirizzoSedeLegaleUgualeResidenza" id="indirizzoSedeLegaleUgualeResidenza"
+            ng-disabled="ctrl.formDisabled"
+            ng-model="ctrl.heroApplication.indirizzoSedeLegaleUgualeResidenza">
+            <label for="indirizzoSedeLegaleUgualeResidenza">L'indirizzo della sede legale è uguale a quello di residenza</label>
+        </div>
+        <div ng-if="!ctrl.heroApplication.indirizzoSedeLegaleUgualeResidenza" ng-include="'app/form/blocks/indirizzo-sede-legale.html'"></div>
+    </div>
+</div>

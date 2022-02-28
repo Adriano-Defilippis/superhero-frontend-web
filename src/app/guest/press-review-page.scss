@@ -1,0 +1,37 @@
+.press-review__article {
+
+}
+
+.press-review__article-logo {
+    height: 30px;
+    width: auto;
+    opacity: 0.8;
+
+    &.magazine-delle-donne {
+        height: 50px;
+    }
+
+    &.rds {
+        height: 55px;
+    }
+
+    &.radio-capital {
+        height: 60px;
+    }
+
+    &.fashion-blabla {
+        height: 75px;
+    }
+}
+
+.tgcom {
+    height: 50px;
+}
+
+.press-review__article-publish-date {
+    font-style: italic;
+}
+
+[scroll-to]:hover {
+    cursor: pointer;
+}

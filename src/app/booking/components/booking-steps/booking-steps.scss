@@ -1,0 +1,133 @@
+//
+// 		STEPS
+//
+$activeColor: $active;
+$doneColor: $mediumLight;
+$lightColor: $light;
+
+$grey: $dark;
+$disa: hsl(226,15%,83%);
+
+#steps {
+  width: 550px;
+  max-width:100%;
+  margin: 15px auto 15px;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (max-width: $mq-sm){
+    width: 290px;
+  }
+}
+
+#steps span {
+  display: block;
+  line-height: 22px !important;
+  position: relative;
+  left: 0px;
+  bottom: 2px;
+  &.glyphicon {
+    top: -2px
+  }
+}
+
+.step:first-child span {
+  bottom: 0px !important;
+  &.glyphicon {
+    top: 0px !important;
+  }
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  background-color: $white;
+  display: inline-block;
+  border: 4px solid;
+  border-color: $lightColor;
+  border-radius: 50%;
+
+  color: $grey;
+  font-weight: 600;
+  text-align: center;
+  line-height: 27px;
+
+  &.disabled {
+    cursor: initial !important;
+  }
+
+  .glyphicon {
+    display: block !important;
+  }
+}
+.step:first-child {
+  line-height: 31px;
+}
+.step:nth-child(n+2) {
+  margin: 0 0 0 100px;
+  transform: translate(0, 0px);
+
+  @media screen and (max-width: $mq-sm){
+    margin: 0 0 0 34px;
+  }
+}
+.step:nth-child(n+2):before {
+  width: 75px;
+  height: 3px;
+  display: block;
+  background-color: $lightColor;
+  transform: translate(-92px, 16px);
+  content: '';
+
+  @media screen and (max-width: $mq-sm){
+    width: 10px;
+    transform: translate(-30px, 11px);
+  }
+}
+.step:after {
+  width: 140px;
+  display: block;
+  transform: translate(-58px, 6px);
+  color: $grey;
+  content: attr(data-desc);
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-family: Lato;
+
+  @media screen and (max-width: $mq-sm){
+    letter-spacing: 0px;
+    font-size: 11px;
+  }
+}
+.step:first-child:after {
+  transform: translate(-58px, 6px);
+}
+.step.active {
+  border-color: $activeColor;
+  color: $activeColor;
+  background-color: $white;
+}
+
+.step.active.done {
+  border-color: $activeColor;
+  color: $white;
+  background-color: $activeColor;
+}
+
+.step.expected:before {
+  background: linear-gradient(to right, $doneColor 0%,
+                                        $activeColor 100%);
+}
+.step.active:after {
+  color: $activeColor;
+}
+.step.done {
+  background-color: $doneColor;
+  border-color: $doneColor;
+
+  color: $white;
+}
+.step.done:before {
+  background-color: $doneColor;
+}

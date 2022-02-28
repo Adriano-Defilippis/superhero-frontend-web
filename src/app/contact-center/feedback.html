@@ -1,0 +1,31 @@
+<h1 class="title-page center">Gestisci recensioni</h1>
+<table st-table="ctrl.recensioni" class="table table-recruiter table-recensioni responsive-table striped">
+  <thead>
+    <tr>
+      <th st-sort="dataCreazione">Data immissione</th>
+      <th st-sort="cognomeCliente">Cliente</th>
+      <th st-sort="cognomeSuperHero">Collaboratore</th>
+      <th st-sort="punteggioSintesi">Media</th>
+      <th>Descrizione</th>
+      <th class="actions">Azioni</th>
+    </tr>
+    <tr>
+      <th colspan="6">
+        <input st-search placeholder="Filtra l'elenco" class="input-base" type="search"/>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in ctrl.recensioni">
+      <td ng-bind-html="row.dataCreazione | registrationDate"></td>
+      <td>{{row.cognomeCliente + ' ' + row.nomeCliente}}</td>
+      <td>{{row.cognomeSuperHero + ' ' +row.nomeSuperHero}}</td>
+      <td>{{row.punteggioSintesi}}</td>
+      <td>{{row.descrizione}}</td>
+      <td>
+         <a class="waves-effect waves-light btn-flat white btn btn-small" target="_blank" ng-click="ctrl.approveFeedback(row)">Pubblica</a>
+         <a class="waves-effect waves-light btn btn-flat white btn-small" target="_blank" ng-click="ctrl.disapproveFeedback(row)">Archivia</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,204 @@
+<div class="sandbox-sidebar white z-depth-1">
+    <div class="row">
+        <div class="col s12">
+            <h3 class="center">Intestatario</h3>
+            <billing-from from="ctrl.from"></billing-from>
+            <br>
+            <h3 class="center">Destinatario</h3>
+            <billing-to to="ctrl.to"></billing-to>
+            <br>
+            <h3 class="center">Appuntamento</h3>
+            <billing-appointment appointment="ctrl.appointment"></billing-appointment>
+        </div>
+    </div>
+</div>
+
+<div class="box-wrapper-full-sandbox grey darken-3">
+    <div class="paperA4 white z-depth-1">
+        <div class="row">
+            <div class="col s6">
+                <billing-logo></billing-logo>
+            </div>
+            <div class="col s6 right-text">
+                <billing-header></billing-header>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p ng-if="ctrl.to.privato">
+                    <b>Informazioni del Cliente:</b><br>
+                    {{ctrl.to.nomeCompleto}}<br>
+                    {{ctrl.to.indirizzo}}<br>
+                    Codice fiscale: {{ctrl.to.codiceFiscale}}
+                </p>
+                <p ng-if="!ctrl.to.privato">
+                    <b>Informazioni del Cliente:</b><br>
+                    {{ctrl.to.nomeCompleto}}<br>
+                    Codice fiscale: {{ctrl.to.codiceFiscale}}<br>
+                    Partita IVA: {{ctrl.to.partitaIva}}<br>
+                    {{ctrl.to.indirizzo}}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p class="right-align letter-head no-margin all">{{letterHead}} {{ ctrl.appointment.dataFattura | date : 'dd/MM/yy' }},</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p class="no-margin top">Numero fattura: {{ctrl.appointment.codiceFattura}}<br>
+                Codice Cliente: {{ctrl.to.codiceId}}<br>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <p class="no-margin top">Gentile Cliente,<br>
+                inviamo fattura relativa all'ordine di <em>{{ctrl.appointment.tipoOperazione}}</em> n. {{ctrl.appointment.id}} del giorno {{ctrl.appointment.dataOperazione | date : 'dd/MM/yy'}}<br>
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <table class="billing-table bordered">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Voce</th>
+                            <th class="center">Ordine</th>
+                            <th class="center" ng-if="ctrl.showDuration()">Durata</th>
+                            <th class="right-align">Ammontare (EUR)</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!ctrl.showVoucherBlock()">
+                        <tr ng-repeat="single in ctrl.appointment.vociInFattura">
+                            <td>{{single.data | date : 'dd/MM/yy'}}</td>
+                            <td>{{single.descrizione}}</td>
+                            <td class="center">{{single.codice}}</td>
+                            <td class="center" ng-if="ctrl.showDuration()">{{single.durataMinuti/60}}</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getSingleCost(single.costo) | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Imponibile (&euro;)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getInitial() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showDuty()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Contributo ({{ctrl.from.rivalsa}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getDutyAmount() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showSubtotal()"  class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Subtotale</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getPreVat() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showVat() && !ctrl.showReverseCharge() && !ctrl.showVoucherBlock()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">IVA ({{ctrl.from.aliquotaIva}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVatAmount() | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal" ng-if="!ctrl.showVoucherBlock()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>TOTALE</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getFinalPrice() | number:2}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="ctrl.showVoucherBlock()">
+                        <tr ng-repeat="single in ctrl.appointment.vociInFattura">
+                            <td>{{single.data | date : 'dd/MM/yy'}}</td>
+                            <td>{{single.descrizione}}</td>
+                            <td class="center">{{single.codice}}</td>
+                            <td class="center" ng-if="ctrl.showDuration()">{{single.durataMinuti/60}}</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getSingleCost(single.costo) | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Totale corrispettivo (&euro;)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getInitial() | number:2}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Valore del Voucher (&euro;)</td>
+                            <td class="right-align">-&euro;&nbsp;{{ctrl.getVoucherPreTax() | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Imponibile (&euro;)</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedPreTax() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showDuty()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Contributo ({{ctrl.from.rivalsa}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getDutyAmountWithVoucher() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showSubtotal()"  class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Subtotale</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedPreVat() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showVat() && !ctrl.showReverseCharge()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">IVA ({{ctrl.from.aliquotaIva}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedVatAmount() | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Totale pagato dal cliente (&euro;)</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedPostTax() | number:2}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row" ng-if="ctrl.showVoucherBlock() && false">
+            <div class="col s12">
+                <p>{{voucherIntro}}</p>
+                <table class="billing-table bordered">
+                    <tbody>
+                        <tr>
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Totale corrispettivo (&euro;)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getInitial() | number:2}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Valore del Voucher (&euro;)</td>
+                            <td class="right-align">-&euro;&nbsp;{{ctrl.getVoucherPreTax() | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Imponibile (&euro;)</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedPreTax() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showDuty()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">Contributo ({{ctrl.from.rivalsa}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getDutyAmountWithVoucher() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showSubtotal()"  class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Subtotale</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getPreVat() | number:2}}</td>
+                        </tr>
+                        <tr ng-if="ctrl.showVat() && !ctrl.showReverseCharge()">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}">IVA ({{ctrl.from.aliquotaIva}}%)</td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedVatAmount() | number:2}}</td>
+                        </tr>
+                        <tr class="subtotal">
+                            <td colspan="{{ ctrl.showDuration() ? '4' : '3'}}"><b>Totale pagato dal cliente (&euro;)</b></td>
+                            <td class="right-align">&euro;&nbsp;{{ctrl.getVoucherAppliedPostTax() | number:2}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col s12">
+                <p><span class="underlined">La fattura è stata emessa in nome e per conto di:</span><br>
+                {{ctrl.from.nomeCompleto}}<br>
+                {{ctrl.from.indirizzo}}<br>
+                Partita IVA: {{ctrl.from.partitaIva}}<br>
+                Codice Fiscale: {{ctrl.from.codiceFiscale}}<br>
+                </p><br>
+                <p>Il corrispettivo sarà addebitato secondo il metodo di pagamento selezionato. Non è necessario effettuare alcun pagamento in seguito a questa fattura.</p><br>
+                <p>Cordiali Saluti,<br>il team de ilmioSupereroe.it</p>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <p ng-if="ctrl.from.regimeDeiMinimi && !ctrl.showReverseCharge()"><em>{{regimeMinimi}}</em></p>
+            <p ng-if="ctrl.showExcludeVat() && !ctrl.showReverseCharge()"><em>{{excludeVat}}</em></p>
+            <p ng-if="ctrl.showReverseCharge()"><em>{{reverseCharge}}</em></p>
+          </div>
+        </div>
+
+    </div>
+</div>

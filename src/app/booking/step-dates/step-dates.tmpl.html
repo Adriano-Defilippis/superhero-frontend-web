@@ -1,0 +1,172 @@
+<div class="row">
+    <div class="col s12 m12 center">
+        <h2 class="no-margin bottom center">Seleziona una o più date</h2>
+    </div>
+</div>
+
+<section ng-if="Booking.state.carnet.isCarnetOrder">
+    <section ng-if="Booking.state.steps.dates.pickedDates.length > 0">
+        <div class="row">
+            <div class="col m10 offset-m1 s12">
+                <picked-dates
+                    dates="Booking.state.steps.dates.pickedDates"
+                    suggestions="Booking.state.steps.dates.suggestions"
+                    heroes-suggestions="Booking.state.steps.dates.heroesSuggested"
+                    can-book-multiple-superheroes="Booking.canBookMultipleSuperheroes(Booking.state.steps.service.selectedService)"
+                    confirmed="Booking.state.steps.dates.confirmedDates"
+                    requested-suggestions="Booking.state.steps.dates.askedForSuggestions"
+                    requested-heroes-suggestions="Booking.state.steps.dates.askedForHeroesSuggestions"
+                    picking-mode="Booking.state.steps.dates.pickingMode"
+                    on-add-new-date="Booking.setPickingMode(1)"
+                    on-add-new-superhero="Booking.addNewSuperhero()"
+                    on-change-date="Booking.userChangedDate(change, dateId)"
+                    on-create-recurrance="Booking.createRecurrenceFromDate(dateId,recurrenceInfo)"
+                    on-delete-picked-date="Booking.deletePickedDate(dateId)"
+                    on-delete-confirmed-date="Booking.deleteConfirmedDate(dateId)"
+                    on-choose-suggestion="Booking.userPickedSuggestion(dateId,suggestionId,heroId)">
+                </picked-dates>
+            </div>
+        </div>
+    </section>
+    <section ng-if="Booking.state.steps.dates.pickingMode === 1">
+        <div class="row">
+            <div class="col s12 l6">
+                <date-picker-inline
+                    date="Booking.state.steps.dates.startPicker.date"
+                    min-date="StepDates.minimumSelectableDate"
+                    on-date-change="Booking.setNewTimeDatePickers(date, 'startDate')">
+                </date-picker-inline>
+            </div>
+            <div class="col s12 l6">
+                <time-range-picker
+                    start="Booking.state.steps.dates.startPicker.time"
+                    end="Booking.state.steps.dates.endPicker.time"
+                    on-start-change="Booking.setNewTimeDatePickers(date, 'startTime')"
+                    on-end-change="Booking.setNewTimeDatePickers(date, 'endTime')">
+                </time-range-picker>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="center" ng-click="Booking.setPickingMode(2)"><b class="main-orange-text">L'appuntamento termina un altro giorno?</b></p><br>
+                        <p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="Booking.confirmTimeRangeSelection()">Conferma selezione</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show="Booking.state.steps.dates.pickingMode === 2">
+        <div class="row no-margin bottom">
+            <div class="col s12 l6">
+                <date-picker-inline
+                    date="Booking.state.steps.dates.startPicker.date"
+                    min-date="StepDates.minimumSelectableDate"
+                    on-date-change="Booking.setNewTimeDatePickers(date, 'startDate')">
+                </date-picker-inline>
+            </div>
+            <div class="col s12 l6">
+                <date-picker-inline
+                    date="Booking.state.steps.dates.endPicker.date"
+                    min-date="Booking.state.steps.dates.startPicker.date"
+                    on-date-change="Booking.setNewTimeDatePickers(date, 'endDate')">
+                </date-picker-inline>
+            </div>
+        </div>
+        <time-range-picker
+            start="Booking.state.steps.dates.startPicker.time"
+            end="Booking.state.steps.dates.endPicker.time"
+            on-start-change="Booking.setNewTimeDatePickers(date, 'startTime')"
+            on-end-change="Booking.setNewTimeDatePickers(date, 'endTime')">
+        </time-range-picker>
+        <div class="row">
+            <div class="col s12">
+                <p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="Booking.confirmTimeRangeSelection()">Conferma selezione</a></p>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<section ng-if="Booking.state.carnet.isCarnetOrder == false">
+    <section ng-if="Booking.state.steps.dates.pickedDates.length > 0">
+        <div class="row">
+            <div class="col m10 offset-m1 s12">
+                <picked-dates
+                    dates="Booking.state.steps.dates.pickedDates"
+                    suggestions="Booking.state.steps.dates.suggestions"
+                    heroes-suggestions="Booking.state.steps.dates.heroesSuggested"
+                    can-book-multiple-superheroes="Booking.canBookMultipleSuperheroes(Booking.state.steps.service.selectedService)"
+                    confirmed="Booking.state.steps.dates.confirmedDates"
+                    requested-suggestions="Booking.state.steps.dates.askedForSuggestions"
+                    requested-heroes-suggestions="Booking.state.steps.dates.askedForHeroesSuggestions"
+                    picking-mode="Booking.state.steps.dates.pickingMode"
+                    on-add-new-date="Booking.setPickingMode(1)"
+                    on-add-new-superhero="Booking.addNewSuperhero()"
+                    on-change-date="Booking.userChangedDate(change, dateId)"
+                    on-create-recurrance="Booking.createRecurrenceFromDate(dateId,recurrenceInfo)"
+                    on-delete-picked-date="Booking.deletePickedDate(dateId)"
+                    on-delete-confirmed-date="Booking.deleteConfirmedDate(dateId)"
+                    on-choose-suggestion="Booking.userPickedSuggestion(dateId,suggestionId,heroId)">
+                </picked-dates>
+            </div>
+        </div>
+    </section>
+    <section ng-if="Booking.state.steps.dates.pickingMode === 1">
+        <div class="row">
+            <div class="col s12 l6">
+                <date-picker-inline
+                    date="Booking.state.steps.dates.startPicker.date"
+                    min-date="StepDates.minimumSelectableDate"
+                    max-date="StepDates.maximumSelectableDate"
+                    on-date-change="Booking.setNewTimeDatePickers(date, 'startDate')">
+                </date-picker-inline>
+            </div>
+            <div class="col s12 l6">
+                <time-range-picker
+                    start="Booking.state.steps.dates.startPicker.time"
+                    end="Booking.state.steps.dates.endPicker.time"
+                    on-start-change="Booking.setNewTimeDatePickers(date, 'startTime')"
+                    on-end-change="Booking.setNewTimeDatePickers(date, 'endTime')">
+                </time-range-picker>
+                <div class="row">
+                    <div class="col s12">
+                        <p class="center" ng-click="Booking.setPickingMode(2)"><b class="main-orange-text">L'appuntamento termina un altro giorno?</b></p><br>
+                        <p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="Booking.confirmTimeRangeSelection()">Conferma selezione</a></p>
+                        <p>La data di una prenotazione semplice (non su base carnet) può arrivare sino ad un massimo di 27 giorni in avanti rispetto alla data odierna</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section ng-show="Booking.state.steps.dates.pickingMode === 2">
+        <div class="row no-margin bottom">
+            <div class="col s12 l6">
+                <date-picker-inline
+                    date="Booking.state.steps.dates.startPicker.date"
+                    min-date="StepDates.minimumSelectableDate"
+                    max-date="StepDates.maximumSelectableDate"
+                    on-date-change="Booking.setNewTimeDatePickers(date, 'startDate')">
+                </date-picker-inline>
+            </div>
+            <div class="col s12 l6">
+                <date-picker-inline
+                    date="Booking.state.steps.dates.endPicker.date"
+                    min-date="Booking.state.steps.dates.startPicker.date"
+                    max-date="StepDates.maximumSelectableDate"
+                    on-date-change="Booking.setNewTimeDatePickers(date, 'endDate')">
+                </date-picker-inline>
+            </div>
+        </div>
+        <time-range-picker
+            start="Booking.state.steps.dates.startPicker.time"
+            end="Booking.state.steps.dates.endPicker.time"
+            on-start-change="Booking.setNewTimeDatePickers(date, 'startTime')"
+            on-end-change="Booking.setNewTimeDatePickers(date, 'endTime')">
+        </time-range-picker>
+        <div class="row">
+            <div class="col s12">
+                <p class="center"><a class="waves-effect waves-light main-orange btn" ng-click="Booking.confirmTimeRangeSelection()">Conferma selezione</a></p>
+                <p>La data di una prenotazione semplice (non su base carnet) può arrivare sino ad un massimo di 27 giorni in avanti rispetto alla data odierna</p>
+            </div>
+        </div>
+    </section>
+</section>
+

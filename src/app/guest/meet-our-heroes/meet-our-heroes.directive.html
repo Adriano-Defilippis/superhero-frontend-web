@@ -1,0 +1,18 @@
+<div class="meet-our-heroes__wrapper">
+    <div class="container">
+        <div id="heroes-slider" class="owl-carousel owl-theme" fill>
+            <div class="meet-our-heroes__single-slide" full-width
+                ng-repeat="hero in ctrl.heroes">
+                <div class="meet-our-heroes__left-info">
+                    <div class="meet-our-heroes__profile-pic" ng-style="{'background-image': 'url(\''+ hero.photoUrl +'\')'}" ng-click="ctrl.goToHeroSearch()"></div>
+                    <h4 class="center no-margin all">{{hero.nome}}</h4>
+                </div>
+                <div class="meet-our-heroes__hero-desc hide-sm">
+                    <p class="no-margin top">{{hero.descrizione}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
