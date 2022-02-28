@@ -41,7 +41,7 @@ export default function MenuDirective (
         menuItemsUl = angular.element($($element).find('ul')[0]),
         menuWrapperWidth = 0;
 
-      var bnbMenuItems = [{
+      /*var bnbMenuItems = [{
         state: 'main.guest.vantaggi',
         params: '',
         label: 'Vantaggi',
@@ -60,7 +60,34 @@ export default function MenuDirective (
         params: '',
         class: 'hiddenTop',
         label: 'Condizioni d\'uso'
-      }];
+      }];*/
+
+      var bnbMenuItems = [{
+        state: '',
+        params: '',
+        label: 'Bacheca',
+        style: ''
+      },{
+        state: 'main.guest.carnet',
+        params: '',
+        label: 'Carnet',
+        style: ''
+      },{
+        state: '',
+        params: '',
+        label: 'Storico Pagamenti',
+        style: ''
+      },{
+        state: '',
+        params: '',
+        label: 'Storico Prenotazioni',
+        style: ''
+      },{
+        state: '',
+        params: '',
+        label: 'Fatture',
+        style: ''
+      }]
 
       var standardMenuItems = [{
         state: 'main.guest.vantaggi',
