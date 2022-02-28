@@ -55,6 +55,11 @@ export default function MenuDirective (
         params: '',
         class: 'hiddenTop',
         label: 'Servizi Privati'
+      },{
+        state: '',
+        params: '',
+        class: 'hiddenTop',
+        label: 'Condizioni d\'uso'
       }];
 
       var standardMenuItems = [{
@@ -70,6 +75,11 @@ export default function MenuDirective (
         state: 'booking.herosearch',
         params: '',
         label: 'I Nostri Professionisti'
+      },{
+        state: '',
+        params: '',
+        class: 'hiddenTop',
+        label: 'Condizioni d\'uso'
       }];
 
       self.showLoginForm = function(){

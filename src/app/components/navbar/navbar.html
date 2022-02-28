@@ -1,5 +1,7 @@
 <div ng-if="!isApp" class="nav-wrapper container">
-  <a id="logo-container" ng-click="ctrl.goToHomePage()" class="brand-logo"><img ng-src="{{ctrl.logo.mainLogo}}"></a>
+  <a id="logo-container" ng-click="ctrl.goToHomePage()" class="brand-logo">
+    <img ng-src="{{ctrl.logo.mainLogo}}">
+  </a>
 
   <div class="right hide-on-med-and-down">
     <menu items="::ctrl.menu" user-menu="ctrl.subMenu"></menu>

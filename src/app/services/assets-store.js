@@ -32,11 +32,11 @@ export default function AssetsStoreService (
         carnetNonniInCompagnia: 'carnet-nonni-in-compagnia.svg',
         carnetGiftCard: 'carnet-gift-card.svg',
         carnetNew: '',
-        mainLogo: 'il-mio-supereroe-logo-white.svg',
-        mainLogoWhite: 'il-mio-supereroe-logo-white.svg',
-        mainLogoBk: 'il-mio-supereroe-logo-white.svg',
-        mainLogoPayoff: 'il-mio-supereroe-logo-white.svg',
-        mainLogoPayoffBk: 'il-mio-supereroe-logo-white.svg'
+        mainLogo: 'orchestra-logo-01.svg',
+        mainLogoWhite: 'orchestra-logo-01.svg',
+        mainLogoBk: 'orchestra-logo-01.svg',
+        mainLogoPayoff: 'orchestra-logo-01.svg',
+        mainLogoPayoffBk: 'orchestra-logo-01.svg'
       },
       service: {
         one: 'colf.svg',
